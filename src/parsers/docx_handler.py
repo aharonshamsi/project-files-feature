@@ -22,7 +22,7 @@ def extract_table(table):
 
 
 
-def parse_docx_file(file_path_input, file_path_output):
+def extract_docx_file(file_path_input, file_path_output):
             
     result = { "sections": [] }
 
@@ -88,7 +88,7 @@ def parse_docx_file(file_path_input, file_path_output):
         
     # Error detection
     except FileNotFoundError:
-        print("Error: Input file not found")
+        print("Error: File not found")
 
     except PermissionError:
         print("Error: Permission denied. Make sure the file is not open")
