@@ -1,56 +1,74 @@
 {
-    "sections": [
+    "content": [
         {
-            "title": "5 Things to Do Every Day to Be Happy",
-            "Paragraph": "Happiness isn’t an accident, and it isn’t a personality trait you either have or don’t. It’s a daily practice—built from small, repeatable actions that shape your mindset, energy, and emotional stability. In a world full of pressure, speed, and uncertainty, the people who stay grounded and joyful don’t necessarily have easier lives; they simply manage their days differently.Here are five simple but powerful habits you can do every single day to create more happiness, clarity, and emotional strength."
+            "type": "heading",
+            "text": "מה זה בינה מלאכותית?"
         },
         {
-            "title": "1. Start with One Empowering Moment of Control",
-            "Paragraph": "Your morning sets the tone for everything. Most people wake up and immediately react—scrolling their phone, answering messages, or rushing into tasks. This creates anxiety before the day even begins.Instead, give yourself 90 seconds of deliberate control when you wake up. It can be something tiny:Drink a glass of water mindfullyOpen a window and breathe fresh airStretch your arms and backSet one intention for the dayThink of one thing you’re grateful forThese micro-behaviors tell the brain: I lead my day; the day doesn’t lead me.Research in psychology consistently shows that the feeling of control, even in tiny doses, reduces stress and increases happiness. You're not trying to control outcomes—you're simply controlling the first moment of the day.This habit helps you walk into the world stronger, calmer, and mentally organized."
+            "type": "paragraph",
+            "text": "בינה מלאכותית היא היכולת של מחשב לבצע משימות שדורשות בדרך כלל אינטליגנציה אנושית. זה כולל למידה מתוך דוגמאות, הבנת שפה וזיהוי תמונות."
         },
         {
-            "title": "2. Do One Thing That Makes You Feel Progress",
-            "Paragraph": "Happiness is deeply connected to a sense of progress—professionally or personally. Humans are wired to feel motivated when we see ourselves moving forward, even if the steps are tiny.Every day, choose one micro-action that creates progress:Learn one new ideaWrite five important sentencesClean one small areaComplete a short work task that you’ve been postponingMake one “important but non-urgent” improvement in your business or lifeThis is not about productivity hacks; it’s about direction.When people feel stuck, they become unhappy. When they feel that life is moving—even slowly—they become energized, optimistic, and creative.The goal is simple: finish the day knowing you have moved 1% forward. Those daily 1% steps accumulate faster than people imagine."
+            "type": "table",
+            "data": {
+                "columns": [
+                    "שם:",
+                    "משפחה",
+                    "גיל",
+                    "מקצוע",
+                    "מקום עבודה"
+                ],
+                "rows": [
+                    [
+                        "ישראל",
+                        "ישראלי",
+                        "20",
+                        "מדמ״ח",
+                        "בטא"
+                    ]
+                ]
+            }
         },
         {
-            "title": "3. Be Present for One Human Connection",
-            "Paragraph": "Humans are social creatures, and isolation—mental or emotional—kills happiness faster than anything else. Being connected doesn’t mean being with people all the time. It means having at least one genuine moment every day where you show presence, attention, and empathy.This can be very small:A warm conversation with a partner or childA voice note to a friendA smile or kind word to a colleagueListening without interruptingA short call to check in on someoneWhen you give someone 2–3 minutes of real attention, you feel happier because:You create meaningYou reinforce your identity as someone who caresConnection releases oxytocin—the “calm and trust” hormoneIn a digital, high-pressure world, moments of connection are emotional vitamins. Taking one a day keeps your emotional system healthy."
+            "type": "paragraph",
+            "text": "אנחנו משתמשים בבינה מלאכותית כמעט בכל מקום. למשל, כשאפליקציית הניווט ממליצה על הדרך המהירה ביותר, או כששירותי סטרימינג מציעים לנו סרטים שנדמה שנאהב על סמך צפיות קודמות."
         },
         {
-            "title": "4. Move Your Body for 5–10 Minutes",
-            "Paragraph": "You don’t need a full workout to feel happier—you need motion. Movement changes your blood flow, reduces stress hormones, increases energy, and clears mental fog.Most people think exercise = gym. But happiness requires something simpler: activate your body daily.Examples:10-minute walkLight stretchingA short breathing practicePlaying with your kidsDancing to one songGoing up and down the stairs twiceThe key is consistency, not intensity.A body that stays stagnant sends signals of fatigue and heaviness to the brain. A body that moves tells the brain: we are alive, energetic, capable.Daily movement builds emotional stability. You become more resilient, more optimistic, and less reactive. It’s one of the fastest biological shortcuts to happiness."
+            "type": "table",
+            "data": {
+                "columns": [
+                    "User_id",
+                    "User_name",
+                    "age",
+                    "Gmail"
+                ],
+                "rows": [
+                    [
+                        "12345",
+                        "Tamar",
+                        "20",
+                        "ryuurr@amil.com"
+                    ],
+                    [
+                        "67891",
+                        "Avi",
+                        "25",
+                        "hgf@gmail.com"
+                    ]
+                ]
+            }
         },
         {
-            "title": "5. End the Day with a “Reset Ritual”",
-            "Paragraph": "Happiness is not just about how you start your day; it’s also about how you close it. Many people carry the entire day into the night—unfinished tasks, worries, emotional residue. This creates mental overload, poor sleep, and constant tension.A daily reset ritual releases the day and gives your mind permission to rest.Your reset ritual can be extremely simple:Write down 3 things you completed todayNote 1 thing you want to improve tomorrow—but without judgmentPut your phone away 20 minutes before sleepTake a warm shower to physically “wash off” the dayListen to calming musicSlow breathing for 60 secondsThis ritual tells your brain: the day is closed; you did enough; it’s safe to rest.People who master this practice experience less stress, deeper sleep, and a more stable emotional tone the next day."
+            "type": "paragraph",
+            "text": "אנחנו משתמשים בבינה מלאכותית כמעט בכל מקום."
         },
         {
-            "title": "Why These Five Habits Work Together",
-            "Paragraph": "Each habit influences a different layer of your psychological system:"
+            "type": "heading",
+            "text": "איפה!"
         },
         {
-            "title": "1. Morning Control → Mindset",
-            "Paragraph": "It gives clarity, direction, and emotional strength."
-        },
-        {
-            "title": "2. Micro-Progress → Motivation",
-            "Paragraph": "It triggers the feeling of purpose and momentum."
-        },
-        {
-            "title": "3. Human Connection → Meaning",
-            "Paragraph": "It creates warmth, bonding, and emotional richness."
-        },
-        {
-            "title": "4. Body Movement → Energy",
-            "Paragraph": "It stabilizes mood, reduces stress, and increases vitality."
-        },
-        {
-            "title": "5. Evening Reset → Recovery",
-            "Paragraph": "It repairs the mind and prepares you for tomorrow.Together, they build a daily happiness operating system.\nNot based on luck.\nNot based on circumstances.\nBut on repeatable behaviors you control."
-        },
-        {
-            "title": "The Real Secret",
-            "Paragraph": "Happiness is not found in huge life events.\nIt is created through tiny daily investments in your mind, body, and relationships.These five habits don’t require time, money, or planning. They require intention. Do them every day for two weeks, and you’ll feel the difference. Do them for thirty days, and you’ll start seeing yourself differently. Do them for ninety days, and they become part of who you are.When happiness becomes a practice, it becomes a lifestyle."
+            "type": "paragraph",
+            "text": "בבינה מלאכותית כמעט בכל מקום."
         }
     ]
 }
