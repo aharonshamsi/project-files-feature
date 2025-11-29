@@ -11,9 +11,9 @@ def main():
     extract_basic_text_to_json(input_pdf_path, output_json_path)
 
 
-    file_path_input = "data/inputs/lesson_1.docx"
+    #file_path_input = "data/inputs/lesson_1.docx"
     #file_path_input = "data/input/Ex1.docx"
-    #file_path_input = "data/inputs/5 Things to Do Every Day to Be Happy.docx"
+    file_path_input = "data/inputs/5 Things to Do Every Day to Be Happy.docx"
     file_path_output = "data/outputs/docx.json"
 
     parsed_data = extract_docx_file_to_json(file_path_input, file_path_output)

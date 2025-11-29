@@ -4,17 +4,11 @@ from docx.table import Table
 import json
 import os
 
+from src.parsers.utils import file_size_check
 
-MAX_FILE_SIZE_BYTES = 20 * 1024 * 1024  # 20 MB
+MAX_FILE_DOCX_SIZE_BYTES = 20 * 1024 * 1024 # Size of file docx 20 MB 
 
 
-
-def file_size_check(file_path_input):
-    file_size = os.path.getsize(file_path_input)
-
-    if file_size > MAX_FILE_SIZE_BYTES:
-        raise ValueError(f"Input DOCX exceeds max allowed size of {MAX_FILE_SIZE_BYTES} bytes")
-    
 
 
 def extract_table(table):
@@ -32,7 +26,7 @@ def extract_table(table):
 
 
 
-def iter_block_items(parent):
+def iteration_block_items(parent):
 
     for child in parent.element.body:
         if child.tag.endswith("p"):
@@ -49,10 +43,10 @@ def extract_docx_file_to_json(file_path_input, file_path_output):
     result = {"content": []}
 
     try:
-        file_size_check(file_path_input)
+        file_size_check(file_path_input, MAX_FILE_DOCX_SIZE_BYTES) # Import
         doc = Document(file_path_input)
 
-        for block in iter_block_items(doc):
+        for block in iteration_block_items(doc):
 
             # Paragraph
             if isinstance(block, Paragraph):
@@ -96,9 +90,6 @@ def extract_docx_file_to_json(file_path_input, file_path_output):
 
     except PermissionError:
         print("Error: Permission denied. Make sure the file is not open")
-
-    except ValueError:
-        print("Error: The file is not a valid DOCX document")
 
     except Exception as e:
         print(f"Error: {e}")

@@ -2,7 +2,15 @@ import fitz
 import json
 import os
 
+from src.parsers.utils import file_size_check
+
+
+MAX_FILE_PDF_SIZE_BYTES = 0.1 # Size of file docx 20 MB 
+
+
+
 def extract_basic_text_to_json(file_path_input, file_path_output):
+
     """
     PHASE 1: Extracts raw text from each page of a PDF and saves it as a JSON file.
     
@@ -21,6 +29,8 @@ def extract_basic_text_to_json(file_path_input, file_path_output):
     extracted_data = []
 
     try:
+        
+        file_size_check(file_path_input, MAX_FILE_PDF_SIZE_BYTES)
         
         with fitz.open(file_path_input) as doc:
            
