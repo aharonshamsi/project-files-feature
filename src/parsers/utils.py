@@ -8,4 +8,3 @@ def file_size_check(file_path_input, max_file_size_bytes):
         raise ValueError(f"Input DOCX exceeds max allowed size of {max_file_size_bytes} bytes")
     
     
-    

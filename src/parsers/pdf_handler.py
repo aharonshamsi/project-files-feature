@@ -5,7 +5,7 @@ import os
 from src.parsers.utils import file_size_check
 
 
-MAX_FILE_PDF_SIZE_BYTES = 0.1 # Size of file docx 20 MB 
+MAX_FILE_PDF_SIZE_BYTES = 20 * 1024 * 1024 # Size of file docx 20 MB 
 
 
 
