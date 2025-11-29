@@ -13,7 +13,7 @@ def extract_basic_text_to_json(file_path_input, file_path_output):
     
     # Check 1: Verify the PDF file exists before processing
     if not os.path.exists(file_path_input):
-        print(f"❌ Error: Input file not found at: {file_path_input}")
+        print(f"Error: Input file not found at: {file_path_input}")
         # Print current working directory to help debug
         print(f"   Current working directory: {os.getcwd()}")
         return
@@ -46,5 +46,5 @@ def extract_basic_text_to_json(file_path_input, file_path_output):
             
         
     except Exception as e:
-        print(f"❌ An unexpected error occurred during processing: {e}")
+        print(f"Error: An unexpected error occurred during processing: {e}")
 
