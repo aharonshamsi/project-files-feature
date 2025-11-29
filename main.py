@@ -5,7 +5,7 @@ from src.parsers.pdf_handler import extract_basic_text_to_json
 def main():
 
    
-    input_pdf_path = "data/inputs/exported_document.pdf"
+    input_pdf_path = "./data/inputs/exported_document.pdf"
     output_json_path = "data/outputs/pdf.json"
 
     extract_basic_text_to_json(input_pdf_path, output_json_path)
