@@ -2,73 +2,323 @@
     "content": [
         {
             "type": "heading",
-            "text": "מה זה בינה מלאכותית?"
+            "text": "5 Things to Do Every Day to Be Happy"
         },
         {
             "type": "paragraph",
-            "text": "בינה מלאכותית היא היכולת של מחשב לבצע משימות שדורשות בדרך כלל אינטליגנציה אנושית. זה כולל למידה מתוך דוגמאות, הבנת שפה וזיהוי תמונות."
-        },
-        {
-            "type": "table",
-            "data": {
-                "columns": [
-                    "שם:",
-                    "משפחה",
-                    "גיל",
-                    "מקצוע",
-                    "מקום עבודה"
-                ],
-                "rows": [
-                    [
-                        "ישראל",
-                        "ישראלי",
-                        "20",
-                        "מדמ״ח",
-                        "בטא"
-                    ]
-                ]
-            }
+            "text": "Happiness isn’t an accident, and it isn’t a personality trait you either have or don’t. It’s a daily practice—built from small, repeatable actions that shape your mindset, energy, and emotional stability. In a world full of pressure, speed, and uncertainty, the people who stay grounded and joyful don’t necessarily have easier lives; they simply manage their days differently."
         },
         {
             "type": "paragraph",
-            "text": "אנחנו משתמשים בבינה מלאכותית כמעט בכל מקום. למשל, כשאפליקציית הניווט ממליצה על הדרך המהירה ביותר, או כששירותי סטרימינג מציעים לנו סרטים שנדמה שנאהב על סמך צפיות קודמות."
-        },
-        {
-            "type": "table",
-            "data": {
-                "columns": [
-                    "User_id",
-                    "User_name",
-                    "age",
-                    "Gmail"
-                ],
-                "rows": [
-                    [
-                        "12345",
-                        "Tamar",
-                        "20",
-                        "ryuurr@amil.com"
-                    ],
-                    [
-                        "67891",
-                        "Avi",
-                        "25",
-                        "hgf@gmail.com"
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "paragraph",
-            "text": "אנחנו משתמשים בבינה מלאכותית כמעט בכל מקום."
+            "text": "Here are five simple but powerful habits you can do every single day to create more happiness, clarity, and emotional strength."
         },
         {
             "type": "heading",
-            "text": "איפה!"
+            "text": "1. Start with One Empowering Moment of Control"
         },
         {
             "type": "paragraph",
-            "text": "בבינה מלאכותית כמעט בכל מקום."
+            "text": "Your morning sets the tone for everything. Most people wake up and immediately react—scrolling their phone, answering messages, or rushing into tasks. This creates anxiety before the day even begins."
+        },
+        {
+            "type": "paragraph",
+            "text": "Instead, give yourself 90 seconds of deliberate control when you wake up. It can be something tiny:"
+        },
+        {
+            "type": "paragraph",
+            "text": "Drink a glass of water mindfully"
+        },
+        {
+            "type": "paragraph",
+            "text": "Open a window and breathe fresh air"
+        },
+        {
+            "type": "paragraph",
+            "text": "Stretch your arms and back"
+        },
+        {
+            "type": "paragraph",
+            "text": "Set one intention for the day"
+        },
+        {
+            "type": "paragraph",
+            "text": "Think of one thing you’re grateful for"
+        },
+        {
+            "type": "paragraph",
+            "text": "These micro-behaviors tell the brain: I lead my day; the day doesn’t lead me."
+        },
+        {
+            "type": "paragraph",
+            "text": "Research in psychology consistently shows that the feeling of control, even in tiny doses, reduces stress and increases happiness. You're not trying to control outcomes—you're simply controlling the first moment of the day."
+        },
+        {
+            "type": "paragraph",
+            "text": "This habit helps you walk into the world stronger, calmer, and mentally organized."
+        },
+        {
+            "type": "heading",
+            "text": "2. Do One Thing That Makes You Feel Progress"
+        },
+        {
+            "type": "paragraph",
+            "text": "Happiness is deeply connected to a sense of progress—professionally or personally. Humans are wired to feel motivated when we see ourselves moving forward, even if the steps are tiny."
+        },
+        {
+            "type": "paragraph",
+            "text": "Every day, choose one micro-action that creates progress:"
+        },
+        {
+            "type": "paragraph",
+            "text": "Learn one new idea"
+        },
+        {
+            "type": "paragraph",
+            "text": "Write five important sentences"
+        },
+        {
+            "type": "paragraph",
+            "text": "Clean one small area"
+        },
+        {
+            "type": "paragraph",
+            "text": "Complete a short work task that you’ve been postponing"
+        },
+        {
+            "type": "paragraph",
+            "text": "Make one “important but non-urgent” improvement in your business or life"
+        },
+        {
+            "type": "paragraph",
+            "text": "This is not about productivity hacks; it’s about direction."
+        },
+        {
+            "type": "paragraph",
+            "text": "When people feel stuck, they become unhappy. When they feel that life is moving—even slowly—they become energized, optimistic, and creative."
+        },
+        {
+            "type": "paragraph",
+            "text": "The goal is simple: finish the day knowing you have moved 1% forward. Those daily 1% steps accumulate faster than people imagine."
+        },
+        {
+            "type": "heading",
+            "text": "3. Be Present for One Human Connection"
+        },
+        {
+            "type": "paragraph",
+            "text": "Humans are social creatures, and isolation—mental or emotional—kills happiness faster than anything else. Being connected doesn’t mean being with people all the time. It means having at least one genuine moment every day where you show presence, attention, and empathy."
+        },
+        {
+            "type": "paragraph",
+            "text": "This can be very small:"
+        },
+        {
+            "type": "paragraph",
+            "text": "A warm conversation with a partner or child"
+        },
+        {
+            "type": "paragraph",
+            "text": "A voice note to a friend"
+        },
+        {
+            "type": "paragraph",
+            "text": "A smile or kind word to a colleague"
+        },
+        {
+            "type": "paragraph",
+            "text": "Listening without interrupting"
+        },
+        {
+            "type": "paragraph",
+            "text": "A short call to check in on someone"
+        },
+        {
+            "type": "paragraph",
+            "text": "When you give someone 2–3 minutes of real attention, you feel happier because:"
+        },
+        {
+            "type": "paragraph",
+            "text": "You create meaning"
+        },
+        {
+            "type": "paragraph",
+            "text": "You reinforce your identity as someone who cares"
+        },
+        {
+            "type": "paragraph",
+            "text": "Connection releases oxytocin—the “calm and trust” hormone"
+        },
+        {
+            "type": "paragraph",
+            "text": "In a digital, high-pressure world, moments of connection are emotional vitamins. Taking one a day keeps your emotional system healthy."
+        },
+        {
+            "type": "heading",
+            "text": "4. Move Your Body for 5–10 Minutes"
+        },
+        {
+            "type": "paragraph",
+            "text": "You don’t need a full workout to feel happier—you need motion. Movement changes your blood flow, reduces stress hormones, increases energy, and clears mental fog."
+        },
+        {
+            "type": "paragraph",
+            "text": "Most people think exercise = gym. But happiness requires something simpler: activate your body daily."
+        },
+        {
+            "type": "paragraph",
+            "text": "Examples:"
+        },
+        {
+            "type": "paragraph",
+            "text": "10-minute walk"
+        },
+        {
+            "type": "paragraph",
+            "text": "Light stretching"
+        },
+        {
+            "type": "paragraph",
+            "text": "A short breathing practice"
+        },
+        {
+            "type": "paragraph",
+            "text": "Playing with your kids"
+        },
+        {
+            "type": "paragraph",
+            "text": "Dancing to one song"
+        },
+        {
+            "type": "paragraph",
+            "text": "Going up and down the stairs twice"
+        },
+        {
+            "type": "paragraph",
+            "text": "The key is consistency, not intensity."
+        },
+        {
+            "type": "paragraph",
+            "text": "A body that stays stagnant sends signals of fatigue and heaviness to the brain. A body that moves tells the brain: we are alive, energetic, capable."
+        },
+        {
+            "type": "paragraph",
+            "text": "Daily movement builds emotional stability. You become more resilient, more optimistic, and less reactive. It’s one of the fastest biological shortcuts to happiness."
+        },
+        {
+            "type": "heading",
+            "text": "5. End the Day with a “Reset Ritual”"
+        },
+        {
+            "type": "paragraph",
+            "text": "Happiness is not just about how you start your day; it’s also about how you close it. Many people carry the entire day into the night—unfinished tasks, worries, emotional residue. This creates mental overload, poor sleep, and constant tension."
+        },
+        {
+            "type": "paragraph",
+            "text": "A daily reset ritual releases the day and gives your mind permission to rest."
+        },
+        {
+            "type": "paragraph",
+            "text": "Your reset ritual can be extremely simple:"
+        },
+        {
+            "type": "paragraph",
+            "text": "Write down 3 things you completed today"
+        },
+        {
+            "type": "paragraph",
+            "text": "Note 1 thing you want to improve tomorrow—but without judgment"
+        },
+        {
+            "type": "paragraph",
+            "text": "Put your phone away 20 minutes before sleep"
+        },
+        {
+            "type": "paragraph",
+            "text": "Take a warm shower to physically “wash off” the day"
+        },
+        {
+            "type": "paragraph",
+            "text": "Listen to calming music"
+        },
+        {
+            "type": "paragraph",
+            "text": "Slow breathing for 60 seconds"
+        },
+        {
+            "type": "paragraph",
+            "text": "This ritual tells your brain: the day is closed; you did enough; it’s safe to rest."
+        },
+        {
+            "type": "paragraph",
+            "text": "People who master this practice experience less stress, deeper sleep, and a more stable emotional tone the next day."
+        },
+        {
+            "type": "heading",
+            "text": "Why These Five Habits Work Together"
+        },
+        {
+            "type": "paragraph",
+            "text": "Each habit influences a different layer of your psychological system:"
+        },
+        {
+            "type": "heading",
+            "text": "1. Morning Control → Mindset"
+        },
+        {
+            "type": "paragraph",
+            "text": "It gives clarity, direction, and emotional strength."
+        },
+        {
+            "type": "heading",
+            "text": "2. Micro-Progress → Motivation"
+        },
+        {
+            "type": "paragraph",
+            "text": "It triggers the feeling of purpose and momentum."
+        },
+        {
+            "type": "heading",
+            "text": "3. Human Connection → Meaning"
+        },
+        {
+            "type": "paragraph",
+            "text": "It creates warmth, bonding, and emotional richness."
+        },
+        {
+            "type": "heading",
+            "text": "4. Body Movement → Energy"
+        },
+        {
+            "type": "paragraph",
+            "text": "It stabilizes mood, reduces stress, and increases vitality."
+        },
+        {
+            "type": "heading",
+            "text": "5. Evening Reset → Recovery"
+        },
+        {
+            "type": "paragraph",
+            "text": "It repairs the mind and prepares you for tomorrow."
+        },
+        {
+            "type": "paragraph",
+            "text": "Together, they build a daily happiness operating system.\nNot based on luck.\nNot based on circumstances.\nBut on repeatable behaviors you control."
+        },
+        {
+            "type": "heading",
+            "text": "The Real Secret"
+        },
+        {
+            "type": "paragraph",
+            "text": "Happiness is not found in huge life events.\nIt is created through tiny daily investments in your mind, body, and relationships."
+        },
+        {
+            "type": "paragraph",
+            "text": "These five habits don’t require time, money, or planning. They require intention. Do them every day for two weeks, and you’ll feel the difference. Do them for thirty days, and you’ll start seeing yourself differently. Do them for ninety days, and they become part of who you are."
+        },
+        {
+            "type": "paragraph",
+            "text": "When happiness becomes a practice, it becomes a lifestyle."
         }
     ]
 }
