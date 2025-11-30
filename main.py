@@ -1,14 +1,14 @@
 from src.parsers.docx_handler import extract_docx_file_to_json
 from src.parsers.pdf_handler import extract_basic_text_to_json
-
+from src.parsers.pdf_handler import extract_paragraph_and_heading_to_json
 
 def main():
 
    
-    input_pdf_path = "./data/inputs/exported_document.pdf"
-    output_json_path = "data/outputs/pdf.json"
+    input_pdf_path = "./data/inputs/test2.pdf"
+    output_json_path = "./data/outputs/pdf_text.json"
 
-    extract_basic_text_to_json(input_pdf_path, output_json_path)
+    extract_paragraph_and_heading_to_json(input_pdf_path, output_json_path)
 
 
     file_path_input = "data/inputs/lesson_1.docx"
