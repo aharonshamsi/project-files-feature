@@ -59,9 +59,10 @@ def extract_paragraph_and_heading_to_json(file_path_input, file_path_output):
 
             for page_num in range(doc.page_count):
                 page_elements = []
-                parse_page(doc, page_num, page_elements)
 
+                parse_page(doc, page_num, page_elements)
                 add_page(extracted_data, page_num, page_elements)
+                
              # Write the list of dictionaries to the output JSON file
             with open(file_path_output, 'a', encoding='utf-8') as f:
                 json.dump(extracted_data, f, ensure_ascii=False, indent=2)

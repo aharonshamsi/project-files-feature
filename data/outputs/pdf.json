@@ -1,6 +1,0 @@
-[
-  {
-    "page_number": 1,
-    "text": "Data Extraction Project Test \nGoal: Verify PyMuPDF's ability to extract content accurately, identify structural \nelements, and handle various ﬁle conditions, which is crucial for the AI data \ningestion phase. \nPHASE I: Basic Extraction Check \n1. This line is digital text, created directly in Word. It should be easily \nextracted. \n2. The number of pages in the output JSON must match the actual page \ncount. \nPHASE II: Header and Error Test \n \nHeader Test: The title \"PHASE II\" is a primary header. The logic must mark \nit as such (based on font size or bold ﬂag). \n \nSize Limit Simulation: The system must check if the ﬁle size exceeds \n20MB. \nKey Sentence for Veriﬁcation: The crucial test case for the PyMuPDF library is \nits ability to handle both digital and image-based text reliably. \n \n"
-  }
-]
