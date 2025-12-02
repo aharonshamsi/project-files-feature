@@ -5,7 +5,10 @@ from src.parsers.pdf_handler import extract_paragraph_and_heading_to_json
 def main():
 
    
-    input_pdf_path = "./data/inputs/test2.pdf"
+
+
+
+    input_pdf_path = "./data/inputs/test5.pdf"
     output_json_path = "./data/outputs/pdf_text.json"
 
     extract_paragraph_and_heading_to_json(input_pdf_path, output_json_path)
