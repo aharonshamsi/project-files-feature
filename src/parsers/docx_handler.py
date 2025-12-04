@@ -82,39 +82,6 @@ def extract_urls_from_text(text):
 
 
 
-def handle_embedded_image(doc ,block):
-
-    for run in block.runs:
-        image = []
-        ns = run._element.nsmap
-
-        # איתור אלמנטי drawing
-        drawings = run._element.findall('.//w:drawing', namespaces=ns)
-        if not drawings:
-            continue
-
-        # טיפול בכל תמונה בתוך ה-drawing
-        for draw in drawings:
-            blip = draw.find('.//a:blip', namespaces=ns)
-            if blip is None:
-                continue
-
-            rId = blip.get(qn('r:embed'))
-            image_part = doc.part.related_parts[rId]
-            blob = image_part.blob
-
-            image = {
-                "type": "image",
-                "name": image_part.partname.split("/")[-1]
-                #"data_base64": base64.b64encode(blob).decode("utf-8")
-            }
-
-            return image
-
-
-
-
-
 
 
 def extract_docx_file_to_json(file_path_input, file_path_output):
@@ -142,53 +109,50 @@ def extract_docx_file_to_json(file_path_input, file_path_output):
 
                 if not text:
                     continue
-                
-                # Url
+
                 urls = extract_urls_from_text(text)
+                # Clear only url for text
                 if urls:
                     for url in urls:
-                        result["content"].append({
-                            "type": "url",
-                            "text": url
-                        })
-                    continue
+                        text = text.replace(url, "").strip()
 
 
-                # Images of embedded
-                object_image = handle_embedded_image(doc, block)
-                if object_image:
-                    result["content"].append(object_image)
-
-                
-                # Heading detection
-                if 'Heading' in style or 'title' in style or \
-                   all(run.bold for run in block.runs if run.text.strip()):
-                    new_paragraph = True
+                # Heading
+                if ('Heading' in style or 'title' in style or \
+                    all(run.bold for run in block.runs if run.text.strip())) and not urls:
                     
-
                     result["content"].append({
                         "type": "heading",
                         "text": text
                     })
+                    new_paragraph = True
 
-
+                # Empty Paragraph
                 else:
-                    # New paragraph
                     if new_paragraph or not result["content"] or result["content"][-1]["type"] != "paragraph":
                         result["content"].append({
                             "type": "paragraph",
                             "text": text
                         })
-
+                    # Existing paragraph
                     else:
                         result["content"][-1]["text"] += "\n\n" + text
-                    
-                new_paragraph = False
+
+                    new_paragraph = False
+
+
+            # URL
+            if urls:
+                for url in urls:
+                    result["content"].append({
+                        "type": "url",
+                        "text": url
+                    })
+
+
+
 
                 
-                
-
-
             # Table
             elif isinstance(block, Table):
                 table_data = extract_table(block)
