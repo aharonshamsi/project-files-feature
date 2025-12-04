@@ -2,15 +2,12 @@ import fitz
 import json
 import os
 
+IMAGE_NUM = 0
+
+MAX_FILE_DOCX_SIZE_BYTES = 20 * 1024 * 1024 # Size of file docx 20 MB 
 
 def extract_basic_text_to_json(file_path_input, file_path_output):
-    """
-    PHASE 1: Extracts raw text from each page of a PDF and saves it as a JSON file.
 
-    Args:
-        file_path_input (str): The full path to the input PDF file.
-        file_path_output (str): The full path where the output JSON file will be saved.
-    """
     if chack_if_file_exists(file_path_input) == False:
         return
 
@@ -49,10 +46,11 @@ def extract_paragraph_and_heading_to_json(file_path_input, file_path_output):
     if chack_if_file_exists(file_path_input) == False:
         return
 
-    extracted_data = []
-
     try:
-
+        extracted_data = []
+        
+     #file_size_check(file_path_input, MAX_FILE_DOCX_SIZE_BYTES)
+    
         with fitz.open(file_path_input) as doc:
 
             add_meta_data(doc, extracted_data)
@@ -115,20 +113,19 @@ def is_terminal_punctuation(text):
 def parse_page(doc, page_num, page_elements):
    
     page = doc.load_page(page_num)
+
     body_size = get_page_body_size(page) 
     blocks = page.get_text("dict")["blocks"]
 
     current_paragraph_text = ""
     current_element_type = "paragraph"
-    
+    blocks.sort(key=lambda b: b['bbox'][1])# costing alt of time raning
     
     for b in blocks:
-        block_text = combine_block_text(b)
-        if not block_text:
-            continue
-
        
+        
         if b['type'] == 0:
+            block_text = combine_block_text(b)
             first_span_size = round(b["lines"][0]["spans"][0]["size"], 1)
             
             # Simple header logic: if size is significantly larger than body text
@@ -158,7 +155,22 @@ def parse_page(doc, page_num, page_elements):
             else:
                 # Continue the current paragraph (join with a new line)
                 current_paragraph_text += "\n" + block_text
+        elif  b['type'] == 1:
+            if current_paragraph_text:
+                page_elements.append({
+                    "type": current_element_type,
+                    "text": current_paragraph_text
+                })      
 
+                current_paragraph_text = ""
+                     
+            
+            image_info = extrect_image(b)
+            if image_info:
+                page_elements.append(image_info)
+
+
+          
     if current_paragraph_text:
         page_elements.append({
             "type": current_element_type,
@@ -182,3 +194,26 @@ def get_page_body_size(page):
     if font_counts:
         return max(font_counts, key=font_counts.get)
     return 12.0
+
+# ===============================================================================
+def extrect_image(b):
+    try: 
+      global IMAGE_NUM
+      IMAGE_NUM += 1      
+      image_data = b['image']
+      extension = b['ext']
+      file_name = f"data/outputs/images/{IMAGE_NUM}.{extension}"
+
+      with open(file_name, "wb") as f:
+        f.write(image_data)
+
+    except Exception as e:
+        print(f"Error extractiong image: {e}")
+        return None
+    
+    return{
+        "type": "images",
+        "image_name" : f"{IMAGE_NUM}.{extension}",
+        "with" : b['width'],
+        "height": b['height']
+    }

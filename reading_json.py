@@ -1,43 +1,76 @@
 import json
+import os
 
-file_path = "./data/outputs/pdf_text.json"
-output_file_path = "output_content.txt"
+# --- Configuration ---
+# Update these paths to match your exact file location
+json_file_path = "data/outputs/hashmal.json"  # Input JSON
+output_txt_path = "output_content.txt"         # Output Text File
 
-try:
-    with open(file_path, 'r', encoding='utf-8') as f:
-        data = json.load(f)
+def generate_readable_text_file(input_path, output_path):
+    try:
+        # 1. Read the JSON file
+        if not os.path.exists(input_path):
+            print(f"❌ Error: JSON file not found at {input_path}")
+            return
 
-    # Open the output file for writing ('w')
-    with open(output_file_path, 'w', encoding='utf-8') as outfile:
-        
-        # Iterate over the main list (each element is usually a page or section)
-        for item in data:
+        with open(input_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+
+        # 2. Write to the TXT file
+        with open(output_path, 'w', encoding='utf-8') as outfile:
             
-            # We are interested in items that have the 'content' key
-            if 'content' in item and isinstance(item['content'], list):
-                page_number = item.get('page_number', 'N/A')
+            # Iterate through the main list (pages and metadata)
+            for item in data:
                 
-                # Write a page separator for clarity in the output file
-                outfile.write(f"\n=================================\n")
-                outfile.write(f"           PAGE {page_number}           \n")
-                outfile.write(f"=================================\n\n")
+                # Case A: Metadata Block
+                if item.get("type") == "file_meta_data":
+                    outfile.write("=================================\n")
+                    outfile.write("       📄 FILE METADATA          \n")
+                    outfile.write("=================================\n")
+                    # Loop through metadata fields
+                    meta_content = item.get("text", {})
+                    if isinstance(meta_content, dict):
+                        for key, value in meta_content.items():
+                            outfile.write(f"{key}: {value}\n")
+                    outfile.write("\n\n")
+                    continue
 
-                # Iterate over the 'content' list
-                for content_item in item['content']:
+                # Case B: Page Content Block
+                # Check if this item is a page (has page_number and content list)
+                if "page_number" in item and "content" in item:
+                    page_num = item["page_number"]
                     
-                    # Check if the item has a 'text' key with a string value
-                    if 'text' in content_item and isinstance(content_item['text'], str):
-                        # The write function automatically handles the \n characters
-                        outfile.write(content_item['text'])
+                    outfile.write("---------------------------------\n")
+                    outfile.write(f"          PAGE {page_num}       \n")
+                    outfile.write("---------------------------------\n\n")
+                    
+                    # Iterate through the elements inside the page (paragraphs/headings/images)
+                    for element in item["content"]:
                         
-                        # Add an extra blank line for separation between paragraphs/headings
-                        outfile.write("\n\n")
+                        # Extract type and text/path
+                        elem_type = element.get("type", "unknown").upper()
+                        
+                        if elem_type == "IMAGE":
+                            image_path = element.get("image_path", "N/A")
+                            outfile.write(f"[{elem_type}] Path: {image_path}\n")
+                            
+                        else: # Text (Paragraph / Heading)
+                            text = element.get("text", "")
+                            # Write the type label and then the text
+                            outfile.write(f"[{elem_type}]:\n{text}\n")
+                        
+                        # Add spacing between elements
+                        outfile.write("\n")
+                    
+                    # Add extra spacing between pages
+                    outfile.write("\n\n")
 
-    print(f"Success: Content written to file: {output_file_path}")
-    
-except FileNotFoundError:
-    print(f"Error: JSON file not found at path: {file_path}")
-except json.JSONDecodeError:
-    print(f"Error: Failed to decode JSON from file: {file_path}")
-except Exception as e:
-    print(f"An unexpected error occurred: {e}")
+        print(f"✅ Success! Readable content saved to: {output_path}")
+
+    except json.JSONDecodeError:
+        print(f"❌ Error: Failed to decode JSON. The file might be corrupted or empty.")
+    except Exception as e:
+        print(f"❌ An unexpected error occurred: {e}")
+
+# --- Execution ---
+generate_readable_text_file(json_file_path, output_txt_path)
