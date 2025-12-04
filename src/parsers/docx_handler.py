@@ -120,14 +120,21 @@ def extract_docx_file_to_json(file_path_input, file_path_output):
                 # Heading
                 if ('Heading' in style or 'title' in style or \
                     all(run.bold for run in block.runs if run.text.strip())) and not urls:
-                    
-                    result["content"].append({
-                        "type": "heading",
-                        "text": text
-                    })
+
+                    # New heading
+                    if result["content"] and result["content"][-1]["type"] == "heading":
+                        result["content"][-1]["text"] += "\n" + text
+
+                    # Existing heading
+                    else:
+                        result["content"].append({
+                            "type": "heading",
+                            "text": text
+                        })
                     new_paragraph = True
 
-                # Empty Paragraph
+
+                # New Paragraph
                 else:
                     if new_paragraph or not result["content"] or result["content"][-1]["type"] != "paragraph":
                         result["content"].append({
@@ -136,7 +143,7 @@ def extract_docx_file_to_json(file_path_input, file_path_output):
                         })
                     # Existing paragraph
                     else:
-                        result["content"][-1]["text"] += "\n\n" + text
+                        result["content"][-1]["text"] += "\n" + text
 
                     new_paragraph = False
 
@@ -148,7 +155,6 @@ def extract_docx_file_to_json(file_path_input, file_path_output):
                         "type": "url",
                         "text": url
                     })
-
 
 
 
@@ -176,7 +182,3 @@ def extract_docx_file_to_json(file_path_input, file_path_output):
 
     except Exception as e:
         print(f"Error: {e}")
-
-
-
-
