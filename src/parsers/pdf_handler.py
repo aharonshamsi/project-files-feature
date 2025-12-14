@@ -1,6 +1,7 @@
 import fitz
 import json
 import os
+from src.parsers.utils import file_size_check
 
 
 PIXELS_LARGER_THAT_AVERAGE = 1.5

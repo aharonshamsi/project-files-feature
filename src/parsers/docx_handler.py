@@ -211,8 +211,6 @@ def is_real_section_break(block):
     if block.paragraph_format.page_break_before:
         return True
 
-    # 2. בדיקת הסגנון (Style) - זה החלק שהיה חסר!
-    # אם הפסקה לא מגדירה כלום (None), היא יורשת מהסגנון
     if block.style and block.style.paragraph_format.page_break_before:
         return True
 

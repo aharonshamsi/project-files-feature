@@ -11,7 +11,7 @@ client = OpenAI(api_key=api_key)
 def main():
 
    # File PDF
-    input_pdf_path = "./data/inputs/נוהל משך לימודים ועמידה בלוחות זמניים אקדמיים.pdf"
+    input_pdf_path = "./data/inputs/hashmal.pdf"
     output_json_path = "data/outputs/pdf.json"
 
     extract_pdf_file_to_json(input_pdf_path, output_json_path)
