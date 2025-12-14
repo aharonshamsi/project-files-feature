@@ -3,15 +3,17 @@ from docx.text.paragraph import Paragraph
 from docx.table import Table
 import json
 import re
-from docx.oxml.ns import qn
-import base64
-
-
 
 
 from src.parsers.utils import file_size_check
 
+
 MAX_FILE_DOCX_SIZE_BYTES = 20 * 1024 * 1024 # Size of file docx 20 MB 
+
+# Heading style keywords used for identifying heading paragraphs.
+HEADING = "heading"
+TITLE = "title"
+HEBREW_HEADING = "כותרת"
 
 
 
@@ -29,7 +31,6 @@ def extract_document_metadata(file_object):
     }
 
     return metadata
-
 
 
 
@@ -106,6 +107,8 @@ def extract_docx_file_to_json(file_path_input, file_path_output):
             if isinstance(block, Paragraph):
                 text = block.text.strip()
                 style = block.style.name
+                style_lower = style.lower()
+                
 
                 if not text:
                     continue
@@ -116,21 +119,33 @@ def extract_docx_file_to_json(file_path_input, file_path_output):
                     for url in urls:
                         text = text.replace(url, "").strip()
 
-
+    
                 # Heading
-                if ('Heading' in style or 'title' in style or \
-                    all(run.bold for run in block.runs if run.text.strip())) and not urls:
+                is_heading_style = (
+                    HEADING in style_lower or 
+                    TITLE in style_lower or 
+                    HEBREW_HEADING in style_lower
+                )
 
-                    # New heading
-                    if result["content"] and result["content"][-1]["type"] == "heading":
+                if (is_heading_style or all(run.bold for run in block.runs if run.text.strip())) and not urls:
+
+                    # Check if this is a title that opens a new section
+                    is_break = is_real_section_break(block)
+
+                    # Concatenation heading
+                    if (result["content"] and 
+                        result["content"][-1]["type"] == "heading" and 
+                        not is_break):
+                        
                         result["content"][-1]["text"] += "\n" + text
 
-                    # Existing heading
                     else:
+                        # New heading
                         result["content"].append({
                             "type": "heading",
                             "text": text
                         })
+                    
                     new_paragraph = True
 
 
@@ -182,3 +197,32 @@ def extract_docx_file_to_json(file_path_input, file_path_output):
 
     except Exception as e:
         print(f"Error: {e}")
+
+
+
+
+
+#=============================================================
+def is_real_section_break(block):
+    """
+    בדיקה מקיפה: פסקה, XML, והכי חשוב - סגנון (Style).
+    """
+    # 1. בדיקת הפסקה עצמה (Instance)
+    if block.paragraph_format.page_break_before:
+        return True
+
+    # 2. בדיקת הסגנון (Style) - זה החלק שהיה חסר!
+    # אם הפסקה לא מגדירה כלום (None), היא יורשת מהסגנון
+    if block.style and block.style.paragraph_format.page_break_before:
+        return True
+
+    # 3. בדיקות XML קשיחות (Section Break / Hard Break)
+    xml_str = block._element.xml
+    if 'w:sectPr' in xml_str or 'w:br' in xml_str:
+        return True
+    
+    # 4. בדיקת "lastRenderedPageBreak" (לפעמים וורד מסמן שבירה ויזואלית כך)
+    if 'lastRenderedPageBreak' in xml_str:
+        return True
+
+    return False
