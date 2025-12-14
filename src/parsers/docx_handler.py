@@ -111,12 +111,6 @@ def handle_embedded_image(doc ,block):
 
             return image
 
-
-
-
-
-
-
 def extract_docx_file_to_json(file_path_input, file_path_output):
 
     result = {"metadata": [],
@@ -184,10 +178,6 @@ def extract_docx_file_to_json(file_path_input, file_path_output):
                         result["content"][-1]["text"] += "\n\n" + text
                     
                 new_paragraph = False
-
-                
-                
-
 
             # Table
             elif isinstance(block, Table):
