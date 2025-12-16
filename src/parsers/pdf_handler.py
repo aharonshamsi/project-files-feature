@@ -38,14 +38,15 @@ def extract_pdf_file_to_json(file_path_input, file_path_output):
     except FileNotFoundError:
         print(f"Error: Input file not found at: {file_path_input}")
         print(f"Current working directory: {os.getcwd()}")
-        return
+        raise
 
     except Exception as e:
         print(f"Unexpected error while reading PDF: {e}")
-        return
+        raise
     
     except Exception as e:
         print(f"Error: An unexpected error occurred during processing: {e}")
+        raise
 
 
 

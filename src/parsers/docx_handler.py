@@ -171,8 +171,6 @@ def extract_docx_file_to_json(file_path_input, file_path_output):
                         "text": url
                     })
 
-
-
                 
             # Table
             elif isinstance(block, Table):
@@ -191,12 +189,15 @@ def extract_docx_file_to_json(file_path_input, file_path_output):
     # Error detection
     except FileNotFoundError:
         print("Error: File not found")
+        raise
 
     except PermissionError:
         print("Error: Permission denied. Make sure the file is not open")
+        raise
 
     except Exception as e:
         print(f"Error: {e}")
+        raise
 
 
 
@@ -204,9 +205,7 @@ def extract_docx_file_to_json(file_path_input, file_path_output):
 
 #=============================================================
 def is_real_section_break(block):
-    """
-    בדיקה מקיפה: פסקה, XML, והכי חשוב - סגנון (Style).
-    """
+
     # 1. בדיקת הפסקה עצמה (Instance)
     if block.paragraph_format.page_break_before:
         return True
