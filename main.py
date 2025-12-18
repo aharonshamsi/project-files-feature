@@ -14,22 +14,22 @@ def main():
     try:
 
     # File PDF
-        input_pdf_path = "./data/inputs/סלבוס ארגון אתר ובחירת ציוד בניה .pdf"
-        output_json_path = "data/outputs/pdf.json"
+        # input_pdf_path = "./data/inputs/סלבוס ארגון אתר ובחירת ציוד בניה .pdf"
+        # output_json_path = "data/outputs/pdf.json"
 
-        extract_pdf_file_to_json(input_pdf_path, output_json_path)
+        # extract_pdf_file_to_json(input_pdf_path, output_json_path)
 
 
-        # # File DOCX
-        # file_path_input = "data/inputs/regulations_occupational-safety-officials-construction-site.docx"
-        # file_path_output = "data/outputs/docx.json"
+        # File DOCX
+        file_path_input = "data/inputs/איפוקסי.docx"
+        file_path_output = "data/outputs/docx.json"
 
-        # extract_docx_file_to_json(file_path_input, file_path_output)
+        extract_docx_file_to_json(file_path_input, file_path_output)
 
 
 
     # Send to OpenAi
-        file_path = "data/outputs/pdf.json"
+        file_path = "data/outputs/docx.json"
 
         with open(file_path, 'r', encoding='utf-8') as file:
             json_data = json.load(file)

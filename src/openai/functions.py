@@ -3,7 +3,7 @@ import os
 from openai import OpenAI
 from config import Config
 
-from src.openai.prompts import SYSTEM_INSTRUCTIONS
+from src.openai.prompts import CORE_ANALYSIS_LOGIC, PEDAGOGY_STANDARDS, TRANSFORMATION_MODES, LANGUAGE_MODES
 from src.parsers.utils import read_file_json
 
 
@@ -54,36 +54,51 @@ MAX_TOKENS = 8000
 def send_json_to_openai (json_data):
     
     json_data_string = json.dumps(json_data, ensure_ascii=False)
-    path_params_file = "/Users/hrwnmshsmsyn/Desktop/project-files-feature/src/parameters/source_mode .json"
+    path_params_file = "/Users/hrwnmshsmsyn/Desktop/project-files-feature/src/parameters/parameters.json"
     parameters = read_file_json(path_params_file)
 
     # List of parameters
     source_mode = parameters["source_mode"]
+    language_mode = parameters["language_mode"]
 
-    print (source_mode)
+    # 
+
+
+    # PROMPTS
+    final_system_message = "\n".join([
+
+        CORE_ANALYSIS_LOGIC,
+        TRANSFORMATION_MODES[source_mode],
+        PEDAGOGY_STANDARDS,
+        "LANGUAGE RULE",
+        LANGUAGE_MODES[language_mode],
+        "However:",
+        LANGUAGE_MODES['language_prompt']
+        
+    ])
+    #print(final_system_message)
+
+    print(source_mode)
+    print(language_mode)
 
     try:
         response = client.chat.completions.create(
             model="gpt-4.1-mini",
             messages=[
                 {
-                    "role": "system", 
-                    "content": SYSTEM_INSTRUCTIONS
-                 },
+                    "role": "system",
+                    "content": final_system_message
+                },
                 {
-                    "role": "system", 
-                    "content": f"The value of source_mode is: {source_mode}. Apply the rules strictly."
-                 },
-                {
-                    "role": "user", 
+                    "role": "user",
                     "content": json_data_string
                 }
             ],
-            #functions=functions
             max_tokens=MAX_TOKENS
         )
 
-        return response.choices[0].message.content
+
+        print( response.choices[0].message.content)
 
         # # ====== Return Function call arguments in format Json =====
         # function_call = response.choices[0].message.function_call
