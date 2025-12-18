@@ -8,7 +8,6 @@ PIXELS_LARGER_THAT_AVERAGE = 1.5
 
 
 PIXELS_LARGER_THAT_AVERAGE = 1.5 # Size of average pixels of the file
-MAX_FILE_DOCX_SIZE_BYTES = 20 * 1024 * 1024 # Size of file pdf 20 MB 
 TEXT_BLOCK_TYPE = 0 
 DEFAULT_FONT_SIZE = 12.0
 
@@ -19,7 +18,7 @@ def extract_pdf_file_to_json(file_path_input, file_path_output):
 
     try:
 
-        file_size_check(file_path_input, MAX_FILE_DOCX_SIZE_BYTES) # File size check
+        file_size_check(file_path_input) # File size check
         with fitz.open(file_path_input) as doc:
 
             add_meta_data(doc, extracted_data)

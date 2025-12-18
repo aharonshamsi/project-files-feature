@@ -8,8 +8,6 @@ import re
 from src.parsers.utils import file_size_check
 
 
-MAX_FILE_DOCX_SIZE_BYTES = 20 * 1024 * 1024 # Size of file docx 20 MB 
-
 # Heading style keywords used for identifying heading paragraphs.
 HEADING = "heading"
 TITLE = "title"
@@ -92,7 +90,7 @@ def extract_docx_file_to_json(file_path_input, file_path_output):
               }
 
     try:
-        file_size_check(file_path_input, MAX_FILE_DOCX_SIZE_BYTES) # Import
+        file_size_check(file_path_input) # Check size of the file MAX & MINI
         doc = Document(file_path_input)
 
         metadata = extract_document_metadata(doc)
@@ -188,15 +186,12 @@ def extract_docx_file_to_json(file_path_input, file_path_output):
 
     # Error detection
     except FileNotFoundError:
-        print("Error: File not found")
         raise
 
     except PermissionError:
-        print("Error: Permission denied. Make sure the file is not open")
         raise
 
-    except Exception as e:
-        print(f"Error: {e}")
+    except Exception:
         raise
 
 

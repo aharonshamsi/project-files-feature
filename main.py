@@ -3,61 +3,67 @@ import json
 
 from src.parsers.docx_handler import extract_docx_file_to_json
 from src.parsers.pdf_handler import extract_pdf_file_to_json
-
-
+from src.parsers.utils import load_json_to_dict, get_file_extension_type
 from src.openai.functions import send_json_to_openai
 
 
 def main():
 
-
     try:
 
-    # File PDF
-        # input_pdf_path = "./data/inputs/סלבוס ארגון אתר ובחירת ציוד בניה .pdf"
-        # output_json_path = "data/outputs/pdf.json"
+        #=========== PARSERS FILE ============================
+        # Reads a json file (PARAMETERS), and returns a dictionary
+        path_params_file = "/Users/hrwnmshsmsyn/Desktop/project-files-feature/src/parameters/parameters.json"
+        parameters = load_json_to_dict(path_params_file)
 
-        # extract_pdf_file_to_json(input_pdf_path, output_json_path)
+        # Path of the file input in parameter
+        file_path_input = parameters['input_file']
+
+        # Get input file name extension (DOCX || PDF)
+        file_type = get_file_extension_type(file_path_input)
 
 
         # File DOCX
-        file_path_input = "data/inputs/איפוקסי.docx"
-        file_path_output = "data/outputs/docx.json"
+        if file_type == "docx":
 
-        extract_docx_file_to_json(file_path_input, file_path_output)
+            file_path_output_json = "data/outputs/docx.json"
+            extract_docx_file_to_json(file_path_input, file_path_output_json)
+        
+        # File PDF
+        elif file_type == "pdf":
+            file_path_output_json = "data/outputs/pdf.json"
+            extract_pdf_file_to_json(file_path_input, file_path_output_json)
+ 
 
 
-
+    #========= OPEN AI ====================================
     # Send to OpenAi
-        file_path = "data/outputs/docx.json"
 
-        with open(file_path, 'r', encoding='utf-8') as file:
+        with open(file_path_output_json, 'r', encoding='utf-8') as file:
             json_data = json.load(file)
-
-        result = send_json_to_openai(json_data)
-        print(result)
+            json_data_string = json.dumps(json_data, ensure_ascii=False)
 
 
 
+        result = send_json_to_openai(parameters, json_data_string)
+        #print(result)
 
 
 
+    except ValueError as e:
+        print(f"Input error: {e}")
 
     except FileNotFoundError as e:
         print(f"File error: {e}")
-        raise
 
     except PermissionError as e:
         print(f"Permission error: {e}")
-        raise
 
     except json.JSONDecodeError as e:
         print(f"JSON error: {e}")
-        raise
 
     except Exception as e:
         print(f"Unexpected error: {e}")
-        raise
 
 
 if __name__ == "__main__":

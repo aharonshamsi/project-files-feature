@@ -4,13 +4,12 @@ from openai import OpenAI
 from config import Config
 
 from src.openai.prompts import CORE_ANALYSIS_LOGIC, PEDAGOGY_STANDARDS, TRANSFORMATION_MODES, LANGUAGE_MODES
-from src.parsers.utils import read_file_json
 
 
 api_key = Config.API_KEY
 client = OpenAI(api_key=api_key)
 
-MAX_TOKENS = 8000
+MAX_TOKENS = 6000
 
 # functions = [
 #     {
@@ -51,17 +50,12 @@ MAX_TOKENS = 8000
 
 
 # Send json file to openAi, and return content text
-def send_json_to_openai (json_data):
+def send_json_to_openai (parameters, json_data_string):
     
-    json_data_string = json.dumps(json_data, ensure_ascii=False)
-    path_params_file = "/Users/hrwnmshsmsyn/Desktop/project-files-feature/src/parameters/parameters.json"
-    parameters = read_file_json(path_params_file)
 
     # List of parameters
     source_mode = parameters["source_mode"]
     language_mode = parameters["language_mode"]
-
-    # 
 
 
     # PROMPTS
@@ -77,6 +71,8 @@ def send_json_to_openai (json_data):
         
     ])
     #print(final_system_message)
+
+    
 
     print(source_mode)
     print(language_mode)

@@ -1,5 +1,8 @@
 
 {
     "source_mode": "json_only",
-    "language_mode": "english"
+    "language_mode": "hebrew",
+
+
+    "input_file": "data/inputs/איפוקסי.docx"
 }
