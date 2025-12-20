@@ -8,7 +8,6 @@ You are a training expert specializing in transforming structured JSON documents
 You will receive a JSON object that includes:
 - File metadata
 - Headings and paragraphs extracted from the original PDF or DOCX
-- A parameter called `source_mode` that controls how content may be generated
 
 YOUR TASK
 Analyze the JSON and identify between 1 and 8 key topics that are central to understanding the content.
@@ -29,7 +28,7 @@ TRANSFORMATION_MODES = {
 You must treat the input JSON as the ONLY source of content.
 
 ABSOLUTE RULES:
-- Use ONLY text that appears in the JSON.
+- Use ONLY text that appears in the JSON, translated accurately into the target language.
 - Prefer to copy complete sentences or paragraphs word for word, but use the language rules defined below.
 - You may lightly merge or re-order sentences ONLY to fix broken structure.
 - You may NOT explain, expand, interpret, summarize, or infer meaning.
