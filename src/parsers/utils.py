@@ -45,28 +45,21 @@ def load_json_to_dict(file_path):
 
 # Check and return suffix type of the file
 def get_file_extension_type(file_path):
-    extension = Path(file_path.strip()).suffix.lower()
 
-    # Fast check by extension
-    if extension == ".pdf":
-        return "pdf"
-    
-    elif extension == ".docx":
-        return "docx"
-
-    # Fallback: check file header
     with open(file_path, 'rb') as f:
         header = f.read(5)
 
+    # PDF
     if header.startswith(b'%PDF-'):
-        return "pdf"
-    
+        return 'pdf'
+
+    # Possible DOCX (ZIP)
     if header.startswith(b'PK\x03\x04'):
         try:
             with zipfile.ZipFile(file_path) as z:
                 if 'word/document.xml' in z.namelist():
-                    return "docx"
+                    return 'docx'
         except zipfile.BadZipFile:
             pass
 
-    raise ValueError(f"Unsupported file type: '{extension}' or unknown header")
+    raise ValueError(f"Unsupported or corrupted file type: '{file_path}'")
