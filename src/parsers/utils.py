@@ -1,5 +1,6 @@
 import os
 import json
+import zipfile
 from pathlib import Path
 
 
@@ -57,3 +58,23 @@ def get_file_extension_type(file_path):
         raise ValueError(f"Unsupported file type: '{extension}'")
     
     return file_type
+
+# check if the file is pdf or dockx
+def detect_file_type(path):
+    with open(path, 'rb') as f:
+        header = f.read(5)
+
+    # PDF
+    if header.startswith(b'%PDF-'):
+        return 'pdf'
+
+    # Possible DOCX (ZIP)
+    if header.startswith(b'PK\x03\x04'):
+        try:
+            with zipfile.ZipFile(path) as z:
+                if 'word/document.xml' in z.namelist():
+                    return 'docx'
+        except zipfile.BadZipFile:
+            pass
+
+    return 'Unknown type of file'

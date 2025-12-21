@@ -3,7 +3,7 @@ import json
 
 from src.parsers.docx_handler import extract_docx_file_to_json
 from src.parsers.pdf_handler import extract_pdf_file_to_json
-from src.parsers.utils import load_json_to_dict, get_file_extension_type
+from src.parsers.utils import load_json_to_dict, get_file_extension_type, detect_file_type
 from src.openai.functions import send_json_to_openai
 
 
@@ -13,14 +13,15 @@ def main():
 
         #=========== PARSERS FILE ============================
         # Reads a json file (PARAMETERS), and returns a dictionary
-        path_params_file = "/Users/hrwnmshsmsyn/Desktop/project-files-feature/src/parameters/parameters.json"
+        path_params_file = "./src/parameters/parameters.json"
         parameters = load_json_to_dict(path_params_file)
 
         # Path of the file input in parameter
         file_path_input = parameters['input_file']
 
         # Get input file name extension (DOCX || PDF)
-        file_type = get_file_extension_type(file_path_input)
+        #file_type = get_file_extension_type(file_path_input)
+        file_type = detect_file_type(file_path_input)
 
 
         # File DOCX
@@ -46,7 +47,7 @@ def main():
 
 
         result = send_json_to_openai(parameters, json_data_string)
-        #print(result)
+       # print(result)
 
 
 
