@@ -22,19 +22,21 @@ def main():
         # Get input file name extension (DOCX || PDF)
         file_type = get_file_extension_type(file_path_input)
 
+        # Path to the output JSON file generated after parser
+        file_path_output_json = "/Users/hrwnmshsmsyn/Desktop/project-files-feature/data/outputs/output.json"
 
         # File DOCX
         if file_type == "docx":
-
-            file_path_output_json = "data/outputs/docx.json"
-            extract_docx_file_to_json(file_path_input, file_path_output_json)
+            number_words_in_file = extract_docx_file_to_json(file_path_input, file_path_output_json)
         
         # File PDF
         elif file_type == "pdf":
-            file_path_output_json = "data/outputs/pdf.json"
-            extract_pdf_file_to_json(file_path_input, file_path_output_json)
- 
+            number_words_in_file = extract_pdf_file_to_json(file_path_input, file_path_output_json)
 
+
+        # Add parameter of number_words_in_file in dict
+        parameters["number_words_in_file"] = number_words_in_file 
+        
 
     #========= OPEN AI ====================================
     # Send to OpenAi
@@ -46,7 +48,7 @@ def main():
 
 
         result = send_json_to_openai(parameters, json_data_string)
-        #print(result)
+        print(result)
 
 
 
