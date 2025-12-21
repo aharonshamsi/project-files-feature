@@ -3,3 +3,4 @@ __pycache__/
 output/
 .env
 inputs/
+test_openAI.py
