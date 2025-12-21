@@ -28,7 +28,7 @@ TRANSFORMATION_MODES = {
 You must treat the input JSON as the ONLY source of content.
 
 ABSOLUTE RULES:
-- Use ONLY text that appears in the JSON, translated accurately into the target language.
+- Use ONLY text that appears in the JSON, but translate the text faithfully into the target language specified later, without introducing any new content or changes in meaning.
 - Prefer to copy complete sentences or paragraphs word for word, but use the language rules defined below.
 - You may lightly merge or re-order sentences ONLY to fix broken structure.
 - You may NOT explain, expand, interpret, summarize, or infer meaning.
@@ -180,7 +180,7 @@ LANGUAGE_MODES = {
 
    "language_prompt": """
 
-- Do NOT translate or modify:
+ Do NOT translate or modify:
 - Code snippets
 - Mathematical expressions or formulas
 - Variable names, function names, class names

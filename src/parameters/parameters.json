@@ -1,8 +1,7 @@
 
 {
     "source_mode": "json_only",
-    "language_mode": "arabic",
+    "language_mode": "hebrew",
 
-
-    "input_file": "data/inputs/איפוקסי.docx"
+    "input_file": "/Users/hrwnmshsmsyn/Desktop/project-files-feature/test/חזרה בקשה ראשונה.png"
 }

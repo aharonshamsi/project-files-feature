@@ -11,10 +11,18 @@ PIXELS_LARGER_THAT_AVERAGE = 1.5 # Size of average pixels of the file
 TEXT_BLOCK_TYPE = 0 
 DEFAULT_FONT_SIZE = 12.0
 
+MINI_WORDS = 40 # Minimal words in content
+
 # ================  extract text (PARAGRAPH AND HEADING) ================================
 def extract_pdf_file_to_json(file_path_input, file_path_output):
 
-    extracted_data = []
+    total_word_count = 0
+
+    extracted_data = {
+    "metadata": None,
+    "pages": []
+    }
+
 
     try:
 
@@ -25,13 +33,22 @@ def extract_pdf_file_to_json(file_path_input, file_path_output):
 
             for page_num in range(doc.page_count):
                 page_elements = []
-                parse_page(doc, page_num, page_elements)
+                page_word_count = parse_page(doc, page_num, page_elements)
+                total_word_count += page_word_count
 
                 add_page(extracted_data, page_num, page_elements)
+
+            # Check number of words
+            if total_word_count < MINI_WORDS:
+                raise ValueError(
+            f"Content too short: {total_word_count} words. Minimum required: {MINI_WORDS}"
+            )
 
              # Write the list of dictionaries to the output JSON file
             with open(file_path_output, 'w', encoding='utf-8') as f:
                 json.dump(extracted_data, f, ensure_ascii=False, indent=2)
+
+            return total_word_count
 
 
     except FileNotFoundError:
@@ -53,24 +70,15 @@ def extract_pdf_file_to_json(file_path_input, file_path_output):
 
 # =============== adding the file meta data to the output file =============
 def add_meta_data(doc, extracted_data):
-
-    fileMetadata = doc.metadata
-    page_data = {
-        "type": " file_meta_data",
-        "text": fileMetadata
-    }
-
-    extracted_data.append(page_data)
-
+    extracted_data["metadata"] = doc.metadata
 
 
 # ====================== Adding page to the json output ====================
 def add_page(extracted_data, page_num, page_elements):
-    page_object = {
+    extracted_data["pages"].append({
         "page_number": page_num + 1,
         "content": page_elements
-    }
-    extracted_data.append(page_object)
+    })
 
 
 
@@ -97,6 +105,7 @@ def parse_page(doc, page_num, page_elements):
     current_element_type = "paragraph"
     blocks.sort(key=lambda b: b['bbox'][1]) # Sort the blocks
     
+    word_count = 0
 
     for b in blocks:
         block_text = combine_block_text(b)
@@ -134,6 +143,8 @@ def parse_page(doc, page_num, page_elements):
                         "type": current_element_type,
                         "text": current_paragraph_text
                     })
+                    word_count += len(current_paragraph_text.split()) # Count number of words in this block
+
                 
                 # Start the new element/paragraph
                 current_paragraph_text = block_text
@@ -149,6 +160,9 @@ def parse_page(doc, page_num, page_elements):
             "type": current_element_type,
             "text": current_paragraph_text
         })
+        word_count += len(current_paragraph_text.split()) 
+    
+    return word_count
 
 
 
