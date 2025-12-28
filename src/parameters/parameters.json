@@ -1,10 +1,13 @@
 
 {
     "source_mode": "json_only",
-
     "language_mode": "english",
 
 
-    "input_file": "data/inputs/regulations_occupational-safety-officials-construction-site.pdf"
+    "open_questions_count": "2",
+    "multiple_choice_questions_count": "1",
+    "file_questions_count": "3",
 
+
+    "input_file": "data/inputs/5 Things to Do Every Day to Be Happy.docx"
 }

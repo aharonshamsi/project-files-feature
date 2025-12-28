@@ -168,17 +168,19 @@ RESPONSE CONSTRAINTS
 
 #=================================================================
 LANGUAGE_MODES = {
-    "original": "Output must be in the same language as the source document.",
+    
+"original": "Output must be in the same language as the source document.",
+"english": "Output must be in English.",
+"hebrew": "Output must be in Hebrew.",
+"arabic": "Output must be in Arabic.",
+"russian": "Output must be in Russian.",
+"german": "Output must be in German.",
+"spanish": "Output must be in Spanish.",
+"azerbaijani": "Output must be in Azerbaijani.",
 
-    "english": "Output must be in English.",
-    "hebrew": "Output must be in Hebrew.",
-    "arabic": "Output must be in Arabic.",
-    "russian": "Output must be in Russian.",
-    "german": "Output must be in German.",
-    "spanish": "Output must be in Spanish.",
-    "azerbaijani": "Output must be in Azerbaijani.",
 
-   "language_prompt": """
+
+"general_language_rules": """
 
  Do NOT translate or modify:
 - Code snippets
@@ -194,4 +196,40 @@ Only the surrounding explanatory text should follow the selected output language
 
 """
 }
+
+
+
+
+#=================================================================
+QUESTION_MODE = {
+    
+"open_questions": """
+
+OPEN QUESTIONS RULES:
+
+
+
+""",
+
+
+"multiple_choice_questions": """
+
+MULTIPLE CHOICE QUESTIONS RULES:
+
+
+
+""",
+
+
+"assignment_questions": """
+
+FILE QUESTIONS RULES:
+
+
+"""
+}
+
+
+
+
 

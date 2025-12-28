@@ -4,3 +4,6 @@ output/
 .env
 inputs/
 test_openAI.py
+logs/app.log
+src/utils/logger.py
+
