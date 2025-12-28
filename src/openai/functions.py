@@ -122,9 +122,10 @@ def send_json_to_openai (parameters, json_data_string):
                 {
                 "type": "function",
                 "function": functions[0]  # כאן נכנס המילון שהגדרנו קודם
-                }
-            ]
-            # tool_choice={"type": "function", "function": {"name": "generate_complete_skill"}}
+                }]
+
+
+             #tool_choice={"type": "function", "function": {"name": "generate_complete_skill"}}
         )
 
 

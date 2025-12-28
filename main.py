@@ -3,7 +3,7 @@ import json
 
 from src.parsers.docx_handler import extract_docx_file_to_json
 from src.parsers.pdf_handler import extract_pdf_file_to_json
-from src.parsers.utils import load_json_to_dict, get_file_extension_type, detect_file_type
+from src.parsers.utils import load_json_to_dict, get_file_extension_type
 from src.openai.functions import send_json_to_openai
 
 
@@ -21,7 +21,7 @@ def main():
 
         # Get input file name extension (DOCX || PDF)
         #file_type = get_file_extension_type(file_path_input)
-        file_type = detect_file_type(file_path_input)
+        file_type = get_file_extension_type(file_path_input)
 
         # Path to the output JSON file generated after parser
         file_path_output_json = "data/outputs/output.json"
