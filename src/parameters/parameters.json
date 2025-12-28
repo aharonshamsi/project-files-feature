@@ -3,5 +3,11 @@
     "source_mode": "json_only",
     "language_mode": "hebrew",
 
-    "input_file": "/Users/hrwnmshsmsyn/Desktop/project-files-feature/test/חזרה בקשה ראשונה.png"
+
+    "open_questions_count": "2",
+    "multiple_choice_questions_count": "1",
+    "file_questions_count": "3",
+
+
+    "input_file": "data/inputs/איפוקסי.docx"
 }

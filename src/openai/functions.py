@@ -3,16 +3,16 @@ import os
 from openai import OpenAI
 from config import Config
 
-from src.openai.prompts import CORE_ANALYSIS_LOGIC, PEDAGOGY_STANDARDS, TRANSFORMATION_MODES, LANGUAGE_MODES
+from src.openai.prompts import CORE_ANALYSIS_LOGIC, PEDAGOGY_STANDARDS, TRANSFORMATION_MODES, LANGUAGE_MODES, QUESTION_MODE
 
 
 api_key = Config.API_KEY
 client = OpenAI(api_key=api_key)
 
-MAX_TOKENS = 6000
+MAX_TOKENS = 8000
 
 
-functions = [
+functions_definition = [
     {
         "name": "generate_complete_skill",
         "description": f"Generates a complete lesson......", # ?מה לגבי פרמטרים פה, איזה צריך לשרשר 
@@ -78,7 +78,11 @@ def send_json_to_openai (parameters, json_data_string):
     # List of parameters
     source_mode = parameters["source_mode"]
     language_mode = parameters["language_mode"]
-    number_words_in_file = parameters["number_words_in_file"]
+
+    open_questions_count = parameters["open_questions_count"]
+    multiple_choice_questions_count = parameters["multiple_choice_questions_count"]
+    assignment_questions_count = parameters["file_questions_count"] # file
+
     
 
 
@@ -92,7 +96,12 @@ def send_json_to_openai (parameters, json_data_string):
         "LANGUAGE RULE",
         LANGUAGE_MODES[language_mode],
         "However:",
-        LANGUAGE_MODES['language_prompt']
+        LANGUAGE_MODES['general_language_rules'],
+        f"Create {open_questions_count} OPEN QUESTIONS based strictly on the step content, following these rules: {QUESTION_MODE['open_questions']}",
+
+        f"Create {multiple_choice_questions_count} MULTIPLE CHOICE QUESTIONS based strictly on the step content, following these rules: {QUESTION_MODE['multiple_choice_questions']}",
+        f"Create {assignment_questions_count} ASSIGNMENT QUESTIONS based strictly on the step content, following these rules: {QUESTION_MODE['assignment_questions']}"
+
         
     ])
     #print(final_system_message)
@@ -100,11 +109,13 @@ def send_json_to_openai (parameters, json_data_string):
 
     print(source_mode)
     print(language_mode)
-    print(number_words_in_file)
+    print(f"open_questions_count: {open_questions_count}")
+    print(f"multiple_choice_questions_count: {multiple_choice_questions_count}")
+    print(f"file_questions_count: {assignment_questions_count}")
 
     try:
         response = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model="gpt-4.1",
             messages=[
                 {
                     "role": "system",
@@ -117,28 +128,34 @@ def send_json_to_openai (parameters, json_data_string):
             ],
             max_tokens=MAX_TOKENS,
 
-            # שימוש בפורמט הכלים החדש
-            tools=[
-                {
-                "type": "function",
-                "function": functions[0]  # כאן נכנס המילון שהגדרנו קודם
-                }
-            ]
+            # # שימוש בפורמט הכלים החדש
+            # tools=[
+            #     {
+            #     "type": "function",
+            #     "function": functions_definition[0]  # כאן נכנס המערך שהגדרנו קודם
+            #     }
+            # ]
             # tool_choice={"type": "function", "function": {"name": "generate_complete_skill"}}
         )
 
 
-        # ====== Return Function call arguments in format Json =====
-        message = response.choices[0].message
+        # # ====== Return Function call arguments in format Json =====
+        # message = response.choices[0].message
 
-        if message.tool_calls:
-            skill_args_json = message.tool_calls[0].function.arguments
+        # if message.tool_calls:
+        #     skill_args_json = message.tool_calls[0].function.arguments
 
-        else:
-            skill_args_json = None
+        # else:
+        #     skill_args_json = None
         
-        return skill_args_json
+        # return skill_args_json
                     
+
+
+
+
+        result = response.choices[0].message.content
+        print(result)
 
     except Exception as e:
         print(f"Error calling OpenAI API: {e}")
