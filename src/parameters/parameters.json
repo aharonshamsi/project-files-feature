@@ -1,8 +1,10 @@
 
 {
     "source_mode": "json_only",
+
     "language_mode": "english",
 
 
     "input_file": "data/inputs/5 Things to Do Every Day to Be Happy.docx"
+
 }

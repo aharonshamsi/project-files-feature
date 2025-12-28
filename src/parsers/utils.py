@@ -2,10 +2,12 @@ import os
 import json
 import zipfile
 from pathlib import Path
+import zipfile
+
 
 
 MAX_FILE_DOCX_SIZE_BYTES = 20 * 1024 * 1024 # MAX 20 MB 
-MINI_FILE_DOCX_SIZE_BYTES = 10 * 1024  # MINI 10 KB 
+MINI_FILE_DOCX_SIZE_BYTES = 1 * 1024  # MINI 10 KB 
 
 
 # CHECK SIZE OF THE FILE, MAX & MINI
@@ -45,23 +47,7 @@ def load_json_to_dict(file_path):
 # Check and return suffix type of the file
 def get_file_extension_type(file_path):
 
-    extension = Path(file_path.strip()).suffix.lower()
-
-
-    if extension == ".pdf":
-        file_type = "pdf"
-
-    elif extension == ".docx":
-        file_type = "docx"
-    
-    else:
-        raise ValueError(f"Unsupported file type: '{extension}'")
-    
-    return file_type
-
-# check if the file is pdf or dockx
-def detect_file_type(path):
-    with open(path, 'rb') as f:
+    with open(file_path, 'rb') as f:
         header = f.read(5)
 
     # PDF
@@ -71,10 +57,10 @@ def detect_file_type(path):
     # Possible DOCX (ZIP)
     if header.startswith(b'PK\x03\x04'):
         try:
-            with zipfile.ZipFile(path) as z:
+            with zipfile.ZipFile(file_path) as z:
                 if 'word/document.xml' in z.namelist():
                     return 'docx'
         except zipfile.BadZipFile:
             pass
 
-    return 'Unknown type of file'
+    raise ValueError(f"Unsupported or corrupted file type: '{file_path}'")

@@ -13,7 +13,7 @@ HEADING = "heading"
 TITLE = "title"
 HEBREW_HEADING = "כותרת"
 
-
+MINI_WORDS = 40 # Minimal words in content
 
 
 def extract_document_metadata(file_object):
@@ -32,18 +32,23 @@ def extract_document_metadata(file_object):
 
 
 
-
-def extract_table(table):
+ # data table and also count words
+def extract_table(table, count_words):
     
     extracted = []
+
     for row in table.rows:
-        extracted_row = [cell.text.strip() for cell in row.cells]
+        extracted_row = []
+        for cell in row.cells:
+            text = cell.text.strip()
+            extracted_row.append(text)
+            count_words += len(text.split())
         extracted.append(extracted_row)
 
     if extracted:
-        return {"columns": extracted[0], "rows": extracted[1:]}
+        return {"columns": extracted[0], "rows": extracted[1:]}, count_words # Return also count words
     else:
-        return {"columns": [], "rows": []}
+        return {"columns": [], "rows": [], "word_count": 0}, count_words # Return also count words
 
 
 
@@ -82,12 +87,15 @@ def extract_urls_from_text(text):
 
 
 
-
+#==================================================================
 def extract_docx_file_to_json(file_path_input, file_path_output):
 
-    result = {"metadata": [],
-              "content": [],
-              }
+    count_words = 0
+
+    result = {
+        "metadata": [],
+        "content": [],
+        }
 
     try:
         file_size_check(file_path_input) # Check size of the file MAX & MINI
@@ -110,7 +118,9 @@ def extract_docx_file_to_json(file_path_input, file_path_output):
 
                 if not text:
                     continue
-
+                
+                count_words += len(text.split()) 
+                
                 urls = extract_urls_from_text(text)
                 # Clear only url for text
                 if urls:
@@ -161,27 +171,35 @@ def extract_docx_file_to_json(file_path_input, file_path_output):
                     new_paragraph = False
 
 
-            # URL
-            if urls:
-                for url in urls:
-                    result["content"].append({
-                        "type": "url",
-                        "text": url
-                    })
+                # URL
+                if urls:
+                    for url in urls:
+                        result["content"].append({
+                            "type": "url",
+                            "text": url
+                        })
 
                 
             # Table
             elif isinstance(block, Table):
-                table_data = extract_table(block)
+                table_data, count_words = extract_table(block, count_words) # data table and also count words
                 result["content"].append({
                     "type": "table",
                     "data": table_data
                 })
 
 
+        # Check number of words
+        if count_words < MINI_WORDS:
+            raise ValueError(
+        f"Content too short: {count_words} words. Minimum required: {MINI_WORDS}"
+        )
+
         # Write JSON
         with open(file_path_output, "w", encoding="utf-8") as f:
             json.dump(result, f, ensure_ascii=False, indent=4)
+        
+        return count_words 
 
 
     # Error detection
