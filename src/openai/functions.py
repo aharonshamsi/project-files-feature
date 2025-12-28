@@ -15,7 +15,7 @@ MAX_TOKENS = 8000
 functions_definition = [
     {
         "name": "generate_complete_skill",
-        "description": f"Generates a complete lesson......", # ?מה לגבי פרמטרים פה, איזה צריך לשרשר 
+        "description": f"Generates a complete lesson......", 
         "parameters": {
             "type": "object",
             "properties": {
@@ -43,11 +43,11 @@ functions_definition = [
                                             "type": "object",
                                             "properties": {
                                                 "content": {
-                                                    "type": "string", # {widget_config.sentences * 5} מה לשרשר פה?
+                                                    "type": "string", 
                                                     "description": f"(Generated in the specified language and should contain at least ...... sentences.) the content should be aimed at the learners directly and should match the lesson setting like age_level and level etc. If content is not required (0 expected), leave the contents array empty.",
                                                 }
                                             },
-                                            "required": ["content"] #widgets זה לא היה אצל נעומי, למה לא לחייב לחזיר אותם זה התוכן בתוך  
+                                            "required": ["content"] 
                                         },
                                         "description": "Content provided based on the learning_content_component array."
                                     }
@@ -104,9 +104,7 @@ def send_json_to_openai (parameters, json_data_string):
 
         
     ])
-    #print(final_system_message)
-
-
+ 
     print(source_mode)
     print(language_mode)
     print(f"open_questions_count: {open_questions_count}")
