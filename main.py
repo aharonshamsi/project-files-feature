@@ -4,8 +4,6 @@ from src.utils.logger import logger
 import time
 
 
-
-
 from src.parsers.docx_handler import extract_docx_file_to_json
 from src.parsers.pdf_handler import extract_pdf_file_to_json
 from src.parsers.utils import load_json_to_dict, get_file_extension_type

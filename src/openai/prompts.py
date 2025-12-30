@@ -2,20 +2,27 @@
 #=================================================================
 CORE_ANALYSIS_LOGIC = """
 
-You are a training expert specializing in transforming structured JSON documents
+You are a training expert specializing in transforming structured learning documents
 (converted from PDF or Word files) into digital self-learning units for an LMS platform.
 
-You will receive a JSON object that includes:
+You will receive content that includes:
 - File metadata
 - Headings and paragraphs extracted from the original PDF or DOCX
 
 YOUR TASK
-Analyze the JSON and identify between 1 and 8 key topics that are central to understanding the content.
+Analyze the provided content and identify between 1 and 8 key topics that are central to understanding the material.
 Each topic becomes one step in the digital learning unit.
-
 If there are more than 8 topics:
 - Merge closely related topics into a single step, OR
 - Discard topics that are repetitive or negligible.
+
+
+Inside each step:
+- Use clear paragraph breaks
+- Use **bold** for key terms
+- Use bullet or numbered lists when structure exists
+Do not output plain unstructured text.
+
 
 """
 
@@ -25,10 +32,10 @@ TRANSFORMATION_MODES = {
     
 "json_only": 
 """
-You must treat the input JSON as the ONLY source of content.
+You must treat the provided input as the ONLY source of content.
 
 ABSOLUTE RULES:
-- Use ONLY text that appears in the JSON, but translate the text faithfully into the target language specified later, without introducing any new content or changes in meaning.
+- Use ONLY text that appears in the source content, translating it faithfully into the target language without introducing any new content or changing its meaning.
 - Prefer to copy complete sentences or paragraphs word for word, but use the language rules defined below.
 - You may lightly merge or re-order sentences ONLY to fix broken structure.
 - You may NOT explain, expand, interpret, summarize, or infer meaning.
@@ -41,17 +48,20 @@ LENGTH RULE:
 - Never add content to reach a length target.
 
 CRITICAL GUARANTEE:
-If a sentence or idea does not explicitly exist in the JSON,
-it MUST NOT appear in the output.
-
+If a sentence or idea does not explicitly exist in the source content, it MUST NOT appear in the output.
 Violation of this rule is a failure.
+
+EXCEPTION:
+Assessment elements (questions and assignments) are allowed to be newly generated,
+but MUST be derived strictly from the step content.
+
 
 """,
 
 "json_plus_enhance": 
 """
-Use the JSON as your PRIMARY and AUTHORITATIVE source.
-For this mode, the JSON does not limit content depth or length.
+Use the provided input as your PRIMARY and AUTHORITATIVE source.
+For this mode, the input does not limit content depth or length.
 It only defines topic scope and order.
 
 You may enhance content ONLY when needed to support learning clarity.
@@ -82,10 +92,9 @@ not a replacement.
 
 "json_as_guideline": 
 """
-For this mode, the JSON does not limit content depth or length.
+For this mode, the input does not limit content depth or length.
 It only defines topic scope and order.
-
-Treat the input JSON ONLY as a topic outline or agenda.
+Treat the input ONLY as a topic outline or agenda.
 
 You are free to generate full instructional content using
 your own domain knowledge and best practices.
@@ -99,9 +108,9 @@ Each step must explain the topic using multiple aspects, such as:
 Do not limit the explanation to a single angle.
 
 RULES:
-- Follow the topic order implied by the JSON
-- Do NOT reuse original wording unless it helps illustrate a topic
-- Write as if building a complete learning unit from scratch
+- Follow the topic order implied by the input.
+- Do NOT reuse original wording unless it helps illustrate a topic.
+- Write as if building a complete learning unit from scratch.
 
 LENGTH RULE:
 - Each step must contain at least 150 words
@@ -118,51 +127,6 @@ not a transformed document.
 }
 
 
-
-
-
-#=================================================================
-PEDAGOGY_STANDARDS = """
-
-RESPONSE STRUCTURE (STRICT)
-Output must include:
-1. Skill Name
-2. Steps (1–8):
-   Step X – Step Name (max 20 characters)
-3. Instructional content for each step
-
-The first step must always be an Introduction.
-If the document includes an introduction or opening section, base the first step on that.
-If no introduction exists, create a brief thematic overview aligned with the document’s content.
-
-RESPONSE FORMATTING (MANDATORY)
-
-Return output in valid Markdown.
-Inside each step:
-- Use clear paragraph breaks
-- Use **bold** for key terms
-- Use bullet or numbered lists when structure exists
-Do not output plain unstructured text.
-
-
-PEDAGOGICAL WRITING RULE (FIXED – APPLIES TO ALL MODES)
-
-- Write all content as direct instructional explanation for the learner.
-- Do NOT write about the topic, section, or step itself.
-- Do NOT describe what the section does, presents, or explains.
-
-Never use meta-language such as:
-- “This topic describes…”
-- “This section explains…”
-- “The purpose of this part is…”
-
-Write only the subject matter itself, as if explaining it directly to the learner.
-
-RESPONSE CONSTRAINTS
-- Output only the final learning unit
-- Do NOT include JSON, reasoning, comments, or metadata
-
-"""
 
 
 
@@ -189,8 +153,7 @@ LANGUAGE_MODES = {
 - File names, commands, APIs, or technical identifiers
 - Established technical terms commonly written in English
 
-If the source JSON includes mixed-language content (e.g. code, math, English terms),
-preserve those elements exactly as they appear.
+If the source content includes mixed-language elements (e.g., code, math, English terms), preserve those elements exactly as they appear.
 
 Only the surrounding explanatory text should follow the selected output language.
 
@@ -205,8 +168,15 @@ QUESTION_MODE = {
     
 "open_questions": """
 
-OPEN QUESTIONS RULES:
+OPEN QUESTIONS RULES
 
+- Generate open-ended questions based strictly on the step content.
+- Each question must require explanation, reasoning, or reflection in full sentences.
+- Questions should assess understanding, interpretation, or application of the material.
+- Do NOT include multiple-choice options.
+- Do NOT provide model answers or hints.
+- Questions must follow the logical order of the step content.
+- Avoid vague, generic, or opinion-only questions.
 
 
 """,
@@ -214,21 +184,32 @@ OPEN QUESTIONS RULES:
 
 "multiple_choice_questions": """
 
-MULTIPLE CHOICE QUESTIONS RULES:
+MULTIPLE CHOICE QUESTIONS RULES
 
-
+- Generate multiple-choice questions based strictly on the step content.
+- Each question must have exactly 4 answer options (A–D).
+- Only ONE option must be correct.
+- Incorrect options must be plausible and clearly incorrect.
+- Do NOT place the correct answer consistently in the same option.
+- Questions must assess understanding or application, not rote memorization.
+- Questions must follow the logical order of the step content.
 
 """,
 
 
 "assignment_questions": """
 
-FILE QUESTIONS RULES:
+ASSIGNMENT QUESTIONS RULES
 
+- Generate assignment-style questions based strictly on the step content.
+- Each question must require a structured, multi-step response submitted as a learner-produced artifact (e.g. document, file, or written deliverable).
+- Tasks may include analysis, implementation, explanation, or creation of a concrete output.
+- Do NOT provide solutions, examples, hints, or evaluation criteria.
+- Each assignment must be clearly defined.
+- Assignments must follow the logical order of the step content.
 
 """
 }
-
 
 
 

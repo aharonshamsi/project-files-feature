@@ -63,3 +63,4 @@ def get_file_extension_type(file_path):
             pass
 
     raise ValueError(f"Unsupported or corrupted file type: '{file_path}'")
+
