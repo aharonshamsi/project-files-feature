@@ -1,10 +1,6 @@
 import os
-import json
 from pathlib import Path
 import zipfile
-from src.utils.logger import logger
-
-
 
 
 MAX_FILE_DOCX_SIZE_BYTES = 20 * 1024 * 1024 # MAX 20 MB 
@@ -24,27 +20,6 @@ def file_size_check(file_path_input):
         raise ValueError(
             f"The file size is smaller than the minimum required size of {MINI_FILE_DOCX_SIZE_BYTES} bytes"
         )
-
-
-
-# # Reads a json file and returns a dictionary
-# def load_parameters(path) -> dict:
-
-#     try:
-
-#         with open(path, "r", encoding='utf-8') as file:
-#             logger.info(f"Read file parameters {path}")
-#             config_data =  json.load(file)
-#             params = AppConfig(**config_data)
-            
-#     except FileNotFoundError:
-#         print(f"Error: The file '{path}' was not found.")
-#         raise 
-        
-#     except Exception as e:
-#         print(f"An unexpected error occurred: {e}")
-#         raise
-
 
 
 

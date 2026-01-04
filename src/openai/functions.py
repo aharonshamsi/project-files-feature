@@ -1,5 +1,3 @@
-import json
-import os
 from openai import OpenAI
 from config import Config
 from src.parameters.config_model import AppConfig
@@ -11,8 +9,6 @@ api_key = Config.API_KEY
 client = OpenAI(api_key=api_key)
 
 MAX_TOKENS = 8000
-
-
 
 
 
@@ -154,25 +150,16 @@ def get_skill_generation_schema(open_q_count, mcq_count, assign_count):
 
 
 
-
-#====== Send openAi, and return content text =========
-def send_json_to_openai (json_data_string, parameters: AppConfig):
+#===================================
+def build_system_prompts(
+        source_mode:str, 
+        language_mode: str, 
+        open_q_count: int, 
+        mcq_count: int, 
+        assign_count: int) -> str:
     
-
-    # List of parameters
-    source_mode = parameters.source_mode
-    language_mode = parameters.language_mode
-    
-    # Three type of questions
-    open_q_count = parameters.open_questions_count
-    mcq_count = parameters.multiple_choice_questions_count
-    assign_count = parameters.file_questions_count
-
-
-
-
-    # PROMPTS
-    system_prompts = "\n".join([
+    #Build the complete system prompt string for the AI model based on modes and question counts.
+    return "\n".join([
 
         CORE_ANALYSIS_LOGIC,
         TRANSFORMATION_MODES[source_mode],
@@ -186,6 +173,22 @@ def send_json_to_openai (json_data_string, parameters: AppConfig):
     ])
 
 
+
+
+
+
+
+#===================================================================
+def submit_to_openai_api (json_data_string, parameters: AppConfig):
+    
+    # List of parameters
+    source_mode = parameters.source_mode
+    language_mode = parameters.language_mode
+    open_q_count = parameters.open_questions_count
+    mcq_count = parameters.multiple_choice_questions_count
+    assign_count = parameters.file_questions_count
+
+    # For test
     print(source_mode)
     print(language_mode)
     print(f"open_questions_count: {open_q_count}")
@@ -193,13 +196,10 @@ def send_json_to_openai (json_data_string, parameters: AppConfig):
     print(f"file_questions_count: {assign_count}")
 
 
-
-    # Get definition of skill
+    system_prompts = build_system_prompts(source_mode, language_mode, open_q_count, mcq_count, assign_count)
     functions_definition = get_skill_generation_schema(open_q_count, mcq_count, assign_count)
 
 
-
-    #====== Send openAi, and return content text =========
     try:
         response = client.chat.completions.create(
             model="gpt-4.1", 
@@ -213,12 +213,12 @@ def send_json_to_openai (json_data_string, parameters: AppConfig):
                     "content": json_data_string
                 }
             ],
-            # הוספת הכלים 
+
             tools=[{
                 "type": "function", 
                 "function": functions_definition
             }],
-            # הכרחת המודל להשתמש בפונקציה הזו
+
             tool_choice={
                 "type": "function", 
                 "function": {"name": "generate_complete_skill"}

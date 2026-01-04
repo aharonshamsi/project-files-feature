@@ -1,9 +1,8 @@
 
 {
     "source_mode": "json_only",
-    "language_mode": "english",
-
-
+    "language_mode": "hebrew",
+    
     "open_questions_count": 1,
     "multiple_choice_questions_count": 2,
     "file_questions_count": 3,

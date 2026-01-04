@@ -1,6 +1,6 @@
 import json
 from src.utils.logger import logger
-from src.openai.functions import send_json_to_openai
+from src.openai.functions import submit_to_openai_api
 from src.parameters.config_model import AppConfig
 
 
@@ -13,7 +13,7 @@ def handle_ai_content_generation(output_file_path: str, parameters: AppConfig) -
         json_data = json.load(file)
         json_data_string = json.dumps(json_data, ensure_ascii=False)
 
-    response = send_json_to_openai(json_data_string, parameters)    
+    response = submit_to_openai_api(json_data_string, parameters)    
     message = response.choices[0].message
     
     if not message.tool_calls:

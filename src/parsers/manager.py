@@ -11,11 +11,8 @@ def handle_input_file(input_path: str, output_path: str, parameters: AppConfig):
 
     # Get input file name extension (DOCX || PDF)
     file_type = get_file_extension_type(input_path)
-
-
-    #=========== PARSERS FILE ============================
+    
     logger.info(f"Extracting content from file: {input_path}")
-
 
     if file_type == "docx":
         number_words_in_file = extract_docx_file_to_json(input_path, output_path)
