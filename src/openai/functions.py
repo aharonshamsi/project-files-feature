@@ -2,6 +2,7 @@ import json
 import os
 from openai import OpenAI
 from config import Config
+from src.parameters.config_model import AppConfig
 
 from src.openai.prompts import CORE_ANALYSIS_LOGIC, TRANSFORMATION_MODES, LANGUAGE_MODES, QUESTION_MODE
 
@@ -155,17 +156,17 @@ def get_skill_generation_schema(open_q_count, mcq_count, assign_count):
 
 
 #====== Send openAi, and return content text =========
-def send_json_to_openai (parameters, json_data_string):
+def send_json_to_openai (json_data_string, parameters: AppConfig):
     
 
     # List of parameters
-    source_mode = parameters["source_mode"]
-    language_mode = parameters["language_mode"]
+    source_mode = parameters.source_mode
+    language_mode = parameters.language_mode
     
     # Three type of questions
-    open_q_count = parameters["open_questions_count"]
-    mcq_count = parameters["multiple_choice_questions_count"]
-    assign_count = parameters["file_questions_count"] 
+    open_q_count = parameters.open_questions_count
+    mcq_count = parameters.multiple_choice_questions_count
+    assign_count = parameters.file_questions_count
 
 
 

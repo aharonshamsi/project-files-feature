@@ -2,6 +2,8 @@ import os
 import json
 from pathlib import Path
 import zipfile
+from src.utils.logger import logger
+
 
 
 
@@ -25,20 +27,23 @@ def file_size_check(file_path_input):
 
 
 
-# Reads a json file and returns a dictionary
-def load_json_to_dict(file_path):
+# # Reads a json file and returns a dictionary
+# def load_parameters(path) -> dict:
 
-    try:
-        with open(file_path, "r", encoding='utf-8') as file:
-            return json.load(file)
+#     try:
+
+#         with open(path, "r", encoding='utf-8') as file:
+#             logger.info(f"Read file parameters {path}")
+#             config_data =  json.load(file)
+#             params = AppConfig(**config_data)
             
-    except FileNotFoundError:
-        print(f"Error: The file '{file_path}' was not found.")
-        raise 
+#     except FileNotFoundError:
+#         print(f"Error: The file '{path}' was not found.")
+#         raise 
         
-    except Exception as e:
-        print(f"An unexpected error occurred: {e}")
-        raise
+#     except Exception as e:
+#         print(f"An unexpected error occurred: {e}")
+#         raise
 
 
 
