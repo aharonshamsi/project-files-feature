@@ -55,6 +55,10 @@ def get_skill_generation_schema(open_q_count, mcq_count, assign_count):
                                         "items": {
                                             "type": "object",
                                             "properties": {
+                                                "content_type": {
+                                                    "type": "string",
+                                                    "description": "The type of content. Always use 'text'." # Always Text
+                                                },
                                                 "content": {
                                                     "type": "string",
                                                     "description": (
@@ -63,7 +67,7 @@ def get_skill_generation_schema(open_q_count, mcq_count, assign_count):
                                                     )
                                                 }
                                             },
-                                            "required": ["content"]
+                                            "required": ["content_type", "content"]
                                         }
                                     },
 
@@ -117,7 +121,7 @@ def get_skill_generation_schema(open_q_count, mcq_count, assign_count):
                                         }
                                     },
 
-                                    "assignment_questions": {
+                                    "file_questions": {
                                         "type": "array",
                                         "description": (
                                             f"Assignment-based questions for the step requiring file submission. "
@@ -132,7 +136,8 @@ def get_skill_generation_schema(open_q_count, mcq_count, assign_count):
                                         }
                                     }
 
-                                }
+                                },
+                                "required": ["contents", "open_questions", "multiple_choice_questions", "file_questions"]
                             }
                         },
                         "required": ["step_name", "step_number", "widgets"]
@@ -166,14 +171,13 @@ def send_json_to_openai (parameters, json_data_string):
 
 
     # PROMPTS
-    final_system_message = "\n".join([
+    system_prompts = "\n".join([
 
         CORE_ANALYSIS_LOGIC,
         TRANSFORMATION_MODES[source_mode],
         "LANGUAGE RULE",
-        LANGUAGE_MODES[language_mode],
-        "However:",
         LANGUAGE_MODES['general_language_rules'],
+        LANGUAGE_MODES[language_mode],
         f"Create {open_q_count} OPEN QUESTIONS based strictly on the step content, following these rules: {QUESTION_MODE['open_questions']}",
         f"Create {mcq_count} MULTIPLE CHOICE QUESTIONS based strictly on the step content, following these rules: {QUESTION_MODE['multiple_choice_questions']}",
         f"Create {assign_count} ASSIGNMENT QUESTIONS based strictly on the step content, following these rules: {QUESTION_MODE['assignment_questions']}"
@@ -201,14 +205,14 @@ def send_json_to_openai (parameters, json_data_string):
             messages=[
                 {
                     "role": "system", 
-                    "content": final_system_message
+                    "content": system_prompts
                 },
                 {
                     "role": "user", 
                     "content": json_data_string
                 }
             ],
-            # הוספת הכלים כאן!
+            # הוספת הכלים 
             tools=[{
                 "type": "function", 
                 "function": functions_definition
@@ -221,20 +225,7 @@ def send_json_to_openai (parameters, json_data_string):
             max_tokens=MAX_TOKENS,
         )
 
-        # ====== Return Function call arguments in format Json =====
-        
-        # חילוץ ההודעה מהתגובה
-        message = response.choices[0].message
-
-        # בדיקה אם המודל קרא לפונקציה
-        if message.tool_calls:
-            # כאן נמצא ה-JSON שחיפשת!
-            result = message.tool_calls[0].function.arguments
-            print(result) # זה יהיה מחרוזת JSON תקינה
-        else:
-            print("המודל לא השתמש בפונקציה, תוכן חופשי:", message.content)
-
-
+        return response
 
     except Exception as e:
         print(f"Error calling OpenAI API: {e}")

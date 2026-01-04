@@ -1,13 +1,13 @@
 
 {
-    "source_mode": "json_as_guideline",
+    "source_mode": "json_plus_enhance",
     "language_mode": "english",
 
 
-    "open_questions_count": "2",
-    "multiple_choice_questions_count": "3",
-    "file_questions_count": "4",
+    "open_questions_count": "1",
+    "multiple_choice_questions_count": "2",
+    "file_questions_count": "3",
 
 
-    "input_file": "data/inputs/סלבוס ארגון אתר ובחירת ציוד בניה .pdf"
+    "input_file": "data/inputs/איפוקסי.pdf"
 }

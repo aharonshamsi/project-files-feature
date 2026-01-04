@@ -17,6 +17,7 @@ def main():
 
     try:
 
+        
         #=========== READ PARAMETERS FILE ============================
         # Reads a json file (PARAMETERS), and returns a dictionary
         path_params_file = "src/parameters/parameters.json"
@@ -48,6 +49,8 @@ def main():
         parameters["number_words_in_file"] = number_words_in_file 
         
 
+        
+
     #========= OPEN AI ====================================
     # Sending to OpenAi
         logger.info(f"Sending output file to OpenAI: {file_path_output_json}")
@@ -56,8 +59,25 @@ def main():
             json_data_string = json.dumps(json_data, ensure_ascii=False)
 
 
-        result = send_json_to_openai(parameters, json_data_string)
-        print(result)
+        response = send_json_to_openai(parameters, json_data_string)    
+
+        message = response.choices[0].message
+        
+        if message.tool_calls:
+            args = message.tool_calls[0].function.arguments
+
+            # Response Validation & JSON Parsing
+            try:
+                data_dict = json.loads(args) # dict
+                print(data_dict)
+
+            except json.JSONDecodeError:
+                logger.error("AI returned invalid JSON format")
+                raise
+
+        else:
+            logger.warning("No tool calls detected in response")
+        
 
 
 

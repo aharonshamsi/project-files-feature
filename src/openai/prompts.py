@@ -24,6 +24,7 @@ Inside each step:
 Do not output plain unstructured text.
 
 
+
 """
 
 
@@ -35,8 +36,10 @@ TRANSFORMATION_MODES = {
 You must treat the provided input as the ONLY source of content.
 
 ABSOLUTE RULES:
-- Use ONLY text that appears in the source content, translating it faithfully into the target language without introducing any new content or changing its meaning.
-- Prefer to copy complete sentences or paragraphs word for word, but use the language rules defined below.
+-Use ONLY ideas and information that appear in the source content.
+-You MUST translate this text faithfully into the selected target language.
+-Translation is allowed and required, but you may NOT introduce new content, omit content, or change the original meaning in any way.
+-Prefer to preserve complete sentences or paragraphs as complete semantic units, translating them faithfully into the target language.
 - You may lightly merge or re-order sentences ONLY to fix broken structure.
 - You may NOT explain, expand, interpret, summarize, or infer meaning.
 - You may NOT add examples, background, definitions, or context.
@@ -132,32 +135,32 @@ not a transformed document.
 
 #=================================================================
 LANGUAGE_MODES = {
+
+"general_language_rules": """
+
+- Every piece of generated text (explanations, questions, assignments) MUST be in the target language.
+- DO NOT translate technical elements: Code, math formulas, variable names, or technical APIs.
+- Aside from these technical elements, no source language or English should remain in the output.
+
+""",
+
     
 "original": "Output must be in the same language as the source document.",
 "english": "Output must be in English.",
 "hebrew": "Output must be in Hebrew.",
-"arabic": "Output must be in Arabic.",
 "russian": "Output must be in Russian.",
 "german": "Output must be in German.",
 "spanish": "Output must be in Spanish.",
 "azerbaijani": "Output must be in Azerbaijani.",
 
-
-
-"general_language_rules": """
-
- Do NOT translate or modify:
-- Code snippets
-- Mathematical expressions or formulas
-- Variable names, function names, class names
-- File names, commands, APIs, or technical identifiers
-- Established technical terms commonly written in English
-
-If the source content includes mixed-language elements (e.g., code, math, English terms), preserve those elements exactly as they appear.
-
-Only the surrounding explanatory text should follow the selected output language.
-
+"arabic": """
+Output must be fully translated into Arabic, regardless of the source language.
+Ensure proper right-to-left formatting and Arabic-specific punctuation.
+Follow Arabic grammar, sentence structure, and spelling faithfully.
+Preserve all technical elements (code, math formulas, APIs) exactly as in the source.
+Do NOT leave any source language or English text in the output.
 """
+
 }
 
 
