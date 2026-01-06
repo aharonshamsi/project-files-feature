@@ -1,117 +1,389 @@
 {
-    "metadata": [
+    "metadata": {
+        "filename": "test1.pptx",
+        "total_slides": 95,
+        "format": "pptx"
+    },
+    "slides": [
         {
-            "title": "",
-            "author": "Yoav",
-            "subject": "",
-            "keywords": "",
-            "creation_date": "2025-11-23 08:13:00+00:00"
-        }
-    ],
-    "content": [
-        {
-            "type": "heading",
-            "text": "5 Things to Do Every Day to Be Happy"
+            "slide_number": 1,
+            "content": "Software Engineering & Management of Software Projects\nYigal Cohen\nYigal.Cohen@mail.huji.ac.il\nyigalhacohen@gmail.com\nyigalco@edu.jmc.ac.il\n\n054-5664557\n1"
         },
         {
-            "type": "paragraph",
-            "text": "Happiness isn’t an accident, and it isn’t a personality trait you either have or don’t. It’s a daily practice—built from small, repeatable actions that shape your mindset, energy, and emotional stability. In a world full of pressure, speed, and uncertainty, the people who stay grounded and joyful don’t necessarily have easier lives; they simply manage their days differently.\nHere are five simple but powerful habits you can do every single day to create more happiness, clarity, and emotional strength."
+            "slide_number": 2,
+            "content": "Lesson #1\u000b1.1 Introduction\nYigal Cohen\nYigal.Cohen@mail.huji.ac.il\nyigalhacohen@gmail.com\nyigalco@edu.jmc.ac.il\n\n054-5664557\n2"
         },
         {
-            "type": "heading",
-            "text": "1. Start with One Empowering Moment of Control"
+            "slide_number": 3,
+            "content": "מה זאת הנדסת תוכנה ?\nהנדסת תוכנה מיישמת גישה שיטתית, מבוקרת ומדידה לפיתוח, תפעול, ותחזוקה של תוכנה.\n הנדסת תוכנה מקיפה את מחזור החיים השלם של תוכנה, וכוללת ידע, שיטות וכלים עבור: \n   - דרישות, תכנון, בנייה, בדיקות, אינטגרציה, תחזוקה, ניהול תצורה, איכות ועוד\nהנדסת תוכנה נועדה להפחית את המורכבות שבפיתוח תוכנה, לשפר את אמינות התוכנה המפותחת, ולהקטין את עלויות התפעול והתחזוקה. \nהנדסת התוכנה שימושית במיוחד בפיתוח מערכות מורכבות הכוללות חומרה, תוכנה, ותקשורת. (מתוך ויקיפדיה)\nהנדסת תוכנה מציעה ומתעדפת אסטרטגיות שונות לפיתוח התוכנה.\n איטרציות, \nWaterfall\nתהליכים רציפים: Continuous testing/integration/Delivery/…\nשלבים בסיסיים\n3"
         },
         {
-            "type": "paragraph",
-            "text": "Your morning sets the tone for everything. Most people wake up and immediately react—scrolling their phone, answering messages, or rushing into tasks. This creates anxiety before the day even begins.\nInstead, give yourself 90 seconds of deliberate control when you wake up. It can be something tiny:\nDrink a glass of water mindfully\nOpen a window and breathe fresh air\nStretch your arms and back\nSet one intention for the day\nThink of one thing you’re grateful for\nThese micro-behaviors tell the brain: I lead my day; the day doesn’t lead me.\nResearch in psychology consistently shows that the feeling of control, even in tiny doses, reduces stress and increases happiness. You're not trying to control outcomes—you're simply controlling the first moment of the day.\nThis habit helps you walk into the world stronger, calmer, and mentally organized."
+            "slide_number": 4,
+            "content": "הנדסת תוכנה - חסרונות\nלפעמים \"כבדה\" מדי\nדורש מיומנות מחד ובחינה מתמדת של עצם התהליך\n4"
         },
         {
-            "type": "heading",
-            "text": "2. Do One Thing That Makes You Feel Progress"
+            "slide_number": 5,
+            "content": "הנדסת  תוכנה לעומת מדעי המחשב\n5"
         },
         {
-            "type": "paragraph",
-            "text": "Happiness is deeply connected to a sense of progress—professionally or personally. Humans are wired to feel motivated when we see ourselves moving forward, even if the steps are tiny.\nEvery day, choose one micro-action that creates progress:\nLearn one new idea\nWrite five important sentences\nClean one small area\nComplete a short work task that you’ve been postponing\nMake one “important but non-urgent” improvement in your business or life\nThis is not about productivity hacks; it’s about direction.\nWhen people feel stuck, they become unhappy. When they feel that life is moving—even slowly—they become energized, optimistic, and creative.\nThe goal is simple: finish the day knowing you have moved 1% forward. Those daily 1% steps accumulate faster than people imagine."
+            "slide_number": 6,
+            "content": "מה  זה ניהול פרויקט תוכנה ?\nבהנדסת תוכנה מתייחסים להיבטים של התוכנה כפי שפירטנו. \nבניהול פרויקט אנחנו מתייחסים גם ל:\nהיבטים אנושיים, \nזמן פיתוח,\nתקציב,\nתהליך הפיתוח, \nעבודת צוות, \nלוחות זמנים, אספקות, תלויות.\nזאת לא אבחנה מדויקת (גם כי קו ההפרדה הוא מאד דינמי)  אבל זאת אבחנה מספיק טובה.\n6"
         },
         {
-            "type": "heading",
-            "text": "3. Be Present for One Human Connection"
+            "slide_number": 7,
+            "content": "מה נלמד בקורס? (1/2)\nIntroduction, Overview of major SW development models\nBasic Activities: \nRequirements Management. \nSystem Design: System modeling & Architectural design\nSW Testing: Test case, Test Scenario, Test planning, Continuous testing\nIntegration, Integration planning ,Continuous Integration \nDistributed software engineering\nAgile & Scrum Vs. Classical project management (Waterfall)\nProject Planning. scope management, Scheduling & Tracking, TOC (Theory of constraints)\nThe role of the PM, Project management, PMI Model & PMI Matrix (the last 2 are optional)\n7"
         },
         {
-            "type": "paragraph",
-            "text": "Humans are social creatures, and isolation—mental or emotional—kills happiness faster than anything else. Being connected doesn’t mean being with people all the time. It means having at least one genuine moment every day where you show presence, attention, and empathy.\nThis can be very small:\nA warm conversation with a partner or child\nA voice note to a friend\nA smile or kind word to a colleague\nListening without interrupting\nA short call to check in on someone\nWhen you give someone 2–3 minutes of real attention, you feel happier because:\nYou create meaning\nYou reinforce your identity as someone who cares\nConnection releases oxytocin—the “calm and trust” hormone\nIn a digital, high-pressure world, moments of connection are emotional vitamins. Taking one a day keeps your emotional system healthy."
+            "slide_number": 8,
+            "content": "מה אולי לא נלמד בקורס? (2/2)\nSome or all of the following topics according to the progress of the class:\nOther models of requirements analysis and description, more models of system architecture and design,\nHuman Communication, meeting management.\nSW quality Management\nRisk management, Improvement of SW development process (CMMI)\nPeople management. Adizes model. Maslow need hierarchy\n\nAbout 30% of the course will be dedicated to the course project: Management of a project of a distributed system (Without code)\n8"
         },
         {
-            "type": "heading",
-            "text": "4. Move Your Body for 5–10 Minutes"
+            "slide_number": 9,
+            "content": "ועד תלמידים\u000b\u000bמילואימניקים – נשתדל לבוא לקראתם.\u000bמקווה מאד שהשנה תהיה הרבה יותר קלה בנושא המלואים\n9"
         },
         {
-            "type": "paragraph",
-            "text": "You don’t need a full workout to feel happier—you need motion. Movement changes your blood flow, reduces stress hormones, increases energy, and clears mental fog.\nMost people think exercise = gym. But happiness requires something simpler: activate your body daily.\nExamples:\n10-minute walk\nLight stretching\nA short breathing practice\nPlaying with your kids\nDancing to one song\nGoing up and down the stairs twice\nThe key is consistency, not intensity.\nA body that stays stagnant sends signals of fatigue and heaviness to the brain. A body that moves tells the brain: we are alive, energetic, capable.\nDaily movement builds emotional stability. You become more resilient, more optimistic, and less reactive. It’s one of the fastest biological shortcuts to happiness."
+            "slide_number": 10,
+            "content": "מבנה הציון\nהרצאות פרונטליות\n50% השתתפות חובה. משימות /תרגילים – 70%\nכ5 או 6 תרגילים בקבוצות בנות 4 תלמידים .\nיהיו תרגילים בהם יהיו גם משימות עצמאיות (לעתים עם ציון) לכל אחד מהקבוצה\nכל תרגיל מתבסס על התרגילים הקודמים וביחד יוצרים פרויקט. \t\nבחינת בית אישית - 30% (או בחינת גמר)\nרשימת קריאה\nכ-3 או 4 מאמרים.  \nמספר פרקים מתוך הספר: \nSoftware Engineering: A Practitioner's Approach 8th Edition, Roger pressman\n    ימסרו במהלך הקורס\nאתר הקורס\nב moodle\n10"
         },
         {
-            "type": "heading",
-            "text": "5. End the Day with a “Reset Ritual”"
+            "slide_number": 11,
+            "content": "הקלות למילואימניקים\nפטור מתרגילים בתקופת המילואים\nאבל – חובה להשלים את חומר הלימודים\nשיעורי השלמה לפי הנחיות האוניברסיטה ואפשרות לשיעורים נוספים לפי תיאום עם הועד.\n11"
         },
         {
-            "type": "paragraph",
-            "text": "Happiness is not just about how you start your day; it’s also about how you close it. Many people carry the entire day into the night—unfinished tasks, worries, emotional residue. This creates mental overload, poor sleep, and constant tension.\nA daily reset ritual releases the day and gives your mind permission to rest.\nYour reset ritual can be extremely simple:\nWrite down 3 things you completed today\nNote 1 thing you want to improve tomorrow—but without judgment\nPut your phone away 20 minutes before sleep\nTake a warm shower to physically “wash off” the day\nListen to calming music\nSlow breathing for 60 seconds\nThis ritual tells your brain: the day is closed; you did enough; it’s safe to rest.\nPeople who master this practice experience less stress, deeper sleep, and a more stable emotional tone the next day."
+            "slide_number": 12,
+            "content": "מבנה הציון\nבמכללה ממוצע התרגילים\n\nיש לכם ועד מייצג לכיתה?\n12"
         },
         {
-            "type": "heading",
-            "text": "Why These Five Habits Work Together"
+            "slide_number": 13,
+            "content": "About myself:\u000b\u000bYigal Cohen\nWhy I teach this course?\n13"
         },
         {
-            "type": "paragraph",
-            "text": "Each habit influences a different layer of your psychological system:"
+            "slide_number": 14,
+            "content": "What’s the problem ?\nAbout 1/3 of the projects totally fail, a third are poorly completed, and a third are reasonably succeed \n\nMany projects are managed intuitively, some are managed very poorly, and others are not managed at all\n\nThere is a lot of practices, experience, knowledge, methodologies and theories that can help us to run projects in a better way:\nfaster (x4), with higher quality (1/20 of the escaped bugs), cheaper and with satisfied customers\n14"
         },
         {
-            "type": "heading",
-            "text": "1. Morning Control → Mindset"
+            "slide_number": 15,
+            "content": "Chaos Report Results\nsuccessful\nchallenged\nfailed"
         },
         {
-            "type": "paragraph",
-            "text": "It gives clarity, direction, and emotional strength."
+            "slide_number": 16,
+            "content": "Can you build this?"
         },
         {
-            "type": "heading",
-            "text": "2. Micro-Progress → Motivation"
+            "slide_number": 17,
+            "content": "Can you build this?"
         },
         {
-            "type": "paragraph",
-            "text": "It triggers the feeling of purpose and momentum."
+            "slide_number": 18,
+            "content": "Can you build this?"
         },
         {
-            "type": "heading",
-            "text": "3. Human Connection → Meaning"
+            "slide_number": 19,
+            "content": "Scale\nMost people can build a doghouse\nTraditionally people built their own homes\nPerhaps with help from experienced village people\nStill happens in many places in the world\nNobody just goes and builds a skyscraper\nDraw plans (incl. market) and organize it all\nMake sure construction is solid\nAbide by earthquake regulations ( כפוף לרגולציה) \nThis is a work for professionals"
         },
         {
-            "type": "paragraph",
-            "text": "It creates warmth, bonding, and emotional richness."
+            "slide_number": 20,
+            "content": "What Engineers Can Do\nPredict system behavior\ne.g. conditions leading to stability or instability\nCalculate design tolerances\nIs manufacturing variation still OK?\nCalculate failure probability\nChances that change in conditions will be really bad\nUse all this to extend previous systems\nSkyscrapers, jumbo jets, and supercomputers represent accumulated knowledge over many years\nThis is way beyond what any virtuoso ever did"
         },
         {
-            "type": "heading",
-            "text": "4. Body Movement → Energy"
+            "slide_number": 21,
+            "content": "שאלה: \u000bמה ההבדלים בין הנדסת תוכנה להנדסת מבנים או גשרים?\n21"
         },
         {
-            "type": "paragraph",
-            "text": "It stabilizes mood, reduces stress, and increases vitality."
+            "slide_number": 22,
+            "content": "מה רואים בתמונה?\n22"
         },
         {
-            "type": "heading",
-            "text": "5. Evening Reset → Recovery"
+            "slide_number": 23,
+            "content": "23\nמה רואים בתמונה?"
         },
         {
-            "type": "paragraph",
-            "text": "It repairs the mind and prepares you for tomorrow.\nTogether, they build a daily happiness operating system.\nNot based on luck.\nNot based on circumstances.\nBut on repeatable behaviors you control."
+            "slide_number": 24,
+            "content": "What we’ll do in the course ?\n24\nWe’ll learn a rich toolbox for project management SW Engineering that will help us to think outside  the box"
         },
         {
-            "type": "heading",
-            "text": "The Real Secret"
+            "slide_number": 25,
+            "content": "שאלה: האם תרגולות ותבניות הופכות אותנו לפחות או ליותר יצירתיים ?\n25"
         },
         {
-            "type": "paragraph",
-            "text": "Happiness is not found in huge life events.\nIt is created through tiny daily investments in your mind, body, and relationships.\nThese five habits don’t require time, money, or planning. They require intention. Do them every day for two weeks, and you’ll feel the difference. Do them for thirty days, and you’ll start seeing yourself differently. Do them for ninety days, and they become part of who you are.\nWhen happiness becomes a practice, it becomes a lifestyle."
+            "slide_number": 26,
+            "content": "List of SW Engineering topics\nProject Management framework\nProject activities\nSupportive activities\nMethodologies\nArchitecture\n26"
+        },
+        {
+            "slide_number": 27,
+            "content": "SDLC – SW Development Life Cycle\n27\nדרישות\nעיצוב-תכנון\nבדיקות\nקידוד-בניה\nאינטגרציה"
+        },
+        {
+            "slide_number": 28,
+            "content": "SDLC – SW Development Life Cycle\n28\nדרישות\nעיצוב-תכנון\nבדיקות\nקידוד-בניה\nאינטגרציה\nבדיקות\nבדיקות סופיות\nכלי בדיקות"
+        },
+        {
+            "slide_number": 29,
+            "content": "List of SW Engineering topics\nProject Management framework\nProject activities\nSupportive activities\nMethodologies\nArchitecture\n29\nProject Management Framework\n\nIntroduction,\nSDLC – SW Development Life Cycle (ALM- Application Lifecycle Management)\nThe role of the PM\nCustomer Interfacing\nProject initiating & Planning\nTime management"
+        },
+        {
+            "slide_number": 30,
+            "content": "List of SW Engineering topics\nProject Management framework\nProject activities\nSupportive activities\nMethodologies\nArchitecture\n30\nProject activities\n\nRequirements\nArchitecture & Design \nCoding & Building \nTesting\nIntegration \nMaintenance & Support"
+        },
+        {
+            "slide_number": 31,
+            "content": "List of SW Engineering topics\nProject Management framework\nProject activities\nSupportive activities\nMethodologies\nArchitecture\n31\nSupportive activities\n\nSW Configuration Management\nBranch Management\nBug Management\nClassic Project Management problems\nOn-going activities\nSoft Skills\nSupport Environment\nMetrics"
+        },
+        {
+            "slide_number": 32,
+            "content": "List of SW Engineering topics\nProject Management framework\nProject activities\nSupportive activities\nMethodologies\nArchitecture\n32\nMethodologies\n\n PMI & Iterative Deveopment\n Agile / Scrum \nTOC \nAdijas\n CMMI\n ISO-9000"
+        },
+        {
+            "slide_number": 33,
+            "content": "List of SW Engineering topics\nProject Management framework\nProject activities\nSupportive activities\nMethodologies\nArchitecture\n33\nArchitecture\n\nArchitecture design\nModeling\nDistributed systems"
+        },
+        {
+            "slide_number": 34,
+            "content": "What’s a project?\nA temporary Endeavour undertaken to create a unique product, service or result\n\n“מאמץ מרוכז, קצוב בזמן ובמשאבים להשגת תוצאה מוגדרת“\n\nuniqueness of every project” (Done, quality)’\n34"
+        },
+        {
+            "slide_number": 35,
+            "content": "Project outcomes\nA product\nA system\nA conclusion\nA capability\n……\n…….\n35"
+        },
+        {
+            "slide_number": 36,
+            "content": "The golden triangle or the iron Triangle\nScope\n36\nQuality\nTime\nCost"
+        },
+        {
+            "slide_number": 37,
+            "content": "The Iron Triangle\n37"
+        },
+        {
+            "slide_number": 38,
+            "content": "מה המגבלות על פרויקט ?\nScope, \ntime,\nmoney,\nquality, \nresources,\nrisk\n38"
+        },
+        {
+            "slide_number": 39,
+            "content": "Balancing Project Constraints\n39\nResources\nScope\nQuality\nRisks\nMoney\nTime\nProject"
+        },
+        {
+            "slide_number": 40,
+            "content": "Is this is a real zero-sum game ??\n∑\n40\nScope, \nmoney,\nquality, \nresources,\ntime,\nrisk\nC\n?\n="
+        },
+        {
+            "slide_number": 41,
+            "content": "Can we enlarge the cake (1)?\nScope\nPrioritization: Start with the important and risky things!\nPareto (20:80)\nMoney\nCost management;\nReuse!\nQuality\nManage a process, manage continuous testing, continuous integration, continuous delivery, analyze feedback, automation, defect management, Root cause analysis \nResources management\nFind the right people, training, mentoring, guidance, challenging; team work, spirit of excellence, roles & responsibilities\nTime management\nManage a schedule, Find and manage critical paths,\nContinuous development /  testing /  integration\nRisk management\nAssessment and mitigation continuously\n41\nResources\nScope\nQuality\nRisks\nMoney\nTime"
+        },
+        {
+            "slide_number": 42,
+            "content": "Scope\nMore ideas ? How to enlarge the cake ??\n42\nResources\nQuality\nRisks\nMoney\nTime\nProject\nProject Value"
+        },
+        {
+            "slide_number": 43,
+            "content": "Can we enlarge the cake (2)?\nMethodologies\nTechnology\nCommunication – knowledge sharing\nKnowledge\nUnderstanding\nDelegation\nProfessionalism\nTeamwork\nCommunication, Communication, Communication, ,,,\n43"
+        },
+        {
+            "slide_number": 44,
+            "content": "Can we enlarge the cake ??\n44"
+        },
+        {
+            "slide_number": 45,
+            "content": "Lesson #1\u000b1.2 Development models\n45"
+        },
+        {
+            "slide_number": 46,
+            "content": "Elementary activities\nFormal name\nInitiating\nPlanning\nRequirements\nDesign\nCoding & building \nTesting\nIntegration \nMaintenance &support\nמה התכלית?\nWhy ?\nWhat? Who? When?\nWhat?\nHow?\nDoing\nValidating\nConstructing \nLong term warranty\n46"
+        },
+        {
+            "slide_number": 47,
+            "content": "Development models\nWaterfall\nIterative\nConcurrent engineering \nAgile / SCRUM model \nRUP (Rational Unified process) Model\n47\nDevelopment models differ by the \u000binterdependency of their elementary activities\nCan these models live together ?"
+        },
+        {
+            "slide_number": 48,
+            "content": "Development models\nWaterfall\nIterative\nIncremental - RUP (Rational Unified process) Model\nAgile / SCRUM model\nConcurrent engineering\n48"
+        },
+        {
+            "slide_number": 49,
+            "content": "“Classic” Waterfall model\u000b(Old but basic)\n49\nRequirements\nDesign\nTesting\nCoding\nIntegration\nהתנור\n\nגמלא\n\nבניאס\n\nסער\nציר הזמן"
+        },
+        {
+            "slide_number": 50,
+            "content": "Waterfall Model\nAdvantages\nClear phases\nNice view\nManageable\nClear dependencies\nCustomer’s control\nDisadvantages\nStrong dependencies in gates\nNo ‘real’ visibility\nNo feedback\nNo concurrency\nNo learning phase\nNo evolution\nImportant steps are hidden (infrastructure, tools, research)\n50"
+        },
+        {
+            "slide_number": 51,
+            "content": "Waterfall with some concurrency\n51"
+        },
+        {
+            "slide_number": 52,
+            "content": "Waterfall(s) ??\n52\nTesting\nCoding\nIntegration\nRequirement\nDesign"
+        },
+        {
+            "slide_number": 53,
+            "content": "Waterfall(s) ??\n53\nRequirement\nDesign\nTesting\nCoding\nIntegration\nRequirement\nDesign\nTesting\nCoding\nIntegration"
+        },
+        {
+            "slide_number": 54,
+            "content": "Waterfall(s) ??\n54\nRequirement\nDesign\nTesting\nCoding\nIntegration\nRequirement\nDesign\nTesting\nCoding\nIntegration"
+        },
+        {
+            "slide_number": 55,
+            "content": "Can we change the requirements in waterfall model after the requirements are completed?\nYes!\nUse change request process"
+        },
+        {
+            "slide_number": 56,
+            "content": "More Waterfalls\n56\nVictoria\nIguazu\nNiagara\nKraka (Kroatia)"
+        },
+        {
+            "slide_number": 57,
+            "content": "שאלה:\nמה השוני בין המפלים האלו לבין המפלים שבציור הראשון\n57"
+        },
+        {
+            "slide_number": 58,
+            "content": "58"
+        },
+        {
+            "slide_number": 59,
+            "content": "מפלי האיגואסו\nhttps://www.youtube.com/watch?v=9lfMb20QLXg\n59\nמה ההבדלים בין מפל האיגואסו לבין מפל גמלא למשל?\nמקביליות, \nחיבורים ופיצולים,\nמדרגות"
+        },
+        {
+            "slide_number": 60,
+            "content": "Development models\nWaterfall\nIterative\nIncremental - RUP (Rational Unified process) Model\nAgile / SCRUM model\nConcurrent engineering\n60"
+        },
+        {
+            "slide_number": 61,
+            "content": "Iterative model\n61\nR\nD\nT\nC\nI\nR\nD\nT\nC\nI\nR\nD\nT\nC\nI\nIteration -1\nIteration -2\nIteration -n"
+        },
+        {
+            "slide_number": 62,
+            "content": "Iterative model\n62\nworking-1\nPlanning-1\nPlanning-2\nLearning Lessons-1\nworking-2\nPlanning-3\nLearning Lessons-2\nworking-3"
+        },
+        {
+            "slide_number": 63,
+            "content": "Iterative model\n63\nR\nD\nT\nC\nI\nworking-1\nPlanning-1\nPlanning-2\nLearning Lessons-1\nR\nD\nT\nC\nI\nworking-2\nPlanning-3\nLearning Lessons-2\nR\nD\nT\nC\nI\nworking-3"
+        },
+        {
+            "slide_number": 64,
+            "content": "מה הרווחנו בעבודה איטרטיבית?\nמספר מחזורים  קצרים\nנראות טובה יותר של תוצאות שיכולות לשמש למשוב (Feedback)\nאין צורך לתכנן קדימה בפירוט למרחקים ארוכים. זה קשה מאד.\nתהליכי הפקת לקחים, הערכה ותכנון לאורך הדרך בעיקר בין שלבי הביצוע.\n64"
+        },
+        {
+            "slide_number": 65,
+            "content": "Development models\nWaterfall\nIterative\nIncremental - RUP (Rational Unified process) Model\nAgile / SCRUM model\nConcurrent engineering\n65"
+        },
+        {
+            "slide_number": 66,
+            "content": "The focus of Rup Phases\n66"
+        },
+        {
+            "slide_number": 67,
+            "content": "Rup (Rational Unified Process)\u000bMajor phases & Major decision points\n67"
+        },
+        {
+            "slide_number": 68,
+            "content": "Rup: Iteration\n68"
+        },
+        {
+            "slide_number": 69,
+            "content": "RUP: Phases and iterations\n69"
+        },
+        {
+            "slide_number": 70,
+            "content": "70"
+        },
+        {
+            "slide_number": 71,
+            "content": "Rup: The Distribution of Work Across Phases  (% Coverage)\n71"
+        },
+        {
+            "slide_number": 72,
+            "content": "Iterative Vs. Incremental model\nBoth are iterative but incremental emphasizes the development of\n feature by feature\n “Vertical  development” \n that is continuously accumulated to a testable and working system\n72"
+        },
+        {
+            "slide_number": 73,
+            "content": "שאלה: \u000bהאם תמיד עדיף מודל מתווסף(Incremental)  על פני  מודל איטרטיבי?\n73"
+        },
+        {
+            "slide_number": 74,
+            "content": "Vertical Work\nWORK:\nDevelop feature by feature, either sequentially or concurrently. \nRun a full cycle of development for each feature.\nUse continuous development, continuous testing, continuous integration and continuous delivery.\nAdvantages:\nAvoidance of the big-bang integration and testing\nHaving visible and tested / testable results along the development process\nGet and use feedback"
+        },
+        {
+            "slide_number": 75,
+            "content": "Iterative /incremental/ RUP Model\nAdvantages\nClear phases\nNice view\nClear dependencies\nCustomer’s control\nProvides Visibility\nEnables Reliable Feedback\nEnables Learning\nGlobal view and iterations\nDisadvantages\nStrong dependencies in iterations\nRigid\nNot enough concurrency\nNo learning  activity\nNo evolution activity\nImportant steps are hidden (infrastructure, tools, research)\n75"
+        },
+        {
+            "slide_number": 76,
+            "content": "Development models\nWaterfall\nIterative\nIncremental - RUP (Rational Unified process) Model\nAgile / SCRUM model\nConcurrent engineering\n76"
+        },
+        {
+            "slide_number": 77,
+            "content": "SCRUM Process Overview\n77"
+        },
+        {
+            "slide_number": 78,
+            "content": "78"
+        },
+        {
+            "slide_number": 79,
+            "content": "SCRUM: Time box\n79"
+        },
+        {
+            "slide_number": 80,
+            "content": "Scrum Model\nAdvantages\nClear phases\nNice view\nClear dependencies\nCustomer’s control\nVisibility\nEnables Reliable Feedback & use it\nEncourages Learning\nEncourages evolution\nDisadvantages\nStrong dependencies on time-box\nVery Rigid with a lot of ceremonies\nNot enough concurrency\nDisconnected from the SW traditional practices \nNo learning  activity\nNo evolution activity\nImportant steps are hidden (infrastructure, tools, research)\nIn practice – teams may lose the vision and the goals\nInsufficient global view\n80"
+        },
+        {
+            "slide_number": 81,
+            "content": "integrate waterfall with agile\n81\nA     g     I     I     t     y\nLOW\nHigh\nLow\nHigh\nמ ב ט    כ ו ל ל"
+        },
+        {
+            "slide_number": 82,
+            "content": "Duality - integrate global view with agile\n82\nמ ב ט    כ ו ל ל\nA     g     I     I     t     y\nLOW\nHigh\nLow\nHigh"
+        },
+        {
+            "slide_number": 83,
+            "content": "integrate waterfall with agile\n83\nA     g     I     I     t     y\nLOW\nHigh\nLow\nHigh\nכאוס מוחלט\nאין תכנון ואין תגובתיות\nקיבעון\nיש תכנון ואין תגובתיות\nחשש לאבדן דרך\nאין תכנון ויש תגובתיות\nשליטה מלאה\nיש תכנון ויש תגובתיות\nמ ב ט    כ ו ל ל"
+        },
+        {
+            "slide_number": 84,
+            "content": "Development models\nWaterfall\nIterative\nIncremental - RUP (Rational Unified process) Model\nAgile / SCRUM model\nConcurrent engineering\n84"
+        },
+        {
+            "slide_number": 85,
+            "content": "Concurrent Development\n85\nRequirement\nDesign\nTesting\nCoding\nIntegration"
+        },
+        {
+            "slide_number": 86,
+            "content": "? Isn’t it Waterfall Project\n86\nRequirement\nDesign\nTesting\nCoding\nIntegration"
+        },
+        {
+            "slide_number": 87,
+            "content": "Development models\nWaterfall\nIterative\nIncremental - RUP (Rational Unified process) Model\nAgile / SCRUM model\nConcurrent engineering\n87\nלסיכום: מה לעשות ומה לא לעשות.."
+        },
+        {
+            "slide_number": 88,
+            "content": "progressive elaboration \u000brolling wave planning -  תכנון בגלים\n88"
+        },
+        {
+            "slide_number": 89,
+            "content": "Plan & work with progressive elaboration (rolling wave planning) ((תכנון בגלים\nBuild the global plan in advance without too many details and update them frequently\nWork in phases, each phase with visible, beneficial and measurable results\nDevelop feature by feature and continuously accumulate them and deliver pieces of the project till you have a working system \nPlan, define, design, code, test and integrate in every phase\nUse methodologies\n89\nWhat to do (1) ??"
+        },
+        {
+            "slide_number": 90,
+            "content": "What to do (2) ??\nEncourage Concurrency\nFast ramp-up\nDocument !!\nUse the models with flexibility\nEnable visibility and transparency\nEncourage feedback, learning and evolution\nUse continuous testing, continuous integration and continuous delivery\nDevelop tools and infrastructures\n90"
+        },
+        {
+            "slide_number": 91,
+            "content": "Question: How to ensure a failure in a SW project ?\n91"
+        },
+        {
+            "slide_number": 92,
+            "content": "מתוך העיתונות – מלחמת המודלים\nדעה | מפל של טעויות: על אג'ייל - התופעה ששינתה את עולם התוכנה\nבמשך עשרות שנים שלטה ללא עוררין שיטת העבודה המכונה \"המפל\" בעולם התוכנה - אלא שהיא לא עבדה\n ■ בשנים האחרונות תופשות את מקומה מתודולוגיות Agile - ששמות דגש על זריזות וגמישות במציאות כאוטית\n92"
+        },
+        {
+            "slide_number": 93,
+            "content": "Remember!\nThey are only models!\n\nAlice cries out\n“You're only a pack of cards”\n93"
+        },
+        {
+            "slide_number": 94,
+            "content": "Introduction – Lecture1\nIntroduction\nWhat’s a project\nThe constraints: Scope, Quality, Schedule, Budget, Resources, Risks\nDevelopment models\nSDLC (Software Development lifecycle)\nElementary activities\nmodels overview: \nWaterfall, Iterative, Incremental, RUP, Agile, concurrent engineering\n94"
+        },
+        {
+            "slide_number": 95,
+            "content": "Questions ???\n\nThank you!!\n95"
         }
     ]
 }
