@@ -1,92 +1,60 @@
 import os
 import json
 #from src.utils.logger import logger
+from src.parameters.loader import load_parameters
+from src.parsers.manager import handle_input_file
+from src.openai.manager import handle_ai_content_generation
 import time
 
 
-
-
-from src.parsers.docx_handler import extract_docx_file_to_json
-from src.parsers.pdf_handler import extract_pdf_file_to_json
-from src.parsers.utils import load_json_to_dict, get_file_extension_type
-from src.openai.functions import send_json_to_openai
-
-
 def main():
+        
+    """
+    Application entry point.
+
+    High-level flow:
+    1. Load runtime parameters from configuration file.
+    2. Process the input file (detect type, extract content, generate intermediate output).
+    3. Run AI-based content generation on extracted data.
+    4. Output final results.
+
+    This file orchestrates the application logic.
+    """
 
     start_time = time.time()
  #   logger.info("Execution started")
 
     try:
 
-        #=========== READ PARAMETERS FILE ============================
-        # Reads a json file (PARAMETERS), and returns a dictionary
-        path_params_file = "./src/parameters/parameters.json"
-        parameters = load_json_to_dict(path_params_file)
-
-        # Path of the file input in parameter
-        file_path_input = parameters['input_file']
-
-        # Get input file name extension (DOCX || PDF)
-        #file_type = get_file_extension_type(file_path_input)
-        file_type = get_file_extension_type(file_path_input)
+        path_params = "src/parameters/parameters.json"
+        parameters = load_parameters(path_params)
 
 
+        input_file_path = parameters.input_file
+        output_file_path = "data/outputs/output.json"
+        handle_input_file(input_file_path, output_file_path, parameters)
 
-        #=========== PARSERS FILE ============================
-       # logger.info(f"Extracting content from file: {file_path_input}")
+        learning_skill = handle_ai_content_generation(output_file_path, parameters)
 
-        # Path to the output JSON file generated after parser
-        file_path_output_json = "data/outputs/output.json"
-
-        if file_type == "docx":
-            number_words_in_file = extract_docx_file_to_json(file_path_input, file_path_output_json)
-        
-        elif file_type == "pdf":
-            number_words_in_file = extract_pdf_file_to_json(file_path_input, file_path_output_json)
-
-
-        # Add parameter of number_words_in_file in dict
-        parameters["number_words_in_file"] = number_words_in_file 
-        
-
-    #========= OPEN AI ====================================
-    # Sending to OpenAi
-       # logger.info(f"Sending output file to OpenAI: {file_path_output_json}")
-        with open(file_path_output_json, 'r', encoding='utf-8') as file:
-            json_data = json.load(file)
-            json_data_string = json.dumps(json_data, ensure_ascii=False)
-
-
-        result = send_json_to_openai(parameters, json_data_string)
-        print(result)
+        if learning_skill:
+            print(learning_skill)
 
 
 
         # End time
-        end_time = time.time()
-      #  logger.info(f"Execution completed successfully in {end_time - start_time:.2f} seconds")
+    #     logger.info(
+    #         f"Execution completed successfully in {time.time() - start_time:.2f} seconds"
+    #     )
 
+    # except (ValueError, FileNotFoundError, PermissionError, json.JSONDecodeError) as e:
+    #     logger.error(f"Execution failed: {e}")
 
-    # except ValueError as e:
-    #     logger.error(f"Input error: {e}")
-
-    # except FileNotFoundError as e:
-    #     logger.error(f"File error: {e}")
-
-    # except PermissionError as e:
-    #     logger.error(f"Permission error: {e}")
-
-    # except json.JSONDecodeError as e:
-    #     logger.error(f"JSON error: {e}")
-
+    # # except Exception as e:
+    # #     logger.error(f"Unexpected error: {e}")
     # except Exception as e:
-    #     logger.error(f"Unexpected error: {e}")
+    #     logger.exception("Unexpected error occurred")
     except Exception as e:
-        print("Erorr:" + e)
-
+        print("Erorr: " + e)
 
 if __name__ == "__main__":
     main()
-
-

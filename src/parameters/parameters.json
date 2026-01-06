@@ -4,9 +4,9 @@
     "language_mode": "english",
 
 
-    "open_questions_count": "2",
-    "multiple_choice_questions_count": "1",
-    "file_questions_count": "3",
+    "open_questions_count": 2,
+    "multiple_choice_questions_count": 1,
+    "file_questions_count": 3,
 
 
     "input_file": "data/inputs/5 Things to Do Every Day to Be Happy.docx"

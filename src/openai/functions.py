@@ -1,9 +1,8 @@
-import json
-import os
 from openai import OpenAI
 from config import Config
+from src.parameters.config_model import AppConfig
 
-from src.openai.prompts import CORE_ANALYSIS_LOGIC, PEDAGOGY_STANDARDS, TRANSFORMATION_MODES, LANGUAGE_MODES, QUESTION_MODE
+from src.openai.prompts import CORE_ANALYSIS_LOGIC, TRANSFORMATION_MODES, LANGUAGE_MODES, QUESTION_MODE
 
 
 api_key = Config.API_KEY
@@ -12,22 +11,25 @@ client = OpenAI(api_key=api_key)
 MAX_TOKENS = 8000
 
 
-functions_definition = [
-    {
+
+# Definition: Structure and rules for generating a complete learning skill with steps and assessment widgets.
+def get_skill_generation_schema(open_q_count, mcq_count, assign_count):
+
+    return {
         "name": "generate_complete_skill",
-        "description": f"Generates a complete lesson......", 
+        "description": "Generates a complete structured learning skill based on structured JSON input.",
         "parameters": {
             "type": "object",
             "properties": {
                 "steps": {
                     "type": "array",
-                    "description": "A JSON array of step objects, representing a sequence of lesson steps. Each step must contain full content. ",
+                    "description": "An ordered list of lesson steps composing the learning skill.",
                     "items": {
                         "type": "object",
                         "properties": {
                             "step_name": {
                                 "type": "string",
-                                "description": "The title of the step (generated in the specified language)."
+                                "description": "The title of the step."
                             },
                             "step_number": {
                                 "type": "integer",
@@ -35,27 +37,105 @@ functions_definition = [
                             },
                             "widgets": {
                                 "type": "object",
-                                "description": "Container for content, open questions, and multiple choice questions.",
+                                "description": (
+                                    "Container for all instructional and assessment widgets of the step. "
+                                    "Each widget group represents a single content type."
+                                ),
                                 "properties": {
+
                                     "contents": {
                                         "type": "array",
+                                        "description": (
+                                            "An ordered list of instructional content widgets. "
+                                            "Each item contains pure learning text only."
+                                        ),
                                         "items": {
                                             "type": "object",
                                             "properties": {
+                                                "content_type": {
+                                                    "type": "string",
+                                                    "description": "The type of content. Always use 'text'." # Always Text
+                                                },
                                                 "content": {
-                                                    "type": "string", 
-                                                    "description": f"(Generated in the specified language and should contain at least ...... sentences.) the content should be aimed at the learners directly and should match the lesson setting like age_level and level etc. If content is not required (0 expected), leave the contents array empty.",
+                                                    "type": "string",
+                                                    "description": (
+                                                        "Instructional learning text for the learner. "
+                                                        "Must not include questions or assessment elements."
+                                                    )
                                                 }
                                             },
-                                            "required": ["content"] 
-                                        },
-                                        "description": "Content provided based on the learning_content_component array."
+                                            "required": ["content_type", "content"]
+                                        }
+                                    },
+
+                                    "open_questions": {
+                                        "type": "array",
+                                        "description": (
+                                            f"List of open-ended questions for the step. "
+                                            f"Must contain exactly {open_q_count} questions."
+                                        ),
+                                        "items": {
+                                            "type": "string",
+                                            "description": "An open-ended question requiring a written response."
+                                        }
+                                    },
+
+                                    "multiple_choice_questions": {
+                                        "type": "array",
+                                        "description": (
+                                            f"List of multiple-choice questions for the step. "
+                                            f"Must contain exactly {mcq_count} questions."
+                                        ),
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "question": {
+                                                    "type": "string",
+                                                    "description": "The question text."
+                                                },
+                                                "options": {
+                                                    "type": "array",
+                                                    "description": (
+                                                        "Answer options (A–D). Exactly one option must be correct."
+                                                    ),
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "key": {
+                                                                "type": "string",
+                                                                "description": "The answer option text."
+                                                            },
+                                                            "correct_answer": {
+                                                                "type": "boolean",
+                                                                "description": "Indicates whether this option is the correct answer."
+                                                            }
+                                                        },
+                                                        "required": ["key", "correct_answer"]
+                                                    }
+                                                }
+                                            },
+                                            "required": ["question", "options"]
+                                        }
+                                    },
+
+                                    "file_questions": {
+                                        "type": "array",
+                                        "description": (
+                                            f"Assignment-based questions for the step requiring file submission. "
+                                            f"Must contain exactly {assign_count} assignments."
+                                        ),
+                                        "items": {
+                                            "type": "string",
+                                            "description": (
+                                                "An assignment task requiring the learner to submit a file "
+                                                "(e.g., document, image, video)."
+                                            )
+                                        }
                                     }
 
-                                }, 
-                                "required": ["contents"]
+                                },
+                                "required": ["contents", "open_questions", "multiple_choice_questions", "file_questions"]
                             }
-                           
                         },
                         "required": ["step_name", "step_number", "widgets"]
                     }
@@ -64,155 +144,92 @@ functions_definition = [
             "required": ["steps"]
         }
     }
+
+
+
+
+
+
+#===================================
+def build_system_prompts(
+        source_mode:str, 
+        language_mode: str, 
+        open_q_count: int, 
+        mcq_count: int, 
+        assign_count: int) -> str:
     
-    
-    ]
-
-
-
-
-# Send json file to openAi, and return content text
-def send_json_to_openai (parameters, json_data_string):
-    
-
-    # List of parameters
-    source_mode = parameters["source_mode"]
-    language_mode = parameters["language_mode"]
-
-    open_questions_count = parameters["open_questions_count"]
-    multiple_choice_questions_count = parameters["multiple_choice_questions_count"]
-    assignment_questions_count = parameters["file_questions_count"] # file
-
-    
-
-
-
-    # PROMPTS
-    final_system_message = "\n".join([
+    #Build the complete system prompt string for the AI model based on modes and question counts.
+    return "\n".join([
 
         CORE_ANALYSIS_LOGIC,
         TRANSFORMATION_MODES[source_mode],
-        PEDAGOGY_STANDARDS,
         "LANGUAGE RULE",
-        LANGUAGE_MODES[language_mode],
-        "However:",
         LANGUAGE_MODES['general_language_rules'],
-        f"Create {open_questions_count} OPEN QUESTIONS based strictly on the step content, following these rules: {QUESTION_MODE['open_questions']}",
+        LANGUAGE_MODES[language_mode],
+        f"Create {open_q_count} OPEN QUESTIONS based strictly on the step content, following these rules: {QUESTION_MODE['open_questions']}",
+        f"Create {mcq_count} MULTIPLE CHOICE QUESTIONS based strictly on the step content, following these rules: {QUESTION_MODE['multiple_choice_questions']}",
+        f"Create {assign_count} ASSIGNMENT QUESTIONS based strictly on the step content, following these rules: {QUESTION_MODE['assignment_questions']}"
 
-        f"Create {multiple_choice_questions_count} MULTIPLE CHOICE QUESTIONS based strictly on the step content, following these rules: {QUESTION_MODE['multiple_choice_questions']}",
-        f"Create {assignment_questions_count} ASSIGNMENT QUESTIONS based strictly on the step content, following these rules: {QUESTION_MODE['assignment_questions']}",
-        
- 
     ])
- 
+
+
+
+
+
+
+
+#===================================================================
+def submit_to_openai_api (json_data_string, parameters: AppConfig):
+    
+    # List of parameters
+    source_mode = parameters.source_mode
+    language_mode = parameters.language_mode
+    open_q_count = parameters.open_questions_count
+    mcq_count = parameters.multiple_choice_questions_count
+    assign_count = parameters.file_questions_count
+
+    # For test
     print(source_mode)
     print(language_mode)
-    print(f"open_questions_count: {open_questions_count}")
-    print(f"multiple_choice_questions_count: {multiple_choice_questions_count}")
-    print(f"file_questions_count: {assignment_questions_count}")
+    print(f"open_questions_count: {open_q_count}")
+    print(f"multiple_choice_questions_count: {mcq_count}")
+    print(f"file_questions_count: {assign_count}")
+
+
+    system_prompts = build_system_prompts(source_mode, language_mode, open_q_count, mcq_count, assign_count)
+    functions_definition = get_skill_generation_schema(open_q_count, mcq_count, assign_count)
+
 
     try:
         response = client.chat.completions.create(
-            model="gpt-4.1",
+            model="gpt-4.1", 
             messages=[
                 {
-                    "role": "system",
-                    "content": final_system_message
+                    "role": "system", 
+                    "content": system_prompts
                 },
                 {
-                    "role": "user",
+                    "role": "user", 
                     "content": json_data_string
                 }
             ],
-            max_tokens=MAX_TOKENS,
 
-            # # שימוש בפורמט הכלים החדש
-            # tools=[
-            #     {
-            #     "type": "function",
-            #     "function": functions_definition[0]  # כאן נכנס המערך שהגדרנו קודם
-            #     }
-            # ]
-            # tool_choice={"type": "function", "function": {"name": "generate_complete_skill"}}
+            tools=[{
+                "type": "function", 
+                "function": functions_definition
+            }],
+
+            tool_choice={
+                "type": "function", 
+                "function": {"name": "generate_complete_skill"}
+                },
+            max_tokens=MAX_TOKENS,
         )
 
-
-        # # ====== Return Function call arguments in format Json =====
-        # message = response.choices[0].message
-
-        # if message.tool_calls:
-        #     skill_args_json = message.tool_calls[0].function.arguments
-
-        # else:
-        #     skill_args_json = None
-        
-        # return skill_args_json
-                    
-
-
-        result = response.choices[0].message.content
-        print(result)
+        return response
 
     except Exception as e:
         print(f"Error calling OpenAI API: {e}")
 
 
 
-
-
-
-
-# return {
-#         "name": "generate_complete_skill",
-#         "description": f"Generates a complete lesson based on the '{goal.value}' goal. {goal_description}.",
-#         "parameters": {
-#             "type": "object",
-#             "properties": {
-#                 "steps": {
-#                     "type": "array",
-#                     "description": "A JSON array of step objects, representing a sequence of lesson steps. Each step must contain full content. ",
-#                     "items": {
-#                         "type": "object",
-#                         "properties": {
-#                             "step_name": {
-#                                 "type": "string",
-#                                 "description": "The title of the step (generated in the specified language)."
-#                             },
-#                             "step_number": {
-#                                 "type": "integer",
-#                                 "description": "The sequential number of the step."
-#                             },
-#                             "widgets": {
-#                                 "type": "object",
-#                                 "description": "Container for content, open questions, and multiple choice questions.",
-#                                 "properties": {
-#                                     "contents": {
-#                                         "type": "array",
-#                                         "items": {
-#                                             "type": "object",
-#                                             "properties": {
-#                                                 "content_type": {
-#                                                     "type": "string",
-#                                                     # למה אין לו פה תיאור
-#                                                 },
-#                                                 "content": {
-#                                                     "type": "string",
-#                                                     "description": f"(Generated in the specified language and should contain at least {widget_config.sentences * 5} sentences.) the content should be aimed at the learners directly and should match the lesson setting like age_level and level etc. If content is not required (0 expected), leave the contents array empty.",
-#                                                 },
-#                                             },
-#                                             "description": "Content provided based on the learning_content_component array; leave empty if none."
-#                                         },
-#                                         "minItems": widget_config.content,
-#                                         "maxItems": widget_config.content,
-#                                     },
-#                                 "required": ["contents"]
-#                             },
-                           
-#                         },
-#                         "required": ["step_name", "step_number", "widgets"]
-#                     }
-#                 }
-#             },
-#             "required": ["steps"]
-#         }
-#     }
