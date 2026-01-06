@@ -100,9 +100,9 @@ def send_json_to_openai (parameters, json_data_string):
         f"Create {open_questions_count} OPEN QUESTIONS based strictly on the step content, following these rules: {QUESTION_MODE['open_questions']}",
 
         f"Create {multiple_choice_questions_count} MULTIPLE CHOICE QUESTIONS based strictly on the step content, following these rules: {QUESTION_MODE['multiple_choice_questions']}",
-        f"Create {assignment_questions_count} ASSIGNMENT QUESTIONS based strictly on the step content, following these rules: {QUESTION_MODE['assignment_questions']}"
-
+        f"Create {assignment_questions_count} ASSIGNMENT QUESTIONS based strictly on the step content, following these rules: {QUESTION_MODE['assignment_questions']}",
         
+ 
     ])
  
     print(source_mode)
@@ -148,8 +148,6 @@ def send_json_to_openai (parameters, json_data_string):
         
         # return skill_args_json
                     
-
-
 
 
         result = response.choices[0].message.content
