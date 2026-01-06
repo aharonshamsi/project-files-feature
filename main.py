@@ -4,13 +4,13 @@ import time
 from src.parameters.loader import load_parameters
 from src.parsers.manager import handle_input_file
 from src.openai.manager import handle_ai_content_generation
-from src.parsers.pptx_handler import extract_pptx_file_to_json
+from src.parsers.pptx_handler import extract_pptx_to_json
 
 
 def main():
     input_path = "data/inputs/test1.pptx"
     output_file = "data/outputs/output.json"
-    extract_pptx_file_to_json(input_path, output_file)
+    extract_pptx_to_json(input_path, output_file)
         
 #     """
 #     Application entry point.

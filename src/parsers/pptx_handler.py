@@ -1,48 +1,126 @@
 import json
 import os
+import re
 from pptx import Presentation
+from pptx.enum.shapes import PP_PLACEHOLDER
 
-def extract_pptx_file_to_json(input_path, output_path):
+# Constants for better readability
+HEADING_TYPE = "heading"
+PARAGRAPH_TYPE = "paragraph"
+URL_TYPE = "url"
+# =========================================================================
+def extract_pptx_metadata(prs):
     """
-    Extracts text from a PPTX file and saves it as a structured JSON file.
+    Extracts core properties from the pptx file.
     """
+    props = prs.core_properties
+    return {
+        "title": props.title or "",
+        "author": props.author or "",
+        "subject": props.subject or "",
+        "creation_date": str(props.created) if props.created else None,
+    }
+
+# =========================================================================
+def extract_urls(text):
+    """
+    Finds all URLs within a text string.
+    """
+    return re.findall(r'https?://[^\s)]+', text)
+
+# =========================================================================
+def is_strictly_a_heading(shape, paragraph):
+    """
+    Advanced logic to distinguish between a real title and a bold bullet point.
+    """
+    # 1. Check if the shape is defined as a Title placeholder in the slide layout
+    if shape.is_placeholder:
+        if shape.placeholder_format.type in [PP_PLACEHOLDER.TITLE, PP_PLACEHOLDER.CENTER_TITLE]:
+            return True
+        # If it's a body placeholder, it's usually a list, even if bolded.
+        if shape.placeholder_format.type == PP_PLACEHOLDER.BODY:
+            return False
+
+    # 2. Fallback for manual textboxes: Use font size.
+    # Most slide titles are > 32pt. Bullet points are usually < 24pt.
+    if paragraph.runs:
+        font_size = paragraph.runs[0].font.size
+        if font_size and font_size.pt > 30:
+            return True
+            
+    return False
+# =========================================================================
+def extract_pptx_to_json(input_file, output_file):
+    """
+    Main logic to convert PPTX to a structured JSON format.
+    """
+    if not os.path.exists(input_file):
+        raise FileNotFoundError(f"Input file not found: {input_file}")
+
     try:
-        # Load the PowerPoint presentation
-        presentation = Presentation(input_path)
-        slides_data = []
-
-        # Iterate through slides
-        for i, slide in enumerate(presentation.slides, start=1):
-            slide_text_elements = []
-            
-            # Iterate through all shapes in the current slide
-            for shape in slide.shapes:
-                # Only extract from shapes that contain text
-                if hasattr(shape, "text") and shape.text.strip():
-                    slide_text_elements.append(shape.text.strip())
-            
-            # Store slide content with its number
-            slides_data.append({
-                "slide_number": i,
-                "content": "\n".join(slide_text_elements)
-            })
-
-        # Prepare final JSON structure
-        final_data = {
-            "metadata": {
-                "filename": os.path.basename(input_path),
-                "total_slides": len(presentation.slides),
-                "format": "pptx"
-            },
-            "slides": slides_data
+        prs = Presentation(input_file)
+        slide_height = prs.slide_height
+        
+        result = {
+            "metadata": extract_pptx_metadata(prs),
+            "pages": []
         }
 
-        # Write data to the output JSON file
-        with open(output_path, 'w', encoding='utf-8') as f:
-            json.dump(final_data, f, ensure_ascii=False, indent=4)
-            
-        print(f"Successfully extracted {input_path} to {output_path}")
+        for i, slide in enumerate(prs.slides):
+            page_elements = []
+            # Sort shapes by vertical position (top-to-bottom)
+            shapes = sorted(slide.shapes, key=lambda s: (s.top, s.left))
+
+            for shape in shapes:
+                # Validate if the shape contains text and isn't a tiny footer number
+                if not shape.has_text_frame :
+                    continue
+
+                for paragraph in shape.text_frame.paragraphs:
+                    raw_text = paragraph.text.strip()
+                    if not raw_text:
+                        continue
+
+                    # Handle URLs
+                    urls = extract_urls(raw_text)
+                    clean_text = raw_text
+                    for url in urls:
+                        clean_text = clean_text.replace(url, "").strip()
+
+                    # Determine type using the smart logic
+                    element_type = HEADING_TYPE if is_strictly_a_heading(shape, paragraph) else PARAGRAPH_TYPE
+
+                    # Append text element
+                    if clean_text:
+                        # Optimization: If the previous element was a paragraph and this is too, merge them
+                        if (page_elements and 
+                            page_elements[-1]["type"] == PARAGRAPH_TYPE and 
+                            element_type == PARAGRAPH_TYPE):
+                            page_elements[-1]["text"] += "\n" + clean_text
+                        else:
+                            page_elements.append({
+                                "type": element_type,
+                                "text": clean_text
+                            })
+
+                    # Append URL elements separately
+                    for url in urls:
+                        page_elements.append({
+                            "type": URL_TYPE,
+                            "text": url
+                        })
+
+            result["pages"].append({
+                "page_number": i + 1,
+                "content": page_elements
+            })
+
+        # Save the result to a JSON file
+        with open(output_file, 'w', encoding='utf-8') as f:
+            json.dump(result, f, ensure_ascii=False, indent=4)
+
+        return result
 
     except Exception as e:
-        print(f"Error during PPTX extraction: {e}")
+        print(f"Error processing PPTX: {e}")
         raise
