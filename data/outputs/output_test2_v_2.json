@@ -11,7 +11,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "Lesson #2\u000b\u000bReminder of lesson 1"
+                    "text": "Lesson #2\n\nReminder of lesson 1"
                 },
                 {
                     "type": "paragraph",
@@ -115,7 +115,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "progressive elaboration \u000brolling wave planning -  תכנון בגלים"
+                    "text": "progressive elaboration \nrolling wave planning -  תכנון בגלים"
                 }
             ]
         },
@@ -163,7 +163,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "Lesson #2\u000b\u000b\u000b2.1 - Requirements Management"
+                    "text": "Lesson #2\n\n2.1 - Requirements Management"
                 }
             ]
         },
@@ -277,7 +277,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "מבנה מערכת של סופרמרקט אינטרנטי\u000b עם מכשירים הקפיים"
+                    "text": "מבנה מערכת של סופרמרקט אינטרנטי\n עם מכשירים הקפיים"
                 },
                 {
                     "type": "paragraph",
@@ -412,7 +412,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "באמת? צריך דרישות ותכנון?\u000bמי זה ??"
+                    "text": "באמת? צריך דרישות ותכנון?\nמי זה ??"
                 }
             ]
         },
@@ -421,7 +421,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "מבנה מערכת של סופרמרקט אינטרנטי\u000b עם מכשירים הקפיים"
+                    "text": "מבנה מערכת של סופרמרקט אינטרנטי\n עם מכשירים הקפיים"
                 },
                 {
                     "type": "paragraph",
@@ -434,7 +434,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "Resources of requirements\u000bLevels of Requirements\u000bRelationships of basic types of requirements"
+                    "text": "Resources of requirements\nLevels of Requirements\nRelationships of basic types of requirements"
                 },
                 {
                     "type": "paragraph",
@@ -546,7 +546,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "דוגמאות לדרישות משתמשים (חלקי)\u000bסופרמרקט אינטרנטי"
+                    "text": "דוגמאות לדרישות משתמשים (חלקי)\nסופרמרקט אינטרנטי"
                 },
                 {
                     "type": "paragraph",
@@ -616,7 +616,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "דוגמא לדרישות פונקציונליות (חלקי)\u000bסופרמרקט אינטרנטי"
+                    "text": "דוגמא לדרישות פונקציונליות (חלקי)\nסופרמרקט אינטרנטי"
                 },
                 {
                     "type": "paragraph",
@@ -629,7 +629,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "דוגמא  לאיפיון דרישות  -  ניהול קופה בסופרמרקט \u000bגרסה 1"
+                    "text": "דוגמא  לאיפיון דרישות  -  ניהול קופה בסופרמרקט \nגרסה 1"
                 },
                 {
                     "type": "paragraph",
@@ -642,7 +642,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "מבנה של מערכת קופה\u000b עם מכשירים הקפיים"
+                    "text": "מבנה של מערכת קופה\n עם מכשירים הקפיים"
                 },
                 {
                     "type": "paragraph",
@@ -655,7 +655,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "דוגמא  לאיפיון דרישות  -  ניהול קופה בסופרמרקט \u000bגרסה 2"
+                    "text": "דוגמא  לאיפיון דרישות  -  ניהול קופה בסופרמרקט \nגרסה 2"
                 },
                 {
                     "type": "heading",
@@ -794,7 +794,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "דוגמא לאפיון דרישות איכות (חלקי)\u000bסופרמרקט אינטרנטי"
+                    "text": "דוגמא לאפיון דרישות איכות (חלקי)\nסופרמרקט אינטרנטי"
                 },
                 {
                     "type": "paragraph",
@@ -929,7 +929,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "Levels of Requirements\u000bRelationships of basic types of requirements"
+                    "text": "Levels of Requirements\nRelationships of basic types of requirements"
                 },
                 {
                     "type": "paragraph",
@@ -955,7 +955,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "Software Requirement Specification\u000bTemplate example from Wiki (over detailed)"
+                    "text": "Software Requirement Specification\nTemplate example from Wiki (over detailed)"
                 },
                 {
                     "type": "heading",
@@ -1044,7 +1044,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "Software Requirement Specification\u000bTemplate example from Wiki (over detailed)"
+                    "text": "Software Requirement Specification\nTemplate example from Wiki (over detailed)"
                 },
                 {
                     "type": "heading",
@@ -1105,7 +1105,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "Levels of Requirements\u000bRelationships of basic types of requirements"
+                    "text": "Levels of Requirements\nRelationships of basic types of requirements"
                 },
                 {
                     "type": "paragraph",
@@ -1118,7 +1118,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "סקר דרישות תוכנה –\u000bSoftware Requirements Review"
+                    "text": "סקר דרישות תוכנה –\nSoftware Requirements Review"
                 },
                 {
                     "type": "paragraph",
@@ -1131,11 +1131,11 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "סקר דרישות –\u000bSoftware Requirements Review"
+                    "text": "סקר דרישות –\nSoftware Requirements Review"
                 },
                 {
                     "type": "paragraph",
-                    "text": "Each Requirement\u000bSMART is acronym of\nSpecific,\nManageable,\nAssignable,\nRealistic, Readable\nTestable, Traceable, Time-related\nThe entire SRS\nComplete\nConsistent\nManageable\nTraceable\nHierarchical\nModifiable"
+                    "text": "Each Requirement\nSMART is acronym of\nSpecific,\nManageable,\nAssignable,\nRealistic, Readable\nTestable, Traceable, Time-related\nThe entire SRS\nComplete\nConsistent\nManageable\nTraceable\nHierarchical\nModifiable"
                 }
             ]
         },
@@ -1166,7 +1166,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "Requirements Development – \u000b(שליפה, הפקהElicitation ("
+                    "text": "Requirements Development – \n(שליפה, הפקהElicitation ("
                 },
                 {
                     "type": "paragraph",
@@ -1222,7 +1222,7 @@
                 },
                 {
                     "type": "paragraph",
-                    "text": "Reviewing the documented requirements to ensure a common understanding the users’ stated requirements and to correct any problems before development group accepts them\u000bValidate: Correctness, Completeness, Consistency"
+                    "text": "Reviewing the documented requirements to ensure a common understanding the users’ stated requirements and to correct any problems before development group accepts them\nValidate: Correctness, Completeness, Consistency"
                 }
             ]
         },
@@ -1231,7 +1231,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "An Example of Requirements Development \u000bמרכזיה פרטית - – Private switchboard (1)"
+                    "text": "An Example of Requirements Development \nמרכזיה פרטית - – Private switchboard (1)"
                 },
                 {
                     "type": "paragraph",

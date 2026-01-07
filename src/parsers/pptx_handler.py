@@ -10,7 +10,7 @@ PARAGRAPH_TYPE = "paragraph"
 TABLE_TYPE = "table"  # <--- הוספתי את זה
 URL_TYPE = "url"
 
-# =========================================================================
+#=========================================================================
 def extract_pptx_metadata(prs):
     """
     Extracts core properties from the pptx file.
@@ -23,14 +23,14 @@ def extract_pptx_metadata(prs):
         "creation_date": str(props.created) if props.created else None,
     }
 
-# =========================================================================
+#=========================================================================
 def extract_urls(text):
     """
     Finds all URLs within a text string.
     """
     return re.findall(r'https?://[^\s)]+', text)
 
-# =========================================================================
+#=========================================================================
 def is_strictly_a_heading(shape, paragraph):
     """
     Advanced logic to distinguish between a real title and a bold bullet point.
@@ -52,7 +52,7 @@ def is_strictly_a_heading(shape, paragraph):
             
     return False
 
-# =========================================================================
+#=========================================================================
 def extract_pptx_to_json(input_file, output_file):
     """
     Main logic to convert PPTX to a structured JSON format.
@@ -62,7 +62,6 @@ def extract_pptx_to_json(input_file, output_file):
 
     try:
         prs = Presentation(input_file)
-        slide_height = prs.slide_height
         
         result = {
             "metadata": extract_pptx_metadata(prs),
@@ -75,6 +74,8 @@ def extract_pptx_to_json(input_file, output_file):
             shapes = sorted(slide.shapes, key=lambda s: (s.top, s.left))
 
             for shape in shapes:
+                if is_auto_slide_number(shape):
+                    continue
                 
                 # --- START: TABLE HANDLING LOGIC ---
                 if shape.has_table:
@@ -107,8 +108,14 @@ def extract_pptx_to_json(input_file, output_file):
                 if not shape.has_text_frame: 
                     continue
 
+
                 for paragraph in shape.text_frame.paragraphs:
-                    raw_text = paragraph.text.strip()
+                    #raw_text = paragraph.text.strip()
+                    raw_text = normalize_text(paragraph.text).strip()
+
+                    
+
+
                     if not raw_text:
                         continue
 
@@ -155,3 +162,28 @@ def extract_pptx_to_json(input_file, output_file):
     except Exception as e:
         print(f"Error processing PPTX: {e}")
         raise
+
+#=========================================================================
+def is_auto_slide_number(shape):
+    """
+    Returns True only for PowerPoint auto-generated slide numbers.
+    This is a high-confidence check (no false positives).
+    """
+    if not shape.is_placeholder:
+        return False
+
+    try:
+        return shape.placeholder_format.type == PP_PLACEHOLDER.SLIDE_NUMBER
+    except KeyError:
+        return False
+    
+#=========================================================================
+def normalize_text(text):
+    """
+    Normalize PowerPoint text by replacing control characters with newlines.
+    Safe for large-scale processing (no false content removal).
+    """
+    text = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f]', '\n', text)
+    text = re.sub(r'\n{3,}', '\n\n', text)
+    return text
+

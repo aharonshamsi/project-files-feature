@@ -24,7 +24,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "Lesson #1\u000b1.1 Introduction"
+                    "text": "Lesson #1\n1.1 Introduction"
                 },
                 {
                     "type": "paragraph",
@@ -151,7 +151,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "ועד תלמידים\u000b\u000bמילואימניקים – נשתדל לבוא לקראתם.\u000bמקווה מאד שהשנה תהיה הרבה יותר קלה בנושא המלואים"
+                    "text": "ועד תלמידים\n\nמילואימניקים – נשתדל לבוא לקראתם.\nמקווה מאד שהשנה תהיה הרבה יותר קלה בנושא המלואים"
                 }
             ]
         },
@@ -199,7 +199,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "About myself:\u000b\u000bYigal Cohen"
+                    "text": "About myself:\n\nYigal Cohen"
                 },
                 {
                     "type": "paragraph",
@@ -303,7 +303,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "שאלה: \u000bמה ההבדלים בין הנדסת תוכנה להנדסת מבנים או גשרים?"
+                    "text": "שאלה: \nמה ההבדלים בין הנדסת תוכנה להנדסת מבנים או גשרים?"
                 }
             ]
         },
@@ -651,7 +651,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "Lesson #1\u000b1.2 Development models"
+                    "text": "Lesson #1\n1.2 Development models"
                 }
             ]
         },
@@ -697,7 +697,7 @@
                 },
                 {
                     "type": "heading",
-                    "text": "Development models differ by the \u000binterdependency of their elementary activities"
+                    "text": "Development models differ by the \ninterdependency of their elementary activities"
                 },
                 {
                     "type": "paragraph",
@@ -739,7 +739,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "“Classic” Waterfall model\u000b(Old but basic)"
+                    "text": "“Classic” Waterfall model\n(Old but basic)"
                 },
                 {
                     "type": "paragraph",
@@ -1017,7 +1017,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "Rup (Rational Unified Process)\u000bMajor phases & Major decision points"
+                    "text": "Rup (Rational Unified Process)\nMajor phases & Major decision points"
                 }
             ]
         },
@@ -1074,7 +1074,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "שאלה: \u000bהאם תמיד עדיף מודל מתווסף(Incremental)  על פני  מודל איטרטיבי?"
+                    "text": "שאלה: \nהאם תמיד עדיף מודל מתווסף(Incremental)  על פני  מודל איטרטיבי?"
                 }
             ]
         },
@@ -1300,7 +1300,7 @@
             "content": [
                 {
                     "type": "heading",
-                    "text": "progressive elaboration \u000brolling wave planning -  תכנון בגלים"
+                    "text": "progressive elaboration \nrolling wave planning -  תכנון בגלים"
                 }
             ]
         },
