@@ -66,6 +66,46 @@
                     "text": "הנדסת  תוכנה לעומת מדעי המחשב"
                 },
                 {
+                    "type": "table",
+                    "headers": [
+                        "נושא",
+                        "הנדסת תוכנה",
+                        "מדעי המחשב"
+                    ],
+                    "rows": [
+                        [
+                            "אידיאל",
+                            "פיתוח מערכות תוכנה",
+                            "גילוי אמיתות כלליות אודות \nחישוביות, אלגוריתמים ונושאים תאורטיים נוספים"
+                        ],
+                        [
+                            "דגש",
+                            "פיתוח תוכנה בעלת ערך למשתמש",
+                            "אמיתות כלליות, כגון סיבוכיות ונכונות של אלגוריתמים"
+                        ],
+                        [
+                            "מטרה",
+                            "תוכנות גדולות ושימושיות כגון מהדר, מערכות מידע, מערכות בקרה מערכות מבוזרות, חבילת יישומים משרדיים",
+                            "אלגוריתמים כגון אלגוריתמים למיון, בעיות מופשטות כגון בעיית הסוכן הנוסע"
+                        ],
+                        [
+                            "תקציב ולוח זמנים",
+                            "תקציב ולוחות זמנים \"קבועים מראש\"",
+                            "תקציבי מחקר ותחרותיות כפי שמקובל באקדמיה"
+                        ],
+                        [
+                            "ידע נוסף",
+                            "הנדסה, ניהול פרויקטים, הכרת תחום היישום, ידע בתחומים טכנולוגיים נוספים",
+                            "מתמטיקה"
+                        ],
+                        [
+                            "חוקרים נודעים",
+                            "פרד ברוקס, בארי בֶם, גריידי בוץ'",
+                            "אלן טיורינג, ג'ון פון נוימן, אדסחר דייקסטרה, דונלד קנות', דוד הראל, עדי שמיר"
+                        ]
+                    ]
+                },
+                {
                     "type": "paragraph",
                     "text": "5"
                 }
@@ -1017,6 +1057,31 @@
                 {
                     "type": "heading",
                     "text": "The focus of Rup Phases"
+                },
+                {
+                    "type": "table",
+                    "headers": [
+                        "Focus",
+                        "RUP Phase"
+                    ],
+                    "rows": [
+                        [
+                            "Confirm the scope and objectives of the project and bring the business risks under  control",
+                            "Inception  פתיחה"
+                        ],
+                        [
+                            "Stabilize the product plans and bring the architectural and technical risks under control",
+                            "Elaboration\nפירוט והרחבה"
+                        ],
+                        [
+                            "Build  the product and bring logistical, project execution risks under control",
+                            "Construction\nבניה, הרכבה"
+                        ],
+                        [
+                            "Deliver the product and roll-out risks under control",
+                            "Transition\nהעברה"
+                        ]
+                    ]
                 },
                 {
                     "type": "paragraph",

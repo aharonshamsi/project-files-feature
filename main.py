@@ -8,8 +8,8 @@ from src.parsers.pptx_handler import extract_pptx_to_json
 
 
 def main():
-    input_path = "data/inputs/test1.pptx"
-    output_file = "data/outputs/output.json"
+    input_path = "data/inputs/test2.pptx"
+    output_file = "data/outputs/output_test2.json"
     extract_pptx_to_json(input_path, output_file)
         
 #     """

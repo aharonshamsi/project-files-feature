@@ -7,7 +7,9 @@ from pptx.enum.shapes import PP_PLACEHOLDER
 # Constants for better readability
 HEADING_TYPE = "heading"
 PARAGRAPH_TYPE = "paragraph"
+TABLE_TYPE = "table"  # <--- הוספתי את זה
 URL_TYPE = "url"
+
 # =========================================================================
 def extract_pptx_metadata(prs):
     """
@@ -49,6 +51,7 @@ def is_strictly_a_heading(shape, paragraph):
             return True
             
     return False
+
 # =========================================================================
 def extract_pptx_to_json(input_file, output_file):
     """
@@ -72,8 +75,36 @@ def extract_pptx_to_json(input_file, output_file):
             shapes = sorted(slide.shapes, key=lambda s: (s.top, s.left))
 
             for shape in shapes:
+                
+                # --- START: TABLE HANDLING LOGIC ---
+                if shape.has_table:
+                    table_data = {
+                        "type": TABLE_TYPE,
+                        "headers": [],
+                        "rows": []
+                    }
+                    tbl = shape.table
+                    
+                    # Extract all rows text
+                    all_rows_text = []
+                    for row in tbl.rows:
+                        # List comprehension to get text from each cell in the row
+                        row_cells = [cell.text_frame.text.strip() for cell in row.cells]
+                        all_rows_text.append(row_cells)
+
+                    # Logic: First row is headers, rest are data
+                    if all_rows_text:
+                        table_data["headers"] = all_rows_text[0]
+                        table_data["rows"] = all_rows_text[1:]
+                        page_elements.append(table_data)
+                    
+                    # Skip to next shape (don't process as text frame)
+                    continue
+                # --- END: TABLE HANDLING LOGIC ---
+
+
                 # Validate if the shape contains text and isn't a tiny footer number
-                if not shape.has_text_frame :
+                if not shape.has_text_frame: 
                     continue
 
                 for paragraph in shape.text_frame.paragraphs:
