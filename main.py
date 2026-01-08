@@ -39,8 +39,6 @@ def main():
         if learning_skill:
             print(learning_skill)
 
-
-
         # End time
         logger.info(
             f"Execution completed successfully in {time.time() - start_time:.2f} seconds"

@@ -3,10 +3,10 @@
     "source_mode": "json_only",
     "language_mode": "hebrew",
     
-    "open_questions_count": 1,
+    "open_questions_count": 2,
     "multiple_choice_questions_count": 2,
-    "file_questions_count": 3,
+    "file_questions_count": 1,
 
 
-    "input_file": "data/inputs/איפוקסי.pdf"
+    "input_file": "data/inputs/נוהל משך לימודים ועמידה בלוחות זמניים אקדמיים.pdf"
 }

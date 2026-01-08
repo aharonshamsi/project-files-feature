@@ -13,11 +13,17 @@ MAX_TOKENS = 8000
 
 
 # Definition: Structure and rules for generating a complete learning skill with steps and assessment widgets.
-def get_skill_generation_schema(open_q_count, mcq_count, assign_count):
+def get_skill_generation_schema(open_q_count, mcq_count, assign_count, language_mode):
 
     return {
         "name": "generate_complete_skill",
-        "description": "Generates a complete structured learning skill based on structured JSON input.",
+        "description": (
+            "Generates a complete structured learning skill based on structured JSON input."
+            "Instructional learning text for the learner. "
+            "Must not include questions or assessment elements. "
+            f"MUST be written entirely in {language_mode}. "
+            "If any other language appears, the output is invalid."
+        ),
         "parameters": {
             "type": "object",
             "properties": {
@@ -158,14 +164,17 @@ def build_system_prompts(
         mcq_count: int, 
         assign_count: int) -> str:
     
+    
     #Build the complete system prompt string for the AI model based on modes and question counts.
     return "\n".join([
 
-        CORE_ANALYSIS_LOGIC,
-        TRANSFORMATION_MODES[source_mode],
         "LANGUAGE RULE",
         LANGUAGE_MODES['general_language_rules'],
         LANGUAGE_MODES[language_mode],
+        
+        CORE_ANALYSIS_LOGIC,
+        TRANSFORMATION_MODES[source_mode],
+
         f"Create {open_q_count} OPEN QUESTIONS based strictly on the step content, following these rules: {QUESTION_MODE['open_questions']}",
         f"Create {mcq_count} MULTIPLE CHOICE QUESTIONS based strictly on the step content, following these rules: {QUESTION_MODE['multiple_choice_questions']}",
         f"Create {assign_count} ASSIGNMENT QUESTIONS based strictly on the step content, following these rules: {QUESTION_MODE['assignment_questions']}"
@@ -197,12 +206,12 @@ def submit_to_openai_api (json_data_string, parameters: AppConfig):
 
 
     system_prompts = build_system_prompts(source_mode, language_mode, open_q_count, mcq_count, assign_count)
-    functions_definition = get_skill_generation_schema(open_q_count, mcq_count, assign_count)
+    functions_definition = get_skill_generation_schema(open_q_count, mcq_count, assign_count, language_mode)
 
 
     try:
         response = client.chat.completions.create(
-            model="gpt-4.1", 
+            model="gpt-4.1-mini", 
             messages=[
                 {
                     "role": "system", 

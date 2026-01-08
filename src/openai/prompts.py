@@ -180,7 +180,7 @@ OPEN QUESTIONS RULES
 - Do NOT provide model answers or hints.
 - Questions must follow the logical order of the step content.
 - Avoid vague, generic, or opinion-only questions.
-
+- Questions must be generated per step, not across multiple steps.
 
 """,
 
@@ -196,8 +196,12 @@ MULTIPLE CHOICE QUESTIONS RULES
 - Do NOT place the correct answer consistently in the same option.
 - Questions must assess understanding or application, not rote memorization.
 - Questions must follow the logical order of the step content.
+- Questions must be generated per step, not across multiple steps.
+- Mark the correct option using the existing `correct_answer: true` field ONLY.
+- Do NOT write the correct answer in free text.
 
 """,
+
 
 
 "assignment_questions": """
@@ -210,6 +214,8 @@ ASSIGNMENT QUESTIONS RULES
 - Do NOT provide solutions, examples, hints, or evaluation criteria.
 - Each assignment must be clearly defined.
 - Assignments must follow the logical order of the step content.
+- Questions must be generated per step, not across multiple steps.
+
 
 """
 }
