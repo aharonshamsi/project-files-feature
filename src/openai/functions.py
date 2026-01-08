@@ -211,7 +211,7 @@ def submit_to_openai_api (json_data_string, parameters: AppConfig):
 
     try:
         response = client.chat.completions.create(
-            model="gpt-4.1-mini", 
+            model="gpt-4.1", 
             messages=[
                 {
                     "role": "system", 
