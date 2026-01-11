@@ -31,8 +31,7 @@ def main():
 
 
         input_file_path = parameters.input_file
-        output_file_path = "data/outputs/output.json"
-        handle_input_file(input_file_path, output_file_path, parameters)
+        handle_input_file(input_file_path, parameters)
 
         # learning_skill = handle_ai_content_generation(output_file_path, parameters)
 

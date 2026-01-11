@@ -241,4 +241,3 @@ def submit_to_openai_api (json_data_string, parameters: AppConfig):
         print(f"Error calling OpenAI API: {e}")
 
 
-

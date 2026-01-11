@@ -2,7 +2,7 @@ import fitz
 import json
 import os
 from src.parsers.utils import file_size_check
-
+import io
 
 PIXELS_LARGER_THAT_AVERAGE = 1.5
 
@@ -14,7 +14,7 @@ DEFAULT_FONT_SIZE = 12.0
 MINI_WORDS = 40 # Minimal words in content
 
 # ================  extract text (PARAGRAPH AND HEADING) ================================
-def extract_pdf_file_to_json(file_path_input, file_path_output):
+def extract_pdf_file_to_json(file_stream: io.BytesIO) -> tuple[int, dict]:
 
     total_word_count = 0
 
@@ -26,8 +26,13 @@ def extract_pdf_file_to_json(file_path_input, file_path_output):
 
     try:
 
-        file_size_check(file_path_input) # File size check
-        with fitz.open(file_path_input) as doc:
+        file_size_check(file_stream)
+
+        file_stream.seek(0)
+        pdf_bytes = file_stream.read()
+
+
+        with fitz.open(stream=pdf_bytes, filetype="pdf") as doc:
 
             add_meta_data(doc, extracted_data)
 
@@ -44,24 +49,15 @@ def extract_pdf_file_to_json(file_path_input, file_path_output):
             f"Content too short: {total_word_count} words. Minimum required: {MINI_WORDS}"
             )
 
-             # Write the list of dictionaries to the output JSON file
-            with open(file_path_output, 'w', encoding='utf-8') as f:
-                json.dump(extracted_data, f, ensure_ascii=False, indent=2)
-
-            return total_word_count
+            return total_word_count, extracted_data
 
 
-    except FileNotFoundError:
-        print(f"Error: Input file not found at: {file_path_input}")
-        print(f"Current working directory: {os.getcwd()}")
+    except ValueError as ve:
+        print(f"Validation error: {ve}")
         raise
 
     except Exception as e:
-        print(f"Unexpected error while reading PDF: {e}")
-        raise
-    
-    except Exception as e:
-        print(f"Error: An unexpected error occurred during processing: {e}")
+        print(f"Unexpected error while processing PDF: {e}")
         raise
 
 

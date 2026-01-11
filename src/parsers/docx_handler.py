@@ -3,6 +3,10 @@ from docx.text.paragraph import Paragraph
 from docx.table import Table
 import json
 import re
+import io
+
+from typing import Dict, Any
+from src.models.document_models import Metadata, ContentBlock, DocumentModel
 
 
 from src.parsers.utils import file_size_check
@@ -13,22 +17,20 @@ HEADING = "heading"
 TITLE = "title"
 HEBREW_HEADING = "כותרת"
 
-MINI_WORDS = 40 # Minimal words in content
+MINI_WORDS = 40 
 
 
-def extract_document_metadata(file_object):
+def extract_document_metadata(file_object) -> Metadata:
 
     properties = file_object.core_properties
 
     metadata = {
         "title": properties.title, 
         "author": properties.author,
-        "subject": properties.subject,
-        "keywords": properties.keywords,
-        "creation_date": str(properties.created),
+        "creation_date": properties.created.isoformat() if properties.created else None
     }
+    return Metadata(**metadata)
 
-    return metadata
 
 
 
@@ -88,129 +90,101 @@ def extract_urls_from_text(text):
 
 
 #==================================================================
-def extract_docx_file_to_json(file_path_input, file_path_output):
-
+def extract_docx_file_to_json(file_stream: io.BytesIO) -> tuple[int, DocumentModel]:
     count_words = 0
-
-    result = {
-        "metadata": [],
-        "content": [],
-        }
+    block_list = [] 
+    block_id_counter = 1
 
     try:
-        file_size_check(file_path_input) # Check size of the file MAX & MINI
-        doc = Document(file_path_input)
+        file_size_check(file_stream)
 
-        metadata = extract_document_metadata(doc)
-        result["metadata"].append(metadata)
+        file_stream.seek(0) 
+        doc = Document(file_stream)
+        
+        metadata_dict = extract_document_metadata(doc)
 
         new_paragraph = False 
 
-
         for block in iteration_block_items(doc):
 
-            # Paragraph
             if isinstance(block, Paragraph):
                 text = block.text.strip()
-                style = block.style.name
-                style_lower = style.lower()
-                
-
-                if not text:
-                    continue
+                if not text: continue
                 
                 count_words += len(text.split()) 
-                
                 urls = extract_urls_from_text(text)
-                # Clear only url for text
+                
                 if urls:
                     for url in urls:
                         text = text.replace(url, "").strip()
 
-    
-                # Heading
-                is_heading_style = (
-                    HEADING in style_lower or 
-                    TITLE in style_lower or 
-                    HEBREW_HEADING in style_lower
-                )
+                style_lower = block.style.name.lower()
+                is_heading_style = (HEADING in style_lower or TITLE in style_lower or HEBREW_HEADING in style_lower)
 
                 if (is_heading_style or all(run.bold for run in block.runs if run.text.strip())) and not urls:
-
-                    # Check if this is a title that opens a new section
                     is_break = is_real_section_break(block)
 
-                    # Concatenation heading
-                    if (result["content"] and 
-                        result["content"][-1]["type"] == "heading" and 
-                        not is_break):
-                        
-                        result["content"][-1]["text"] += "\n" + text
-
-                    else:
-                        # New heading
-                        result["content"].append({
-                            "type": "heading",
-                            "text": text
-                        })
                     
+                    if (block_list and block_list[-1].type == "heading" and not is_break):
+                        block_list[-1].text += "\n" + text
+                    else:
+                        block_list.append(ContentBlock(
+                            block_id=block_id_counter,
+                            type="heading",
+                            text=text
+                        ))
+                        block_id_counter += 1
                     new_paragraph = True
 
-
-                # New Paragraph
                 else:
-                    if new_paragraph or not result["content"] or result["content"][-1]["type"] != "paragraph":
-                        result["content"].append({
-                            "type": "paragraph",
-                            "text": text
-                        })
-                    # Existing paragraph
+                    # Paragraph chaining logic
+                    if not new_paragraph and block_list and block_list[-1].type == "paragraph":
+                        block_list[-1].text += "\n" + text
                     else:
-                        result["content"][-1]["text"] += "\n" + text
-
+                        block_list.append(ContentBlock(
+                            block_id=block_id_counter,
+                            type="paragraph",
+                            text=text
+                        ))
+                        block_id_counter += 1
                     new_paragraph = False
 
-
-                # URL
+                #  urls
                 if urls:
                     for url in urls:
-                        result["content"].append({
-                            "type": "url",
-                            "text": url
-                        })
+                        block_list.append(ContentBlock(
+                            block_id=block_id_counter,
+                            type="url",
+                            text=url
+                        ))
+                        block_id_counter += 1
 
-                
             # Table
             elif isinstance(block, Table):
-                table_data, count_words = extract_table(block, count_words) # data table and also count words
-                result["content"].append({
-                    "type": "table",
-                    "data": table_data
-                })
+                table_obj, count_words = extract_table(block, count_words)
+                block_list.append(ContentBlock(
+                    block_id=block_id_counter,
+                    type="table",
+                    text="Table Data", 
+                    table_data=table_obj
+                ))
+                block_id_counter += 1
 
-
-        # Check number of words
+       
         if count_words < MINI_WORDS:
-            raise ValueError(
-        f"Content too short: {count_words} words. Minimum required: {MINI_WORDS}"
+            raise ValueError(f"Content too short: {count_words} words.")
+
+        final_document = DocumentModel(
+            metadata=metadata_dict,
+            content_blocks=block_list
         )
-
-        # Write JSON
-        with open(file_path_output, "w", encoding="utf-8") as f:
-            json.dump(result, f, ensure_ascii=False, indent=4)
         
-        return count_words 
+        return count_words, final_document
 
-
-    # Error detection
-    except FileNotFoundError:
+    except Exception as e:
+        print(f"Error: {e}")
         raise
 
-    except PermissionError:
-        raise
-
-    except Exception:
-        raise
 
 
 
@@ -219,7 +193,7 @@ def extract_docx_file_to_json(file_path_input, file_path_output):
 #=============================================================
 def is_real_section_break(block):
 
-    # 1. בדיקת הפסקה עצמה (Instance)
+    # 1. בדיקת הפיסקה עצמה (Instance)
     if block.paragraph_format.page_break_before:
         return True
 
@@ -231,7 +205,6 @@ def is_real_section_break(block):
     if 'w:sectPr' in xml_str or 'w:br' in xml_str:
         return True
     
-    # 4. בדיקת "lastRenderedPageBreak" (לפעמים וורד מסמן שבירה ויזואלית כך)
     if 'lastRenderedPageBreak' in xml_str:
         return True
 

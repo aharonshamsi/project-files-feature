@@ -23,8 +23,6 @@ Inside each step:
 - Use bullet or numbered lists when structure exists
 Do not output plain unstructured text.
 
-
-
 """
 
 
