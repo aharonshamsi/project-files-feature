@@ -1,12 +1,12 @@
 
 {
-    "source_mode": "json_only",
+    "source_mode": "json_plus_enhance",
     "language_mode": "hebrew",
     
     "open_questions_count": 2,
     "multiple_choice_questions_count": 2,
-    "file_questions_count": 1,
+    "file_questions_count": 2,
 
 
-    "input_file": "data/inputs/נוהל משך לימודים ועמידה בלוחות זמניים אקדמיים.pdf"
+    "input_file": "data/inputs/איפוקסי.docx"
 }

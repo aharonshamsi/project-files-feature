@@ -34,10 +34,11 @@ def main():
         output_file_path = "data/outputs/output.json"
         handle_input_file(input_file_path, output_file_path, parameters)
 
-        learning_skill = handle_ai_content_generation(output_file_path, parameters)
+        # learning_skill = handle_ai_content_generation(output_file_path, parameters)
 
-        if learning_skill:
-            print(learning_skill)
+        # if learning_skill:
+        #     print(learning_skill)
+
 
         # End time
         logger.info(

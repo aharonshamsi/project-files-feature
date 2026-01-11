@@ -19,3 +19,4 @@ def load_parameters(path: str) -> AppConfig:
     except Exception as e:
         logger.error(f"Failed to load parameters: {e}")
         raise
+    

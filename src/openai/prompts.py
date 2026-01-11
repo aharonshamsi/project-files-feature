@@ -182,6 +182,15 @@ OPEN QUESTIONS RULES
 - Avoid vague, generic, or opinion-only questions.
 - Questions must be generated per step, not across multiple steps.
 
+
+COGNITIVE INTENT CONSTRAINTS
+
+- Each open question MUST target exactly ONE cognitive intent.
+- Allowed intents: remember, understand, apply, analyze, evaluate.
+- The question verb and structure MUST clearly reflect the chosen intent.
+- Do NOT mix multiple cognitive intents in a single question.
+
+
 """,
 
 
@@ -200,6 +209,15 @@ MULTIPLE CHOICE QUESTIONS RULES
 - Mark the correct option using the existing `correct_answer: true` field ONLY.
 - Do NOT write the correct answer in free text.
 
+
+COGNITIVE INTENT CONSTRAINTS
+
+- Multiple-choice questions are LIMITED to lower-order cognitive intents only.
+- Allowed intents: remember, understand.
+- Do NOT generate MCQs for apply, analyze, evaluate, or create intents.
+- The wording of the question MUST clearly match one of the allowed intents.
+
+
 """,
 
 
@@ -215,6 +233,15 @@ ASSIGNMENT QUESTIONS RULES
 - Each assignment must be clearly defined.
 - Assignments must follow the logical order of the step content.
 - Questions must be generated per step, not across multiple steps.
+
+
+COGNITIVE INTENT CONSTRAINTS
+
+- Assignment questions MUST target higher-order cognitive intents.
+- Allowed intents: apply, analyze, evaluate, create.
+- Each assignment MUST require creation of a concrete learner-produced artifact.
+- Do NOT generate recall-only or explanation-only tasks.
+
 
 
 """
