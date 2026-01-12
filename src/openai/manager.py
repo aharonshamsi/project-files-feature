@@ -5,13 +5,9 @@ from src.parameters.config_model import AppConfig
 
 
 
-def handle_ai_content_generation(output_file_path: str, parameters: AppConfig) -> dict:
+def handle_ai_content_generation(output_dict: dict, parameters: AppConfig) -> dict:
 
-    logger.info(f"Sending output file to OpenAI: {output_file_path}")
-
-    with open(output_file_path, 'r', encoding='utf-8') as file:
-        json_data = json.load(file)
-        json_data_string = json.dumps(json_data, ensure_ascii=False)
+    json_data_string = json.dumps(output_dict, ensure_ascii=False, indent=2)
 
     response = submit_to_openai_api(json_data_string, parameters)    
     message = response.choices[0].message

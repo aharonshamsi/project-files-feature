@@ -31,12 +31,12 @@ def main():
 
 
         input_file_path = parameters.input_file
-        handle_input_file(input_file_path, parameters)
+        output_dict = handle_input_file(input_file_path)
 
-        # learning_skill = handle_ai_content_generation(output_file_path, parameters)
+        learning_skill = handle_ai_content_generation(output_dict, parameters)
 
-        # if learning_skill:
-        #     print(learning_skill)
+        if learning_skill:
+            print(learning_skill)
 
 
         # End time

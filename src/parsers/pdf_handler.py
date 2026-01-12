@@ -14,7 +14,7 @@ DEFAULT_FONT_SIZE = 12.0
 MINI_WORDS = 40 # Minimal words in content
 
 # ================  extract text (PARAGRAPH AND HEADING) ================================
-def extract_pdf_file_to_json(file_stream: io.BytesIO) -> tuple[int, dict]:
+def extract_pdf_file_to_json(file_stream: io.BytesIO) -> tuple[int, dict]: # DocumentModel פה נותר לעבוד שיחזיר במקום מילון יחזיר מודל 
 
     total_word_count = 0
 
