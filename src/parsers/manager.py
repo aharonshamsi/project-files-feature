@@ -1,11 +1,12 @@
+import io
+from pathlib import Path
+from src.utils.logger import logger
+from src.parameters.config_model import AppConfig
+
 
 from src.parsers.docx_handler import extract_docx_file_to_model
 from src.parsers.pdf_handler import extract_pdf_file_to_model
 from src.parsers.utils import get_file_extension_type
-from src.utils.logger import logger
-from src.parameters.config_model import AppConfig
-import io
-from pathlib import Path
 
 
 #==================================
@@ -17,13 +18,14 @@ def handle_input_file(parameters: AppConfig) -> dict:
     file_type = get_file_extension_type(input_file_path)
 
     with open(input_file_path, "rb") as f: 
-        file_stream = io.BytesIO(f.read()) # זרם ביטים
+        file_stream = io.BytesIO(f.read()) 
     
     logger.info(f"Extracting content from file: {input_file_path}")
 
     output_file_path = "data/outputs/output.json"
 
-    IMAGE_OUTPUT_DIR = Path("data/outputs/s3_images")  # path of dir extract images
+    # path of dir extract images
+    IMAGE_OUTPUT_DIR = Path("data/outputs/s3_images") 
     IMAGE_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     logger.info(f"Image output directory ready: {IMAGE_OUTPUT_DIR}")
 

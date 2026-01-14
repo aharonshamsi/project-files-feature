@@ -1,34 +1,27 @@
 import fitz
-import json
 import os
-from src.parsers.utils import file_size_check
 import io
 import re
 
-from src.models.document_models import DocumentModel
-
+from src.parsers.utils import file_size_check
 from src.models.document_models import Metadata, ContentBlock, DocumentModel, ImageData
-
-PIXELS_LARGER_THAT_AVERAGE = 1.5
-
 
 PIXELS_LARGER_THAT_AVERAGE = 1.5 # Size of average pixels of the file
 TEXT_BLOCK_TYPE = 0 
+IMAGE_BLOCK_TYPE = 1
 DEFAULT_FONT_SIZE = 12.0
+MINI_WORDS = 40 
 
-MINI_WORDS = 40 # Minimal words in content
 
 # ================  extract text (PARAGRAPH AND HEADING) ================================
 def extract_pdf_file_to_model(file_stream: io.BytesIO, image_output_dir: str) -> tuple[int, DocumentModel]:
 
     total_word_count = 0
-
     block_list = []
-
 
     try:
 
-        # file_size_check(file_stream)
+        file_size_check(file_stream)
 
         file_stream.seek(0)
         pdf_bytes = file_stream.read()
@@ -39,16 +32,14 @@ def extract_pdf_file_to_model(file_stream: io.BytesIO, image_output_dir: str) ->
             metadata = add_meta_data(doc)
 
             for page_num in range(doc.page_count):
-                page_word_count = parse_page(doc, page_num, block_list)
+                page_word_count = parse_page(doc, page_num, block_list, image_output_dir)
                 total_word_count += page_word_count
 
-                # add_page(block_list, page_num, page_elements)
-
             # Check number of words
-            # if total_word_count < MINI_WORDS:
-            #     raise ValueError(
-            # f"Content too short: {total_word_count} words. Minimum required: {MINI_WORDS}"
-            # )
+            if total_word_count < MINI_WORDS:
+                raise ValueError(
+            f"Content too short: {total_word_count} words. Minimum required: {MINI_WORDS}"
+            )
 
             final_document = DocumentModel (
                 metadata=metadata,
@@ -70,7 +61,7 @@ def extract_pdf_file_to_model(file_stream: io.BytesIO, image_output_dir: str) ->
 
 
 
-# =============== adding the file meta data to the output file =============
+# ===========================================
 def add_meta_data(doc) -> Metadata:
 
     metadata = doc.metadata
@@ -79,10 +70,7 @@ def add_meta_data(doc) -> Metadata:
 
 
 
-
-
-
-# =========================================================================
+# =============================================
 def combine_block_text(b):
     block_string = ""
     if b['type'] == 0:  # Check if text block
@@ -94,8 +82,8 @@ def combine_block_text(b):
 
 
 
-# =========================================================================
-def parse_page(doc, page_num, block_list):
+# ===========================================================
+def parse_page(doc, page_num, block_list, image_output_dir):
    
     page = doc.load_page(page_num)
     body_size = get_page_body_size(page) 
@@ -111,8 +99,20 @@ def parse_page(doc, page_num, block_list):
     word_count = 0
 
 
-    
     for b in blocks:
+
+        # Images
+        if b['type'] == IMAGE_BLOCK_TYPE: 
+            img_path = save_pdf_image(b, page_num, len(block_list), image_output_dir)
+            if img_path:
+                block_list.append(ContentBlock(
+                    block_id=len(block_list) + 1,
+                    type="image",
+                    image_data=ImageData(image_path=img_path)
+                ))
+            continue
+
+        # text
         block_text = combine_block_text(b)
 
         if not block_text:
@@ -146,6 +146,7 @@ def parse_page(doc, page_num, block_list):
 
                 if current_paragraph_text:
                     text_to_save = current_paragraph_text
+
                     for url in current_urls:
                         text_to_save = text_to_save.replace(url, "")
 
@@ -162,7 +163,7 @@ def parse_page(doc, page_num, block_list):
                             type="url",
                             text=url
                         ))
-                # 
+                
                 current_paragraph_text = block_text
                 current_element_type = block_type
                 current_urls = urls_in_this_block
@@ -174,20 +175,19 @@ def parse_page(doc, page_num, block_list):
 
     # Last block
     if current_paragraph_text:
-        # --- שורות התיקון ---
+
         text_to_save = current_paragraph_text
         for url in current_urls:
             text_to_save = text_to_save.replace(url, "")
 
         text_to_save = re.sub(r' +', ' ', text_to_save).strip()
-        
+
         block_list.append(ContentBlock(
             block_id=len(block_list) + 1,
             type=current_element_type,
             text=text_to_save.strip()
         ))
         
-        # עדכון ספירת מילים לפי הטקסט הנקי
         word_count += len(text_to_save.split())
 
         for url in current_urls:
@@ -198,6 +198,8 @@ def parse_page(doc, page_num, block_list):
             ))
     
     return word_count
+
+
 
 
 
@@ -244,11 +246,11 @@ def is_block_fully_bold(block):
 
 
 
-
+# ==============================================================
 def get_urls_from_block(block_text, block_bbox, page_links):
     found_urls = set()
     
-    # כאן block_bbox חייב להיות רשימה של 4 מספרים [x0, y0, x1, y1]
+    # The coordinates of the rectangle surrounding the text [x0, y0, x1, y1]
     block_rect = fitz.Rect(block_bbox) 
     
     for link in page_links:
@@ -256,7 +258,7 @@ def get_urls_from_block(block_text, block_bbox, page_links):
             if block_rect.intersects(link["from"]):
                 found_urls.add(link["uri"])
 
-    # חיפוש טקסטואלי (Regex)
+    # Text search of link
     text_to_search = block_text.replace("\n", "")
     url_pattern = r'(https?://[^\s<>"]+|www\.[^\s<>"]+)'
     text_urls = re.findall(url_pattern, text_to_search)
@@ -265,3 +267,26 @@ def get_urls_from_block(block_text, block_bbox, page_links):
         found_urls.add(url.rstrip('.,!?;:)'))
 
     return list(found_urls)
+
+
+
+# =====================================================================
+def save_pdf_image(image_block, page_num, block_id, image_output_dir):
+    try:
+        image_bytes = image_block.get("image")
+
+        if not image_bytes:
+            return None
+            
+        extension = image_block.get("ext", "png")
+        image_filename = f"pdf_pg_{page_num+1}_blk_{block_id}.{extension}"
+        full_path = os.path.join(image_output_dir, image_filename)
+        
+        with open(full_path, "wb") as f:
+            f.write(image_bytes)
+            
+        return full_path
+    
+    except Exception as e:
+        print(f"Error saving PDF image: {e}")
+        return None

@@ -32,10 +32,10 @@ def main():
         output_dict = handle_input_file(parameters)
 
 
-        # learning_skill = handle_ai_content_generation(output_dict, parameters)
+        learning_skill = handle_ai_content_generation(output_dict, parameters)
 
-        # if learning_skill:
-        #     print(learning_skill)
+        if learning_skill:
+            print(learning_skill)
 
 
         # End time

@@ -72,6 +72,7 @@ def extract_urls_from_text(text):
 
 #==================================================================
 def extract_docx_file_to_model(file_stream: io.BytesIO, image_output_dir: str) -> tuple[int, DocumentModel]:
+    
     count_words = 0
     block_list = [] 
     block_id_counter = 1
