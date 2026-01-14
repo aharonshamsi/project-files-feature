@@ -1,15 +1,13 @@
 from docx import Document
 from docx.text.paragraph import Paragraph
 from docx.table import Table
-import json
 import re
 import io
-
-from typing import Dict, Any
-from src.models.document_models import Metadata, ContentBlock, DocumentModel
-
+import os
+from src.models.document_models import Metadata, ContentBlock, DocumentModel, ImageData
 
 from src.parsers.utils import file_size_check
+
 
 
 # Heading style keywords used for identifying heading paragraphs.
@@ -34,7 +32,7 @@ def extract_document_metadata(file_object) -> Metadata:
 
 
 
- # data table and also count words
+# data table and also count words
 def extract_table(table, count_words):
     
     extracted = []
@@ -48,11 +46,9 @@ def extract_table(table, count_words):
         extracted.append(extracted_row)
 
     if extracted:
-        return {"columns": extracted[0], "rows": extracted[1:]}, count_words # Return also count words
+        return {"headers": extracted[0], "rows": extracted[1:]}, count_words 
     else:
-        return {"columns": [], "rows": [], "word_count": 0}, count_words # Return also count words
-
-
+        return {"headers": [], "rows": []}, count_words
 
 
 
@@ -67,21 +63,6 @@ def iteration_block_items(parent):
 
 
 
-
-def paragraph_contains_image(paragraph):
-    images = []
-
-    for run in paragraph.runs:
-        drawing_elements = run._r.findall('.//w:drawing', paragraph._element.nsmap)
-        
-        if drawing_elements:
-            images.append(run)
-    
-    return images
-
-
-
-
 def extract_urls_from_text(text):
     pattern = r'https?://[^\s)]+'
     return re.findall(pattern, text)
@@ -90,7 +71,7 @@ def extract_urls_from_text(text):
 
 
 #==================================================================
-def extract_docx_file_to_json(file_stream: io.BytesIO) -> tuple[int, DocumentModel]:
+def extract_docx_file_to_model(file_stream: io.BytesIO, image_output_dir: str) -> tuple[int, DocumentModel]:
     count_words = 0
     block_list = [] 
     block_id_counter = 1
@@ -109,15 +90,32 @@ def extract_docx_file_to_json(file_stream: io.BytesIO) -> tuple[int, DocumentMod
 
             if isinstance(block, Paragraph):
                 text = block.text.strip()
-                if not text: continue
                 
-                count_words += len(text.split()) 
-                urls = extract_urls_from_text(text)
+                # Images
+                saved_images = extract_and_save_image(block, block_id_counter, image_output_dir)
+                
+                for img_path in saved_images:
+                    block_list.append(ContentBlock(
+                        block_id=block_id_counter,
+                        type="image",
+                        image_data=ImageData(image_path=img_path)
+                    ))
+                    block_id_counter += 1
+
+                if not text and not saved_images: continue
+                if not text: continue
+
+
+                count_words += len(text.split())
+
+                urls = extract_urls_from_text(text) # If the link is actually part of the text
                 
                 if urls:
                     for url in urls:
                         text = text.replace(url, "").strip()
 
+
+                # Heading
                 style_lower = block.style.name.lower()
                 is_heading_style = (HEADING in style_lower or TITLE in style_lower or HEBREW_HEADING in style_lower)
 
@@ -135,6 +133,7 @@ def extract_docx_file_to_json(file_stream: io.BytesIO) -> tuple[int, DocumentMod
                         ))
                         block_id_counter += 1
                     new_paragraph = True
+
 
                 else:
                     # Paragraph chaining logic
@@ -165,7 +164,6 @@ def extract_docx_file_to_json(file_stream: io.BytesIO) -> tuple[int, DocumentMod
                 block_list.append(ContentBlock(
                     block_id=block_id_counter,
                     type="table",
-                    text="Table Data", 
                     table_data=table_obj
                 ))
                 block_id_counter += 1
@@ -188,19 +186,18 @@ def extract_docx_file_to_json(file_stream: io.BytesIO) -> tuple[int, DocumentMod
 
 
 
-
-
 #=============================================================
 def is_real_section_break(block):
 
-    # 1. בדיקת הפיסקה עצמה (Instance)
+    # 1. Check paragraph formatting (Instance)
     if block.paragraph_format.page_break_before:
         return True
 
+    # 2. Check the style formatting (if style exists)
     if block.style and block.style.paragraph_format.page_break_before:
         return True
 
-    # 3. בדיקות XML קשיחות (Section Break / Hard Break)
+    # 3. Hard XML-based checks (section/hard breaks)
     xml_str = block._element.xml
     if 'w:sectPr' in xml_str or 'w:br' in xml_str:
         return True
@@ -209,3 +206,40 @@ def is_real_section_break(block):
         return True
 
     return False
+
+
+
+#=============================================================
+def extract_and_save_image(paragraph, block_id,  image_output_dir: str):
+    image_paths = []
+
+    # Get rId of image
+    blips = paragraph._element.xpath('.//*[local-name()="blip"]')
+    
+    for i, blip in enumerate(blips):
+
+        embed_attr = '{http://schemas.openxmlformats.org/officeDocument/2006/relationships}embed'
+        rId = blip.get(embed_attr)
+        
+        if rId:
+            try:
+                # Access binary image
+                image_part = paragraph.part.related_parts[rId]
+                image_bytes = image_part.blob
+                
+                # Build file path
+                extension = image_part.content_type.split('/')[-1].replace('x-', '')
+                image_filename = f"img_block_{block_id}_{i+1}.{extension}"
+                full_path = os.path.join(image_output_dir, image_filename)
+                
+                # Save image
+                with open(full_path, "wb") as f:
+                    f.write(image_bytes)
+                
+                # Append the path to the list for JSON output or further use
+                image_paths.append(full_path)
+            except Exception as e:
+                raise RuntimeError(f"Image extraction failed for block {block_id}, image {i+1}: {e}") from e
+
+                
+    return image_paths

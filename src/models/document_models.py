@@ -1,11 +1,11 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List, Literal, Optional
 
 
 class Metadata(BaseModel):
     title: Optional[str] = None
     author: Optional[str] = None
-    creation_date: Optional[str] = None
+    creation_date: Optional[str] = Field(None, alias="creationDate")
 
 
 class TableData(BaseModel):
@@ -20,7 +20,7 @@ class ImageData(BaseModel):
 class ContentBlock(BaseModel):
     block_id: int
     type: Literal["heading", "paragraph", "table", "url", "image"] 
-    text: str
+    text: Optional [str] = None
     table_data: Optional[TableData] = None
     image_data: Optional[ImageData] = None
 

@@ -29,14 +29,13 @@ def main():
         path_params = "src/parameters/parameters.json"
         parameters = load_parameters(path_params)
 
+        output_dict = handle_input_file(parameters)
 
-        input_file_path = parameters.input_file
-        output_dict = handle_input_file(input_file_path)
 
-        learning_skill = handle_ai_content_generation(output_dict, parameters)
+        # learning_skill = handle_ai_content_generation(output_dict, parameters)
 
-        if learning_skill:
-            print(learning_skill)
+        # if learning_skill:
+        #     print(learning_skill)
 
 
         # End time
