@@ -156,16 +156,9 @@ def get_skill_generation_schema(open_q_count, mcq_count, assign_count, language_
 
 
 
-#===================================
-def build_system_prompts(
-        source_mode:str, 
-        language_mode: str, 
-        open_q_count: int, 
-        mcq_count: int, 
-        assign_count: int) -> str:
+#Build the complete system prompt string for the AI model based on modes and question counts.
+def build_system_prompts(source_mode:str, language_mode: str, open_q_count: int, mcq_count: int, assign_count: int) -> str:
     
-    
-    #Build the complete system prompt string for the AI model based on modes and question counts.
     return "\n".join([
 
         "LANGUAGE RULE",
@@ -180,8 +173,6 @@ def build_system_prompts(
         f"Create {assign_count} ASSIGNMENT QUESTIONS based strictly on the step content, following these rules: {QUESTION_MODE['assignment_questions']}"
 
     ])
-
-
 
 
 

@@ -1,12 +1,12 @@
 
 {
-    "source_mode": "json_plus_enhance",
+    "source_mode": "json_only",
     "language_mode": "hebrew",
     
     "open_questions_count": 2,
-    "multiple_choice_questions_count": 2,
-    "file_questions_count": 2,
+    "multiple_choice_questions_count": 1,
+    "file_questions_count": 1,
 
 
-    "input_file": "/Users/hrwnmshsmsyn/Desktop/project-files-feature/data/inputs/7-סיליבוס פייסבוק.pdf"
+    "input_file": "/Users/hrwnmshsmsyn/Desktop/project-files-feature/data/inputs/נוהל משך לימודים ועמידה בלוחות זמניים אקדמיים.pdf"
 }

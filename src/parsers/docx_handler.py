@@ -4,9 +4,9 @@ from docx.table import Table
 import re
 import io
 import os
-from src.models.document_models import Metadata, ContentBlock, DocumentModel, ImageData
 
 from src.parsers.utils import file_size_check
+from src.models.document_models import Metadata, ContentBlock, DocumentModel, ImageData
 
 
 
