@@ -1,5 +1,5 @@
 import json
-from src.utils.logger import logger
+#from src.utils.logger import logger
 from src.openai.functions import submit_to_openai_api
 from src.parameters.config_model import AppConfig
 
@@ -13,7 +13,7 @@ def handle_ai_content_generation(output_dict: dict, parameters: AppConfig) -> di
     message = response.choices[0].message
     
     if not message.tool_calls:
-        logger.warning("No tool calls detected in response")
+       # logger.warning("No tool calls detected in response")
         return {}
 
     # Response Validation & JSON Parsing
@@ -23,5 +23,6 @@ def handle_ai_content_generation(output_dict: dict, parameters: AppConfig) -> di
         
 
     except json.JSONDecodeError:
-        logger.error("AI returned invalid JSON format")
-        raise
+       # logger.error("AI returned invalid JSON format")
+       print("AI returned invalid JSON format")
+    raise

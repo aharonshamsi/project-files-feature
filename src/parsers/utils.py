@@ -1,3 +1,6 @@
+
+import zipfile
+from pathlib import Path
 import zipfile
 import io
 
@@ -17,7 +20,6 @@ def file_size_check(file_stream: io.BytesIO):
         raise ValueError(f"The file size is smaller than the minimum required size of {MINI_FILE_DOCX_SIZE_BYTES} bytes")
     
 
-
 # Check and return suffix type of the file
 def get_file_extension_type(file_path):
     with open(file_path, 'rb') as f:
@@ -27,17 +29,22 @@ def get_file_extension_type(file_path):
     if header.startswith(b'%PDF-'):
         return 'pdf'
 
-    # Possible DOCX / PPTX (ZIP)
+    # Possible DOCX or PPTX (Both are ZIP archives)
     if header.startswith(b'PK\x03\x04'):
         try:
             with zipfile.ZipFile(file_path) as z:
-                names = z.namelist()
-                if 'word/document.xml' in names:
+                # Get the list of files inside the archive once
+                file_list = z.namelist()
+
+                # Check for Word document structure
+                if 'word/document.xml' in file_list:
                     return 'docx'
-                if 'ppt/presentation.xml' in names:
+                
+                # Check for PowerPoint presentation structure
+                if 'ppt/presentation.xml' in file_list:
                     return 'pptx'
+
         except zipfile.BadZipFile:
             pass
 
     raise ValueError(f"Unsupported or corrupted file type: '{file_path}'")
-

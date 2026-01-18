@@ -1,6 +1,6 @@
+from src.parsers.utils import get_file_extension_type
 import io
 from pathlib import Path
-from src.utils.logger import logger
 from src.parameters.config_model import AppConfig
 
 
@@ -21,8 +21,6 @@ def handle_input_file(parameters: AppConfig) -> dict:
     with open(input_file_path, "rb") as f: 
         file_stream = io.BytesIO(f.read()) 
     
-    logger.info(f"Extracting content from file: {input_file_path}")
-
     output_file_path = "data/outputs/output.json"
 
     # path of dir extract images
