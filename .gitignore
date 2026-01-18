@@ -2,8 +2,8 @@ __pycache__/
 *.pyc
 output/
 .env
-inputs/
+data/inputs
 test_openAI.py
 logs/app.log
 src/utils/logger.py
-data/outputs/s3_images/
+data/outputs

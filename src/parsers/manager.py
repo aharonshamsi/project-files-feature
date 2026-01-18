@@ -15,7 +15,7 @@ def handle_input_file(parameters: AppConfig) -> dict:
 
     input_file_path = parameters.input_file
 
-    # Get input file name extension (DOCX || PDF)
+    # Get input file name extension (DOCX || PDF || PPTX)
     file_type = get_file_extension_type(input_file_path)
 
     with open(input_file_path, "rb") as f: 
