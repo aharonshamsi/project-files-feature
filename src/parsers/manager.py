@@ -27,7 +27,6 @@ def handle_input_file(parameters: AppConfig) -> dict:
     # path of dir extract images
     IMAGE_OUTPUT_DIR = Path("data/outputs/s3_images") 
     IMAGE_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    logger.info(f"Image output directory ready: {IMAGE_OUTPUT_DIR}")
 
 
     if file_type == "docx":

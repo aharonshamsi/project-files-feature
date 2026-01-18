@@ -12,6 +12,11 @@ from src.parsers.utils import file_size_check
 
 # Heading style keywords used for identifying heading paragraphs.
 HEADING = "heading"
+PARAGRAPH = "paragraph"
+URL = "url"
+IMAGE = "image"
+TABLE = "table"
+
 TITLE = "title"
 HEBREW_HEADING = "כותרת"
 
@@ -98,7 +103,7 @@ def extract_docx_file_to_model(file_stream: io.BytesIO, image_output_dir: str) -
                 for img_path in saved_images:
                     block_list.append(ContentBlock(
                         block_id=block_id_counter,
-                        type="image",
+                        type=IMAGE,
                         image_data=ImageData(image_path=img_path)
                     ))
                     block_id_counter += 1
@@ -124,12 +129,12 @@ def extract_docx_file_to_model(file_stream: io.BytesIO, image_output_dir: str) -
                     is_break = is_real_section_break(block)
 
                     
-                    if (block_list and block_list[-1].type == "heading" and not is_break):
+                    if (block_list and block_list[-1].type == HEADING and not is_break):
                         block_list[-1].text += "\n" + text
                     else:
                         block_list.append(ContentBlock(
                             block_id=block_id_counter,
-                            type="heading",
+                            type=HEADING,
                             text=text
                         ))
                         block_id_counter += 1
@@ -138,12 +143,12 @@ def extract_docx_file_to_model(file_stream: io.BytesIO, image_output_dir: str) -
 
                 else:
                     # Paragraph chaining logic
-                    if not new_paragraph and block_list and block_list[-1].type == "paragraph":
+                    if not new_paragraph and block_list and block_list[-1].type == PARAGRAPH:
                         block_list[-1].text += "\n" + text
                     else:
                         block_list.append(ContentBlock(
                             block_id=block_id_counter,
-                            type="paragraph",
+                            type=PARAGRAPH,
                             text=text
                         ))
                         block_id_counter += 1
@@ -154,7 +159,7 @@ def extract_docx_file_to_model(file_stream: io.BytesIO, image_output_dir: str) -
                     for url in urls:
                         block_list.append(ContentBlock(
                             block_id=block_id_counter,
-                            type="url",
+                            type=URL,
                             text=url
                         ))
                         block_id_counter += 1
@@ -164,7 +169,7 @@ def extract_docx_file_to_model(file_stream: io.BytesIO, image_output_dir: str) -
                 table_obj, count_words = extract_table(block, count_words)
                 block_list.append(ContentBlock(
                     block_id=block_id_counter,
-                    type="table",
+                    type=TABLE,
                     table_data=table_obj
                 ))
                 block_id_counter += 1

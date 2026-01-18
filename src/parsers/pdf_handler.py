@@ -6,6 +6,12 @@ import re
 from src.parsers.utils import file_size_check
 from src.models.document_models import Metadata, ContentBlock, DocumentModel, ImageData
 
+HEADING = "heading"
+PARAGRAPH = "paragraph"
+URL = "url"
+IMAGE = "image"
+TABLE = "table"
+
 PIXELS_LARGER_THAT_AVERAGE = 1.5 # Size of average pixels of the file
 TEXT_BLOCK_TYPE = 0 
 IMAGE_BLOCK_TYPE = 1
@@ -92,7 +98,7 @@ def parse_page(doc, page_num, block_list, image_output_dir):
     all_page_links = page.get_links()
 
     current_paragraph_text = ""
-    current_element_type = "paragraph"
+    current_element_type = PARAGRAPH
     current_urls = []
     blocks.sort(key=lambda b: b['bbox'][1]) # Sort the blocks
     
@@ -107,7 +113,7 @@ def parse_page(doc, page_num, block_list, image_output_dir):
             if img_path:
                 block_list.append(ContentBlock(
                     block_id=len(block_list) + 1,
-                    type="image",
+                    type=IMAGE,
                     image_data=ImageData(image_path=img_path)
                 ))
             continue
@@ -136,13 +142,13 @@ def parse_page(doc, page_num, block_list, image_output_dir):
             
             # Heading
             if is_new_header_candidate: 
-                block_type = "heading"
+                block_type = HEADING
             
             # Paragraph
             else:
-                block_type = "paragraph"
+                block_type = PARAGRAPH
 
-            if block_type != current_element_type or block_type == "heading": 
+            if block_type != current_element_type or block_type == HEADING: 
 
                 if current_paragraph_text:
                     text_to_save = current_paragraph_text
@@ -160,7 +166,7 @@ def parse_page(doc, page_num, block_list, image_output_dir):
                     for url in current_urls:
                         block_list.append(ContentBlock(
                             block_id=len(block_list) + 1,
-                            type="url",
+                            type=URL,
                             text=url
                         ))
                 
@@ -193,7 +199,7 @@ def parse_page(doc, page_num, block_list, image_output_dir):
         for url in current_urls:
             block_list.append(ContentBlock(
                 block_id=len(block_list) + 1,
-                type="url",
+                type=URL,
                 text=url
             ))
     
