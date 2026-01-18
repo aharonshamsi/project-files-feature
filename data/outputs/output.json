@@ -1,148 +1,1930 @@
 {
     "metadata": {
-        "title": "",
-        "author": "Yoav"
+        "title": "Project Management Course",
+        "author": "YCOHEN"
     },
     "content_blocks": [
         {
             "block_id": 1,
             "type": "heading",
-            "text": "5 Things to Do Every Day to Be Happy"
+            "text": "Software Engineering & Management of Software Projects"
         },
         {
             "block_id": 2,
             "type": "paragraph",
-            "text": "Happiness isn’t an accident, and it isn’t a personality trait you either have or don’t. It’s a daily practice—built from small, repeatable actions that shape your mindset, energy, and emotional stability. In a world full of pressure, speed, and uncertainty, the people who stay grounded and joyful don’t necessarily have easier lives; they simply manage their days differently.\nHere are five simple but powerful habits you can do every single day to create more happiness, clarity, and emotional strength."
+            "text": "Yigal Cohen\nYigal.Cohen@mail.huji.ac.il\nyigalhacohen@gmail.com\nyigalco@edu.jmc.ac.il\n054-5664557"
         },
         {
             "block_id": 3,
             "type": "heading",
-            "text": "1. Start with One Empowering Moment of Control"
+            "text": "Lesson #1\n1.1 Introduction"
         },
         {
             "block_id": 4,
             "type": "paragraph",
-            "text": "Your morning sets the tone for everything. Most people wake up and immediately react—scrolling their phone, answering messages, or rushing into tasks. This creates anxiety before the day even begins.\nInstead, give yourself 90 seconds of deliberate control when you wake up. It can be something tiny:\nDrink a glass of water mindfully\nOpen a window and breathe fresh air\nStretch your arms and back\nSet one intention for the day\nThink of one thing you’re grateful for\nThese micro-behaviors tell the brain: I lead my day; the day doesn’t lead me.\nResearch in psychology consistently shows that the feeling of control, even in tiny doses, reduces stress and increases happiness. You're not trying to control outcomes—you're simply controlling the first moment of the day.\nThis habit helps you walk into the world stronger, calmer, and mentally organized."
+            "text": "Yigal Cohen\nYigal.Cohen@mail.huji.ac.il\nyigalhacohen@gmail.com\nyigalco@edu.jmc.ac.il\n054-5664557"
         },
         {
             "block_id": 5,
             "type": "heading",
-            "text": "2. Do One Thing That Makes You Feel Progress"
+            "text": "מה זאת הנדסת תוכנה ?"
         },
         {
             "block_id": 6,
             "type": "paragraph",
-            "text": "Happiness is deeply connected to a sense of progress—professionally or personally. Humans are wired to feel motivated when we see ourselves moving forward, even if the steps are tiny.\nEvery day, choose one micro-action that creates progress:\nLearn one new idea\nWrite five important sentences\nClean one small area\nComplete a short work task that you’ve been postponing\nMake one “important but non-urgent” improvement in your business or life\nThis is not about productivity hacks; it’s about direction.\nWhen people feel stuck, they become unhappy. When they feel that life is moving—even slowly—they become energized, optimistic, and creative.\nThe goal is simple: finish the day knowing you have moved 1% forward. Those daily 1% steps accumulate faster than people imagine."
+            "text": "הנדסת תוכנה מיישמת גישה שיטתית, מבוקרת ומדידה לפיתוח, תפעול, ותחזוקה של תוכנה.\nהנדסת תוכנה מקיפה את מחזור החיים השלם של תוכנה, וכוללת ידע, שיטות וכלים עבור:\n- דרישות, תכנון, בנייה, בדיקות, אינטגרציה, תחזוקה, ניהול תצורה, איכות ועוד\nהנדסת תוכנה נועדה להפחית את המורכבות שבפיתוח תוכנה, לשפר את אמינות התוכנה המפותחת, ולהקטין את עלויות התפעול והתחזוקה.\nהנדסת התוכנה שימושית במיוחד בפיתוח מערכות מורכבות הכוללות חומרה, תוכנה, ותקשורת. (מתוך ויקיפדיה)\nהנדסת תוכנה מציעה ומתעדפת אסטרטגיות שונות לפיתוח התוכנה.\nאיטרציות,\nWaterfall\nתהליכים רציפים: Continuous testing/integration/Delivery/…\nשלבים בסיסיים"
         },
         {
             "block_id": 7,
             "type": "heading",
-            "text": "3. Be Present for One Human Connection"
+            "text": "הנדסת תוכנה - חסרונות"
         },
         {
             "block_id": 8,
             "type": "paragraph",
-            "text": "Humans are social creatures, and isolation—mental or emotional—kills happiness faster than anything else. Being connected doesn’t mean being with people all the time. It means having at least one genuine moment every day where you show presence, attention, and empathy.\nThis can be very small:\nA warm conversation with a partner or child\nA voice note to a friend\nA smile or kind word to a colleague\nListening without interrupting\nA short call to check in on someone\nWhen you give someone 2–3 minutes of real attention, you feel happier because:\nYou create meaning\nYou reinforce your identity as someone who cares\nConnection releases oxytocin—the “calm and trust” hormone\nIn a digital, high-pressure world, moments of connection are emotional vitamins. Taking one a day keeps your emotional system healthy."
+            "text": "לפעמים \"כבדה\" מדי\nדורש מיומנות מחד ובחינה מתמדת של עצם התהליך"
         },
         {
             "block_id": 9,
             "type": "heading",
-            "text": "4. Move Your Body for 5–10 Minutes"
+            "text": "הנדסת  תוכנה לעומת מדעי המחשב"
         },
         {
             "block_id": 10,
-            "type": "paragraph",
-            "text": "You don’t need a full workout to feel happier—you need motion. Movement changes your blood flow, reduces stress hormones, increases energy, and clears mental fog.\nMost people think exercise = gym. But happiness requires something simpler: activate your body daily.\nExamples:\n10-minute walk\nLight stretching\nA short breathing practice\nPlaying with your kids\nDancing to one song\nGoing up and down the stairs twice\nThe key is consistency, not intensity.\nA body that stays stagnant sends signals of fatigue and heaviness to the brain. A body that moves tells the brain: we are alive, energetic, capable.\nDaily movement builds emotional stability. You become more resilient, more optimistic, and less reactive. It’s one of the fastest biological shortcuts to happiness."
+            "type": "table",
+            "table_data": {
+                "headers": [
+                    "נושא",
+                    "הנדסת תוכנה",
+                    "מדעי המחשב"
+                ],
+                "rows": [
+                    [
+                        "אידיאל",
+                        "פיתוח מערכות תוכנה",
+                        "גילוי אמיתות כלליות אודות \nחישוביות, אלגוריתמים ונושאים תאורטיים נוספים"
+                    ],
+                    [
+                        "דגש",
+                        "פיתוח תוכנה בעלת ערך למשתמש",
+                        "אמיתות כלליות, כגון סיבוכיות ונכונות של אלגוריתמים"
+                    ],
+                    [
+                        "מטרה",
+                        "תוכנות גדולות ושימושיות כגון מהדר, מערכות מידע, מערכות בקרה מערכות מבוזרות, חבילת יישומים משרדיים",
+                        "אלגוריתמים כגון אלגוריתמים למיון, בעיות מופשטות כגון בעיית הסוכן הנוסע"
+                    ],
+                    [
+                        "תקציב ולוח זמנים",
+                        "תקציב ולוחות זמנים \"קבועים מראש\"",
+                        "תקציבי מחקר ותחרותיות כפי שמקובל באקדמיה"
+                    ],
+                    [
+                        "ידע נוסף",
+                        "הנדסה, ניהול פרויקטים, הכרת תחום היישום, ידע בתחומים טכנולוגיים נוספים",
+                        "מתמטיקה"
+                    ],
+                    [
+                        "חוקרים נודעים",
+                        "פרד ברוקס, בארי בֶם, גריידי בוץ'",
+                        "אלן טיורינג, ג'ון פון נוימן, אדסחר דייקסטרה, דונלד קנות', דוד הראל, עדי שמיר"
+                    ]
+                ]
+            }
         },
         {
             "block_id": 11,
             "type": "heading",
-            "text": "5. End the Day with a “Reset Ritual”"
+            "text": "מה  זה ניהול פרויקט תוכנה ?"
         },
         {
             "block_id": 12,
             "type": "paragraph",
-            "text": "Happiness is not just about how you start your day; it’s also about how you close it. Many people carry the entire day into the night—unfinished tasks, worries, emotional residue. This creates mental overload, poor sleep, and constant tension.\nA daily reset ritual releases the day and gives your mind permission to rest.\nYour reset ritual can be extremely simple:\nWrite down 3 things you completed today\nNote 1 thing you want to improve tomorrow—but without judgment\nPut your phone away 20 minutes before sleep\nTake a warm shower to physically “wash off” the day\nListen to calming music\nSlow breathing for 60 seconds\nThis ritual tells your brain: the day is closed; you did enough; it’s safe to rest.\nPeople who master this practice experience less stress, deeper sleep, and a more stable emotional tone the next day."
+            "text": "בהנדסת תוכנה מתייחסים להיבטים של התוכנה כפי שפירטנו.\nבניהול פרויקט אנחנו מתייחסים גם ל:\nהיבטים אנושיים,\nזמן פיתוח,\nתקציב,\nתהליך הפיתוח,\nעבודת צוות,\nלוחות זמנים, אספקות, תלויות.\nזאת לא אבחנה מדויקת (גם כי קו ההפרדה הוא מאד דינמי)  אבל זאת אבחנה מספיק טובה."
         },
         {
             "block_id": 13,
             "type": "heading",
-            "text": "Why These Five Habits Work Together"
+            "text": "מה נלמד בקורס? (1/2)"
         },
         {
             "block_id": 14,
             "type": "paragraph",
-            "text": "Each habit influences a different layer of your psychological system:"
+            "text": "Introduction, Overview of major SW development models\nBasic Activities:\nRequirements Management.\nSystem Design: System modeling & Architectural design\nSW Testing: Test case, Test Scenario, Test planning, Continuous testing\nIntegration, Integration planning ,Continuous Integration\nDistributed software engineering\nAgile & Scrum Vs. Classical project management (Waterfall)\nProject Planning. scope management, Scheduling & Tracking, TOC (Theory of constraints)\nThe role of the PM, Project management, PMI Model & PMI Matrix (the last 2 are optional)"
         },
         {
             "block_id": 15,
             "type": "heading",
-            "text": "1. Morning Control → Mindset"
+            "text": "מה אולי לא נלמד בקורס? (2/2)"
         },
         {
             "block_id": 16,
             "type": "paragraph",
-            "text": "It gives clarity, direction, and emotional strength."
+            "text": "Some or all of the following topics according to the progress of the class:\nOther models of requirements analysis and description, more models of system architecture and design,\nHuman Communication, meeting management.\nSW quality Management\nRisk management, Improvement of SW development process (CMMI)\nPeople management. Adizes model. Maslow need hierarchy\nAbout 30% of the course will be dedicated to the course project: Management of a project of a distributed system (Without code)"
         },
         {
             "block_id": 17,
             "type": "heading",
-            "text": "2. Micro-Progress → Motivation"
+            "text": "ועד תלמידים\n\nמילואימניקים – נשתדל לבוא לקראתם.\nמקווה מאד שהשנה תהיה הרבה יותר קלה בנושא המלואים"
         },
         {
             "block_id": 18,
-            "type": "paragraph",
-            "text": "It triggers the feeling of purpose and momentum."
+            "type": "heading",
+            "text": "מבנה הציון"
         },
         {
             "block_id": 19,
-            "type": "heading",
-            "text": "3. Human Connection → Meaning"
+            "type": "paragraph",
+            "text": "הרצאות פרונטליות\n50% השתתפות חובה. משימות /תרגילים – 70%\nכ5 או 6 תרגילים בקבוצות בנות 4 תלמידים .\nיהיו תרגילים בהם יהיו גם משימות עצמאיות (לעתים עם ציון) לכל אחד מהקבוצה\nכל תרגיל מתבסס על התרגילים הקודמים וביחד יוצרים פרויקט.\nבחינת בית אישית - 30% (או בחינת גמר)\nרשימת קריאה\nכ-3 או 4 מאמרים.\nמספר פרקים מתוך הספר:\nSoftware Engineering: A Practitioner's Approach 8th Edition, Roger pressman\nימסרו במהלך הקורס\nאתר הקורס\nב moodle"
         },
         {
             "block_id": 20,
-            "type": "paragraph",
-            "text": "It creates warmth, bonding, and emotional richness."
+            "type": "heading",
+            "text": "הקלות למילואימניקים"
         },
         {
             "block_id": 21,
-            "type": "heading",
-            "text": "4. Body Movement → Energy"
+            "type": "paragraph",
+            "text": "פטור מתרגילים בתקופת המילואים\nאבל – חובה להשלים את חומר הלימודים\nשיעורי השלמה לפי הנחיות האוניברסיטה ואפשרות לשיעורים נוספים לפי תיאום עם הועד."
         },
         {
             "block_id": 22,
-            "type": "paragraph",
-            "text": "It stabilizes mood, reduces stress, and increases vitality."
+            "type": "heading",
+            "text": "מבנה הציון"
         },
         {
             "block_id": 23,
-            "type": "heading",
-            "text": "5. Evening Reset → Recovery"
+            "type": "paragraph",
+            "text": "במכללה ממוצע התרגילים\nיש לכם ועד מייצג לכיתה?"
         },
         {
             "block_id": 24,
-            "type": "paragraph",
-            "text": "It repairs the mind and prepares you for tomorrow.\nTogether, they build a daily happiness operating system.\nNot based on luck.\nNot based on circumstances.\nBut on repeatable behaviors you control."
+            "type": "heading",
+            "text": "About myself:\n\nYigal Cohen"
         },
         {
             "block_id": 25,
-            "type": "heading",
-            "text": "The Real Secret"
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_25.png"
+            }
         },
         {
             "block_id": 26,
             "type": "paragraph",
-            "text": "Happiness is not found in huge life events.\nIt is created through tiny daily investments in your mind, body, and relationships.\nThese five habits don’t require time, money, or planning. They require intention. Do them every day for two weeks, and you’ll feel the difference. Do them for thirty days, and you’ll start seeing yourself differently. Do them for ninety days, and they become part of who you are.\n"
+            "text": "Why I teach this course?"
         },
         {
             "block_id": 27,
-            "type": "url",
-            "text": "https://jsonformatter.curiousconcept.com/#"
+            "type": "heading",
+            "text": "What’s the problem ?"
         },
         {
             "block_id": 28,
             "type": "paragraph",
-            "text": "When happiness becomes a practice, it becomes a lifestyle."
+            "text": "About 1/3 of the projects totally fail, a third are poorly completed, and a third are reasonably succeed\nMany projects are managed intuitively, some are managed very poorly, and others are not managed at all\nThere is a lot of practices, experience, knowledge, methodologies and theories that can help us to run projects in a better way:\nfaster (x4), with higher quality (1/20 of the escaped bugs), cheaper and with satisfied customers"
+        },
+        {
+            "block_id": 29,
+            "type": "heading",
+            "text": "Chaos Report Results"
+        },
+        {
+            "block_id": 30,
+            "type": "paragraph",
+            "text": "successful"
+        },
+        {
+            "block_id": 31,
+            "type": "paragraph",
+            "text": "challenged"
+        },
+        {
+            "block_id": 32,
+            "type": "paragraph",
+            "text": "failed"
+        },
+        {
+            "block_id": 33,
+            "type": "heading",
+            "text": "Can you build this?"
+        },
+        {
+            "block_id": 34,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_34.png"
+            }
+        },
+        {
+            "block_id": 35,
+            "type": "heading",
+            "text": "Can you build this?"
+        },
+        {
+            "block_id": 36,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_36.png"
+            }
+        },
+        {
+            "block_id": 37,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_37.png"
+            }
+        },
+        {
+            "block_id": 38,
+            "type": "heading",
+            "text": "Can you build this?"
+        },
+        {
+            "block_id": 39,
+            "type": "heading",
+            "text": "Scale"
+        },
+        {
+            "block_id": 40,
+            "type": "paragraph",
+            "text": "Most people can build a doghouse\nTraditionally people built their own homes\nPerhaps with help from experienced village people\nStill happens in many places in the world\nNobody just goes and builds a skyscraper\nDraw plans (incl. market) and organize it all\nMake sure construction is solid\nAbide by earthquake regulations ( כפוף לרגולציה)\nThis is a work for professionals"
+        },
+        {
+            "block_id": 41,
+            "type": "heading",
+            "text": "What Engineers Can Do"
+        },
+        {
+            "block_id": 42,
+            "type": "paragraph",
+            "text": "Predict system behavior\ne.g. conditions leading to stability or instability\nCalculate design tolerances\nIs manufacturing variation still OK?\nCalculate failure probability\nChances that change in conditions will be really bad\nUse all this to extend previous systems\nSkyscrapers, jumbo jets, and supercomputers represent accumulated knowledge over many years\nThis is way beyond what any virtuoso ever did"
+        },
+        {
+            "block_id": 43,
+            "type": "heading",
+            "text": "שאלה: \nמה ההבדלים בין הנדסת תוכנה להנדסת מבנים או גשרים?"
+        },
+        {
+            "block_id": 44,
+            "type": "heading",
+            "text": "מה רואים בתמונה?"
+        },
+        {
+            "block_id": 45,
+            "type": "heading",
+            "text": "מה רואים בתמונה?"
+        },
+        {
+            "block_id": 46,
+            "type": "heading",
+            "text": "What we’ll do in the course ?"
+        },
+        {
+            "block_id": 47,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_47.png"
+            }
+        },
+        {
+            "block_id": 48,
+            "type": "paragraph",
+            "text": "We’ll learn a rich toolbox for project management SW Engineering that will help us to think outside  the box"
+        },
+        {
+            "block_id": 49,
+            "type": "heading",
+            "text": "שאלה: האם תרגולות ותבניות הופכות אותנו לפחות או ליותר יצירתיים ?"
+        },
+        {
+            "block_id": 50,
+            "type": "heading",
+            "text": "List of SW Engineering topics"
+        },
+        {
+            "block_id": 51,
+            "type": "paragraph",
+            "text": "Project Management framework\nProject activities\nSupportive activities\nMethodologies\nArchitecture"
+        },
+        {
+            "block_id": 52,
+            "type": "heading",
+            "text": "SDLC – SW Development Life Cycle"
+        },
+        {
+            "block_id": 53,
+            "type": "paragraph",
+            "text": "דרישות"
+        },
+        {
+            "block_id": 54,
+            "type": "paragraph",
+            "text": "עיצוב-תכנון"
+        },
+        {
+            "block_id": 55,
+            "type": "paragraph",
+            "text": "קידוד-בניה"
+        },
+        {
+            "block_id": 56,
+            "type": "paragraph",
+            "text": "בדיקות"
+        },
+        {
+            "block_id": 57,
+            "type": "paragraph",
+            "text": "אינטגרציה"
+        },
+        {
+            "block_id": 58,
+            "type": "heading",
+            "text": "SDLC – SW Development Life Cycle"
+        },
+        {
+            "block_id": 59,
+            "type": "paragraph",
+            "text": "דרישות"
+        },
+        {
+            "block_id": 60,
+            "type": "paragraph",
+            "text": "כלי בדיקות"
+        },
+        {
+            "block_id": 61,
+            "type": "paragraph",
+            "text": "עיצוב-תכנון"
+        },
+        {
+            "block_id": 62,
+            "type": "paragraph",
+            "text": "בדיקות"
+        },
+        {
+            "block_id": 63,
+            "type": "paragraph",
+            "text": "קידוד-בניה"
+        },
+        {
+            "block_id": 64,
+            "type": "paragraph",
+            "text": "בדיקות"
+        },
+        {
+            "block_id": 65,
+            "type": "paragraph",
+            "text": "אינטגרציה"
+        },
+        {
+            "block_id": 66,
+            "type": "paragraph",
+            "text": "בדיקות סופיות"
+        },
+        {
+            "block_id": 67,
+            "type": "heading",
+            "text": "List of SW Engineering topics"
+        },
+        {
+            "block_id": 68,
+            "type": "paragraph",
+            "text": "Project Management Framework\nIntroduction,\nSDLC – SW Development Life Cycle (ALM- Application Lifecycle Management)\nThe role of the PM\nCustomer Interfacing\nProject initiating & Planning\nTime management"
+        },
+        {
+            "block_id": 69,
+            "type": "paragraph",
+            "text": "Project Management framework\nProject activities\nSupportive activities\nMethodologies\nArchitecture"
+        },
+        {
+            "block_id": 70,
+            "type": "heading",
+            "text": "List of SW Engineering topics"
+        },
+        {
+            "block_id": 71,
+            "type": "paragraph",
+            "text": "Project activities\nRequirements\nArchitecture & Design\nCoding & Building\nTesting\nIntegration\nMaintenance & Support"
+        },
+        {
+            "block_id": 72,
+            "type": "paragraph",
+            "text": "Project Management framework\nProject activities\nSupportive activities\nMethodologies\nArchitecture"
+        },
+        {
+            "block_id": 73,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_73.tiff"
+            }
+        },
+        {
+            "block_id": 74,
+            "type": "heading",
+            "text": "List of SW Engineering topics"
+        },
+        {
+            "block_id": 75,
+            "type": "paragraph",
+            "text": "Supportive activities\nSW Configuration Management\nBranch Management\nBug Management\nClassic Project Management problems\nOn-going activities\nSoft Skills\nSupport Environment\nMetrics"
+        },
+        {
+            "block_id": 76,
+            "type": "paragraph",
+            "text": "Project Management framework\nProject activities\nSupportive activities\nMethodologies\nArchitecture"
+        },
+        {
+            "block_id": 77,
+            "type": "heading",
+            "text": "List of SW Engineering topics"
+        },
+        {
+            "block_id": 78,
+            "type": "paragraph",
+            "text": "Methodologies\nPMI & Iterative Deveopment\nAgile / Scrum\nTOC\nAdijas\nCMMI\nISO-9000"
+        },
+        {
+            "block_id": 79,
+            "type": "paragraph",
+            "text": "Project Management framework\nProject activities\nSupportive activities\nMethodologies\nArchitecture"
+        },
+        {
+            "block_id": 80,
+            "type": "heading",
+            "text": "List of SW Engineering topics"
+        },
+        {
+            "block_id": 81,
+            "type": "paragraph",
+            "text": "Architecture\nArchitecture design\nModeling\nDistributed systems"
+        },
+        {
+            "block_id": 82,
+            "type": "paragraph",
+            "text": "Project Management framework\nProject activities\nSupportive activities\nMethodologies\nArchitecture"
+        },
+        {
+            "block_id": 83,
+            "type": "heading",
+            "text": "What’s a project?"
+        },
+        {
+            "block_id": 84,
+            "type": "paragraph",
+            "text": "A temporary Endeavour undertaken to create a unique product, service or result\n“מאמץ מרוכז, קצוב בזמן ובמשאבים להשגת תוצאה מוגדרת“\nuniqueness of every project” (Done, quality)’"
+        },
+        {
+            "block_id": 85,
+            "type": "heading",
+            "text": "Project outcomes"
+        },
+        {
+            "block_id": 86,
+            "type": "paragraph",
+            "text": "A product\nA system\nA conclusion\nA capability\n……\n……."
+        },
+        {
+            "block_id": 87,
+            "type": "heading",
+            "text": "The golden triangle or the iron Triangle"
+        },
+        {
+            "block_id": 88,
+            "type": "paragraph",
+            "text": "Scope"
+        },
+        {
+            "block_id": 89,
+            "type": "paragraph",
+            "text": "Quality"
+        },
+        {
+            "block_id": 90,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_90.png"
+            }
+        },
+        {
+            "block_id": 91,
+            "type": "paragraph",
+            "text": "Cost"
+        },
+        {
+            "block_id": 92,
+            "type": "paragraph",
+            "text": "Time"
+        },
+        {
+            "block_id": 93,
+            "type": "heading",
+            "text": "The Iron Triangle"
+        },
+        {
+            "block_id": 94,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_94.png"
+            }
+        },
+        {
+            "block_id": 95,
+            "type": "heading",
+            "text": "מה המגבלות על פרויקט ?"
+        },
+        {
+            "block_id": 96,
+            "type": "paragraph",
+            "text": "Scope,\ntime,\nmoney,\nquality,\nresources,\nrisk"
+        },
+        {
+            "block_id": 97,
+            "type": "heading",
+            "text": "Balancing Project Constraints"
+        },
+        {
+            "block_id": 98,
+            "type": "paragraph",
+            "text": "Scope"
+        },
+        {
+            "block_id": 99,
+            "type": "paragraph",
+            "text": "Risks"
+        },
+        {
+            "block_id": 100,
+            "type": "paragraph",
+            "text": "Resources"
+        },
+        {
+            "block_id": 101,
+            "type": "paragraph",
+            "text": "Project"
+        },
+        {
+            "block_id": 102,
+            "type": "paragraph",
+            "text": "Time"
+        },
+        {
+            "block_id": 103,
+            "type": "paragraph",
+            "text": "Money"
+        },
+        {
+            "block_id": 104,
+            "type": "paragraph",
+            "text": "Quality"
+        },
+        {
+            "block_id": 105,
+            "type": "heading",
+            "text": "Is this is a real zero-sum game ??"
+        },
+        {
+            "block_id": 106,
+            "type": "paragraph",
+            "text": "?"
+        },
+        {
+            "block_id": 107,
+            "type": "paragraph",
+            "text": "C"
+        },
+        {
+            "block_id": 108,
+            "type": "paragraph",
+            "text": "∑"
+        },
+        {
+            "block_id": 109,
+            "type": "paragraph",
+            "text": "Scope,\nmoney,\nquality,\nresources,\ntime,\nrisk"
+        },
+        {
+            "block_id": 110,
+            "type": "paragraph",
+            "text": "="
+        },
+        {
+            "block_id": 111,
+            "type": "heading",
+            "text": "Can we enlarge the cake (1)?"
+        },
+        {
+            "block_id": 112,
+            "type": "paragraph",
+            "text": "Scope\nPrioritization: Start with the important and risky things!\nPareto (20:80)\nMoney\nCost management;\nReuse!\nQuality\nManage a process, manage continuous testing, continuous integration, continuous delivery, analyze feedback, automation, defect management, Root cause analysis\nResources management\nFind the right people, training, mentoring, guidance, challenging; team work, spirit of excellence, roles & responsibilities\nTime management\nManage a schedule, Find and manage critical paths,\nContinuous development /  testing /  integration\nRisk management\nAssessment and mitigation continuously"
+        },
+        {
+            "block_id": 113,
+            "type": "paragraph",
+            "text": "Scope"
+        },
+        {
+            "block_id": 114,
+            "type": "paragraph",
+            "text": "Money"
+        },
+        {
+            "block_id": 115,
+            "type": "paragraph",
+            "text": "Quality"
+        },
+        {
+            "block_id": 116,
+            "type": "paragraph",
+            "text": "Resources"
+        },
+        {
+            "block_id": 117,
+            "type": "paragraph",
+            "text": "Time"
+        },
+        {
+            "block_id": 118,
+            "type": "paragraph",
+            "text": "Risks"
+        },
+        {
+            "block_id": 119,
+            "type": "heading",
+            "text": "More ideas ? How to enlarge the cake ??"
+        },
+        {
+            "block_id": 120,
+            "type": "paragraph",
+            "text": "Scope"
+        },
+        {
+            "block_id": 121,
+            "type": "paragraph",
+            "text": "Resources"
+        },
+        {
+            "block_id": 122,
+            "type": "paragraph",
+            "text": "Risks"
+        },
+        {
+            "block_id": 123,
+            "type": "paragraph",
+            "text": "Project"
+        },
+        {
+            "block_id": 124,
+            "type": "paragraph",
+            "text": "Project Value"
+        },
+        {
+            "block_id": 125,
+            "type": "paragraph",
+            "text": "Time"
+        },
+        {
+            "block_id": 126,
+            "type": "paragraph",
+            "text": "Money"
+        },
+        {
+            "block_id": 127,
+            "type": "paragraph",
+            "text": "Quality"
+        },
+        {
+            "block_id": 128,
+            "type": "heading",
+            "text": "Can we enlarge the cake (2)?"
+        },
+        {
+            "block_id": 129,
+            "type": "paragraph",
+            "text": "Methodologies\nTechnology\nCommunication – knowledge sharing\nKnowledge\nUnderstanding\nDelegation\nProfessionalism\nTeamwork\nCommunication, Communication, Communication, ,,,"
+        },
+        {
+            "block_id": 130,
+            "type": "heading",
+            "text": "Can we enlarge the cake ??"
+        },
+        {
+            "block_id": 131,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_131.png"
+            }
+        },
+        {
+            "block_id": 132,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_132.png"
+            }
+        },
+        {
+            "block_id": 133,
+            "type": "heading",
+            "text": "Lesson #1\n1.2 Development models"
+        },
+        {
+            "block_id": 134,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_134.tiff"
+            }
+        },
+        {
+            "block_id": 135,
+            "type": "heading",
+            "text": "Elementary activities"
+        },
+        {
+            "block_id": 136,
+            "type": "paragraph",
+            "text": "Formal name"
+        },
+        {
+            "block_id": 137,
+            "type": "paragraph",
+            "text": "מה התכלית?"
+        },
+        {
+            "block_id": 138,
+            "type": "paragraph",
+            "text": "Initiating\nPlanning\nRequirements\nDesign\nCoding & building\nTesting\nIntegration\nMaintenance &support"
+        },
+        {
+            "block_id": 139,
+            "type": "paragraph",
+            "text": "Why ?\nWhat? Who? When?\nWhat?\nHow?\nDoing\nValidating\nConstructing\nLong term warranty"
+        },
+        {
+            "block_id": 140,
+            "type": "heading",
+            "text": "Development models"
+        },
+        {
+            "block_id": 141,
+            "type": "paragraph",
+            "text": "Waterfall\nIterative\nConcurrent engineering\nAgile / SCRUM model\nRUP (Rational Unified process) Model"
+        },
+        {
+            "block_id": 142,
+            "type": "paragraph",
+            "text": "Development models differ by the \ninterdependency of their elementary activities"
+        },
+        {
+            "block_id": 143,
+            "type": "paragraph",
+            "text": "Can these models live together ?"
+        },
+        {
+            "block_id": 144,
+            "type": "heading",
+            "text": "Development models"
+        },
+        {
+            "block_id": 145,
+            "type": "paragraph",
+            "text": "Waterfall\nIterative\nIncremental - RUP (Rational Unified process) Model\nAgile / SCRUM model\nConcurrent engineering"
+        },
+        {
+            "block_id": 146,
+            "type": "heading",
+            "text": "“Classic” Waterfall model\n(Old but basic)"
+        },
+        {
+            "block_id": 147,
+            "type": "paragraph",
+            "text": "Requirements"
+        },
+        {
+            "block_id": 148,
+            "type": "paragraph",
+            "text": "התנור\nגמלא\nבניאס\nסער"
+        },
+        {
+            "block_id": 149,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_149.png"
+            }
+        },
+        {
+            "block_id": 150,
+            "type": "paragraph",
+            "text": "Design"
+        },
+        {
+            "block_id": 151,
+            "type": "paragraph",
+            "text": "Coding"
+        },
+        {
+            "block_id": 152,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_152.jpg"
+            }
+        },
+        {
+            "block_id": 153,
+            "type": "paragraph",
+            "text": "Testing"
+        },
+        {
+            "block_id": 154,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_154.png"
+            }
+        },
+        {
+            "block_id": 155,
+            "type": "paragraph",
+            "text": "ציר הזמן"
+        },
+        {
+            "block_id": 156,
+            "type": "paragraph",
+            "text": "Integration"
+        },
+        {
+            "block_id": 157,
+            "type": "heading",
+            "text": "Waterfall Model"
+        },
+        {
+            "block_id": 158,
+            "type": "paragraph",
+            "text": "Disadvantages"
+        },
+        {
+            "block_id": 159,
+            "type": "paragraph",
+            "text": "Advantages"
+        },
+        {
+            "block_id": 160,
+            "type": "paragraph",
+            "text": "Strong dependencies in gates\nNo ‘real’ visibility\nNo feedback\nNo concurrency\nNo learning phase\nNo evolution\nImportant steps are hidden (infrastructure, tools, research)"
+        },
+        {
+            "block_id": 161,
+            "type": "paragraph",
+            "text": "Clear phases\nNice view\nManageable\nClear dependencies\nCustomer’s control"
+        },
+        {
+            "block_id": 162,
+            "type": "heading",
+            "text": "Waterfall with some concurrency"
+        },
+        {
+            "block_id": 163,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_163.png"
+            }
+        },
+        {
+            "block_id": 164,
+            "type": "heading",
+            "text": "Waterfall(s) ??"
+        },
+        {
+            "block_id": 165,
+            "type": "paragraph",
+            "text": "Requirement"
+        },
+        {
+            "block_id": 166,
+            "type": "paragraph",
+            "text": "Design"
+        },
+        {
+            "block_id": 167,
+            "type": "paragraph",
+            "text": "Coding"
+        },
+        {
+            "block_id": 168,
+            "type": "paragraph",
+            "text": "Testing"
+        },
+        {
+            "block_id": 169,
+            "type": "paragraph",
+            "text": "Integration"
+        },
+        {
+            "block_id": 170,
+            "type": "heading",
+            "text": "Waterfall(s) ??"
+        },
+        {
+            "block_id": 171,
+            "type": "paragraph",
+            "text": "Requirement"
+        },
+        {
+            "block_id": 172,
+            "type": "paragraph",
+            "text": "Requirement"
+        },
+        {
+            "block_id": 173,
+            "type": "paragraph",
+            "text": "Design"
+        },
+        {
+            "block_id": 174,
+            "type": "paragraph",
+            "text": "Design"
+        },
+        {
+            "block_id": 175,
+            "type": "paragraph",
+            "text": "Coding"
+        },
+        {
+            "block_id": 176,
+            "type": "paragraph",
+            "text": "Coding"
+        },
+        {
+            "block_id": 177,
+            "type": "paragraph",
+            "text": "Testing"
+        },
+        {
+            "block_id": 178,
+            "type": "paragraph",
+            "text": "Testing"
+        },
+        {
+            "block_id": 179,
+            "type": "paragraph",
+            "text": "Integration"
+        },
+        {
+            "block_id": 180,
+            "type": "paragraph",
+            "text": "Integration"
+        },
+        {
+            "block_id": 181,
+            "type": "heading",
+            "text": "Waterfall(s) ??"
+        },
+        {
+            "block_id": 182,
+            "type": "paragraph",
+            "text": "Requirement"
+        },
+        {
+            "block_id": 183,
+            "type": "paragraph",
+            "text": "Design"
+        },
+        {
+            "block_id": 184,
+            "type": "paragraph",
+            "text": "Coding"
+        },
+        {
+            "block_id": 185,
+            "type": "paragraph",
+            "text": "Testing"
+        },
+        {
+            "block_id": 186,
+            "type": "paragraph",
+            "text": "Integration"
+        },
+        {
+            "block_id": 187,
+            "type": "paragraph",
+            "text": "Requirement"
+        },
+        {
+            "block_id": 188,
+            "type": "paragraph",
+            "text": "Design"
+        },
+        {
+            "block_id": 189,
+            "type": "paragraph",
+            "text": "Coding"
+        },
+        {
+            "block_id": 190,
+            "type": "paragraph",
+            "text": "Testing"
+        },
+        {
+            "block_id": 191,
+            "type": "paragraph",
+            "text": "Integration"
+        },
+        {
+            "block_id": 192,
+            "type": "heading",
+            "text": "Can we change the requirements in waterfall model after the requirements are completed?"
+        },
+        {
+            "block_id": 193,
+            "type": "paragraph",
+            "text": "Yes!\nUse change request process"
+        },
+        {
+            "block_id": 194,
+            "type": "heading",
+            "text": "More Waterfalls"
+        },
+        {
+            "block_id": 195,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_195.png"
+            }
+        },
+        {
+            "block_id": 196,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_196.png"
+            }
+        },
+        {
+            "block_id": 197,
+            "type": "paragraph",
+            "text": "Kraka (Kroatia)"
+        },
+        {
+            "block_id": 198,
+            "type": "paragraph",
+            "text": "Niagara"
+        },
+        {
+            "block_id": 199,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_199.png"
+            }
+        },
+        {
+            "block_id": 200,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_200.png"
+            }
+        },
+        {
+            "block_id": 201,
+            "type": "paragraph",
+            "text": "Iguazu"
+        },
+        {
+            "block_id": 202,
+            "type": "paragraph",
+            "text": "Victoria"
+        },
+        {
+            "block_id": 203,
+            "type": "heading",
+            "text": "שאלה:"
+        },
+        {
+            "block_id": 204,
+            "type": "paragraph",
+            "text": "מה השוני בין המפלים האלו לבין המפלים שבציור הראשון"
+        },
+        {
+            "block_id": 205,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_205.jpg"
+            }
+        },
+        {
+            "block_id": 206,
+            "type": "heading",
+            "text": "מפלי האיגואסו"
+        },
+        {
+            "block_id": 207,
+            "type": "url",
+            "text": "https://www.youtube.com/watch?v=9lfMb20QLXg"
+        },
+        {
+            "block_id": 208,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_208.jpg"
+            }
+        },
+        {
+            "block_id": 209,
+            "type": "paragraph",
+            "text": "מה ההבדלים בין מפל האיגואסו לבין מפל גמלא למשל?\nמקביליות,\nחיבורים ופיצולים,\nמדרגות"
+        },
+        {
+            "block_id": 210,
+            "type": "heading",
+            "text": "Development models"
+        },
+        {
+            "block_id": 211,
+            "type": "paragraph",
+            "text": "Waterfall\nIterative\nIncremental - RUP (Rational Unified process) Model\nAgile / SCRUM model\nConcurrent engineering"
+        },
+        {
+            "block_id": 212,
+            "type": "heading",
+            "text": "Iterative model"
+        },
+        {
+            "block_id": 213,
+            "type": "paragraph",
+            "text": "Iteration -1"
+        },
+        {
+            "block_id": 214,
+            "type": "paragraph",
+            "text": "R"
+        },
+        {
+            "block_id": 215,
+            "type": "paragraph",
+            "text": "D"
+        },
+        {
+            "block_id": 216,
+            "type": "paragraph",
+            "text": "C"
+        },
+        {
+            "block_id": 217,
+            "type": "paragraph",
+            "text": "T"
+        },
+        {
+            "block_id": 218,
+            "type": "paragraph",
+            "text": "I"
+        },
+        {
+            "block_id": 219,
+            "type": "paragraph",
+            "text": "Iteration -2"
+        },
+        {
+            "block_id": 220,
+            "type": "paragraph",
+            "text": "R"
+        },
+        {
+            "block_id": 221,
+            "type": "paragraph",
+            "text": "D"
+        },
+        {
+            "block_id": 222,
+            "type": "paragraph",
+            "text": "C"
+        },
+        {
+            "block_id": 223,
+            "type": "paragraph",
+            "text": "T"
+        },
+        {
+            "block_id": 224,
+            "type": "paragraph",
+            "text": "I"
+        },
+        {
+            "block_id": 225,
+            "type": "paragraph",
+            "text": "Iteration -n"
+        },
+        {
+            "block_id": 226,
+            "type": "paragraph",
+            "text": "R"
+        },
+        {
+            "block_id": 227,
+            "type": "paragraph",
+            "text": "D"
+        },
+        {
+            "block_id": 228,
+            "type": "paragraph",
+            "text": "C"
+        },
+        {
+            "block_id": 229,
+            "type": "paragraph",
+            "text": "T"
+        },
+        {
+            "block_id": 230,
+            "type": "paragraph",
+            "text": "I"
+        },
+        {
+            "block_id": 231,
+            "type": "heading",
+            "text": "Iterative model"
+        },
+        {
+            "block_id": 232,
+            "type": "heading",
+            "text": "Planning-1"
+        },
+        {
+            "block_id": 233,
+            "type": "paragraph",
+            "text": "working-1"
+        },
+        {
+            "block_id": 234,
+            "type": "paragraph",
+            "text": "Learning Lessons-1"
+        },
+        {
+            "block_id": 235,
+            "type": "paragraph",
+            "text": "Planning-2"
+        },
+        {
+            "block_id": 236,
+            "type": "paragraph",
+            "text": "working-2"
+        },
+        {
+            "block_id": 237,
+            "type": "paragraph",
+            "text": "Learning Lessons-2"
+        },
+        {
+            "block_id": 238,
+            "type": "paragraph",
+            "text": "Planning-3"
+        },
+        {
+            "block_id": 239,
+            "type": "paragraph",
+            "text": "working-3"
+        },
+        {
+            "block_id": 240,
+            "type": "heading",
+            "text": "Iterative model"
+        },
+        {
+            "block_id": 241,
+            "type": "heading",
+            "text": "Planning-1"
+        },
+        {
+            "block_id": 242,
+            "type": "paragraph",
+            "text": "working-1"
+        },
+        {
+            "block_id": 243,
+            "type": "paragraph",
+            "text": "R"
+        },
+        {
+            "block_id": 244,
+            "type": "paragraph",
+            "text": "D"
+        },
+        {
+            "block_id": 245,
+            "type": "paragraph",
+            "text": "C"
+        },
+        {
+            "block_id": 246,
+            "type": "paragraph",
+            "text": "T"
+        },
+        {
+            "block_id": 247,
+            "type": "paragraph",
+            "text": "I"
+        },
+        {
+            "block_id": 248,
+            "type": "paragraph",
+            "text": "Learning Lessons-1"
+        },
+        {
+            "block_id": 249,
+            "type": "paragraph",
+            "text": "Planning-2"
+        },
+        {
+            "block_id": 250,
+            "type": "paragraph",
+            "text": "working-2"
+        },
+        {
+            "block_id": 251,
+            "type": "paragraph",
+            "text": "R"
+        },
+        {
+            "block_id": 252,
+            "type": "paragraph",
+            "text": "D"
+        },
+        {
+            "block_id": 253,
+            "type": "paragraph",
+            "text": "C"
+        },
+        {
+            "block_id": 254,
+            "type": "paragraph",
+            "text": "T"
+        },
+        {
+            "block_id": 255,
+            "type": "paragraph",
+            "text": "I"
+        },
+        {
+            "block_id": 256,
+            "type": "paragraph",
+            "text": "Learning Lessons-2"
+        },
+        {
+            "block_id": 257,
+            "type": "paragraph",
+            "text": "Planning-3"
+        },
+        {
+            "block_id": 258,
+            "type": "paragraph",
+            "text": "working-3"
+        },
+        {
+            "block_id": 259,
+            "type": "paragraph",
+            "text": "R"
+        },
+        {
+            "block_id": 260,
+            "type": "paragraph",
+            "text": "D"
+        },
+        {
+            "block_id": 261,
+            "type": "paragraph",
+            "text": "C"
+        },
+        {
+            "block_id": 262,
+            "type": "paragraph",
+            "text": "T"
+        },
+        {
+            "block_id": 263,
+            "type": "paragraph",
+            "text": "I"
+        },
+        {
+            "block_id": 264,
+            "type": "heading",
+            "text": "מה הרווחנו בעבודה איטרטיבית?"
+        },
+        {
+            "block_id": 265,
+            "type": "paragraph",
+            "text": "מספר מחזורים  קצרים\nנראות טובה יותר של תוצאות שיכולות לשמש למשוב (Feedback)\nאין צורך לתכנן קדימה בפירוט למרחקים ארוכים. זה קשה מאד.\nתהליכי הפקת לקחים, הערכה ותכנון לאורך הדרך בעיקר בין שלבי הביצוע."
+        },
+        {
+            "block_id": 266,
+            "type": "heading",
+            "text": "Development models"
+        },
+        {
+            "block_id": 267,
+            "type": "paragraph",
+            "text": "Waterfall\nIterative\nIncremental - RUP (Rational Unified process) Model\nAgile / SCRUM model\nConcurrent engineering"
+        },
+        {
+            "block_id": 268,
+            "type": "heading",
+            "text": "The focus of Rup Phases"
+        },
+        {
+            "block_id": 269,
+            "type": "table",
+            "table_data": {
+                "headers": [
+                    "Focus",
+                    "RUP Phase"
+                ],
+                "rows": [
+                    [
+                        "Confirm the scope and objectives of the project and bring the business risks under  control",
+                        "Inception  פתיחה"
+                    ],
+                    [
+                        "Stabilize the product plans and bring the architectural and technical risks under control",
+                        "Elaboration\nפירוט והרחבה"
+                    ],
+                    [
+                        "Build  the product and bring logistical, project execution risks under control",
+                        "Construction\nבניה, הרכבה"
+                    ],
+                    [
+                        "Deliver the product and roll-out risks under control",
+                        "Transition\nהעברה"
+                    ]
+                ]
+            }
+        },
+        {
+            "block_id": 270,
+            "type": "heading",
+            "text": "Rup (Rational Unified Process)\nMajor phases & Major decision points"
+        },
+        {
+            "block_id": 271,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_271.png"
+            }
+        },
+        {
+            "block_id": 272,
+            "type": "heading",
+            "text": "Rup: Iteration"
+        },
+        {
+            "block_id": 273,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_273.png"
+            }
+        },
+        {
+            "block_id": 274,
+            "type": "heading",
+            "text": "RUP: Phases and iterations"
+        },
+        {
+            "block_id": 275,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_275.png"
+            }
+        },
+        {
+            "block_id": 276,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_276.png"
+            }
+        },
+        {
+            "block_id": 277,
+            "type": "heading",
+            "text": "Rup: The Distribution of Work Across Phases  (% Coverage)"
+        },
+        {
+            "block_id": 278,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_278.jpg"
+            }
+        },
+        {
+            "block_id": 279,
+            "type": "heading",
+            "text": "Iterative Vs. Incremental model"
+        },
+        {
+            "block_id": 280,
+            "type": "paragraph",
+            "text": "Both are iterative but incremental emphasizes the development of\nfeature by feature\n“Vertical  development”\nthat is continuously accumulated to a testable and working system"
+        },
+        {
+            "block_id": 281,
+            "type": "heading",
+            "text": "שאלה: \nהאם תמיד עדיף מודל מתווסף(Incremental)  על פני  מודל איטרטיבי?"
+        },
+        {
+            "block_id": 282,
+            "type": "heading",
+            "text": "Vertical Work"
+        },
+        {
+            "block_id": 283,
+            "type": "paragraph",
+            "text": "WORK:\nDevelop feature by feature, either sequentially or concurrently.\nRun a full cycle of development for each feature.\nUse continuous development, continuous testing, continuous integration and continuous delivery.\nAdvantages:\nAvoidance of the big-bang integration and testing\nHaving visible and tested / testable results along the development process\nGet and use feedback"
+        },
+        {
+            "block_id": 284,
+            "type": "heading",
+            "text": "Iterative /incremental/ RUP Model"
+        },
+        {
+            "block_id": 285,
+            "type": "paragraph",
+            "text": "Advantages"
+        },
+        {
+            "block_id": 286,
+            "type": "paragraph",
+            "text": "Disadvantages"
+        },
+        {
+            "block_id": 287,
+            "type": "paragraph",
+            "text": "Strong dependencies in iterations\nRigid\nNot enough concurrency\nNo learning  activity\nNo evolution activity\nImportant steps are hidden (infrastructure, tools, research)"
+        },
+        {
+            "block_id": 288,
+            "type": "paragraph",
+            "text": "Clear phases\nNice view\nClear dependencies\nCustomer’s control\nProvides Visibility\nEnables Reliable Feedback\nEnables Learning\nGlobal view and iterations"
+        },
+        {
+            "block_id": 289,
+            "type": "heading",
+            "text": "Development models"
+        },
+        {
+            "block_id": 290,
+            "type": "paragraph",
+            "text": "Waterfall\nIterative\nIncremental - RUP (Rational Unified process) Model\nAgile / SCRUM model\nConcurrent engineering"
+        },
+        {
+            "block_id": 291,
+            "type": "heading",
+            "text": "SCRUM Process Overview"
+        },
+        {
+            "block_id": 292,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_292.png"
+            }
+        },
+        {
+            "block_id": 293,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_293.png"
+            }
+        },
+        {
+            "block_id": 294,
+            "type": "heading",
+            "text": "SCRUM: Time box"
+        },
+        {
+            "block_id": 295,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_295.png"
+            }
+        },
+        {
+            "block_id": 296,
+            "type": "heading",
+            "text": "Scrum Model"
+        },
+        {
+            "block_id": 297,
+            "type": "paragraph",
+            "text": "Advantages"
+        },
+        {
+            "block_id": 298,
+            "type": "paragraph",
+            "text": "Disadvantages"
+        },
+        {
+            "block_id": 299,
+            "type": "paragraph",
+            "text": "Strong dependencies on time-box\nVery Rigid with a lot of ceremonies\nNot enough concurrency\nDisconnected from the SW traditional practices\nNo learning  activity\nNo evolution activity\nImportant steps are hidden (infrastructure, tools, research)\nIn practice – teams may lose the vision and the goals\nInsufficient global view"
+        },
+        {
+            "block_id": 300,
+            "type": "paragraph",
+            "text": "Clear phases\nNice view\nClear dependencies\nCustomer’s control\nVisibility\nEnables Reliable Feedback & use it\nEncourages Learning\nEncourages evolution"
+        },
+        {
+            "block_id": 301,
+            "type": "heading",
+            "text": "integrate waterfall with agile"
+        },
+        {
+            "block_id": 302,
+            "type": "paragraph",
+            "text": "מ ב ט    כ ו ל ל"
+        },
+        {
+            "block_id": 303,
+            "type": "paragraph",
+            "text": "High"
+        },
+        {
+            "block_id": 304,
+            "type": "paragraph",
+            "text": "LOW"
+        },
+        {
+            "block_id": 305,
+            "type": "paragraph",
+            "text": "High"
+        },
+        {
+            "block_id": 306,
+            "type": "paragraph",
+            "text": "Low"
+        },
+        {
+            "block_id": 307,
+            "type": "paragraph",
+            "text": "A     g     I     I     t     y"
+        },
+        {
+            "block_id": 308,
+            "type": "heading",
+            "text": "Duality - integrate global view with agile"
+        },
+        {
+            "block_id": 309,
+            "type": "paragraph",
+            "text": "מ ב ט    כ ו ל ל"
+        },
+        {
+            "block_id": 310,
+            "type": "paragraph",
+            "text": "High"
+        },
+        {
+            "block_id": 311,
+            "type": "paragraph",
+            "text": "LOW"
+        },
+        {
+            "block_id": 312,
+            "type": "paragraph",
+            "text": "High"
+        },
+        {
+            "block_id": 313,
+            "type": "paragraph",
+            "text": "Low"
+        },
+        {
+            "block_id": 314,
+            "type": "paragraph",
+            "text": "A     g     I     I     t     y"
+        },
+        {
+            "block_id": 315,
+            "type": "heading",
+            "text": "integrate waterfall with agile"
+        },
+        {
+            "block_id": 316,
+            "type": "paragraph",
+            "text": "מ ב ט    כ ו ל ל"
+        },
+        {
+            "block_id": 317,
+            "type": "paragraph",
+            "text": "High"
+        },
+        {
+            "block_id": 318,
+            "type": "paragraph",
+            "text": "קיבעון\nיש תכנון ואין תגובתיות"
+        },
+        {
+            "block_id": 319,
+            "type": "paragraph",
+            "text": "שליטה מלאה\nיש תכנון ויש תגובתיות"
+        },
+        {
+            "block_id": 320,
+            "type": "paragraph",
+            "text": "כאוס מוחלט\nאין תכנון ואין תגובתיות"
+        },
+        {
+            "block_id": 321,
+            "type": "paragraph",
+            "text": "חשש לאבדן דרך\nאין תכנון ויש תגובתיות"
+        },
+        {
+            "block_id": 322,
+            "type": "paragraph",
+            "text": "LOW"
+        },
+        {
+            "block_id": 323,
+            "type": "paragraph",
+            "text": "High"
+        },
+        {
+            "block_id": 324,
+            "type": "paragraph",
+            "text": "Low"
+        },
+        {
+            "block_id": 325,
+            "type": "paragraph",
+            "text": "A     g     I     I     t     y"
+        },
+        {
+            "block_id": 326,
+            "type": "heading",
+            "text": "Development models"
+        },
+        {
+            "block_id": 327,
+            "type": "paragraph",
+            "text": "Waterfall\nIterative\nIncremental - RUP (Rational Unified process) Model\nAgile / SCRUM model\nConcurrent engineering"
+        },
+        {
+            "block_id": 328,
+            "type": "heading",
+            "text": "Concurrent Development"
+        },
+        {
+            "block_id": 329,
+            "type": "paragraph",
+            "text": "Requirement"
+        },
+        {
+            "block_id": 330,
+            "type": "paragraph",
+            "text": "Design"
+        },
+        {
+            "block_id": 331,
+            "type": "paragraph",
+            "text": "Coding"
+        },
+        {
+            "block_id": 332,
+            "type": "paragraph",
+            "text": "Testing"
+        },
+        {
+            "block_id": 333,
+            "type": "paragraph",
+            "text": "Integration"
+        },
+        {
+            "block_id": 334,
+            "type": "heading",
+            "text": "? Isn’t it Waterfall Project"
+        },
+        {
+            "block_id": 335,
+            "type": "paragraph",
+            "text": "Requirement"
+        },
+        {
+            "block_id": 336,
+            "type": "paragraph",
+            "text": "Design"
+        },
+        {
+            "block_id": 337,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_337.png"
+            }
+        },
+        {
+            "block_id": 338,
+            "type": "paragraph",
+            "text": "Coding"
+        },
+        {
+            "block_id": 339,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_339.jpg"
+            }
+        },
+        {
+            "block_id": 340,
+            "type": "paragraph",
+            "text": "Testing"
+        },
+        {
+            "block_id": 341,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_341.png"
+            }
+        },
+        {
+            "block_id": 342,
+            "type": "paragraph",
+            "text": "Integration"
+        },
+        {
+            "block_id": 343,
+            "type": "heading",
+            "text": "Development models"
+        },
+        {
+            "block_id": 344,
+            "type": "paragraph",
+            "text": "Waterfall\nIterative\nIncremental - RUP (Rational Unified process) Model\nAgile / SCRUM model\nConcurrent engineering"
+        },
+        {
+            "block_id": 345,
+            "type": "paragraph",
+            "text": "לסיכום: מה לעשות ומה לא לעשות.."
+        },
+        {
+            "block_id": 346,
+            "type": "heading",
+            "text": "progressive elaboration \nrolling wave planning -  תכנון בגלים"
+        },
+        {
+            "block_id": 347,
+            "type": "heading",
+            "text": "What to do (1) ??"
+        },
+        {
+            "block_id": 348,
+            "type": "paragraph",
+            "text": "Plan & work with progressive elaboration (rolling wave planning) ((תכנון בגלים\nBuild the global plan in advance without too many details and update them frequently\nWork in phases, each phase with visible, beneficial and measurable results\nDevelop feature by feature and continuously accumulate them and deliver pieces of the project till you have a working system\nPlan, define, design, code, test and integrate in every phase\nUse methodologies"
+        },
+        {
+            "block_id": 349,
+            "type": "heading",
+            "text": "What to do (2) ??"
+        },
+        {
+            "block_id": 350,
+            "type": "paragraph",
+            "text": "Encourage Concurrency\nFast ramp-up\nDocument !!\nUse the models with flexibility\nEnable visibility and transparency\nEncourage feedback, learning and evolution\nUse continuous testing, continuous integration and continuous delivery\nDevelop tools and infrastructures"
+        },
+        {
+            "block_id": 351,
+            "type": "heading",
+            "text": "Question: How to ensure a failure in a SW project ?"
+        },
+        {
+            "block_id": 352,
+            "type": "heading",
+            "text": "מתוך העיתונות – מלחמת המודלים"
+        },
+        {
+            "block_id": 353,
+            "type": "paragraph",
+            "text": "דעה | מפל של טעויות: על אג'ייל - התופעה ששינתה את עולם התוכנה\nבמשך עשרות שנים שלטה ללא עוררין שיטת העבודה המכונה \"המפל\" בעולם התוכנה - אלא שהיא לא עבדה\n■ בשנים האחרונות תופשות את מקומה מתודולוגיות Agile - ששמות דגש על זריזות וגמישות במציאות כאוטית"
+        },
+        {
+            "block_id": 354,
+            "type": "heading",
+            "text": "Remember!"
+        },
+        {
+            "block_id": 355,
+            "type": "image",
+            "image_data": {
+                "image_path": "data\\outputs\\s3_images\\img_block_355.png"
+            }
+        },
+        {
+            "block_id": 356,
+            "type": "paragraph",
+            "text": "They are only models!\nAlice cries out\n“You're only a pack of cards”"
+        },
+        {
+            "block_id": 357,
+            "type": "heading",
+            "text": "Introduction – Lecture1"
+        },
+        {
+            "block_id": 358,
+            "type": "paragraph",
+            "text": "Introduction\nWhat’s a project\nThe constraints: Scope, Quality, Schedule, Budget, Resources, Risks\nDevelopment models\nSDLC (Software Development lifecycle)\nElementary activities\nmodels overview:\nWaterfall, Iterative, Incremental, RUP, Agile, concurrent engineering"
+        },
+        {
+            "block_id": 359,
+            "type": "paragraph",
+            "text": "Questions ???\nThank you!!"
         }
     ]
 }

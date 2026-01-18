@@ -1,12 +1,14 @@
 import json
 import os
 import re
+import io
 from pptx import Presentation
 from pptx.enum.shapes import PP_PLACEHOLDER
+from src.models.document_models import Metadata, ContentBlock, DocumentModel, TableData, ImageData
+
 
 # =========================================================
 # Constants
-# =========================================================
 HEADING_TYPE = "heading"
 PARAGRAPH_TYPE = "paragraph"
 TABLE_TYPE = "table"
@@ -17,17 +19,19 @@ FONT_SIZE_DELTA = 5
 TOP_HEADING_RATIO = 0.2
 MAX_HEADING_WORDS = 10
 EMPHASIZED_RATIO = 0.6
-MINI_WORDS = 40 # i didnt do it yet
+MINI_WORDS = 40 
 
 # =========================================================
-def extract_pptx_metadata(prs):
+def extract_pptx_metadata(prs) -> Metadata:
     props = prs.core_properties
-    return {
+
+    metadata = {
         "title": props.title or "",
         "author": props.author or "",
-        "subject": props.subject or "",
         "creation_date": str(props.created) if props.created else None,
     }
+
+    return Metadata(**metadata)
 
 # =========================================================
 def normalize_text(text):
@@ -106,102 +110,170 @@ def shape_is_heading(shape, slide_height, body_font_size):
 
     return False
 
-# =========================================================
-def extract_pptx_to_json(input_file, output_file):
-    if not os.path.exists(input_file):
-        raise FileNotFoundError(f"File not found: {input_file}")
 
-    prs = Presentation(input_file)
+
+# =========================================================
+def extract_pptx_table(table, count_words):
+    extracted = []
+
+    for row in table.rows:
+        extracted_row = []
+        for cell in row.cells:
+            text = normalize_text(cell.text_frame.text)
+            extracted_row.append(text)
+            count_words += len(text.split())
+        extracted.append(extracted_row)
+
+    if extracted:
+        table_data = {
+            "headers": extracted[0],
+            "rows": extracted[1:]
+        }
+    else:
+        table_data = {
+            "headers": [],
+            "rows": []
+        }
+
+    return table_data, count_words
+
+
+
+
+
+# =========================================================
+def extract_pptx_file_to_model(file_stream: io.BytesIO, image_output_dir: str) -> tuple[int, DocumentModel]:
+
+    file_stream.seek(0) 
+    prs = Presentation(file_stream)
+
     slide_height = prs.slide_height
     total_word_count = 0
-    result = {
-        "metadata": extract_pptx_metadata(prs),
-        "pages": []
-    }
+    block_id_counter = 1
 
-    for slide_index, slide in enumerate(prs.slides):
-        page_elements = []
-        body_font_size = get_slide_body_size(slide)
+    metadata = extract_pptx_metadata(prs)
+    block_list = [] 
 
-        shapes = sorted(slide.shapes, key=lambda s: (s.top, s.left))
+    try:
+        for slide_index, slide in enumerate(prs.slides):
+            body_font_size = get_slide_body_size(slide)
+            shapes = sorted(slide.shapes, key=lambda s: (s.top, s.left))
 
-        for shape in shapes:
-            if is_auto_slide_number(shape):
-                continue
+            for shape in shapes:
+                if is_auto_slide_number(shape):
+                    continue
 
-            # ================= TABLE =================
-            if shape.has_table:
-                rows = []
-                for row in shape.table.rows:
 
-                    rows.append([
-                        normalize_text(cell.text_frame.text)
-                        for cell in row.cells
-                    ])
+                # ================= IMAGE =================
+                if shape.shape_type == 13:  # Picture
+                    image_paths = extract_and_save_pptx_images(shape, block_id_counter, image_output_dir)
 
-                page_elements.append({
-                    "type": TABLE_TYPE,
-                    "headers": rows[0] if rows else [],
-                    "rows": rows[1:] if len(rows) > 1 else []
-                })
-                continue
+                    for path in image_paths:
+                        block_list.append(ContentBlock(
+                            block_id=block_id_counter,
+                            type="image",
+                            image_data=ImageData(image_path=path)
+                        ))
+                        block_id_counter += 1
+                    continue
 
-            # ================= TEXT =================
-            if not shape.has_text_frame:
-                continue
 
-            element_type = (
-                HEADING_TYPE
-                if shape_is_heading(shape, slide_height, body_font_size)
-                else PARAGRAPH_TYPE
-            )
+                # ================= TABLE =================
+                if shape.has_table:
+                    table_obj, total_word_count = extract_pptx_table(shape.table, total_word_count)
 
-            collected_text = []
+                    block_list.append(ContentBlock(
+                        block_id=block_id_counter,
+                        type=TABLE_TYPE,
+                        table_data=TableData(**table_obj)
+                    ))
+                    block_id_counter += 1
+                    continue
 
-            for paragraph in shape.text_frame.paragraphs:
-                text = normalize_text(paragraph.text)
-                if text:
-                    collected_text.append(text)
+                # ================= TEXT =================
+                if not shape.has_text_frame:
+                    continue
 
-            if not collected_text:
-                continue
+                element_type = (
+                    HEADING_TYPE
+                    if shape_is_heading(shape, slide_height, body_font_size)
+                    else PARAGRAPH_TYPE
+                )
 
-            full_text = "\n".join(collected_text)
+                collected_text = []
 
-            urls = extract_urls(full_text)
-            clean_text = full_text
-            for url in urls:
-                clean_text = clean_text.replace(url, "").strip()
+                for paragraph in shape.text_frame.paragraphs:
+                    text = normalize_text(paragraph.text)
+                    if text:
+                        collected_text.append(text)
 
-            if clean_text:
-                total_word_count += len(clean_text.split())
-                # Merge consecutive paragraphs of same type
-                if (
-                    page_elements and
-                    page_elements[-1]["type"] == element_type
-                ):
-                    page_elements[-1]["text"] += "\n" + clean_text
-                else:
-                    page_elements.append({
-                        "type": element_type,
-                        "text": clean_text
-                    })
+                if not collected_text:
+                    continue
 
-            for url in urls:
-                total_word_count += 1
-                
-                page_elements.append({
-                    "type": URL_TYPE,
-                    "text": url
-                })
+                full_text = "\n".join(collected_text)
 
-        result["pages"].append({
-            "page_number": slide_index + 1,
-            "content": page_elements
-        })
+                urls = extract_urls(full_text)
+                clean_text = full_text
+                for url in urls:
+                    clean_text = clean_text.replace(url, "").strip()
 
-    with open(output_file, "w", encoding="utf-8") as f:
-        json.dump(result, f, ensure_ascii=False, indent=4)
+                if clean_text:
+                    total_word_count += len(clean_text.split())
+                    block_list.append(ContentBlock(
+                        block_id=block_id_counter,
+                        type=element_type,
+                        text=clean_text
+                    ))
+                    block_id_counter += 1
 
-    return total_word_count
-    # return result
+                for url in urls:
+                    total_word_count += 1
+                    block_list.append(ContentBlock(
+                        block_id=block_id_counter,
+                        type=URL_TYPE,
+                        text=url
+                    ))
+                    block_id_counter += 1
+
+        if total_word_count < MINI_WORDS:
+            raise ValueError(f"Content too short: {total_word_count} words.")
+
+        final_document = DocumentModel(
+            metadata=metadata,
+            content_blocks=block_list
+        )
+
+        return total_word_count, final_document
+    
+    except Exception as e:
+        print(f"Error: {e}")
+        raise
+
+
+
+
+
+#===============================================================================
+def extract_and_save_pptx_images(shape, block_id, image_output_dir: str):
+    image_paths = []
+
+    if not shape.shape_type == 13:  # 13 == MSO_SHAPE_TYPE.PICTURE
+        return image_paths
+
+    try:
+        image = shape.image
+        image_bytes = image.blob
+        extension = image.ext
+
+        image_filename = f"img_block_{block_id}.{extension}"
+        full_path = os.path.join(image_output_dir, image_filename)
+
+        with open(full_path, "wb") as f:
+            f.write(image_bytes)
+
+        image_paths.append(full_path)
+
+    except Exception as e:
+        raise RuntimeError(f"Image extraction failed for block {block_id}: {e}") from e
+
+    return image_paths

@@ -4,8 +4,6 @@ import time
 from src.parameters.loader import load_parameters
 from src.parsers.manager import handle_input_file
 from src.openai.manager import handle_ai_content_generation
-#from src.parsers.pptx_handler import extract_pptx_to_json
-
 
 def main():
 
