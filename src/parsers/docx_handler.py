@@ -6,7 +6,7 @@ import io
 import os
 
 from src.parsers.utils import file_size_check
-from src.models.document_models import Metadata, ContentBlock, DocumentModel, ImageData
+from src.models.document_models import Metadata, ContentBlock, DocumentModel, TableData, ImageData
 
 
 
@@ -170,7 +170,7 @@ def extract_docx_file_to_model(file_stream: io.BytesIO, image_output_dir: str) -
                 block_list.append(ContentBlock(
                     block_id=block_id_counter,
                     type=TABLE,
-                    table_data=table_obj
+                    table_data=TableData(**table_obj)
                 ))
                 block_id_counter += 1
 

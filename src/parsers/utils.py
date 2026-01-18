@@ -20,7 +20,6 @@ def file_size_check(file_stream: io.BytesIO):
 
 # Check and return suffix type of the file
 def get_file_extension_type(file_path):
-
     with open(file_path, 'rb') as f:
         header = f.read(5)
 
@@ -28,12 +27,15 @@ def get_file_extension_type(file_path):
     if header.startswith(b'%PDF-'):
         return 'pdf'
 
-    # Possible DOCX (ZIP)
+    # Possible DOCX / PPTX (ZIP)
     if header.startswith(b'PK\x03\x04'):
         try:
             with zipfile.ZipFile(file_path) as z:
-                if 'word/document.xml' in z.namelist():
+                names = z.namelist()
+                if 'word/document.xml' in names:
                     return 'docx'
+                if 'ppt/presentation.xml' in names:
+                    return 'pptx'
         except zipfile.BadZipFile:
             pass
 
