@@ -4,36 +4,10 @@ import time
 from src.parameters.loader import load_parameters
 from src.parsers.manager import handle_input_file
 from src.openai.manager import handle_ai_content_generation
-from src.parsers.pptx_handler import extract_pptx_to_json
+#from src.parsers.pptx_handler import extract_pptx_to_json
 
 
 def main():
-    # input_path = "data/inputs/test4.pptx"
-    # output_file = "data/outputs/output_test1_v_3.json"
-    # extract_pptx_to_json(input_path, output_file)
-
-    
-
-    # try:
-
-    #     path_params = "src/parameters/parameters.json"
-    #     parameters = load_parameters(path_params)
-
-
-    #     input_file_path = parameters.input_file
-    #     output_file_path = "data/outputs/output.json"
-    #    # handle_input_file(input_file_path, output_file_path, parameters)
-
-    #    # learning_skill = handle_ai_content_generation(output_file_path, parameters)
-    #     learning_skill = handle_ai_content_generation(output_file, parameters)
-
-
-    #     if learning_skill:
-    #         print(learning_skill)
-
-    # except Exception as e:
-    #     print("Erorr: " + e)
-
 
 
 
@@ -79,7 +53,7 @@ def main():
     # except Exception as e:
     #     logger.exception("Unexpected error occurred")
     except Exception as e:
-        print("Erorr: " + e)
+         print("Erorr: " + e)
 
 if __name__ == "__main__":
     main()

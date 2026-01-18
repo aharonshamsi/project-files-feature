@@ -1,6 +1,4 @@
 
-from src.parsers.docx_handler import extract_docx_file_to_json
-from src.parsers.pdf_handler import extract_pdf_file_to_json
 from src.parsers.pptx_handler import extract_pptx_to_json
 
 from src.parsers.utils import get_file_extension_type
@@ -41,6 +39,9 @@ def handle_input_file(parameters: AppConfig) -> dict:
     elif file_type == "pdf":
         number_words_in_file, output_document_model = extract_pdf_file_to_model(file_stream, IMAGE_OUTPUT_DIR)
 
+    # elif file_type == "pptx":
+    #     number_words_in_file = extract_pptx_to_json(file_stream, IMAGE_OUTPUT_DIR)
+
     parameters.number_words_in_file = number_words_in_file
 
     # Write the list of dictionaries to the output JSON file
@@ -49,7 +50,5 @@ def handle_input_file(parameters: AppConfig) -> dict:
 
     return output_document_model.model_dump()
 
-    elif file_type == "pptx":
-        number_words_in_file = extract_pptx_to_json(input_path, output_path)
 
 
