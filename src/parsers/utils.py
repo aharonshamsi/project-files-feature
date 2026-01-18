@@ -25,6 +25,27 @@ def file_size_check(file_path_input):
 
 
 
+# # Check and return suffix type of the file
+# def get_file_extension_type(file_path):
+
+#     with open(file_path, 'rb') as f:
+#         header = f.read(5)
+
+#     # PDF
+#     if header.startswith(b'%PDF-'):
+#         return 'pdf'
+
+#     # Possible DOCX (ZIP)
+#     if header.startswith(b'PK\x03\x04'):
+#         try:
+#             with zipfile.ZipFile(file_path) as z:
+#                 if 'word/document.xml' in z.namelist():
+#                     return 'docx'
+#         except zipfile.BadZipFile:
+#             pass
+
+#     raise ValueError(f"Unsupported or corrupted file type: '{file_path}'")
+
 # Check and return suffix type of the file
 def get_file_extension_type(file_path):
 
@@ -35,12 +56,21 @@ def get_file_extension_type(file_path):
     if header.startswith(b'%PDF-'):
         return 'pdf'
 
-    # Possible DOCX (ZIP)
+    # Possible DOCX or PPTX (Both are ZIP archives)
     if header.startswith(b'PK\x03\x04'):
         try:
             with zipfile.ZipFile(file_path) as z:
-                if 'word/document.xml' in z.namelist():
+                # Get the list of files inside the archive once
+                file_list = z.namelist()
+
+                # Check for Word document structure
+                if 'word/document.xml' in file_list:
                     return 'docx'
+                
+                # Check for PowerPoint presentation structure
+                if 'ppt/presentation.xml' in file_list:
+                    return 'pptx'
+
         except zipfile.BadZipFile:
             pass
 

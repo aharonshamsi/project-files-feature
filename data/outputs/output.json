@@ -1,0 +1,1191 @@
+{
+    "metadata": {
+        "title": "Project Management Course",
+        "author": "YCOHEN",
+        "subject": "",
+        "creation_date": "2010-06-11 08:08:07"
+    },
+    "pages": [
+        {
+            "page_number": 1,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Software Engineering & Management of Software Projects"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Yigal Cohen\nYigal.Cohen@mail.huji.ac.il\nyigalhacohen@gmail.com\nyigalco@edu.jmc.ac.il\n054-5664557"
+                }
+            ]
+        },
+        {
+            "page_number": 2,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Lesson #1\n1.1 Introduction"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Yigal Cohen\nYigal.Cohen@mail.huji.ac.il\nyigalhacohen@gmail.com\nyigalco@edu.jmc.ac.il\n054-5664557"
+                }
+            ]
+        },
+        {
+            "page_number": 3,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "מה זאת הנדסת תוכנה ?"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "הנדסת תוכנה מיישמת גישה שיטתית, מבוקרת ומדידה לפיתוח, תפעול, ותחזוקה של תוכנה.\nהנדסת תוכנה מקיפה את מחזור החיים השלם של תוכנה, וכוללת ידע, שיטות וכלים עבור:\n- דרישות, תכנון, בנייה, בדיקות, אינטגרציה, תחזוקה, ניהול תצורה, איכות ועוד\nהנדסת תוכנה נועדה להפחית את המורכבות שבפיתוח תוכנה, לשפר את אמינות התוכנה המפותחת, ולהקטין את עלויות התפעול והתחזוקה.\nהנדסת התוכנה שימושית במיוחד בפיתוח מערכות מורכבות הכוללות חומרה, תוכנה, ותקשורת. (מתוך ויקיפדיה)\nהנדסת תוכנה מציעה ומתעדפת אסטרטגיות שונות לפיתוח התוכנה.\nאיטרציות,\nWaterfall\nתהליכים רציפים: Continuous testing/integration/Delivery/…\nשלבים בסיסיים"
+                }
+            ]
+        },
+        {
+            "page_number": 4,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "הנדסת תוכנה - חסרונות"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "לפעמים \"כבדה\" מדי\nדורש מיומנות מחד ובחינה מתמדת של עצם התהליך"
+                }
+            ]
+        },
+        {
+            "page_number": 5,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "הנדסת  תוכנה לעומת מדעי המחשב"
+                },
+                {
+                    "type": "table",
+                    "headers": [
+                        "נושא",
+                        "הנדסת תוכנה",
+                        "מדעי המחשב"
+                    ],
+                    "rows": [
+                        [
+                            "אידיאל",
+                            "פיתוח מערכות תוכנה",
+                            "גילוי אמיתות כלליות אודות \nחישוביות, אלגוריתמים ונושאים תאורטיים נוספים"
+                        ],
+                        [
+                            "דגש",
+                            "פיתוח תוכנה בעלת ערך למשתמש",
+                            "אמיתות כלליות, כגון סיבוכיות ונכונות של אלגוריתמים"
+                        ],
+                        [
+                            "מטרה",
+                            "תוכנות גדולות ושימושיות כגון מהדר, מערכות מידע, מערכות בקרה מערכות מבוזרות, חבילת יישומים משרדיים",
+                            "אלגוריתמים כגון אלגוריתמים למיון, בעיות מופשטות כגון בעיית הסוכן הנוסע"
+                        ],
+                        [
+                            "תקציב ולוח זמנים",
+                            "תקציב ולוחות זמנים \"קבועים מראש\"",
+                            "תקציבי מחקר ותחרותיות כפי שמקובל באקדמיה"
+                        ],
+                        [
+                            "ידע נוסף",
+                            "הנדסה, ניהול פרויקטים, הכרת תחום היישום, ידע בתחומים טכנולוגיים נוספים",
+                            "מתמטיקה"
+                        ],
+                        [
+                            "חוקרים נודעים",
+                            "פרד ברוקס, בארי בֶם, גריידי בוץ'",
+                            "אלן טיורינג, ג'ון פון נוימן, אדסחר דייקסטרה, דונלד קנות', דוד הראל, עדי שמיר"
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "page_number": 6,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "מה  זה ניהול פרויקט תוכנה ?"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "בהנדסת תוכנה מתייחסים להיבטים של התוכנה כפי שפירטנו.\nבניהול פרויקט אנחנו מתייחסים גם ל:\nהיבטים אנושיים,\nזמן פיתוח,\nתקציב,\nתהליך הפיתוח,\nעבודת צוות,\nלוחות זמנים, אספקות, תלויות.\nזאת לא אבחנה מדויקת (גם כי קו ההפרדה הוא מאד דינמי)  אבל זאת אבחנה מספיק טובה."
+                }
+            ]
+        },
+        {
+            "page_number": 7,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "מה נלמד בקורס? (1/2)"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Introduction, Overview of major SW development models\nBasic Activities:\nRequirements Management.\nSystem Design: System modeling & Architectural design\nSW Testing: Test case, Test Scenario, Test planning, Continuous testing\nIntegration, Integration planning ,Continuous Integration\nDistributed software engineering\nAgile & Scrum Vs. Classical project management (Waterfall)\nProject Planning. scope management, Scheduling & Tracking, TOC (Theory of constraints)\nThe role of the PM, Project management, PMI Model & PMI Matrix (the last 2 are optional)"
+                }
+            ]
+        },
+        {
+            "page_number": 8,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "מה אולי לא נלמד בקורס? (2/2)"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Some or all of the following topics according to the progress of the class:\nOther models of requirements analysis and description, more models of system architecture and design,\nHuman Communication, meeting management.\nSW quality Management\nRisk management, Improvement of SW development process (CMMI)\nPeople management. Adizes model. Maslow need hierarchy\nAbout 30% of the course will be dedicated to the course project: Management of a project of a distributed system (Without code)"
+                }
+            ]
+        },
+        {
+            "page_number": 9,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "ועד תלמידים\n\nמילואימניקים – נשתדל לבוא לקראתם.\nמקווה מאד שהשנה תהיה הרבה יותר קלה בנושא המלואים"
+                }
+            ]
+        },
+        {
+            "page_number": 10,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "מבנה הציון"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "הרצאות פרונטליות\n50% השתתפות חובה. משימות /תרגילים – 70%\nכ5 או 6 תרגילים בקבוצות בנות 4 תלמידים .\nיהיו תרגילים בהם יהיו גם משימות עצמאיות (לעתים עם ציון) לכל אחד מהקבוצה\nכל תרגיל מתבסס על התרגילים הקודמים וביחד יוצרים פרויקט.\nבחינת בית אישית - 30% (או בחינת גמר)\nרשימת קריאה\nכ-3 או 4 מאמרים.\nמספר פרקים מתוך הספר:\nSoftware Engineering: A Practitioner's Approach 8th Edition, Roger pressman\nימסרו במהלך הקורס\nאתר הקורס\nב moodle"
+                }
+            ]
+        },
+        {
+            "page_number": 11,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "הקלות למילואימניקים"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "פטור מתרגילים בתקופת המילואים\nאבל – חובה להשלים את חומר הלימודים\nשיעורי השלמה לפי הנחיות האוניברסיטה ואפשרות לשיעורים נוספים לפי תיאום עם הועד."
+                }
+            ]
+        },
+        {
+            "page_number": 12,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "מבנה הציון"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "במכללה ממוצע התרגילים\nיש לכם ועד מייצג לכיתה?"
+                }
+            ]
+        },
+        {
+            "page_number": 13,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "About myself:\n\nYigal Cohen"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Why I teach this course?"
+                }
+            ]
+        },
+        {
+            "page_number": 14,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "What’s the problem ?"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "About 1/3 of the projects totally fail, a third are poorly completed, and a third are reasonably succeed\nMany projects are managed intuitively, some are managed very poorly, and others are not managed at all\nThere is a lot of practices, experience, knowledge, methodologies and theories that can help us to run projects in a better way:\nfaster (x4), with higher quality (1/20 of the escaped bugs), cheaper and with satisfied customers"
+                }
+            ]
+        },
+        {
+            "page_number": 15,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Chaos Report Results"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "successful\nchallenged\nfailed"
+                }
+            ]
+        },
+        {
+            "page_number": 16,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Can you build this?"
+                }
+            ]
+        },
+        {
+            "page_number": 17,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Can you build this?"
+                }
+            ]
+        },
+        {
+            "page_number": 18,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Can you build this?"
+                }
+            ]
+        },
+        {
+            "page_number": 19,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Scale"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Most people can build a doghouse\nTraditionally people built their own homes\nPerhaps with help from experienced village people\nStill happens in many places in the world\nNobody just goes and builds a skyscraper\nDraw plans (incl. market) and organize it all\nMake sure construction is solid\nAbide by earthquake regulations ( כפוף לרגולציה)\nThis is a work for professionals"
+                }
+            ]
+        },
+        {
+            "page_number": 20,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "What Engineers Can Do"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Predict system behavior\ne.g. conditions leading to stability or instability\nCalculate design tolerances\nIs manufacturing variation still OK?\nCalculate failure probability\nChances that change in conditions will be really bad\nUse all this to extend previous systems\nSkyscrapers, jumbo jets, and supercomputers represent accumulated knowledge over many years\nThis is way beyond what any virtuoso ever did"
+                }
+            ]
+        },
+        {
+            "page_number": 21,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "שאלה: \nמה ההבדלים בין הנדסת תוכנה להנדסת מבנים או גשרים?"
+                }
+            ]
+        },
+        {
+            "page_number": 22,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "מה רואים בתמונה?"
+                }
+            ]
+        },
+        {
+            "page_number": 23,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "מה רואים בתמונה?"
+                }
+            ]
+        },
+        {
+            "page_number": 24,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "What we’ll do in the course ?"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "We’ll learn a rich toolbox for project management SW Engineering that will help us to think outside  the box"
+                }
+            ]
+        },
+        {
+            "page_number": 25,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "שאלה: האם תרגולות ותבניות הופכות אותנו לפחות או ליותר יצירתיים ?"
+                }
+            ]
+        },
+        {
+            "page_number": 26,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "List of SW Engineering topics"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Project Management framework\nProject activities\nSupportive activities\nMethodologies\nArchitecture"
+                }
+            ]
+        },
+        {
+            "page_number": 27,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "SDLC – SW Development Life Cycle"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "דרישות\nעיצוב-תכנון\nקידוד-בניה\nבדיקות\nאינטגרציה"
+                }
+            ]
+        },
+        {
+            "page_number": 28,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "SDLC – SW Development Life Cycle"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "דרישות\nכלי בדיקות\nעיצוב-תכנון\nבדיקות\nקידוד-בניה\nבדיקות\nאינטגרציה\nבדיקות סופיות"
+                }
+            ]
+        },
+        {
+            "page_number": 29,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "List of SW Engineering topics"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Project Management Framework\nIntroduction,\nSDLC – SW Development Life Cycle (ALM- Application Lifecycle Management)\nThe role of the PM\nCustomer Interfacing\nProject initiating & Planning\nTime management\nProject Management framework\nProject activities\nSupportive activities\nMethodologies\nArchitecture"
+                }
+            ]
+        },
+        {
+            "page_number": 30,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "List of SW Engineering topics"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Project activities\nRequirements\nArchitecture & Design\nCoding & Building\nTesting\nIntegration\nMaintenance & Support\nProject Management framework\nProject activities\nSupportive activities\nMethodologies\nArchitecture"
+                }
+            ]
+        },
+        {
+            "page_number": 31,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "List of SW Engineering topics"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Supportive activities\nSW Configuration Management\nBranch Management\nBug Management\nClassic Project Management problems\nOn-going activities\nSoft Skills\nSupport Environment\nMetrics\nProject Management framework\nProject activities\nSupportive activities\nMethodologies\nArchitecture"
+                }
+            ]
+        },
+        {
+            "page_number": 32,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "List of SW Engineering topics"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Methodologies\nPMI & Iterative Deveopment\nAgile / Scrum\nTOC\nAdijas\nCMMI\nISO-9000\nProject Management framework\nProject activities\nSupportive activities\nMethodologies\nArchitecture"
+                }
+            ]
+        },
+        {
+            "page_number": 33,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "List of SW Engineering topics"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Architecture\nArchitecture design\nModeling\nDistributed systems\nProject Management framework\nProject activities\nSupportive activities\nMethodologies\nArchitecture"
+                }
+            ]
+        },
+        {
+            "page_number": 34,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "What’s a project?"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "A temporary Endeavour undertaken to create a unique product, service or result\n“מאמץ מרוכז, קצוב בזמן ובמשאבים להשגת תוצאה מוגדרת“\nuniqueness of every project” (Done, quality)’"
+                }
+            ]
+        },
+        {
+            "page_number": 35,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Project outcomes"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "A product\nA system\nA conclusion\nA capability\n……\n……."
+                }
+            ]
+        },
+        {
+            "page_number": 36,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "The golden triangle or the iron Triangle"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Scope\nQuality\nCost\nTime"
+                }
+            ]
+        },
+        {
+            "page_number": 37,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "The Iron Triangle"
+                }
+            ]
+        },
+        {
+            "page_number": 38,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "מה המגבלות על פרויקט ?"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Scope,\ntime,\nmoney,\nquality,\nresources,\nrisk"
+                }
+            ]
+        },
+        {
+            "page_number": 39,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Balancing Project Constraints"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Scope\nRisks\nResources\nProject\nTime\nMoney\nQuality"
+                }
+            ]
+        },
+        {
+            "page_number": 40,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Is this is a real zero-sum game ??"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "?\nC\n∑\nScope,\nmoney,\nquality,\nresources,\ntime,\nrisk\n="
+                }
+            ]
+        },
+        {
+            "page_number": 41,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Can we enlarge the cake (1)?"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Scope\nPrioritization: Start with the important and risky things!\nPareto (20:80)\nMoney\nCost management;\nReuse!\nQuality\nManage a process, manage continuous testing, continuous integration, continuous delivery, analyze feedback, automation, defect management, Root cause analysis\nResources management\nFind the right people, training, mentoring, guidance, challenging; team work, spirit of excellence, roles & responsibilities\nTime management\nManage a schedule, Find and manage critical paths,\nContinuous development /  testing /  integration\nRisk management\nAssessment and mitigation continuously\nScope\nMoney\nQuality\nResources\nTime\nRisks"
+                }
+            ]
+        },
+        {
+            "page_number": 42,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "More ideas ? How to enlarge the cake ??"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Scope\nResources\nRisks\nProject\nProject Value\nTime\nMoney\nQuality"
+                }
+            ]
+        },
+        {
+            "page_number": 43,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Can we enlarge the cake (2)?"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Methodologies\nTechnology\nCommunication – knowledge sharing\nKnowledge\nUnderstanding\nDelegation\nProfessionalism\nTeamwork\nCommunication, Communication, Communication, ,,,"
+                }
+            ]
+        },
+        {
+            "page_number": 44,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Can we enlarge the cake ??"
+                }
+            ]
+        },
+        {
+            "page_number": 45,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Lesson #1\n1.2 Development models"
+                }
+            ]
+        },
+        {
+            "page_number": 46,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Elementary activities"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Formal name\nמה התכלית?\nInitiating\nPlanning\nRequirements\nDesign\nCoding & building\nTesting\nIntegration\nMaintenance &support\nWhy ?\nWhat? Who? When?\nWhat?\nHow?\nDoing\nValidating\nConstructing\nLong term warranty"
+                }
+            ]
+        },
+        {
+            "page_number": 47,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Development models"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Waterfall\nIterative\nConcurrent engineering\nAgile / SCRUM model\nRUP (Rational Unified process) Model\nDevelopment models differ by the \ninterdependency of their elementary activities\nCan these models live together ?"
+                }
+            ]
+        },
+        {
+            "page_number": 48,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Development models"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Waterfall\nIterative\nIncremental - RUP (Rational Unified process) Model\nAgile / SCRUM model\nConcurrent engineering"
+                }
+            ]
+        },
+        {
+            "page_number": 49,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "“Classic” Waterfall model\n(Old but basic)"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Requirements\nהתנור\nגמלא\nבניאס\nסער\nDesign\nCoding\nTesting\nציר הזמן\nIntegration"
+                }
+            ]
+        },
+        {
+            "page_number": 50,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Waterfall Model"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Disadvantages\nAdvantages\nStrong dependencies in gates\nNo ‘real’ visibility\nNo feedback\nNo concurrency\nNo learning phase\nNo evolution\nImportant steps are hidden (infrastructure, tools, research)\nClear phases\nNice view\nManageable\nClear dependencies\nCustomer’s control"
+                }
+            ]
+        },
+        {
+            "page_number": 51,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Waterfall with some concurrency"
+                }
+            ]
+        },
+        {
+            "page_number": 52,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Waterfall(s) ??"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Requirement\nDesign\nCoding\nTesting\nIntegration"
+                }
+            ]
+        },
+        {
+            "page_number": 53,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Waterfall(s) ??"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Requirement\nRequirement\nDesign\nDesign\nCoding\nCoding\nTesting\nTesting\nIntegration\nIntegration"
+                }
+            ]
+        },
+        {
+            "page_number": 54,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Waterfall(s) ??"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Requirement\nDesign\nCoding\nTesting\nIntegration\nRequirement\nDesign\nCoding\nTesting\nIntegration"
+                }
+            ]
+        },
+        {
+            "page_number": 55,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Can we change the requirements in waterfall model after the requirements are completed?"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Yes!\nUse change request process"
+                }
+            ]
+        },
+        {
+            "page_number": 56,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "More Waterfalls"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Kraka (Kroatia)\nNiagara\nIguazu\nVictoria"
+                }
+            ]
+        },
+        {
+            "page_number": 57,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "שאלה:"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "מה השוני בין המפלים האלו לבין המפלים שבציור הראשון"
+                }
+            ]
+        },
+        {
+            "page_number": 58,
+            "content": []
+        },
+        {
+            "page_number": 59,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "מפלי האיגואסו"
+                },
+                {
+                    "type": "url",
+                    "text": "https://www.youtube.com/watch?v=9lfMb20QLXg"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "מה ההבדלים בין מפל האיגואסו לבין מפל גמלא למשל?\nמקביליות,\nחיבורים ופיצולים,\nמדרגות"
+                }
+            ]
+        },
+        {
+            "page_number": 60,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Development models"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Waterfall\nIterative\nIncremental - RUP (Rational Unified process) Model\nAgile / SCRUM model\nConcurrent engineering"
+                }
+            ]
+        },
+        {
+            "page_number": 61,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Iterative model"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Iteration -1\nR\nD\nC\nT\nI\nIteration -2\nR\nD\nC\nT\nI\nIteration -n\nR\nD\nC\nT\nI"
+                }
+            ]
+        },
+        {
+            "page_number": 62,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Iterative model\nPlanning-1"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "working-1\nLearning Lessons-1\nPlanning-2\nworking-2\nLearning Lessons-2\nPlanning-3\nworking-3"
+                }
+            ]
+        },
+        {
+            "page_number": 63,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Iterative model\nPlanning-1"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "working-1\nR\nD\nC\nT\nI\nLearning Lessons-1\nPlanning-2\nworking-2\nR\nD\nC\nT\nI\nLearning Lessons-2\nPlanning-3\nworking-3\nR\nD\nC\nT\nI"
+                }
+            ]
+        },
+        {
+            "page_number": 64,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "מה הרווחנו בעבודה איטרטיבית?"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "מספר מחזורים  קצרים\nנראות טובה יותר של תוצאות שיכולות לשמש למשוב (Feedback)\nאין צורך לתכנן קדימה בפירוט למרחקים ארוכים. זה קשה מאד.\nתהליכי הפקת לקחים, הערכה ותכנון לאורך הדרך בעיקר בין שלבי הביצוע."
+                }
+            ]
+        },
+        {
+            "page_number": 65,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Development models"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Waterfall\nIterative\nIncremental - RUP (Rational Unified process) Model\nAgile / SCRUM model\nConcurrent engineering"
+                }
+            ]
+        },
+        {
+            "page_number": 66,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "The focus of Rup Phases"
+                },
+                {
+                    "type": "table",
+                    "headers": [
+                        "Focus",
+                        "RUP Phase"
+                    ],
+                    "rows": [
+                        [
+                            "Confirm the scope and objectives of the project and bring the business risks under  control",
+                            "Inception  פתיחה"
+                        ],
+                        [
+                            "Stabilize the product plans and bring the architectural and technical risks under control",
+                            "Elaboration\nפירוט והרחבה"
+                        ],
+                        [
+                            "Build  the product and bring logistical, project execution risks under control",
+                            "Construction\nבניה, הרכבה"
+                        ],
+                        [
+                            "Deliver the product and roll-out risks under control",
+                            "Transition\nהעברה"
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "page_number": 67,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Rup (Rational Unified Process)\nMajor phases & Major decision points"
+                }
+            ]
+        },
+        {
+            "page_number": 68,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Rup: Iteration"
+                }
+            ]
+        },
+        {
+            "page_number": 69,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "RUP: Phases and iterations"
+                }
+            ]
+        },
+        {
+            "page_number": 70,
+            "content": []
+        },
+        {
+            "page_number": 71,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Rup: The Distribution of Work Across Phases  (% Coverage)"
+                }
+            ]
+        },
+        {
+            "page_number": 72,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Iterative Vs. Incremental model"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Both are iterative but incremental emphasizes the development of\nfeature by feature\n“Vertical  development”\nthat is continuously accumulated to a testable and working system"
+                }
+            ]
+        },
+        {
+            "page_number": 73,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "שאלה: \nהאם תמיד עדיף מודל מתווסף(Incremental)  על פני  מודל איטרטיבי?"
+                }
+            ]
+        },
+        {
+            "page_number": 74,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Vertical Work"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "WORK:\nDevelop feature by feature, either sequentially or concurrently.\nRun a full cycle of development for each feature.\nUse continuous development, continuous testing, continuous integration and continuous delivery.\nAdvantages:\nAvoidance of the big-bang integration and testing\nHaving visible and tested / testable results along the development process\nGet and use feedback"
+                }
+            ]
+        },
+        {
+            "page_number": 75,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Iterative /incremental/ RUP Model"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Advantages\nDisadvantages\nStrong dependencies in iterations\nRigid\nNot enough concurrency\nNo learning  activity\nNo evolution activity\nImportant steps are hidden (infrastructure, tools, research)\nClear phases\nNice view\nClear dependencies\nCustomer’s control\nProvides Visibility\nEnables Reliable Feedback\nEnables Learning\nGlobal view and iterations"
+                }
+            ]
+        },
+        {
+            "page_number": 76,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Development models"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Waterfall\nIterative\nIncremental - RUP (Rational Unified process) Model\nAgile / SCRUM model\nConcurrent engineering"
+                }
+            ]
+        },
+        {
+            "page_number": 77,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "SCRUM Process Overview"
+                }
+            ]
+        },
+        {
+            "page_number": 78,
+            "content": []
+        },
+        {
+            "page_number": 79,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "SCRUM: Time box"
+                }
+            ]
+        },
+        {
+            "page_number": 80,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Scrum Model"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Advantages\nDisadvantages\nStrong dependencies on time-box\nVery Rigid with a lot of ceremonies\nNot enough concurrency\nDisconnected from the SW traditional practices\nNo learning  activity\nNo evolution activity\nImportant steps are hidden (infrastructure, tools, research)\nIn practice – teams may lose the vision and the goals\nInsufficient global view\nClear phases\nNice view\nClear dependencies\nCustomer’s control\nVisibility\nEnables Reliable Feedback & use it\nEncourages Learning\nEncourages evolution"
+                }
+            ]
+        },
+        {
+            "page_number": 81,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "integrate waterfall with agile"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "מ ב ט    כ ו ל ל\nHigh\nLOW\nHigh\nLow\nA     g     I     I     t     y"
+                }
+            ]
+        },
+        {
+            "page_number": 82,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Duality - integrate global view with agile"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "מ ב ט    כ ו ל ל\nHigh\nLOW\nHigh\nLow\nA     g     I     I     t     y"
+                }
+            ]
+        },
+        {
+            "page_number": 83,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "integrate waterfall with agile"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "מ ב ט    כ ו ל ל\nHigh\nקיבעון\nיש תכנון ואין תגובתיות\nשליטה מלאה\nיש תכנון ויש תגובתיות\nכאוס מוחלט\nאין תכנון ואין תגובתיות\nחשש לאבדן דרך\nאין תכנון ויש תגובתיות\nLOW\nHigh\nLow\nA     g     I     I     t     y"
+                }
+            ]
+        },
+        {
+            "page_number": 84,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Development models"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Waterfall\nIterative\nIncremental - RUP (Rational Unified process) Model\nAgile / SCRUM model\nConcurrent engineering"
+                }
+            ]
+        },
+        {
+            "page_number": 85,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Concurrent Development"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Requirement\nDesign\nCoding\nTesting\nIntegration"
+                }
+            ]
+        },
+        {
+            "page_number": 86,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "? Isn’t it Waterfall Project"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Requirement\nDesign\nCoding\nTesting\nIntegration"
+                }
+            ]
+        },
+        {
+            "page_number": 87,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Development models"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Waterfall\nIterative\nIncremental - RUP (Rational Unified process) Model\nAgile / SCRUM model\nConcurrent engineering\nלסיכום: מה לעשות ומה לא לעשות.."
+                }
+            ]
+        },
+        {
+            "page_number": 88,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "progressive elaboration \nrolling wave planning -  תכנון בגלים"
+                }
+            ]
+        },
+        {
+            "page_number": 89,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "What to do (1) ??"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Plan & work with progressive elaboration (rolling wave planning) ((תכנון בגלים\nBuild the global plan in advance without too many details and update them frequently\nWork in phases, each phase with visible, beneficial and measurable results\nDevelop feature by feature and continuously accumulate them and deliver pieces of the project till you have a working system\nPlan, define, design, code, test and integrate in every phase\nUse methodologies"
+                }
+            ]
+        },
+        {
+            "page_number": 90,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "What to do (2) ??"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Encourage Concurrency\nFast ramp-up\nDocument !!\nUse the models with flexibility\nEnable visibility and transparency\nEncourage feedback, learning and evolution\nUse continuous testing, continuous integration and continuous delivery\nDevelop tools and infrastructures"
+                }
+            ]
+        },
+        {
+            "page_number": 91,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Question: How to ensure a failure in a SW project ?"
+                }
+            ]
+        },
+        {
+            "page_number": 92,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "מתוך העיתונות – מלחמת המודלים"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "דעה | מפל של טעויות: על אג'ייל - התופעה ששינתה את עולם התוכנה\nבמשך עשרות שנים שלטה ללא עוררין שיטת העבודה המכונה \"המפל\" בעולם התוכנה - אלא שהיא לא עבדה\n■ בשנים האחרונות תופשות את מקומה מתודולוגיות Agile - ששמות דגש על זריזות וגמישות במציאות כאוטית"
+                }
+            ]
+        },
+        {
+            "page_number": 93,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Remember!"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "They are only models!\nAlice cries out\n“You're only a pack of cards”"
+                }
+            ]
+        },
+        {
+            "page_number": 94,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Introduction – Lecture1"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Introduction\nWhat’s a project\nThe constraints: Scope, Quality, Schedule, Budget, Resources, Risks\nDevelopment models\nSDLC (Software Development lifecycle)\nElementary activities\nmodels overview:\nWaterfall, Iterative, Incremental, RUP, Agile, concurrent engineering"
+                }
+            ]
+        },
+        {
+            "page_number": 95,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Questions ???\nThank you!!"
+                }
+            ]
+        }
+    ]
+}
