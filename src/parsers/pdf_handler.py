@@ -1,42 +1,45 @@
 import fitz
-import json
 import os
+import io
+import re
+
 from src.parsers.utils import file_size_check
+from src.models.document_models import Metadata, ContentBlock, DocumentModel, ImageData
 
-
-PIXELS_LARGER_THAT_AVERAGE = 1.5
-
+HEADING = "heading"
+PARAGRAPH = "paragraph"
+URL = "url"
+IMAGE = "image"
+TABLE = "table"
 
 PIXELS_LARGER_THAT_AVERAGE = 1.5 # Size of average pixels of the file
 TEXT_BLOCK_TYPE = 0 
+IMAGE_BLOCK_TYPE = 1
 DEFAULT_FONT_SIZE = 12.0
+MINI_WORDS = 40 
 
-MINI_WORDS = 40 # Minimal words in content
 
 # ================  extract text (PARAGRAPH AND HEADING) ================================
-def extract_pdf_file_to_json(file_path_input, file_path_output):
+def extract_pdf_file_to_model(file_stream: io.BytesIO, image_output_dir: str) -> tuple[int, DocumentModel]:
 
     total_word_count = 0
-
-    extracted_data = {
-    "metadata": None,
-    "pages": []
-    }
-
+    block_list = []
 
     try:
 
-        file_size_check(file_path_input) # File size check
-        with fitz.open(file_path_input) as doc:
+        file_size_check(file_stream)
 
-            add_meta_data(doc, extracted_data)
+        file_stream.seek(0)
+        pdf_bytes = file_stream.read()
+
+
+        with fitz.open(stream=pdf_bytes, filetype="pdf") as doc:
+
+            metadata = add_meta_data(doc)
 
             for page_num in range(doc.page_count):
-                page_elements = []
-                page_word_count = parse_page(doc, page_num, page_elements)
+                page_word_count = parse_page(doc, page_num, block_list, image_output_dir)
                 total_word_count += page_word_count
-
-                add_page(extracted_data, page_num, page_elements)
 
             # Check number of words
             if total_word_count < MINI_WORDS:
@@ -44,45 +47,36 @@ def extract_pdf_file_to_json(file_path_input, file_path_output):
             f"Content too short: {total_word_count} words. Minimum required: {MINI_WORDS}"
             )
 
-             # Write the list of dictionaries to the output JSON file
-            with open(file_path_output, 'w', encoding='utf-8') as f:
-                json.dump(extracted_data, f, ensure_ascii=False, indent=2)
+            final_document = DocumentModel (
+                metadata=metadata,
+                content_blocks=block_list
+            )
 
-            return total_word_count
+            return total_word_count, final_document
 
 
-    except FileNotFoundError:
-        print(f"Error: Input file not found at: {file_path_input}")
-        print(f"Current working directory: {os.getcwd()}")
+    except ValueError as ve:
+        print(f"Validation error: {ve}")
         raise
 
     except Exception as e:
-        print(f"Unexpected error while reading PDF: {e}")
-        raise
-    
-    except Exception as e:
-        print(f"Error: An unexpected error occurred during processing: {e}")
+        print(f"Unexpected error while processing PDF: {e}")
         raise
 
 
 
 
 
-# =============== adding the file meta data to the output file =============
-def add_meta_data(doc, extracted_data):
-    extracted_data["metadata"] = doc.metadata
+# ===========================================
+def add_meta_data(doc) -> Metadata:
 
+    metadata = doc.metadata
 
-# ====================== Adding page to the json output ====================
-def add_page(extracted_data, page_num, page_elements):
-    extracted_data["pages"].append({
-        "page_number": page_num + 1,
-        "content": page_elements
-    })
+    return Metadata(**metadata)
 
 
 
-# =========================================================================
+# =============================================
 def combine_block_text(b):
     block_string = ""
     if b['type'] == 0:  # Check if text block
@@ -94,27 +88,46 @@ def combine_block_text(b):
 
 
 
-# =========================================================================
-def parse_page(doc, page_num, page_elements):
+# ===========================================================
+def parse_page(doc, page_num, block_list, image_output_dir):
    
     page = doc.load_page(page_num)
     body_size = get_page_body_size(page) 
     blocks = page.get_text("dict")["blocks"]
 
+    all_page_links = page.get_links()
+
     current_paragraph_text = ""
-    current_element_type = "paragraph"
+    current_element_type = PARAGRAPH
+    current_urls = []
     blocks.sort(key=lambda b: b['bbox'][1]) # Sort the blocks
     
     word_count = 0
 
+
     for b in blocks:
+
+        # Images
+        if b['type'] == IMAGE_BLOCK_TYPE: 
+            img_path = save_pdf_image(b, page_num, len(block_list), image_output_dir)
+            if img_path:
+                block_list.append(ContentBlock(
+                    block_id=len(block_list) + 1,
+                    type=IMAGE,
+                    image_data=ImageData(image_path=img_path)
+                ))
+            continue
+
+        # text
         block_text = combine_block_text(b)
 
         if not block_text:
             continue
 
         if b['type'] == TEXT_BLOCK_TYPE: # Block of text
-            
+
+            urls_in_this_block = get_urls_from_block(block_text, b["bbox"], all_page_links)
+
             # Check the entire paragraph is bold.
             is_bold = is_block_fully_bold(b) 
             
@@ -129,40 +142,70 @@ def parse_page(doc, page_num, page_elements):
             
             # Heading
             if is_new_header_candidate: 
-                block_type = "heading"
+                block_type = HEADING
             
             # Paragraph
             else:
-                block_type = "paragraph"
+                block_type = PARAGRAPH
 
-            if block_type != current_element_type: 
+            if block_type != current_element_type or block_type == HEADING: 
 
-                # Save the previously accumulated paragraph if it exists
                 if current_paragraph_text:
-                    page_elements.append({
-                        "type": current_element_type,
-                        "text": current_paragraph_text
-                    })
-                    word_count += len(current_paragraph_text.split()) # Count number of words in this block
+                    text_to_save = current_paragraph_text
 
+                    for url in current_urls:
+                        text_to_save = text_to_save.replace(url, "")
+
+                    block_list.append(ContentBlock(
+                        block_id=len(block_list) + 1,
+                        type=current_element_type,
+                        text=text_to_save.strip()
+                    ))
+                    word_count += len(text_to_save.split())
+
+                    for url in current_urls:
+                        block_list.append(ContentBlock(
+                            block_id=len(block_list) + 1,
+                            type=URL,
+                            text=url
+                        ))
                 
-                # Start the new element/paragraph
                 current_paragraph_text = block_text
                 current_element_type = block_type
-                
+                current_urls = urls_in_this_block
+
             else:
-                # Continue the current paragraph (join with a new line)
                 current_paragraph_text += "\n" + block_text
+                current_urls.extend(urls_in_this_block)
+
 
     # Last block
     if current_paragraph_text:
-        page_elements.append({
-            "type": current_element_type,
-            "text": current_paragraph_text
-        })
-        word_count += len(current_paragraph_text.split()) 
+
+        text_to_save = current_paragraph_text
+        for url in current_urls:
+            text_to_save = text_to_save.replace(url, "")
+
+        text_to_save = re.sub(r' +', ' ', text_to_save).strip()
+
+        block_list.append(ContentBlock(
+            block_id=len(block_list) + 1,
+            type=current_element_type,
+            text=text_to_save.strip()
+        ))
+        
+        word_count += len(text_to_save.split())
+
+        for url in current_urls:
+            block_list.append(ContentBlock(
+                block_id=len(block_list) + 1,
+                type=URL,
+                text=url
+            ))
     
     return word_count
+
+
 
 
 
@@ -205,3 +248,51 @@ def is_block_fully_bold(block):
                 return False
     
     return True
+
+
+
+
+# ==============================================================
+def get_urls_from_block(block_text, block_bbox, page_links):
+    found_urls = set()
+    
+    # The coordinates of the rectangle surrounding the text [x0, y0, x1, y1]
+    block_rect = fitz.Rect(block_bbox) 
+    
+    for link in page_links:
+        if link["type"] == fitz.LINK_URI:
+            if block_rect.intersects(link["from"]):
+                found_urls.add(link["uri"])
+
+    # Text search of link
+    text_to_search = block_text.replace("\n", "")
+    url_pattern = r'(https?://[^\s<>"]+|www\.[^\s<>"]+)'
+    text_urls = re.findall(url_pattern, text_to_search)
+
+    for url in text_urls:
+        found_urls.add(url.rstrip('.,!?;:)'))
+
+    return list(found_urls)
+
+
+
+# =====================================================================
+def save_pdf_image(image_block, page_num, block_id, image_output_dir):
+    try:
+        image_bytes = image_block.get("image")
+
+        if not image_bytes:
+            return None
+            
+        extension = image_block.get("ext", "png")
+        image_filename = f"pdf_pg_{page_num+1}_blk_{block_id}.{extension}"
+        full_path = os.path.join(image_output_dir, image_filename)
+        
+        with open(full_path, "wb") as f:
+            f.write(image_bytes)
+            
+        return full_path
+    
+    except Exception as e:
+        print(f"Error saving PDF image: {e}")
+        return None

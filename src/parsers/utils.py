@@ -1,28 +1,24 @@
-import os
-import json
+
 import zipfile
 from pathlib import Path
 import zipfile
-
+import io
 
 MAX_FILE_DOCX_SIZE_BYTES = 20 * 1024 * 1024 # MAX 20 MB 
 MINI_FILE_DOCX_SIZE_BYTES = 1 * 1024  # MINI 10 KB 
 
 
 # CHECK SIZE OF THE FILE, MAX & MINI
-def file_size_check(file_path_input):
-    file_size = os.path.getsize(file_path_input)
+def file_size_check(file_stream: io.BytesIO):
+
+    file_size = file_stream.getbuffer().nbytes
 
     if file_size > MAX_FILE_DOCX_SIZE_BYTES:
-        raise ValueError(
-            f"The file size exceeds the maximum allowed size of {MAX_FILE_DOCX_SIZE_BYTES} bytes"
-        )
+        raise ValueError(f"The file size exceeds the maximum allowed size of {MAX_FILE_DOCX_SIZE_BYTES} bytes")
     
-    if file_size < MINI_FILE_DOCX_SIZE_BYTES:
-        raise ValueError(
-            f"The file size is smaller than the minimum required size of {MINI_FILE_DOCX_SIZE_BYTES} bytes"
-        )
-
+    elif file_size < MINI_FILE_DOCX_SIZE_BYTES:
+        raise ValueError(f"The file size is smaller than the minimum required size of {MINI_FILE_DOCX_SIZE_BYTES} bytes")
+    
 
 
 # Check and return suffix type of the file
