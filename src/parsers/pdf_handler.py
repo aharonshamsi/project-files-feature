@@ -255,14 +255,18 @@ def is_block_fully_bold(block):
 # ==============================================================
 def get_urls_from_block(block_text, block_bbox, page_links):
     found_urls = set()
-    
+
     # The coordinates of the rectangle surrounding the text [x0, y0, x1, y1]
-    block_rect = fitz.Rect(block_bbox) 
-    
+    block_rect = fitz.Rect(block_bbox)
+
     for link in page_links:
-        if link["type"] == fitz.LINK_URI:
-            if block_rect.intersects(link["from"]):
-                found_urls.add(link["uri"])
+        link_type = link.get("type")
+        link_rect = link.get("from")
+        link_uri = link.get("uri")
+
+        if link_type == fitz.LINK_URI and link_rect and link_uri:
+            if block_rect.intersects(link_rect):
+                found_urls.add(link_uri)
 
     # Text search of link
     text_to_search = block_text.replace("\n", "")

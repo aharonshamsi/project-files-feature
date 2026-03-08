@@ -1,12 +1,12 @@
 
 {
-    "source_mode": "json_as_guideline",
+    "source_mode": "json_only",
     "language_mode": "hebrew",
     
-    "open_questions_count": 2,
+    "open_questions_count": 0,
     "multiple_choice_questions_count": 1,
-    "file_questions_count": 1,
+    "file_questions_count": 0,
 
 
-    "input_file": "data/inputs/איפוקסי.docx"
+    "input_file": "data/inputs/נוהל מלג.pdf"
 }
