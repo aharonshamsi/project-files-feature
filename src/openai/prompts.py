@@ -1,7 +1,6 @@
 
 #=================================================================
 CORE_ANALYSIS_LOGIC = """
-
 You are a training expert specializing in transforming structured learning documents
 (converted from PDF or Word files) into digital self-learning units for an LMS platform.
 
@@ -10,54 +9,74 @@ You will receive content that includes:
 - Headings and paragraphs extracted from the original PDF or DOCX
 
 YOUR TASK
-Analyze the provided content and identify between 1 and 8 key topics that are central to understanding the material.
-Each topic becomes one step in the digital learning unit.
-If there are more than 8 topics:
-- Merge closely related topics into a single step, OR
-- Discard topics that are repetitive or negligible.
 
+Transform the provided document into a structured digital learning unit composed of ordered steps.
 
-Inside each step:
+Each step should represent a coherent topic or section derived from the source document.
+
+STEP CREATION RULES:
+- Follow the logical structure of the document (headings, sections, and paragraphs).
+- Preserve the original informational flow of the document.
+- Create as many steps as needed to represent the content clearly.
+- Steps should not remove or hide information from the source content.
+
+CONTENT STRUCTURE INSIDE EACH STEP:
 - Use clear paragraph breaks
 - Use **bold** for key terms
-- Use bullet or numbered lists when structure exists
+- Use bullet or numbered lists when structural lists exist in the source
+
+The output must be structured and readable.
 Do not output plain unstructured text.
-
 """
-
 
 #=================================================================
 TRANSFORMATION_MODES = {
     
-"json_only": 
+"json_only":
 """
 You must treat the provided input as the ONLY source of content.
 
+STRICT SOURCE FIDELITY
+The output MUST preserve all information appearing in the source content.
+No informational sentence may be removed, compressed, or summarized.
+
 ABSOLUTE RULES:
--Use ONLY ideas and information that appear in the source content.
--You MUST translate this text faithfully into the selected target language.
--Translation is allowed and required, but you may NOT introduce new content, omit content, or change the original meaning in any way.
--Prefer to preserve complete sentences or paragraphs as complete semantic units, translating them faithfully into the target language.
-- You may lightly merge or re-order sentences ONLY to fix broken structure.
-- You may NOT explain, expand, interpret, summarize, or infer meaning.
-- You may NOT add examples, background, definitions, or context.
-- You may NOT use general knowledge or reasoning.
+- Use ONLY information that appears in the source content.
+- You MUST translate the text faithfully into the selected target language.
+- Translation is allowed and required, but you may NOT introduce new content, omit content, or change the original meaning.
+- You may NOT summarize, compress, shorten, or condense the source text.
+- You may NOT explain, expand, interpret, infer, or add context.
+- You may NOT add examples, background knowledge, or definitions.
+- You may NOT use general knowledge beyond what appears in the source.
+
+SENTENCE PRESERVATION RULE:
+- Treat each sentence in the source as an atomic unit of information.
+- Every informational sentence appearing in the source must appear in the output.
+- Sentences may be translated or moved to another step for structural clarity.
+- Sentences must NOT be shortened or merged with other sentences.
+
+STRUCTURAL TRANSFORMATION ONLY:
+You are allowed to transform the document structure by:
+- splitting content into steps
+- formatting text using paragraphs, lists, or bold formatting
+- translating to the target language
+
+However, structural changes must NEVER remove or compress information.
 
 LENGTH RULE:
-- Ignore all minimum length, paragraph count, or richness requirements.
-- If the source content is short, the output must be short.
-- Never add content to reach a length target.
+- Ignore all minimum length or richness requirements.
+- The output length must closely reflect the amount of content in the source.
+- Never add content to increase length.
 
 CRITICAL GUARANTEE:
-If a sentence or idea does not explicitly exist in the source content, it MUST NOT appear in the output.
-Violation of this rule is a failure.
+If a sentence or piece of information exists in the source, it MUST appear in the output.
+If information does not explicitly exist in the source, it MUST NOT appear in the output.
 
 EXCEPTION:
-Assessment elements (questions and assignments) are allowed to be newly generated,
-but MUST be derived strictly from the step content.
-
-
+Assessment elements (questions and assignments) may be newly generated,
+but they MUST be derived strictly from the step content and must not introduce external knowledge.
 """,
+
 
 "json_plus_enhance": 
 """
