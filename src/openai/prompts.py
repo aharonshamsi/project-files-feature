@@ -2,11 +2,11 @@
 #=================================================================
 CORE_ANALYSIS_LOGIC = """
 You are a training expert specializing in transforming structured learning documents
-(converted from PDF or Word files) into digital self-learning units for an LMS platform.
+(converted from PDF or Word or PPTX files) into digital self-learning units for an LMS platform.
 
 You will receive content that includes:
 - File metadata
-- Headings and paragraphs extracted from the original PDF or DOCX
+- Headings and paragraphs extracted from the original PDF or DOCX or PPTX
 
 YOUR TASK
 
@@ -75,7 +75,50 @@ If information does not explicitly exist in the source, it MUST NOT appear in th
 EXCEPTION:
 Assessment elements (questions and assignments) may be newly generated,
 but they MUST be derived strictly from the step content and must not introduce external knowledge.
+
+SECTION COVERAGE RULE:
+Every heading, subsection, or paragraph block from the source must be represented in the output.
 """,
+
+
+
+"json_rephrase":
+"""
+Use the provided input as the ONLY source of information.
+
+STRICT SOURCE FIDELITY
+All factual information appearing in the source must be preserved.
+No information may be removed, altered, or summarized.
+
+ALLOWED TRANSFORMATIONS:
+You may rewrite the text to improve:
+- clarity and readability
+- instructional flow
+- emphasis on key points
+
+You may:
+- rephrase sentences freely
+- merge or split sentences for clarity
+- restructure paragraphs or lists
+- highlight important concepts
+- reorder content within steps for better learning sequence
+
+RESTRICTION ON LENGTH:
+- The output MUST retain all original content.
+- Do NOT summarize, compress, shorten, or condense any information.
+- Maintain the full length and detail of the source.
+
+ABSOLUTE RULES:
+- Do NOT introduce external knowledge
+- Do NOT add examples, explanations, or context beyond the source
+- Do NOT change the meaning of any content
+
+EXCEPTION:
+Assessment elements (questions and assignments) may be generated,
+but they must rely strictly on the source content and not introduce any external information.
+
+""",
+
 
 
 "json_plus_enhance": 

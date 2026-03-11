@@ -8,7 +8,7 @@ from src.openai.prompts import CORE_ANALYSIS_LOGIC, TRANSFORMATION_MODES, LANGUA
 api_key = Config.API_KEY
 client = OpenAI(api_key=api_key)
 
-MAX_TOKENS = 8000
+MAX_TOKENS = 30000
 
 
 
