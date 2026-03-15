@@ -5,6 +5,7 @@ from pydantic import BaseModel
 class AppConfig(BaseModel):
 
     input_file: str 
+    model_name: str
 
     source_mode: str
     language_mode: str

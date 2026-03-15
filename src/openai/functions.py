@@ -1,12 +1,9 @@
-from openai import OpenAI
-from config import Config
+# from openai import OpenAI
+import litellm
 from src.parameters.config_model import AppConfig
 
 from src.openai.prompts import CORE_ANALYSIS_LOGIC, TRANSFORMATION_MODES, LANGUAGE_MODES, QUESTION_MODE
 
-
-api_key = Config.API_KEY
-client = OpenAI(api_key=api_key)
 
 MAX_TOKENS = 30000
 
@@ -176,12 +173,11 @@ def build_system_prompts(source_mode:str, language_mode: str, open_q_count: int,
 
 
 
-
-
 #===================================================================
-def submit_to_openai_api (json_data_string, parameters: AppConfig):
-    
+def submit_to_llm_api (json_data_string, parameters: AppConfig):
+
     # List of parameters
+    model_name = parameters.model_name
     source_mode = parameters.source_mode
     language_mode = parameters.language_mode
     open_q_count = parameters.open_questions_count
@@ -189,6 +185,7 @@ def submit_to_openai_api (json_data_string, parameters: AppConfig):
     assign_count = parameters.file_questions_count
 
     # For test
+    print(model_name)
     print(source_mode)
     print(language_mode)
     print(f"open_questions_count: {open_q_count}")
@@ -201,8 +198,8 @@ def submit_to_openai_api (json_data_string, parameters: AppConfig):
 
 
     try:
-        response = client.chat.completions.create(
-            model="gpt-4.1", 
+        response = litellm.completion(
+            model=model_name, 
             messages=[
                 {
                     "role": "system", 

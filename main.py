@@ -6,6 +6,11 @@ from src.utils.logger import logger
 import json
 import time
 
+import os
+from config import Config
+
+os.environ["OPENAI_API_KEY"] = Config.OPENAI_API_KEY
+os.environ["GEMINI_API_KEY"] = Config.GEMINI_API_KEY
 
 def main():
         

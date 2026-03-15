@@ -82,7 +82,7 @@ Every heading, subsection, or paragraph block from the source must be represente
 
 
 
-"json_rephrase":
+"json_convert":
 """
 Use the provided input as the ONLY source of information.
 

@@ -1,6 +1,8 @@
 
 {
-    "source_mode": "json_only",
+    "model_name": "gpt-4.1",
+
+    "source_mode": "json_as_guideline",
     "language_mode": "hebrew",
     
     "open_questions_count": 1,
@@ -8,5 +10,6 @@
     "file_questions_count": 1,
 
 
-    "input_file": "data/inputs/המדע והטכנולוגיה_10_pages.pdf"
+    "input_file": "data/inputs/נוהל לימודים 2 _pages.pdf"
 }
+
