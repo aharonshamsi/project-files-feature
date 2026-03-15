@@ -1,0 +1,379 @@
+{
+    "metadata": {
+        "title": "PowerPoint Presentation",
+        "author": "Wimer",
+        "subject": "",
+        "creation_date": "2006-08-16 00:00:00"
+    },
+    "pages": [
+        {
+            "page_number": 1,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Operating System Structures"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "prepared and instructed by\nShmuel Wimer\nEng. Faculty, Bar-Ilan University\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 2,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Operating system services"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "November 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 3,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "User interface (UI)\ncommand-line interface (CLI) via the keyboard\nbatch interface: commands and directives are entered into executable files\ngraphical user interface (GUI): window interface\nProgram execution. Load into memory and run.\nI/O operations. Programs require I/O. Users usually cannot control I/O devices directly. Done by the OS.\nFile-system manipulation. Read, write, create, delete and search within files and directories, manage  permissions.\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 4,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Communications. Processes on same or different computers may exchange information.\nVia shared memory. Processes read and write to a shared section of memory.\nVia message passing. OS moves packets of information in predefined formats between processes.\nError detection (correction)\nHW (CPU , memory)\nI/O devices (connection failure, lack of paper)\nUser program (arithmetic overflow, access illegal memory location, excessive CPU time).\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 5,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "OS takes appropriate action: halt the system, terminate an error-causing process, return an error.\nResource allocation. When multiple users or jobs run at the same time, resources must be allocated to each (CPU cycles, main memory, file storage, IO devices).\nAccounting. Which users use how much and what resources (billing, statistics, improve service, research).\nProtection and security\nAvoid inter-processes and OS interfere (via memory).\nControl access to system resources.\nUser authentication (ID, password).\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 6,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "User and OS interface"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "November 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 7,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "System Calls"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "November 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 8,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "November 2016\nIntroduction"
+                }
+            ]
+        },
+        {
+            "page_number": 9,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "November 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 10,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Example of standard C library.\nAPI call\nAPI code\nsystem call\nNovember 2016\nIntroduction"
+                }
+            ]
+        },
+        {
+            "page_number": 11,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "User application invoking a system call.\nNovember 2016\nIntroduction"
+                }
+            ]
+        },
+        {
+            "page_number": 12,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "A number is associated with each system call. The systemcall interface maintains an indexed table.\nThe system call interface invokes the intended system call in the kernel, returning its status and values.\nParameters can be passed to OS in registers (restrictive).\nA block in memory can be used instead (Linux, Solaris). Only the address of the block is passed.\nParameters also can be pushed onto the stack by the program and popped off the stack by the OS.\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 13,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Passing of parameters as a table.\nNovember 2016\nIntroduction"
+                }
+            ]
+        },
+        {
+            "page_number": 14,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Types of System Calls"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Process control\nend, abort\nload, execute\ncreate process, terminate process\nget process attributes, set process attributes\nwait for time\nwait event, signal event\nallocate and free memory\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 15,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Example: A single-tasking OS (e.g. MS-DOS) invokes command-line interpreter when computer is started.\nBecause it is single-tasking there is just a single process.\nIt loads the program into memory.\nIt may override the command-line interpreter.\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 16,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "The program runs. The return code is saved in system memory for later use.\nThen the command interpreter resumes execution.\nIt first reloads the rest of the command interpreter from disk.\nThen it avails the return code to the user or next program.\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 17,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Example: Multitasking system (UNIX). At login the shell (command interpreter) is run.\nIt continues running while another program is executed.\nTo start a new process, the shell executes a fork() system call.\nThe selected program is loaded into memory via exec() system call. The program is executed.\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 18,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "The shell then either waits for the process to finish or runs the process in the background.\nIn background, the shell immediately requests another command.\nThe user is free to ask the shell to run other programs.\nWhen the process is done, it executes an exit() system call to terminate.\nexit() returns to the parent process a return code (0 or nonzero), available to the shell or other programs.\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 19,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "File management\ncreate file, delete file\nopen, close\nread, write, reposition\nget file attributes, set file attributes\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 20,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Device management\nrequest device, release device\nread, write, reposition\nget device attributes, set device attributes\nlogically attach or detach devices\nThe resources controlled by the OS are physical devices (e.g., disk drives) or virtual devices (e.g., files).\nA system with multiple users first request() a device, to ensure exclusive use of it, and release() it after finished.\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 21,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Information maintenance\nget / set time or date\nget / set system data\nget / set process, file, or device attributes\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 22,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Communications\ncreate, delete communication connection\nsend, receive messages\ntransfer status information\nattach or detach remote devices\nIn message-passing, processes exchange messages with one another either directly or through a mailbox.\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 23,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "A connection is first opened. The communicator process is either on the same system or another computer.\nEach computer in a network has a host name and a network identifier, such as an IP address.\nA process has a name, translated into identifier by which the OS can refer it. get_hostid() and get_processid() do this translation.\nThe identifiers are passed to the open() and close() calls provided by the file system or to specific open_connection() and close_connection() system calls.\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 24,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Processes receiving connections are system programs called daemons, executing a wait_for_connection() call, awakened when a connection is made.\nThe source of the communication (client), and the receiving daemon (server), exchange messages by using read_message() and write_message() system calls.\nclose_connection() call terminates communication.\nShared-memory model use shared_memory_create() and shared_memory_attach() system calls to access to regions of memory owned by other processes.\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 25,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Protection controls access to the resources of the  computer system.\nIt is a concern only on multi programmed computer systems with several users.\nWith the advent of networking and Internet, all systems, from servers to mobile devices, must be protected.\nprotection system calls include set_permission() and get_permission(), allow_user() and deny_user().\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 26,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "System Programs"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "System programs, (system utilities), provide an environment for program development and execution.\nFile management. Create, delete, copy, rename, print, dump, list, files and directories.\nStatus information. Date, time, amount of available memory or disk space, number of users, status information, performance, logging, and debugging information.\nFile modification. Text editors, file transformations and conversions.\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 27,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Programming-language. Compilers, assemblers, debuggers, and interpreters.\nProgram loading and execution. Load compiled programs, debuggers.\nCommunications. Connect processes, users, and computer systems. Send messages to screens, browse Web, e-mail, remote login, transfer files.\nBackground services. Launching system-program processes at boot time, known as services, subsystems, or daemons.\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 28,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Operating-System Structure"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "OS may be huge, hence partitioned into small modules, (components) rather than being a monolithic system.\nA module is a well-defined portion of the system, with well-defined I/O and functions.\nMS-DOS was badly designed. Intel’s 8088 had no user/kernel mode, no HW protection. MS-DOS interfaces and functionality were not well separated.\nApplication programs could write directly to display and disk, causing system crashes when user programs fail.\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 29,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "MS-DOS layer structure.\nNovember 2016\nIntroduction"
+                }
+            ]
+        },
+        {
+            "page_number": 30,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Traditional UNIX consists of two separable parts: the kernel and the system programs.\nThe kernel is separated into interfaces and device drivers, which have been expanded over the years.\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 31,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Traditional UNIX system structure.\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 32,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "A layer is an abstract object made up of data and the operations that can manipulate those data.\nLayer M routines can be invoked by higher-level layers, layer M can invoke operations on lower-level layers.\nSimplifies debug and verification to work bottom-up. 1st layer is debugged w/o concerning the rest system, as it uses only basic hardware (assumed correct).\nMajor difficulty in layered approach is in appropriately defining the various layers.\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 33,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "November 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 34,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Operating-System Generation"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "A program SYSGEN generates the OS, distributed on disk or CD-ROM or other media.\nSYSGEN reads from file info about HW configuration, or it probes HW directly to determine its components.\nWhat CPU is used? What options are installed? (extended ISA, FP)\nHow to format the system disk (boot)? How many “partitions” will it be separated into, and what will go into each partition?\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 35,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "How much memory is available? Some systems will determine this value themselves.\nAvailable devices. The system needs know how to address devices (device number), device interrupt number, the device’s type and model.\nOS options. What type of CPU-scheduling algorithm to use, maximum number of processes to be supported, etc.\nThe OS then is compiled, producing an output-object OS version tailored to the system described.\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 36,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "System Boot"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "The procedure of starting a computer by loading the kernel (compiled) is known as booting the system.\nA small code bootstrap program, stored in ROM, locates the kernel, loads it into main memory, and starts its execution.\nWhen a CPU it is powered up or rebooted, PC is loaded with predefined ROM address where the bootstrap program is, to start boot execution.\nROM storage makes it difficult for virus to infect bootstrap.\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        },
+        {
+            "page_number": 37,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Bootstrap first runs diagnostics, continuing with booting, initializing the system. It then starts the OS.\nSuch ROM is known as firmware, since its characteristics fall somewhere between those of HW and SW.\nExecuting firmware code is slower than executing code in RAM. (why?) It can be copied into RAM for fast execution.\nWhen full bootstrap is loaded, it traverses the file system to find the OS kernel, load it into memory, and start execution. At this point the OS is running.\nNovember 2016\nOperating System Structures"
+                }
+            ]
+        }
+    ]
+}

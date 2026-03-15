@@ -1,0 +1,12 @@
+
+{
+    "source_mode": "json_only",
+    "language_mode": "hebrew",
+    
+    "open_questions_count": 0,
+    "multiple_choice_questions_count": 0,
+    "file_questions_count": 0,
+
+
+    "input_file": "data/inputs/test2.pdf"
+}

@@ -1,0 +1,1196 @@
+{
+    "metadata": {
+        "title": "Project Management Course",
+        "author": "YCOHEN",
+        "subject": "",
+        "creation_date": "2010-06-11 08:08:07"
+    },
+    "pages": [
+        {
+            "page_number": 1,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Lesson #2\n\nReminder of lesson 1"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Yigal Cohen\nYigal.Cohen@mail.huji.ac.il\nyigalco@edu.hac.ac.il"
+                }
+            ]
+        },
+        {
+            "page_number": 2,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Some questions (Introduction)"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "What is software engineering\n** What are the 6 constraints of a project ?\n** How can you overcome these constraints ?\n** What are the basic activities that appear in all models (Waterfall, RUP, Agile)?\nWhat is a vertical work ? What’s its advantage ?\n** What’s “rolling wave planning” ?\n** In waterfall model – Can we change a requirement after the requirements phase ?\nX: What will you do in order to succeed in your project?\nNEXT"
+                }
+            ]
+        },
+        {
+            "page_number": 3,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "מה זאת הנדסת תוכנה ?"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "הנדסת תוכנה מיישמת גישה שיטתית, מבוקרת ומדידה לפיתוח, תפעול ותחזוקה של תוכנה.\nהנדסת תוכנה מקיפה את מחזור החיים השלם של תוכנה, וכוללת ידע, שיטות וכלים עבור\nדרישות, תכנון, בנייה, בדיקות, אינטגרציה, תחזוקה, ניהול תצורה, איכות ועוד\nהנדסת תוכנה נועדה להפחית את המורכבות שבפיתוח תוכנה, לשפר את אמינות התוכנה המפותחת, ולהקטין את עלויות התפעול והתחזוקה.\nהנדסת התוכנה שימושית במיוחד בפיתוח מערכות מורכבות הכוללות חומרה, תוכנה ותקשורת. (מתוך ויקיפדיה)\nהנדסת תוכנה מציעה ומתעדפת אסטרטגיות שונות (איטרציות, waterfall\n(Continuous testing/integration/Delivery/… לפיתוח התוכנה."
+                }
+            ]
+        },
+        {
+            "page_number": 4,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "2- Balancing Project Constraints"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Scope\nRisks\nResources\nProject\nTime\nMoney\nQuality"
+                }
+            ]
+        },
+        {
+            "page_number": 5,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "3- Can we enlarge the cake ??"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Scope\nScope\nPrioritization: Start with the important and risky things!\nPareto (20:80)\nMoney\nCost management;\nReuse!\nQuality\nManage a process, manage continuous testing, continuous integration, continuous delivery, analyze feedback, automation, defect management, Root cause analysis\nResources management\nFind the right people, training, mentoring, guidance, challenging; team work, spirit of excellence, roles & responsibilities\nTime management\nManage a schedule, Find and manage critical paths, continuous development,  testing & integration\nRisk management\nAssessment and mitigation continuously\nMoney\nQuality\nResources\nTime\nRisks"
+                }
+            ]
+        },
+        {
+            "page_number": 6,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "3- Can we enlarge the cake ??"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Methodologies\nCommunication\nKnowledge\nUnderstanding\nDelegation\nProfessionalism\nTeam work\nCommunication, Communication, Communication"
+                }
+            ]
+        },
+        {
+            "page_number": 7,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "4- Elementary activities"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Formal name\nמה התכלית?\nInitiating\nPlanning\nRequirements\nDesign\nCoding & building\nTesting\nIntegration\nMaintenance &support\nWhy ?\nWhat? when? who?\nWhat?\nHow?\nDoing\nValidating\nBuilding\nLong term warranty"
+                }
+            ]
+        },
+        {
+            "page_number": 8,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "5 - Vertical Work"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Run a full cycle of development, develop feature by feature, either sequentially or concurrently. Use continuous testing and integration.\nAdvantages:\nAvoidance of the big-bang integration and testing\nHaving visible and testable results along the development process\nHaving feedback"
+                }
+            ]
+        },
+        {
+            "page_number": 9,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "progressive elaboration \nrolling wave planning -  תכנון בגלים"
+                }
+            ]
+        },
+        {
+            "page_number": 10,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "7 - Can we change the requirements in waterfall model?"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Yes!\nUse change request process"
+                }
+            ]
+        },
+        {
+            "page_number": 11,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "8 - What to do (1) ??"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Plan & work with progressive elaboration (rolling wave planning) ((תכנון בגלים\nBuild the global plans in advance without too many details and update them frequently\nWork in phases, each phase with visible, beneficial and measurable results\nDevelop feature by feature and continuously accumulate them and deliver pieces of the project till you have a working system\nPlan, define, design, code, test and integrate in every phase\nUse methodologies"
+                }
+            ]
+        },
+        {
+            "page_number": 12,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "8 - What to do (2) ??"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Encourage Concurrency\nFast ramp-up\nDocument !!\nUse the models with flexibility\nEnable visibility and transparency\nEncourage feedback, learning and evolution\nUse continuous testing, continuous integration and continuous delivery\nDevelop tools and infrastructures"
+                }
+            ]
+        },
+        {
+            "page_number": 13,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Lesson #2\n\n2.1 - Requirements Management"
+                }
+            ]
+        },
+        {
+            "page_number": 14,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "למה צריך דרישות כתובות?"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "כדי שכולם ידעו מה צריך לעשות!\nבסיס לשינויים ועדכונים.\nמי זה כולם?\nהארכיטקט, המתכנן, המתכנת, הבודק, האינטגרטור, המתחזק, אנשי הצד העסקי. כל צוות הפרויקט!"
+                }
+            ]
+        },
+        {
+            "page_number": 15,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Requirement – Definition(1)"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "A condition or a capability needed by a user or a client to solve a problem or achieve an objective\nA condition or a capability that must be met or processed by a system or a system component to satisfy a contract, standard, specification or other formally imposed document  (IEEE)"
+                }
+            ]
+        },
+        {
+            "page_number": 16,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "דוגמאות לדרישות לסופרמרקט מקוון\nמערכת \"סופרמרקט מקוון\" תאפשר לצרכן להזמין דרך האינטרנט מצרכים מתוך רשימה של מוצרים שיש בסופרמרקט\nהמערכת תאפשר ניהול מלאי של כל פריט ופריט דרך פעולות הקופות, המחסן, ומסדר המדפים\nהמערכת תדווח למערכת הכספים על כל מכירה.\n.....\n....."
+                }
+            ]
+        },
+        {
+            "page_number": 17,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Requirements – Definition (2)"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Anything that drives design choices"
+                }
+            ]
+        },
+        {
+            "page_number": 18,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Requirements – הגדרה (3)"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "מצב או יכולת שיש לעמוד בהם, או שצריכים להיות בידי מערכת, מוצר, שירות, תוצאה או מרכיב כדי לענות על חוזה, תקן, מפרט או מסמך אחר שמוכתב רשמית.\nדרישות כוללות את: הצרכים, הרצונות והציפיות של נותן החסות, הלקוח, ובעלי עניין אחרים, כשהם מכומתים ומתועדים (PMI)"
+                }
+            ]
+        },
+        {
+            "page_number": 19,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "User Class"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "מחלקה של משתמשים באותה מערכת בעלי אותם תכונות (Attributes) התנהגות (Behavior), דרישות וצרכים והרשאות."
+                }
+            ]
+        },
+        {
+            "page_number": 20,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "סופר מרקט אינטרנטי – User Classes"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "צרכן  - קונה באינטרנט\nמנהל הנתונים (מזין מוצרים, מחירים,ועוד) באינטרנט\nמקדם מכירות (מבצעים)\nממלא סלים (מלקט)\nקופאי\nמנהל מלאי / מנהל המחסן / מסדר מדפים / קניין\nמנהל החשבונות / כספים\nמנהל משלוחים\n* נתוני מכירות\n* נתוני עבר"
+                }
+            ]
+        },
+        {
+            "page_number": 21,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "דוגמא: מחלקות משתמשים של סופרמרקט אינטרנטי\nנתוני מכירות/ כספים/\nנתוני עבר\nצרכן\nמנהל מלאי\nמנהל נתונים /\nמקדם מכירות\nמערכת\nמנהל משלוחים\nממלא סלים\nמנהל חשבונות\nקופאי"
+                }
+            ]
+        },
+        {
+            "page_number": 22,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "דוגמא: מחלקות משתמשים של סופרמרקט אינטרנטי\nנתוני מכירות/ כספים/\nנתוני עבר\nצרכן\nמנהל מלאי\nמנהל נתונים /\nמקדם מכירות\nמערכת\nמנהל משלוחים\nמנהל חשבונות\nממלא סלים\nקופאי\nחברות אשראי"
+                }
+            ]
+        },
+        {
+            "page_number": 23,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "מבנה מערכת של סופרמרקט אינטרנטי\n עם מכשירים הקפיים"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "נתוני מכירות\nנתוני עבר\nצרכן\nמנהל מלאי\nמנהל נתונים /\nמקדם מכירות\nמערכת\nמנהל משלוחים\nברקוד\nמנהל חשבונות\nממלא סלים\nקופאי\nמשקל אלקטרוני\nחברת אשראי\nקורא כרטיסי אשראי\nמשקל אלקטרוני\nברקוד"
+                }
+            ]
+        },
+        {
+            "page_number": 24,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "מה זאת \"מערכת ידידותית\"?"
+                }
+            ]
+        },
+        {
+            "page_number": 25,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "\"מערכת ידידותית\""
+                },
+                {
+                    "type": "paragraph",
+                    "text": "המערכת/ממשק הלקוח תציע ללקוח את האינפורמציה (למשל: כל המוצרים המוצעים למכירה) בצורה \"נוחה\" ו\"ידידותית\". כלומר\nתצוגה ברורה ויזואלית ומילולית\nנגישה לפי החוק\n(ללקויי ראיה: מסבירה תמונות ומאפשרת הגדלת טקסט, ללקויי שמיעה: כותבת את הנאמר . ועוד)\nתגובה \"מהירה\" לכל הקשה (גם הקשה שגויה!)\nאינפורמציה חשובה \"למעלה\" עם פחות הקשות\nאפשרות למחיקה, להחזרת המחיקה, לעדכון, לעבודה בחלקים.\nאפשרות למיון לפי קטגוריות\nתתי קטגוריות\nסוגים שונים של קטגוריות\nתאפשר קיצורי דרך למשתמש (למשל: להיעזר ברשימות לקוח שבנויות סביב קניות קודמות, עוד רעיונות??)\nיציבה, אמינה, לא מאבדת נתונים בזמן נפילה"
+                }
+            ]
+        },
+        {
+            "page_number": 26,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "\"מערכת ידידותית\""
+                },
+                {
+                    "type": "paragraph",
+                    "text": "ראינו שהגדרנו \"מערכת ידידותית\" דרך הפירוט שלה.\nהפירוט עוזר להגדרה ומסביר אותה.  בפרט בהגדרה שאיננה בינארית."
+                }
+            ]
+        },
+        {
+            "page_number": 27,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Intelligent Speed Assistance (ISA)"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Intelligent Speed Assistance (ISA) is a vehicle safety system that helps drivers stay within the legal speed limit by providing warnings or automatically limiting the vehicle's speed.\nIt works by using GPS, digital maps, or cameras to detect the current speed limit and then alerts the driver or limits propulsion when the vehicle exceeds it.\nSystems range from simple alerts to more advanced versions that actively resist acceleration beyond the limit, though the driver can often override them."
+                }
+            ]
+        },
+        {
+            "page_number": 28,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "ISA - How it works"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Information:\nISA systems use a combination of GPS data, digital map information, and/or cameras to read speed limit signs.\nSpeed limit display:\nThe system displays the current speed limit on the dashboard or infotainment screen.\nSpeed limit violation:\nWhen the vehicle's speed exceeds the detected limit, the system intervenes"
+                }
+            ]
+        },
+        {
+            "page_number": 29,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "תמרור הגבלת מהירות"
+                }
+            ]
+        },
+        {
+            "page_number": 30,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "סוגי דרישות – היררכיה של דרישות"
+                }
+            ]
+        },
+        {
+            "page_number": 31,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "עץ דרישות"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "דרישות עסקיות\nדרישות פרויקטליות\nדרישות תוכנה\n....\n....\nדרישות קופה\nמנהל אתר מכירות\nלקוח בבית"
+                }
+            ]
+        },
+        {
+            "page_number": 32,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "עץ דרישות"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "דרישות עסקיות\nדרישות פרויקטליות\n- כללים עסקיים\n- דרישות איכות\n- ממשקים חיצוניים\n- אילוצים\n- דרישות לקוח\n- דרישות משתמשים\n- דרישות מערכת\n- דרישות פונקציונליות\nדרישות לא פונקציונליות\nדרישות תוכנה\n....\n....\nדרישות רכיב 3\nדרישות רכיב 2\nדרישות רכיב 1"
+                }
+            ]
+        },
+        {
+            "page_number": 33,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "עץ דרישות"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "דרישות עסקיות\nדרישות פרויקטליות\n- כללים עסקיים\n- דרישות איכות\n- ממשקים חיצוניים\n- אילוצים\n- דרישות לקוח\n- דרישות משמשים\n- דרישות מערכת\n- דרישות פונקציונליות\nדרישות לא פונקציונליות\nדרישות תוכנה\n....\n....\nדרישות קופה\nמנהל אתר מכירות\nלקוח בבית"
+                }
+            ]
+        },
+        {
+            "page_number": 34,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "באמת? צריך דרישות ותכנון?\nמי זה ??"
+                }
+            ]
+        },
+        {
+            "page_number": 35,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "מבנה מערכת של סופרמרקט אינטרנטי\n עם מכשירים הקפיים"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "נתוני מכירות\nנתוני עבר\nצרכן\nמנהל מלאי\nמנהל נתונים /\nמקדם מכירות\nמערכת\nמהל משלוחים\nברקוד\nמנהל חשבונות\nממלא סלים\nקופאי\nמשקל אלקטרוני\nחברת אשראי\nקורא כרטיסי אשראי\nמשקל אלקטרוני\nברקוד"
+                }
+            ]
+        },
+        {
+            "page_number": 36,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Resources of requirements\nLevels of Requirements\nRelationships of basic types of requirements"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Functional\t\t\t Non Functional\nBusiness\nrequirements\nVision and scope document\nBusiness rules\nUser Requirements\nQuality Attributes\nUse case document\nExternal Interfaces\nSystem requirements\nFunctional Requirements\nConstraints\nSoftware Requirements Spec"
+                }
+            ]
+        },
+        {
+            "page_number": 37,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Functional\t\t\t Non Functional\nBusiness\nrequirements\nVision and scope document\nBusiness rules\nUser Requirements\nQuality Attributes\nExternal Interfaces\nSystem requirements\nFunctional Requirements\nConstraints\nSoftware Requirements Spec"
+                }
+            ]
+        },
+        {
+            "page_number": 38,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Levels of requirements"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Business requirements –\nHigh level objectives of the organization or customer who requests the system.\nVision and scope Document=Biz requirements =Marketing Requirements=Project charter\nExamples: (1) To enable the user to purchase a ringtone; (2) To encourage the user to purchase as many ringtones as possible\nWhat are the business requirements of the ‘Supermarket’?"
+                }
+            ]
+        },
+        {
+            "page_number": 39,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "דרישות עסקיות - סופרמרקט אינטרנטי (חלקי)"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "המערכת תאפשר ניהול קניות בסופרמרקט שחלקו מקוון (דרך האינטרנט) וחלקו  חנות פיזית\nהמערכת תחבר בין הלקוח בבית, מנהל הנתונים, הקופאי, ממלאת הסלים (מלקטת), מנהל המלאי, מנהלי הכספים, מנהל המשלוחים ותוצאות פעולות של האחד ישמשו קלט לפעילות של מישהו אחר.\nהמערכת תעזור לשמר לקוחות\nמערכת תהיה בעלת ממשקי משתמש טובים מהמערכות המתחרות\nהמערכת תנהל מלאי קיים בחנות, נתוני מכירות וכספים, ותשמור נתוני עבר\nהמערכת תוכל להתחבר עם מערכות קיימות לניהול מחסן ו/או כספים וחברות אשראי.\nהמערכת תנתן להתאמה בקלות לכל סופרמרקט שכונתי או מעל גודל מסוים\nהמערכת תפיק דוחות לפי החוק ובפרט דוחות מע\"מ."
+                }
+            ]
+        },
+        {
+            "page_number": 40,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "שאלה קצרה"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "מהן הדרישות העסקיות של ארגון \"יד שרה\"?"
+                }
+            ]
+        },
+        {
+            "page_number": 41,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Functional\t\t\t Non Functional\nBusiness\nrequirements\nBusiness rules\nUser Requirements\nQuality Attributes\nUse case document\nExternal Interfaces\nSystem requirements\nFunctional Requirements\nConstraints\nSoftware Requirements Spec"
+                }
+            ]
+        },
+        {
+            "page_number": 42,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Levels of requirements"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "User requirements\nWhat the user will do with the product ? User experience, user goal, actor goals\nExamples :use-case – “Purchase a ringtone”\nPay attention that usually there are several user-classes"
+                }
+            ]
+        },
+        {
+            "page_number": 43,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "דוגמאות לדרישות משתמשים בסופרמרקט"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "צרכן\nממשק \"מהיר\", ממשק עם תמונות, אפשרות להסתמך ולהשתמש ברשימות קודמות. קבלת מידע ברור על מבצעים.\nקופאי\nאפשרות להקליד מוצרים, מחירים, כמויות.\nאפשרות לקריאת ברקוד ממוצרים, וקבלת המחיר אוטומטית, אפשרות לשקילה ודיווח אוטומטי לרשימה, אפשרות לסיכום אוטומטי לכל לקוח\nמנהל מחסן\nדיווח על כל מכירה, ועל הוספת מוצרים לסופרמרקט, אפשרות לראות את מצב המלאי בתוך החנות"
+                }
+            ]
+        },
+        {
+            "page_number": 44,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "דוגמאות לדרישות משתמשים (חלקי)\nסופרמרקט אינטרנטי"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "1.1. המערכת תאפשר ניהול סופרמרקט אינטרנטי ורגיל במקביל.\n1.2 המערכת תספק לצרכן ממשק לקוח דרכו יוכל לקנות מצרכים.\n1.3 המערכת תנהל בסיס נתונים ובו רשימה של כל מוצרי הסופרמרקט ותספק ממשק למנהל הנתונים דרכו יוכל להוסיף ולגרוע מוצרים, לשנות, לראות את המצב הנכון (כולל מלאי) בכל רגע נתון. ולבצע כל מה שצרכן יכול לבצע.\n1.4 המערכת תעביר לממלא הסלים את בקשת הלקוח לקניה.\n1.5 המערכת תקרא את פעולות הקופאי (בהזמנות אינטרנטיות זה ממלא הסלים) בזמן סגירת החשבון כדי להפיק חשבון ללקוח וכדי לעדכן את מצב המלאי בבסיס הנתונים\n1.6 המערכת תקרא את מצב המלאי ותעדכן את ממלא המדפים ואת המחסנאי\n1.7 המערכת תאפשר למנהל החשבונות לראות את מצב המכירות ובבסיס הנתונים ולקבל סיכומי מלאי\n1.8 המערכת תשמור נתונים בבסיס הנתונים כדי לאפשר מבצעים לאורך זמן\n1.9 המערכת תשמור על פרטיות הלקוח (לא פונקציונלי)\n1.10 המערכת תשמור על בטיחות הנתונים (לא פונקציונלי)\n1.11המערכת/ממשק הלקוח יציע ללקוח את כל המוצרים המוצעים למכירה בצורה \"נוחה\" ו\"ידידותית\"."
+                }
+            ]
+        },
+        {
+            "page_number": 45,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Functional\t\t\t Non Functional\nBusiness\nrequirements\nBusiness rules\nUser Requirements\nQuality Attributes\nExternal Interfaces\nSystem requirements\nFunctional Requirements\nConstraints\nSoftware Requirements Spec"
+                }
+            ]
+        },
+        {
+            "page_number": 46,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Levels of requirements"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "System requirements\nThe top-level requirements that contain multiple subsystems\nExample: The system shall be able to store ringtones, to enable the user to purchase them from his cellular phone, and let him associate different ringtones with different groups of people"
+                }
+            ]
+        },
+        {
+            "page_number": 47,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "דוגמאות לדרישות מערכת בסופרמרקט"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "המערכת תוכל להתקשר דרך האינטרנט עם הצרכנים.\nהמערכת תוכל להתחבר עם מערכות מסוימות לניהול כספים ולניהול מחסן (רשימה)\nהמערכת תוכל להתקשר עם \"כל\" חברות האשראי (רשימה)"
+                }
+            ]
+        },
+        {
+            "page_number": 48,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Functional\t\t\t Non Functional\nBusiness\nrequirements\nBusiness rules\nUser Requirements\nQuality Attributes\nExternal Interfaces\nSystem requirements\nFunctional Requirements\nConstraints\nSoftware Requirements Spec"
+                }
+            ]
+        },
+        {
+            "page_number": 49,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Levels of requirements"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Functional Requirements\nThe functionality that the developer must build into product.\nUses the traditional \"shall statements\"\nSeparated to every user classes and includes all of them\nExample: The system shall enable the user to dialogue with the central station when he purchases a ringtone; (2) a friendly website will enable the user to purchase a ringtone via his PC."
+                }
+            ]
+        },
+        {
+            "page_number": 50,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "דוגמא לדרישות פונקציונליות (חלקי)\nסופרמרקט אינטרנטי"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "פרק 1 -  דרישות מערכת בסיסיות\n1.1. המערכת תאפשר ניהול סופרמרקט אינטרנטי ורגיל במקביל.\n1.2 המערכת תאפשר לצרכן לקנות דרך האינטרנט בעזרת ממשק לקוח.\n1.3 המערכת תנהל מלאי של כל מוצרי הסופרמרקט ותאפשר למנהל הנתונים הוספת מוצרים, שינוי מחירים, וראיית המצב הנכון (כולל מלאי) בכל רגע נתון.\n1.4 המערכת תעביר לממלא הסלים את בקשת הלקוח לקניה.\n1.5 המערכת תקרא את פעולות הקופאי (בהזמנות אינטרנטיות זה ממלא הסלים) בזמן העברת מוצרים כדי להפיק חשבון ללקוח וכדי לעדכן את מצב המלאי\n1.6 המערכת תקרא את מצב המלאי ותעדכן את ממלא המדפים ואת המחסנאי\n1.7 המערכת תאפשר למנהל החשבונות לראות את מצב המכירות ולקבל סיכומים\n1.8 המערכת תשמור נתונים כדי לאפשר מבצעים לאורך זמן"
+                }
+            ]
+        },
+        {
+            "page_number": 51,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "דוגמא  לאיפיון דרישות  -  ניהול קופה בסופרמרקט \nגרסה 1"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "פרק 2 -  ניהול  קופה\n2.1 תשתיות הקופה\n2.1.1 - הקופה תוכל להתממשק עם האתר\n2.1.2 – הקופה תוכל להתממשק ישירות עם קורא ברקוד\n2.1.3 – הקופה תוכל להתממשק ישירות עם משקל אלקטרוני\n2.1.4 – הקופה תוכל להתממשק ישירות עם מקלדת\n2.1.5 – הקופה תוכל להתממשק ישירות עם מסך\n2.1.6 – הקופה תוכל להתממשק ישירות עם קורא כרטיסי אשראי\n2.1.7 – הקופה תוכל להתממשק עם חברת האשראי דרך המערכת\nמה חסר?"
+                }
+            ]
+        },
+        {
+            "page_number": 52,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "מבנה של מערכת קופה\n עם מכשירים הקפיים"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "מערכת\nחברת אשראי\nקופה\nמקלדת\nמסך\nקורא כרטיסי אשראי\nמשקל אלקטרוני\nקורא ברקוד"
+                }
+            ]
+        },
+        {
+            "page_number": 53,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "דוגמא  לאיפיון דרישות  -  ניהול קופה בסופרמרקט \nגרסה 2"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "פרק 2 -  ניהול  קופה\n2.1 תשתיות הקופה\n2.1.1 - הקופה תוכל להתממשק עם האתר ולקרוא ממנו את מחירי המוצרים\n2.1.2 – הקופה תוכל להתממשק ישירות עם קורא ברקוד ולזהות את המוצר\n2.1.3 – הקופה תוכל להתממשק ישירות עם משקל אלקטרוני ולקרוא ממנו אוטומטית את המשקל ולהכפיל את המשקל במחיר\n2.1.4 – הקופה תוכל להתממשק ישירות עם מקלדת ולקרוא ממנה את שם המוצר, המחיר, המשקל והכמות\n2.1.5 – הקופה תוכל להתממשק ישירות עם מסך שיציג את פרטי המוצר הנוכחי ואת רשימת הקניות המתהווה\n2.1.6 – הקופה תוכל להתממשק ישירות עם קורא כרטיסי אשראי להעביר אליו את המחיר ולקבל ממנו את פרטי האשראי\n2.1.7 – הקופה תוכל להתממשק עם חברת האשראי דרך המערכת להעביר אליה את פרטי האשראי ולקבל ממנו אישור (או דחיה)  של התשלום\nמה חסר?"
+                }
+            ]
+        },
+        {
+            "page_number": 54,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "דוגמא  לאיפיון דרישות  -  ניהול קופה בסופרמרקט"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "2.2 פונקציונליות של הקופה\n2.2.1 – הקופה תוכל לנהל חשבון לכל לקוח.\n2.2.2 – הקופאי יוכל לפתוח חשבון ללקוח. בעת פתיחת חשבון ללקוח יהיה סך החיוב אפס.\n2.2.3 – כל מוצר שיעבור מול הברקוד ויהיה עם \"תוית ברקוד\", יכנס ויתווסף לרשימה\n2.2.4 – כל מוצר שישקל על המשקל לאחר קריאת קוד הברקוד או הקלדת הקוד או המחיר יתווסף לרשימת הקניות ויחויב בהתאם\n2.2.5  - לכל מוצר שיתווסף לרשימה תהיה רשומה עם: שם, מספר ברקוד, משקל המוצר (אם יש) ,מחיר התחלתי, אחוז הנחה ומחיר סופי.\n2.2.6- הקופה תקרא מהאתר את המחיר , אחוז המע\"מ ואת אחוז ההנחה מהאתר\n2.2.7 – הקופאי יוכל לסיים את הקניה ואת הזנת המוצרים לחשבון הלקוח\n2.2.8 – בסוף הקניה תקרא הקופה את שורת המבצעים ותפעיל אותם על המוצרים שנקנו, תסכם את המוצרים שבחשבון, ותדפיס את החשבון.\n2.2.9 – הקופה תוכל לנהל מספר חשבונות בו זמנית  (כמה?)\n2.2.10 – הקופה תציג את החשבון על המסך במקביל לצבירת החשבון\n2.2.11 – הקופאי יוכל להקליד את מספר ההזמנה, והתוכנה תעביר את תוכן החשבון לאתר  לחיוב עבור הלקוח.**\n2.2.12 – הקופה תמתין לאישור החיוב מהאתר ואז תדפיס את החשבון ותסגור את הקניה.\n2.2.13 – (הקופה תחייב תשלום בכרטיס אשראי לפי מספר הזמנה)"
+                }
+            ]
+        },
+        {
+            "page_number": 55,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "דוגמא  לאיפיון דרישות  - ניהול אתר"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "פרק 3 -  ניהול  האתר\n3.1 מנהל האתר יוכל לשלוט באתר דרך ממשק ייעודי\n3.2 מנהל האתר יוכל לראות את כל המוצרים המוצעים למכירה\n3.3 מנהל האתר יוכל לראות סוגי מוצרים לפי סוגים\n1.4 כל סוג מוצר יהיה: שם, מספר.......,  השלם את הרשימה\n1.5 מנהל האתר יוכל להוסיף/להוריד מוצרים\n1.6 מנהל האתר יוכל לשנות מחירים\n3.7 מנהל האתר יוכל לקבוע מבצעים\nמה חסר ? מה מוסתר ?"
+                }
+            ]
+        },
+        {
+            "page_number": 56,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Functional\t\t\t Non Functional\nBusiness\nrequirements\nBusiness rules\nUser Requirements\nQuality Attributes\nExternal Interfaces\nSystem requirements\nFunctional Requirements\nConstraints\nSoftware Requirements Spec"
+                }
+            ]
+        },
+        {
+            "page_number": 57,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Levels of requirements"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Business rules\nCorporate policies, government regulations, industry standards, computational algorithms.\nExist outside of the project boundaries but impact the project\nExample: (1) the ringtone purchase will comply with communication office guidance XYZ (2) the ringtone dialogue will use only the relevant section (a,b,c) of standards X,Y,Z."
+                }
+            ]
+        },
+        {
+            "page_number": 58,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "שאלה קצרה"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "תן דוגמה לדרישה עבור מערכת \"סופרמרקט באינטרנט\" שמקורה איננו בלקוח אלא בגוף חיצוני."
+                }
+            ]
+        },
+        {
+            "page_number": 59,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "דוגמה לכללים עסקיים - סופרמרקט"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "המערכת תחייב במע\"מ לפי חוק ותעביר את החיובים למערכת הכספים\nהמערכת תשתמש בממשקים אינטרנטיים הרגילים\nהמערכת תשתמש בכלים למניעת פריצה [שם מוצר], לשמירה על פרטיות [שם מוצר], ולמעקב אחרי נפילות [שם מוצר]\nהמערכת תתממשק עם \"כל\" [רשימה] חברות האשראי לפי הכללים של חברת האשראי"
+                }
+            ]
+        },
+        {
+            "page_number": 60,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Functional\t\t\t Non Functional\nBusiness\nrequirements\nBusiness rules\nUser Requirements\nQuality Attributes\nExternal Interfaces\nSystem requirements\nFunctional Requirements\nConstraints\nSoftware Requirements Spec"
+                }
+            ]
+        },
+        {
+            "page_number": 61,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Levels of requirements"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Quality attributes\nAvailability, Efficiency, flexibility, integrity, interoperability, reliability, robustness, performance, usability\nMaintainability, Portability, Reusability, Testability\nExample: (1) The ringtone will not use more bandwidth than a regular conversation (2) The ringtone DB will have a GUI to manage it"
+                }
+            ]
+        },
+        {
+            "page_number": 62,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Quality attributes"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Important to the user\nImportant to the Developer\nMaintainability\nPortability\nReusability\nTestability\nAvailability\nEfficiency\nFlexibility\nIntegrity\nInteroperability\nReliability\nRobustness\nUsability\nPerformance"
+                }
+            ]
+        },
+        {
+            "page_number": 63,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "User Quality attributes (1)"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Availability\nThe up-front time of the system (see: MTBF, MTTR, load balancing)\nEfficiency\nUsing of system resources (CPU, Disk space, etc.)\nFlexibility\nExpandability – the easiness of appending features to the system\nIntegrity   (כלילות, שלמות אחדות)\nSafety, security, privacy, keeping data, manage access privileges"
+                }
+            ]
+        },
+        {
+            "page_number": 64,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "דוגמא לאפיון דרישות איכות (חלקי)\nסופרמרקט אינטרנטי"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "המערכת תשמור על פרטיות הלקוח (לא פונקציונלי)\nהמערכת תשמור על בטיחות הנתונים (לא פונקציונלי)\nהמערכת/ממשק הלקוח תציע ללקוח את כל המוצרים המוצעים למכירה בצורה \"נוחה\" ו\"ידידותית\".\nהמערכת תעבוד בדיוק של אגורה\nהמערכת תענה ללקוח בתוך [0.8 שניה] ותתמוך בעד 100 לקוחות ללא ירידה בביצועים\nזמן התגובה לחישוב רשימה יהיה [2] שניות"
+                }
+            ]
+        },
+        {
+            "page_number": 65,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "דוגמא: דרישות לתכונות איכות"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "זמינות (availability)\nהמערכת תהיה זמינה 99.999% מהזמן\nיעילות (Efficiency)\nהמערכת תרוץ על מחשב [דגם] והלקוח יכול לרוץ על מחשב [דגם 2]\nגמישות ((Flexibility – הרחבה נוחה\nבטיחות נתונים\nהנתונים יגובו באופן מיידי בבסיס נתונים נוסף\nפרטיות\nנתוני המכירות ישארו חסויים\nשמירת נתונים\nהנתונים ישמרו בבסיס נתונים מאושר בעזרת תוכנה X  וחומרה Y\nניהול הרשאות\nרק משתמשים רשומים יוכלו להזמין מוצרים\nלכל ממשק אחר יצטרכו הרשאה מפורשת עם סיסמא"
+                }
+            ]
+        },
+        {
+            "page_number": 66,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "User Quality attributes"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Interoperability\nEasiness of interfacing with other systems\nReliability\nThe probability of SW executing without a failure\nRobustness\nFault tolerance – Continue to work when error or a failure occur\nUsability\nHuman Engineering\nPerformance\nThroughput & latency"
+                }
+            ]
+        },
+        {
+            "page_number": 67,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Developer Quality attributes (2)"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Maintainability\nHow easy is to correct defect, to install a new software, to make periodical maintenance\nPortability\nThe effort required to migrate a piece of SW to another environment (e.g. Win to Linux)\nReusability\nThe effort required to migrate a piece of SW to another application\nTestability\nThe required effort to test the system (debuggers, loggers, tools)"
+                }
+            ]
+        },
+        {
+            "page_number": 68,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "שאלה קצרה"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "מהן לדעתך, שלושת דרישות האיכות החשובות ביותר של הסופרמרקט המקוון?\nWhat are the quality attributes of an online Supermarket?\nWhat is ”Reliability” for the customer? For the Supermarket ?\nCustomers‘ Privacy\nSecurity"
+                }
+            ]
+        },
+        {
+            "page_number": 69,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Functional\t\t\t Non Functional\nBusiness\nrequirements\nBusiness rules\nUser Requirements\nQuality Attributes\nExternal Interfaces\nSystem requirements\nFunctional Requirements\nConstraints\nSoftware Requirements Spec"
+                }
+            ]
+        },
+        {
+            "page_number": 70,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Levels of requirements"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "External interfaces\nThe boundaries of the system\nExample: The ringtone dialogue will be able to work with any cellular phone that complies with the rules of the Communication Office"
+                }
+            ]
+        },
+        {
+            "page_number": 71,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "External Interfaces\nש. אילו ממשקים חיצוניים יש בסופרמרקט המקוון?\nת.\nחברות אשראי\nמערכת מע\"מ (ממשק לא מקוון)\nמערכת הכספים (?)\nמערכת המלאי והמחסנים (?)"
+                }
+            ]
+        },
+        {
+            "page_number": 72,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Functional\t\t\t Non Functional\nBusiness\nrequirements\nBusiness rules\nUser Requirements\nQuality Attributes\nExternal Interfaces\nSystem requirements\nFunctional Requirements\nConstraints\nSoftware Requirements Spec"
+                }
+            ]
+        },
+        {
+            "page_number": 73,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Levels of requirements"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Constraints\nRestriction to the choices available to the developer for design the system\nExample: The ringtone subsystem shall be a part of the cellular system X, and will comply with all its rules (Programming language, complier, builder, database, development procedures)"
+                }
+            ]
+        },
+        {
+            "page_number": 74,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "דוגמא: מגבלות - סופרמרקט"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "המערכת תיכתב בשפת [שם שפה]\nבסיס נתונים יהיה [שם בסיס נתונים]\nהמערכת תשתמש בכלים\nלמניעת פריצה [שם מוצר[\nלשמירה על פרטיות [שם מוצר]\nולמעקב אחרי נפילות [שם מוצר]"
+                }
+            ]
+        },
+        {
+            "page_number": 75,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Levels of Requirements\nRelationships of basic types of requirements"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Functional\t\t\t Non Functional\nBusiness\nrequirements\nVision and scope document\nBusiness rules\nUser Requirements\nQuality Attributes\nUse case document\nExternal Interfaces\nSystem requirements\nFunctional Requirements\nConstraints\nSoftware Requirements Spec"
+                }
+            ]
+        },
+        {
+            "page_number": 76,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Software Requirements Specification (SRS)"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "System Description and diagram\nRelevant Business rules\nIndustrial standards, Governments rules\nConstraints\nExternal interfaces\nFunctional requirements\nUse cases and “Shall sentences”\nRelevant quality attributes\nPerformance, scalability, etc…"
+                }
+            ]
+        },
+        {
+            "page_number": 77,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Software Requirement Specification\nTemplate example from Wiki (over detailed)"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Introduction\nPurpose\nDefinitions\nSystem overview\nReferences\nOverall description\nProduct perspective\nSystem Interfaces\nUser Interfaces\nHardware interfaces\nSoftware interfaces\nCommunication Interfaces\nMemory Constraints\nDesign constraints\nOperations\nSite Adaptation Requirements\nProduct functions\nUser characteristics\nConstraints, assumptions and dependencies\nGoal"
+                }
+            ]
+        },
+        {
+            "page_number": 78,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Software Requirement Specification\nTemplate example from Wiki (over detailed)"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Specific requirements\nExternal interface requirements\nFunctional requirements\nPerformance requirements\nLogical database requirement\nSoftware System attributes\nReliability\nAvailability\nSecurity\nMaintainability\nPortability\nothers..\nGoal"
+                }
+            ]
+        },
+        {
+            "page_number": 79,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Levels of Requirements\nRelationships of basic types of requirements"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Functional\t\t\t Non Functional\nBusiness\nrequirements\nVision and scope document\nBusiness rules\nUser Requirements\nQuality Attributes\nUse case document\nExternal Interfaces\nSystem requirements\nFunctional Requirements\nConstraints\nSoftware Requirements Spec"
+                }
+            ]
+        },
+        {
+            "page_number": 80,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "סקר דרישות תוכנה –\nSoftware Requirements Review"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "האם הדרישות עונות לצרכי בעלי העניין ((Stakeholders?\nהאם הדרישות העסקיות מכוסות?\nהאם דרישות המערכת מכוסות?\nהאם דרישות המשתמשים השונים User Classes)) מכוסות?\n……\nהאם הדרישות הלא פונקצוינליות מוגדרות, ברורות ומתאימות לפרויקט?\nהאם ה-Business Rules  מכוסים?\nהאם הממשקים החיצוניים / הפנימיים מוגדרים? האם ההגדרות \"טובות\" (כוללות ועקביות)?\n….."
+                }
+            ]
+        },
+        {
+            "page_number": 81,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "סקר דרישות –\nSoftware Requirements Review"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Each Requirement\nSMART is acronym of\nSpecific,\nManageable,\nAssignable,\nRealistic, Readable\nTestable, Traceable, Time-related\nThe entire SRS\nComplete\nConsistent\nManageable\nTraceable\nHierarchical\nModifiable"
+                }
+            ]
+        },
+        {
+            "page_number": 82,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "הנדסת דרישות"
+                }
+            ]
+        },
+        {
+            "page_number": 83,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Requirements Engineering"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Requirements engineering\nRequirements Management\nRequirements Development\nElicitation\nAnalysis\nSpecification\nVerification"
+                }
+            ]
+        },
+        {
+            "page_number": 84,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Requirements Development – \n(שליפה, הפקהElicitation ("
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Identifying the product’s expected user class\nEliciting needs from individuals who represent each user class ( מאד חשוב אבל נתרגל מעט מאד)\nUnderstanding user tasks and goals and business objectives with which those tasks align"
+                }
+            ]
+        },
+        {
+            "page_number": 85,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "שאלה קצרה"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "עם מי היית מדבר לצורך הכנת דרישות לסופרמרקט מקוון?"
+                }
+            ]
+        },
+        {
+            "page_number": 86,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Requirements Development - Analysis"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Analyzing the information received from users to distinguish their tasks and goals from functional requirements, nonfunctional requirements, business rules, suggested solutions, and extraneous information\nAllocating portions of the top-level requirements to software components defined in system architecture\nUnderstanding the relative importance of quality attributes\nNegotiating implementation priorities"
+                }
+            ]
+        },
+        {
+            "page_number": 87,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Requirements Development - Specification"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Translating the collected user needs into written requirements specification and modes"
+                }
+            ]
+        },
+        {
+            "page_number": 88,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Requirements Development - Validation\nReviewing the documented requirements to ensure a common understanding the users’ stated requirements and to correct any problems before development group accepts them\nValidate: Correctness, Completeness, Consistency"
+                }
+            ]
+        },
+        {
+            "page_number": 89,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "An Example of Requirements Development \nמרכזיה פרטית - – Private switchboard (1)"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "User classes:\nOwners, users, customers with special needs, neighbor switchboards\nEliciting needs:\nFunctionality, Privacy, overruling, Multi-site organization, growing organization, security\nBusiness objectives:\nHierarchical organization, mobile users\nAnalyzing:\nFunctional: Overruling conversation, Virtual phone number, decryption\nNonfunctional: Capacity, redundancy, scalability\nBusiness rules: The Communication Office"
+                }
+            ]
+        },
+        {
+            "page_number": 90,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "An Example of Requirements Development – Private Exchange"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Allocating requirements to SW components:\nAllocate some of requirements to the phone and some to the central switch\nPrioritize Quality attributes\nGive priority to: Redundancy, survival, latency, QOS, Scalability, Maintainability, Safety, Security"
+                }
+            ]
+        },
+        {
+            "page_number": 91,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "An Example of Requirements Development – Private Exchange (3)"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Write Specification:\n“The Switch shall be able to communicate in the following digital protocols X,Y,Z”\n“The Switch shall be able to recognize the voice of  ‘VIP user’ and give him ‘overruling rights’ according to his place in the hierarchy”\nReview the document"
+                }
+            ]
+        },
+        {
+            "page_number": 92,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Requirements Engineering"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "RE-Evaluate\nElicitation\nAnalysis\nSpecification\nVerification\nClarify\nRewrite\nCorrect & close gaps"
+                }
+            ]
+        },
+        {
+            "page_number": 93,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Hierarchic of requirements"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Requirements development is telescopic process and requirements documents should be hierarchical"
+                }
+            ]
+        },
+        {
+            "page_number": 94,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Requirement management – Change Request"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Change request is a process that\nStarts with proposal for a change\nDetails the relevant steps that were actually done\nAnalyze the impact on the all steps\nReviewed\nand approved by the CCB (Change Control Board)."
+                }
+            ]
+        },
+        {
+            "page_number": 95,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "תוכן עניינים לפרק דרישות"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "מה זה דרישות?\nUser Class  (דוגמא: סופר מרקט)\nמערכת \"ידידותית\"\nרמות של דרישות / מקורות של דרישות\nדרישות עסקיות\nדרישות משתמשים\nדרישות מערכת\nדרישות פונקציונליות\nכללים עסקיים\nדרישות לתכונות איכות\nממשקים חיצוניים\nמגבלות\nסקר דרישות\nהנדסת דרישות"
+                }
+            ]
+        },
+        {
+            "page_number": 96,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Thank you!"
+                }
+            ]
+        },
+        {
+            "page_number": 97,
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Product Manager job description"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "We are looking for a Product Manager to join our growing product team\nIn your role, you will be part of the product team responsible on identifying and capturing key requirements and business needs, define market use cases and translate them into clear product vision with a proper roadmap strategy. (it’s probably easier said than done)\nWe define the user story (and that is a big story, believe us) and build our product backlog in partnership with the engineering team to ensure quality on-time release delivery. (Quality. On-time. It’s not a fairy tale)\nWe collaborate with variety groups in our company such as sales, marketing, engineering and operations in a pursue to create a great partnership, build a better product and make our customers happy."
+                }
+            ]
+        },
+        {
+            "page_number": 98,
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Argus was established to provide high-quality automotive cyber security solutions and services to the automotive industry.\nQuality is essential to our business because we value our customers and believe that high quality is a necessity when gaining their trust. To this end, we strive to provide our customers with products and services that exceed their expectations.\nIn an effort to enable continuous improvement, we have established a Quality Management System to provide a framework for the following:\nInternal process management, using predefined procedures and checklists for each stage in the product life cycle.\nProduct Quality Assessment using predefined KPIs.\nOngoing improvement enablement through the ongoing monitoring of performance and identification of opportunities for improvement and a lessons learned process.\nTo ensure that we nurture a company culture that complies with our quality requirements, we develop quality awareness at all levels of our organization and encourage a management attitude that anticipates potential quality issues. In addition, we empower our employees with the necessary competencies and tools to consistently fulfill policies, principles, and standards that comply with our quality demands. We also encourage our suppliers to align with our requirements and comply with our quality management system.\nVP Projects and Quality"
+                }
+            ]
+        }
+    ]
+}
