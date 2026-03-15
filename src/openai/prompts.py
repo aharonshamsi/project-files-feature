@@ -30,126 +30,58 @@ Do not output plain unstructured text.
 
 #=================================================================
 TRANSFORMATION_MODES = {
-
-#version 3
+    
 "json_only":
 """
-MODE: EXHAUSTIVE DATA PRESERVATION & CLEAN STRUCTURING
+You must treat the provided input as the ONLY source of content.
 
-You are a precision data-parsing engine. Your absolute primary goal is to extract and preserve 100% of the substantive information from the input, while fixing formatting issues and filtering out document noise.
+STRICT SOURCE FIDELITY
+The output MUST preserve all information appearing in the source content.
+No informational sentence may be removed, compressed, or summarized.
 
-1. ZERO SUMMARIZATION RULE (CRITICAL FOR LONG DOCUMENTS):
-- You MUST NOT summarize, condense, or omit ANY informational paragraphs, sentences, or bullet points, regardless of how long the input document is.
-- If the input contains 10 pages of text, the output must explicitly represent the information from all 10 pages.
-- For Syllabus, Policies, or Strict Instructions: Preserve the exact wording, rules, and conditions 100%. No rephrasing of critical policies.
-- For Standard Content: Preserve the full breadth of information. You cannot delete or skip information, but you are allowed to slightly rephrase only to fix grammar or extraction artifacts.
+ABSOLUTE RULES:
+- Use ONLY information that appears in the source content.
+- You MUST translate the text faithfully into the selected target language.
+- Translation is allowed and required, but you may NOT introduce new content, omit content, or change the original meaning.
+- You may NOT summarize, compress, shorten, or condense the source text.
+- You may NOT explain, expand, interpret, infer, or add context.
+- You may NOT add examples, background knowledge, or definitions.
+- You may NOT use general knowledge beyond what appears in the source.
 
-2. READABILITY & STRUCTURAL REFORMATTING (REQUIRED):
-- The raw input may contain scrambled text from poorly extracted tables, bad PDF formatting, or lack of spacing. 
-- You MUST reorganize unstructured or messy text into highly readable formats (e.g., converting scrambled table data into clean bulleted lists, logical sentences, or well-structured paragraphs).
-- Do NOT change the core data, numbers, or facts when fixing the structure. Your goal is to make the existing data logical and readable without altering its meaning.
+SENTENCE PRESERVATION RULE:
+- Treat each sentence in the source as an atomic unit of information.
+- Every informational sentence appearing in the source must appear in the output.
+- Sentences may be translated or moved to another step for structural clarity.
+- Sentences must NOT be shortened or merged with other sentences.
 
-3. NOISE REDUCTION (FILTERING ARTIFACTS):
-- EXPLICITLY IGNORE and REMOVE repetitive document artifacts that do not add learning value. 
-- You MUST NOT include any of the following in your output:
-  * Page numbers (e.g., "Page 1", "1/10", "1")
-  * Headers and footers
-  * Repetitive company slogans, logos, or marketing catchphrases appearing at the top/bottom of pages
-  * Copyright notices or disclaimers repeated on every page
-- Extract ONLY the actual instructional, policy, and informational content.
+STRUCTURAL TRANSFORMATION ONLY:
+You are allowed to transform the document structure by:
+- splitting content into steps
+- formatting text using paragraphs, lists, or bold formatting
+- translating to the target language
 
-4. FINAL VALIDATION BEFORE OUTPUT:
-- Did I include all the core paragraphs from the entire document? (Must be YES)
-- Did I make scrambled table data logically readable without losing the data? (Must be YES)
-- Did I successfully remove page numbers and repeating slogans? (Must be YES)
+However, structural changes must NEVER remove or compress information.
+
+LENGTH RULE:
+- Ignore all minimum length or richness requirements.
+- The output length must closely reflect the amount of content in the source.
+- Never add content to increase length.
+
+CRITICAL GUARANTEE:
+If a sentence or piece of information exists in the source, it MUST appear in the output.
+If information does not explicitly exist in the source, it MUST NOT appear in the output.
+
+EXCEPTION:
+Assessment elements (questions and assignments) may be newly generated,
+but they MUST be derived strictly from the step content and must not introduce external knowledge.
+
+SECTION COVERAGE RULE:
+Every heading, subsection, or paragraph block from the source must be represented in the output.
 """,
 
 
-#version 2
-# "json_only":
-# """
-# MODE: STRICT COPY & ZERO SUMMARIZATION
 
-# You are acting as a lossless data preservation tool, NOT an author.
-# Your absolute primary goal is 100% content retention from the source input.
-# You must override your natural tendency to summarize, condense, or simplify text.
-
-# 1. DOCUMENT TYPE IDENTIFICATION & HANDLING:
-# - SYLLABUS / STRICT INSTRUCTIONS: If the source document appears to be a syllabus, a policy, technical guidelines, or explicit instructions, you MUST maintain 100% verbatim fidelity. Do not change the phrasing. Copy the text exactly as it appears, preserving every single instruction and nuance.
-# - STANDARD LEARNING CONTENT: If the source is standard lesson content, you must retain at least 95% of the original text. You may adapt slightly for readability or translate, but you CANNOT summarize, condense, or skip any paragraphs.
-
-# 2. ANTI-SUMMARIZATION MANDATE (CRITICAL):
-# - Every single paragraph, bullet point, and sentence from the input MUST appear in the output.
-# - DO NOT condense a 5-sentence paragraph into a 1-sentence summary. 
-# - The output word count must be equal to or highly reflective of the input word count.
-
-# 3. PERMITTED ACTIONS:
-# - Splitting the original text into logical steps based on the document's structure.
-# - Translating strictly to the requested target language (maintaining the exact meaning and length).
-# - Adding structural formatting (e.g., bolding key terms, creating valid lists).
-
-# 4. STRICTLY PROHIBITED ACTIONS:
-# - DO NOT omit any details, exceptions, or notes, no matter how small or seemingly insignificant.
-# - DO NOT merge distinct ideas or separate bullet points into single sentences.
-# - DO NOT generate new instructional filler text, explanations, or external examples.
-# - DO NOT "smooth out" the text if it means losing original data points.
-
-# FINAL CHECK INSTRUCTION:
-# Before finalizing the output, verify that no informational sentence from the source was left behind. If a detail exists in the source, it MUST exist in your generated content blocks.
-# """,  
-
-#orignal
-# "json_only":
-# """
-# You must treat the provided input as the ONLY source of content.
-
-# STRICT SOURCE FIDELITY
-# The output MUST preserve all information appearing in the source content.
-# No informational sentence may be removed, compressed, or summarized.
-
-# ABSOLUTE RULES:
-# - Use ONLY information that appears in the source content.
-# - You MUST translate the text faithfully into the selected target language.
-# - Translation is allowed and required, but you may NOT introduce new content, omit content, or change the original meaning.
-# - You may NOT summarize, compress, shorten, or condense the source text.
-# - You may NOT explain, expand, interpret, infer, or add context.
-# - You may NOT add examples, background knowledge, or definitions.
-# - You may NOT use general knowledge beyond what appears in the source.
-
-# SENTENCE PRESERVATION RULE:
-# - Treat each sentence in the source as an atomic unit of information.
-# - Every informational sentence appearing in the source must appear in the output.
-# - Sentences may be translated or moved to another step for structural clarity.
-# - Sentences must NOT be shortened or merged with other sentences.
-
-# STRUCTURAL TRANSFORMATION ONLY:
-# You are allowed to transform the document structure by:
-# - splitting content into steps
-# - formatting text using paragraphs, lists, or bold formatting
-# - translating to the target language
-
-# However, structural changes must NEVER remove or compress information.
-
-# LENGTH RULE:
-# - Ignore all minimum length or richness requirements.
-# - The output length must closely reflect the amount of content in the source.
-# - Never add content to increase length.
-
-# CRITICAL GUARANTEE:
-# If a sentence or piece of information exists in the source, it MUST appear in the output.
-# If information does not explicitly exist in the source, it MUST NOT appear in the output.
-
-# EXCEPTION:
-# Assessment elements (questions and assignments) may be newly generated,
-# but they MUST be derived strictly from the step content and must not introduce external knowledge.
-
-# SECTION COVERAGE RULE:
-# Every heading, subsection, or paragraph block from the source must be represented in the output.
-# """,
-
-
-
-"json_rephrase":
+"json_convert":
 """
 Use the provided input as the ONLY source of information.
 
@@ -373,3 +305,7 @@ COGNITIVE INTENT CONSTRAINTS
 
 """
 }
+
+
+
+

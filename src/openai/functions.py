@@ -1,20 +1,70 @@
-from openai import OpenAI
-from config import Config
+"""
+LLM Skill Generation Module
+===========================
+
+This module is responsible for:
+1. Building the system prompt for the LLM.
+2. Defining the JSON schema used for structured skill generation.
+3. Submitting the request to the LLM via LiteLLM.
+
+The LLM returns a structured learning skill composed of:
+- Steps
+- Instructional content
+- Assessment widgets (open questions, MCQ, assignments)
+"""
+
+# ======================================================================
+# Imports
+# ======================================================================
+
+# from openai import OpenAI
+import litellm
+
 from src.parameters.config_model import AppConfig
+from src.openai.prompts import (
+    CORE_ANALYSIS_LOGIC,
+    TRANSFORMATION_MODES,
+    LANGUAGE_MODES,
+    QUESTION_MODE
+)
 
-from src.openai.prompts import CORE_ANALYSIS_LOGIC, TRANSFORMATION_MODES, LANGUAGE_MODES, QUESTION_MODE
+# ======================================================================
+# Constants
+# ======================================================================
 
-from litellm import completion
-
-#api_key = Config.API_KEY
-#client = OpenAI(api_key=api_key)
-
-MAX_TOKENS = 16*1000
+MAX_TOKENS = 30000
 
 
+# ======================================================================
+# Schema Builder
+# ======================================================================
 
-# Definition: Structure and rules for generating a complete learning skill with steps and assessment widgets.
 def get_skill_generation_schema(open_q_count, mcq_count, assign_count, language_mode):
+    """
+    Build the function schema used by the LLM tool calling interface.
+
+    The schema defines the structure of the generated learning skill,
+    including steps, instructional content, and assessment widgets.
+
+    Parameters
+    ----------
+    open_q_count : int
+        Number of open-ended questions required per step.
+
+    mcq_count : int
+        Number of multiple-choice questions required per step.
+
+    assign_count : int
+        Number of assignment/file submission questions required per step.
+
+    language_mode : str
+        The language in which the entire output must be generated.
+
+    Returns
+    -------
+    dict
+        JSON schema describing the required output structure.
+    """
 
     return {
         "name": "generate_complete_skill",
@@ -50,6 +100,9 @@ def get_skill_generation_schema(open_q_count, mcq_count, assign_count, language_
                                 ),
                                 "properties": {
 
+                                    # ------------------------------------------------------
+                                    # Instructional Content
+                                    # ------------------------------------------------------
                                     "contents": {
                                         "type": "array",
                                         "description": (
@@ -59,10 +112,12 @@ def get_skill_generation_schema(open_q_count, mcq_count, assign_count, language_
                                         "items": {
                                             "type": "object",
                                             "properties": {
+
                                                 "content_type": {
                                                     "type": "string",
-                                                    "description": "The type of content. Always use 'text'." # Always Text
+                                                    "description": "The type of content. Always use 'text'."
                                                 },
+
                                                 "content": {
                                                     "type": "string",
                                                     "description": (
@@ -75,6 +130,9 @@ def get_skill_generation_schema(open_q_count, mcq_count, assign_count, language_
                                         }
                                     },
 
+                                    # ------------------------------------------------------
+                                    # Open Questions
+                                    # ------------------------------------------------------
                                     "open_questions": {
                                         "type": "array",
                                         "description": (
@@ -87,6 +145,9 @@ def get_skill_generation_schema(open_q_count, mcq_count, assign_count, language_
                                         }
                                     },
 
+                                    # ------------------------------------------------------
+                                    # Multiple Choice Questions
+                                    # ------------------------------------------------------
                                     "multiple_choice_questions": {
                                         "type": "array",
                                         "description": (
@@ -112,10 +173,14 @@ def get_skill_generation_schema(open_q_count, mcq_count, assign_count, language_
                                                                 "type": "string",
                                                                 "description": "The answer option text."
                                                             },
+
                                                             "correct_answer": {
                                                                 "type": "boolean",
-                                                                "description": "Indicates whether this option is the correct answer."
+                                                                "description": (
+                                                                    "Indicates whether this option is the correct answer."
+                                                                )
                                                             }
+
                                                         },
                                                         "required": ["key", "correct_answer"]
                                                     }
@@ -125,6 +190,9 @@ def get_skill_generation_schema(open_q_count, mcq_count, assign_count, language_
                                         }
                                     },
 
+                                    # ------------------------------------------------------
+                                    # Assignment / File Submission Questions
+                                    # ------------------------------------------------------
                                     "file_questions": {
                                         "type": "array",
                                         "description": (
@@ -141,8 +209,15 @@ def get_skill_generation_schema(open_q_count, mcq_count, assign_count, language_
                                     }
 
                                 },
-                                "required": ["contents", "open_questions", "multiple_choice_questions", "file_questions"]
+
+                                "required": [
+                                    "contents",
+                                    "open_questions",
+                                    "multiple_choice_questions",
+                                    "file_questions"
+                                ]
                             }
+
                         },
                         "required": ["step_name", "step_number", "widgets"]
                     }
@@ -153,19 +228,32 @@ def get_skill_generation_schema(open_q_count, mcq_count, assign_count, language_
     }
 
 
+# ======================================================================
+# Prompt Builder
+# ======================================================================
 
+def build_system_prompts(source_mode: str, language_mode: str,
+                         open_q_count: int, mcq_count: int, assign_count: int) -> str:
+    """
+    Build the complete system prompt sent to the LLM.
 
+    The prompt combines:
+    - Language enforcement rules
+    - Core analysis logic
+    - Transformation mode
+    - Assessment generation rules
 
+    Returns
+    -------
+    str
+        The final system prompt string.
+    """
 
-#Build the complete system prompt string for the AI model based on modes and question counts.
-def build_system_prompts(source_mode:str, language_mode: str, open_q_count: int, mcq_count: int, assign_count: int) -> str:
-    
     return "\n".join([
 
         "LANGUAGE RULE",
         LANGUAGE_MODES['general_language_rules'],
         LANGUAGE_MODES[language_mode],
-        
         CORE_ANALYSIS_LOGIC,
         TRANSFORMATION_MODES[source_mode],
 
@@ -176,115 +264,112 @@ def build_system_prompts(source_mode:str, language_mode: str, open_q_count: int,
     ])
 
 
+# ======================================================================
+# LLM API Submission
+# ======================================================================
 
+def submit_to_llm_api(json_data_string, parameters: AppConfig):
+    """
+    Submit the request to the LLM using LiteLLM.
 
+    The function:
+    1. Extracts configuration parameters.
+    2. Builds the system prompt.
+    3. Generates the tool schema.
+    4. Sends the request to the model.
 
-#===================================================================
-# def submit_to_openai_api (json_data_string, parameters: AppConfig):
-    
-#     # List of parameters
+    Parameters
+    ----------
+    json_data_string : str
+        Structured input JSON string containing the source content.
 
-#     source_mode = parameters.source_mode
-#     language_mode = parameters.language_mode
-#     open_q_count = parameters.open_questions_count
-#     mcq_count = parameters.multiple_choice_questions_count
-#     assign_count = parameters.file_questions_count
+    parameters : AppConfig
+        Application configuration containing model selection and
+        question counts.
 
-#     # For test
-#     print(source_mode)
-#     print(language_mode)
-#     print(f"open_questions_count: {open_q_count}")
-#     print(f"multiple_choice_questions_count: {mcq_count}")
-#     print(f"file_questions_count: {assign_count}")
+    Returns
+    -------
+    dict
+        LLM response object.
+    """
 
-
-#     system_prompts = build_system_prompts(source_mode, language_mode, open_q_count, mcq_count, assign_count)
-#     functions_definition = get_skill_generation_schema(open_q_count, mcq_count, assign_count, language_mode)
-
-
-#     try:
-#         response = client.chat.completions.create(
-#             model="gpt-4.1", 
-#             messages=[
-#                 {
-#                     "role": "system", 
-#                     "content": system_prompts
-#                 },
-#                 {
-#                     "role": "user", 
-#                     "content": json_data_string
-#                 }
-#             ],
-
-#             # tools=[{
-#             #     "type": "function", 
-#             #     "function": functions_definition
-#             # }],
-
-#             # tool_choice={
-#             #     "type": "function", 
-#             #     "function": {"name": "generate_complete_skill"}
-#             #     },
-#             max_tokens=MAX_TOKENS,
-#         )
-
-#         # return response
-#         print(response.choices[0].message.content)
-
-#     except Exception as e:
-#         print(f"Error calling OpenAI API: {e}")
-
-#===================================================================
-def submit_to_openai_api(json_data_string, parameters: AppConfig):
-    
+    # --------------------------------------------------------------
     # Extract parameters
+    # --------------------------------------------------------------
+
+    model_name = parameters.model_name
     source_mode = parameters.source_mode
     language_mode = parameters.language_mode
+
     open_q_count = parameters.open_questions_count
     mcq_count = parameters.multiple_choice_questions_count
     assign_count = parameters.file_questions_count
 
-    # Print parameters for debugging
+    # --------------------------------------------------------------
+    # Debug prints (for testing)
+    # --------------------------------------------------------------
+
+    print(model_name)
     print(source_mode)
     print(language_mode)
+
     print(f"open_questions_count: {open_q_count}")
     print(f"multiple_choice_questions_count: {mcq_count}")
     print(f"file_questions_count: {assign_count}")
 
-    # Build prompts and function schemas
-    system_prompts = build_system_prompts(source_mode, language_mode, open_q_count, mcq_count, assign_count)
-    functions_definition = get_skill_generation_schema(open_q_count, mcq_count, assign_count, language_mode)
-   #gemini/gemini-2.5-flash , gpt-4o
+    # --------------------------------------------------------------
+    # Build prompt and schema
+    # --------------------------------------------------------------
+
+    system_prompts = build_system_prompts(
+        source_mode,
+        language_mode,
+        open_q_count,
+        mcq_count,
+        assign_count
+    )
+
+    functions_definition = get_skill_generation_schema(
+        open_q_count,
+        mcq_count,
+        assign_count,
+        language_mode
+    )
+
+    # --------------------------------------------------------------
+    # Call LLM API
+    # --------------------------------------------------------------
+
     try:
-        # Call the LLM using LiteLLM with tools included
-        response = completion(
-            model="gemini/gemini-2.5-flash", 
+        response = litellm.completion(
+            model=model_name,
+
             messages=[
                 {
-                    "role": "system", 
+                    "role": "system",
                     "content": system_prompts
                 },
                 {
-                    "role": "user", 
+                    "role": "user",
                     "content": json_data_string
                 }
             ],
-            # tools=[{
-            #     "type": "function", 
-            #     "function": functions_definition
-            # }],
-            # tool_choice={
-            #     "type": "function", 
-            #     "function": {"name": "generate_complete_skill"}
-            # },
-            # max_tokens=MAX_TOKENS,
+
+            tools=[{
+                "type": "function",
+                "function": functions_definition
+            }],
+
+            tool_choice={
+                "type": "function",
+                "function": {"name": "generate_complete_skill"}
+            },
+
+            max_tokens=MAX_TOKENS,
         )
 
-        # Print the raw response or handle the tool call
-        print(response.choices[0].message.content)
-        
-        # Return the response so the calling function can process the tool calls
-       # return response
+        return response
 
     except Exception as e:
-        print(f"Error calling LLM API: {e}")
+        print(f"Error calling OpenAI API: {e}")
+        
