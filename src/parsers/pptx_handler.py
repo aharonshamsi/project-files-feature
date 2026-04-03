@@ -6,7 +6,7 @@ import hashlib
 from pptx import Presentation
 from pptx.enum.shapes import PP_PLACEHOLDER
 from src.models.document_models import Metadata, ContentBlock, DocumentModel, TableData, ImageData
-
+from src.parsers.utils import  is_solid_color_image
 
 # =========================================================
 # Constants
@@ -270,8 +270,11 @@ def extract_and_save_pptx_images(shape, block_id, image_output_dir: str):
         if len(image_bytes) < MIN_IMAGE_SIZE_BYTES:
             return image_paths # Returns an empty list
 
-        extension = image.ext
+        if is_solid_color_image(image_bytes):
+            print(f"Skipping solid color image found in PowerPoint block {block_id}")
+            return image_paths # Returns an empty list
 
+        extension = image.ext
         # Generate unique hash from the image bytes
         image_hash = hashlib.sha256(image_bytes).hexdigest()
         image_filename = f"{image_hash}.{extension}"

@@ -5,9 +5,8 @@ import re
 import io
 import os
 
-from src.parsers.utils import file_size_check
 from src.models.document_models import Metadata, ContentBlock, DocumentModel, TableData, ImageData
-
+from src.parsers.utils import file_size_check, is_solid_color_image
 import hashlib
 
 # =========================================================
@@ -237,6 +236,10 @@ def extract_and_save_image(paragraph, block_id,  image_output_dir: str):
                 if len(image_bytes) < MIN_IMAGE_SIZE_BYTES:
                     continue   
                 
+                if is_solid_color_image(image_bytes):
+                    #logger.info(f"Skipping solid color image found in block {block_id}")
+                    print(f"Skipping solid color image found in block {block_id}")
+                    continue               
                           
                # Build file path
                 extension = image_part.content_type.split('/')[-1].replace('x-', '')

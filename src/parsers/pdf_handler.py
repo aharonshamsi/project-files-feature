@@ -4,7 +4,7 @@ import io
 import re
 import hashlib
 
-from src.parsers.utils import file_size_check
+from src.parsers.utils import file_size_check, is_solid_color_image
 from src.models.document_models import Metadata, ContentBlock, DocumentModel, ImageData
 # =========================================================
 HEADING = "heading"
@@ -295,6 +295,9 @@ def save_pdf_image(image_block, page_num, block_id, image_output_dir):
             return None    
         
         extension = image_block.get("ext", "png")
+        if is_solid_color_image(image_bytes):
+            print(f"Skipping solid color image found on PDF page {page_num+1}")
+            return None # PDF handler returns None to indicate failure/skip
         
         # Generate unique hash from the image bytes
         image_hash = hashlib.sha256(image_bytes).hexdigest()
