@@ -339,7 +339,7 @@ def submit_to_llm_api(json_data_string, parameters: AppConfig):
     # --------------------------------------------------------------
     # Call LLM API
     # --------------------------------------------------------------
-
+    
     try:
         response = litellm.completion(
             model=model_name,
