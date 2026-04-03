@@ -8,6 +8,7 @@ import os
 from src.parsers.utils import file_size_check
 from src.models.document_models import Metadata, ContentBlock, DocumentModel, TableData, ImageData
 
+import hashlib
 
 # =========================================================
 # Heading style keywords used for identifying heading paragraphs.
@@ -234,15 +235,21 @@ def extract_and_save_image(paragraph, block_id,  image_output_dir: str):
                 
                 # Skip saving if the image is smaller than the threshold
                 if len(image_bytes) < MIN_IMAGE_SIZE_BYTES:
-                    continue             
-                # Build file path
+                    continue   
+                
+                          
+               # Build file path
                 extension = image_part.content_type.split('/')[-1].replace('x-', '')
-                image_filename = f"img_block_{block_id}_{i+1}.{extension}"
+                
+                # Generate unique hash from the image bytes
+                image_hash = hashlib.sha256(image_bytes).hexdigest()
+                image_filename = f"{image_hash}.{extension}"
                 full_path = os.path.join(image_output_dir, image_filename)
                 
-                # Save image
-                with open(full_path, "wb") as f:
-                    f.write(image_bytes)
+                # Check if the image already exists on disk before saving
+                if not os.path.exists(full_path):
+                    with open(full_path, "wb") as f:
+                        f.write(image_bytes)
                 
                 # Append the path to the list for JSON output or further use
                 image_paths.append(full_path)

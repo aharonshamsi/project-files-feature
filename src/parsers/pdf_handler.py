@@ -2,6 +2,7 @@ import fitz
 import os
 import io
 import re
+import hashlib
 
 from src.parsers.utils import file_size_check
 from src.models.document_models import Metadata, ContentBlock, DocumentModel, ImageData
@@ -294,11 +295,16 @@ def save_pdf_image(image_block, page_num, block_id, image_output_dir):
             return None    
         
         extension = image_block.get("ext", "png")
-        image_filename = f"pdf_pg_{page_num+1}_blk_{block_id}.{extension}"
+        
+        # Generate unique hash from the image bytes
+        image_hash = hashlib.sha256(image_bytes).hexdigest()
+        image_filename = f"{image_hash}.{extension}"
         full_path = os.path.join(image_output_dir, image_filename)
         
-        with open(full_path, "wb") as f:
-            f.write(image_bytes)
+        # Check if the image already exists on disk before saving
+        if not os.path.exists(full_path):
+            with open(full_path, "wb") as f:
+                f.write(image_bytes)
             
         return full_path
     
