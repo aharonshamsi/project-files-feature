@@ -20,6 +20,7 @@ TOP_HEADING_RATIO = 0.2
 MAX_HEADING_WORDS = 10
 EMPHASIZED_RATIO = 0.6
 MINI_WORDS = 40 
+MIN_IMAGE_SIZE_BYTES = 2*1024 # Minimum image size threshold (2KB)
 
 # =========================================================
 def extract_pptx_metadata(prs) -> Metadata:
@@ -263,6 +264,11 @@ def extract_and_save_pptx_images(shape, block_id, image_output_dir: str):
     try:
         image = shape.image
         image_bytes = image.blob
+        
+        # Skip saving if the image is smaller than the threshold
+        if len(image_bytes) < MIN_IMAGE_SIZE_BYTES:
+            return image_paths # Returns an empty list
+
         extension = image.ext
 
         image_filename = f"img_block_{block_id}.{extension}"

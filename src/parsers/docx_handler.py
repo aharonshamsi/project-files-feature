@@ -9,20 +9,19 @@ from src.parsers.utils import file_size_check
 from src.models.document_models import Metadata, ContentBlock, DocumentModel, TableData, ImageData
 
 
-
+# =========================================================
 # Heading style keywords used for identifying heading paragraphs.
 HEADING = "heading"
 PARAGRAPH = "paragraph"
 URL = "url"
 IMAGE = "image"
 TABLE = "table"
-
 TITLE = "title"
 HEBREW_HEADING = "כותרת"
 
 MINI_WORDS = 40 
-
-
+MIN_IMAGE_SIZE_BYTES = 2*1024 # Minimum image size threshold (2KB)
+# =========================================================
 def extract_document_metadata(file_object) -> Metadata:
 
     properties = file_object.core_properties
@@ -36,7 +35,7 @@ def extract_document_metadata(file_object) -> Metadata:
 
 
 
-
+# =========================================================
 # data table and also count words
 def extract_table(table, count_words):
     
@@ -56,7 +55,7 @@ def extract_table(table, count_words):
         return {"headers": [], "rows": []}, count_words
 
 
-
+# =========================================================
 def iteration_block_items(parent):
 
     for child in parent.element.body:
@@ -67,7 +66,7 @@ def iteration_block_items(parent):
             yield Table(child, parent)
 
 
-
+# =========================================================
 def extract_urls_from_text(text):
     pattern = r'https?://[^\s)]+'
     return re.findall(pattern, text)
@@ -233,6 +232,9 @@ def extract_and_save_image(paragraph, block_id,  image_output_dir: str):
                 image_part = paragraph.part.related_parts[rId]
                 image_bytes = image_part.blob
                 
+                # Skip saving if the image is smaller than the threshold
+                if len(image_bytes) < MIN_IMAGE_SIZE_BYTES:
+                    continue             
                 # Build file path
                 extension = image_part.content_type.split('/')[-1].replace('x-', '')
                 image_filename = f"img_block_{block_id}_{i+1}.{extension}"

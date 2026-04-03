@@ -5,7 +5,7 @@ import re
 
 from src.parsers.utils import file_size_check
 from src.models.document_models import Metadata, ContentBlock, DocumentModel, ImageData
-
+# =========================================================
 HEADING = "heading"
 PARAGRAPH = "paragraph"
 URL = "url"
@@ -17,6 +17,7 @@ TEXT_BLOCK_TYPE = 0
 IMAGE_BLOCK_TYPE = 1
 DEFAULT_FONT_SIZE = 12.0
 MINI_WORDS = 40 
+MIN_IMAGE_SIZE_BYTES = 2*1024  # Minimum image size threshold (2KB)
 
 
 # ================  extract text (PARAGRAPH AND HEADING) ================================
@@ -287,7 +288,11 @@ def save_pdf_image(image_block, page_num, block_id, image_output_dir):
 
         if not image_bytes:
             return None
-            
+
+        # Skip saving if the image is smaller than the threshold
+        if len(image_bytes) < MIN_IMAGE_SIZE_BYTES:
+            return None    
+        
         extension = image_block.get("ext", "png")
         image_filename = f"pdf_pg_{page_num+1}_blk_{block_id}.{extension}"
         full_path = os.path.join(image_output_dir, image_filename)
