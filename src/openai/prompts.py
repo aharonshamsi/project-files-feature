@@ -24,6 +24,12 @@ CONTENT STRUCTURE INSIDE EACH STEP:
 - Use **bold** for key terms
 - Use bullet or numbered lists when structural lists exist in the source
 
+IMAGE ASSOCIATION RULE:
+- The source content contains image blocks (type: "image") with an "image_data" object containing an "image_path".
+- When you create a step, identify which image blocks appeared adjacent to or within the original source text you used for this step.
+- Extract the filename (the long hash string) from the "image_path" of those images and include them as strings in the "image_ids" array for that step.
+- If a step has no relevant images, return an empty array [].
+
 The output must be structured and readable.
 Do not output plain unstructured text.
 """

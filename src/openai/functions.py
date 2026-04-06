@@ -92,6 +92,13 @@ def get_skill_generation_schema(open_q_count, mcq_count, assign_count, language_
                                 "type": "integer",
                                 "description": "The sequential number of the step."
                             },
+                            "image_ids": {
+                                "type": "array",
+                                "description": "An array of image hashes/filenames (strings) extracted from the 'image_path' of the images that logically belong to this step.",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
                             "widgets": {
                                 "type": "object",
                                 "description": (
@@ -219,7 +226,7 @@ def get_skill_generation_schema(open_q_count, mcq_count, assign_count, language_
                             }
 
                         },
-                        "required": ["step_name", "step_number", "widgets"]
+                        "required": ["step_name", "step_number", "image_ids", "widgets"]
                     }
                 }
             },
