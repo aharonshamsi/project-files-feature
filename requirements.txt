@@ -20,3 +20,4 @@ typing-inspection==0.4.2
 typing_extensions==4.15.0
 python-pptx==1.0.2
 litellm==1.82.2
+pillow==12.1.1

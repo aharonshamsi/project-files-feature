@@ -3,7 +3,7 @@
     "model_name": "gpt-4.1",
 
     "source_mode": "json_only",
-    "language_mode": "english",
+    "language_mode": "hebrew",
     
     "open_questions_count": 0,
     "multiple_choice_questions_count": 0,
