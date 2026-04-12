@@ -2,14 +2,14 @@
 {
     "model_name": "gpt-4.1",
 
-    "source_mode": "json_only",
-    "language_mode": "hebrew",
+    "source_mode": "json_as_guideline",
+    "language_mode": "english",
     
     "open_questions_count": 0,
     "multiple_choice_questions_count": 0,
     "file_questions_count": 0,
 
 
-    "input_file": "data/inputs/test2.pdf"
+    "input_file": "data/inputs/TEST101-BETAYEDA.pptx"
 }
 

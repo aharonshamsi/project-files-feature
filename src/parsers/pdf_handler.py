@@ -91,13 +91,62 @@ def combine_block_text(b):
 
 
 # ===========================================================
-def parse_page(doc, page_num, block_list, image_output_dir):
+# def parse_page(doc, page_num, block_list, image_output_dir):
    
+#     page = doc.load_page(page_num)
+#     body_size = get_page_body_size(page) 
+#     blocks = page.get_text("dict")["blocks"]
+
+#     all_page_links = page.get_links()
+
+#     current_paragraph_text = ""
+#     current_element_type = PARAGRAPH
+#     current_urls = []
+#     blocks.sort(key=lambda b: b['bbox'][1]) # Sort the blocks
+    
+#     word_count = 0
+
+
+#     for b in blocks:
+
+#         # Images
+#         if b['type'] == IMAGE_BLOCK_TYPE: 
+#             img_path = save_pdf_image(b, page_num, len(block_list), image_output_dir)
+#             if img_path:
+#                 block_list.append(ContentBlock(
+#                     block_id=len(block_list) + 1,
+#                     type=IMAGE,
+#                     image_data=ImageData(image_path=img_path)
+#                 ))
+#             continue
+
+#         # text
+#         block_text = combine_block_text(b)
+
+#         if not block_text:
+#             continue
+
+def parse_page(doc, page_num, block_list, image_output_dir):
     page = doc.load_page(page_num)
     body_size = get_page_body_size(page) 
     blocks = page.get_text("dict")["blocks"]
 
     all_page_links = page.get_links()
+
+    # Extract all images directly from the page at the canvas level.
+    # This ensures background images and full-page overlays are captured, 
+    # which are often bypassed by the standard text-block parser.
+    for img in page.get_images(full=True):
+        xref = img[0]
+        base_image = doc.extract_image(xref) 
+        
+        img_path = save_pdf_image(base_image, page_num, len(block_list), image_output_dir)
+        if img_path:
+            block_list.append(ContentBlock(
+                block_id=len(block_list) + 1,
+                type=IMAGE,
+                image_data=ImageData(image_path=img_path)
+            ))
 
     current_paragraph_text = ""
     current_element_type = PARAGRAPH
@@ -106,18 +155,12 @@ def parse_page(doc, page_num, block_list, image_output_dir):
     
     word_count = 0
 
-
     for b in blocks:
 
         # Images
         if b['type'] == IMAGE_BLOCK_TYPE: 
-            img_path = save_pdf_image(b, page_num, len(block_list), image_output_dir)
-            if img_path:
-                block_list.append(ContentBlock(
-                    block_id=len(block_list) + 1,
-                    type=IMAGE,
-                    image_data=ImageData(image_path=img_path)
-                ))
+            # Skip inline images to prevent duplication, as all images 
+            # (including inline) were already extracted via get_images() above.
             continue
 
         # text
@@ -125,7 +168,7 @@ def parse_page(doc, page_num, block_list, image_output_dir):
 
         if not block_text:
             continue
-
+        
         if b['type'] == TEXT_BLOCK_TYPE: # Block of text
 
             urls_in_this_block = get_urls_from_block(block_text, b["bbox"], all_page_links)
