@@ -23,7 +23,19 @@ MIN_IMAGE_SIZE_BYTES = 2*1024  # Minimum image size threshold (2KB)
 
 # ================  extract text (PARAGRAPH AND HEADING) ================================
 def extract_pdf_file_to_model(file_stream: io.BytesIO, image_output_dir: str) -> tuple[int, DocumentModel]:
+    """
+    Main parser function for PDF files. Extracts text, headings, and images page by page.
 
+    Args:
+        file_stream (io.BytesIO): The raw binary stream of the PDF file.
+        image_output_dir (str): Directory where extracted images should be saved.
+
+    Returns:
+        tuple[int, DocumentModel]: Total word count and the structured DocumentModel.
+
+    Raises:
+        ValueError: If the total word count is below the minimum threshold.
+    """
     total_word_count = 0
     block_list = []
 
@@ -66,20 +78,33 @@ def extract_pdf_file_to_model(file_stream: io.BytesIO, image_output_dir: str) ->
         raise
 
 
-
-
-
 # ===========================================
 def add_meta_data(doc) -> Metadata:
+    """
+    Extracts embedded metadata from the PyMuPDF document.
 
+    Args:
+        doc: The parsed fitz (PyMuPDF) Document.
+
+    Returns:
+        Metadata: A model containing the document's basic info.
+    """
     metadata = doc.metadata
 
     return Metadata(**metadata)
 
 
-
 # =============================================
 def combine_block_text(b):
+    """
+    Combines text spans inside a single PDF block into a cohesive string.
+
+    Args:
+        b (dict): A dictionary representing a single text block from the PDF.
+
+    Returns:
+        str: The combined and stripped text.
+    """
     block_string = ""
     if b['type'] == 0:  # Check if text block
         for line in b["lines"]:
@@ -88,45 +113,21 @@ def combine_block_text(b):
     return block_string.strip()
 
 
-
-
 # ===========================================================
-# def parse_page(doc, page_num, block_list, image_output_dir):
-   
-#     page = doc.load_page(page_num)
-#     body_size = get_page_body_size(page) 
-#     blocks = page.get_text("dict")["blocks"]
-
-#     all_page_links = page.get_links()
-
-#     current_paragraph_text = ""
-#     current_element_type = PARAGRAPH
-#     current_urls = []
-#     blocks.sort(key=lambda b: b['bbox'][1]) # Sort the blocks
-    
-#     word_count = 0
-
-
-#     for b in blocks:
-
-#         # Images
-#         if b['type'] == IMAGE_BLOCK_TYPE: 
-#             img_path = save_pdf_image(b, page_num, len(block_list), image_output_dir)
-#             if img_path:
-#                 block_list.append(ContentBlock(
-#                     block_id=len(block_list) + 1,
-#                     type=IMAGE,
-#                     image_data=ImageData(image_path=img_path)
-#                 ))
-#             continue
-
-#         # text
-#         block_text = combine_block_text(b)
-
-#         if not block_text:
-#             continue
-
 def parse_page(doc, page_num, block_list, image_output_dir):
+    """
+    Parses a single PDF page for text blocks, urls, and images, appending them
+    to the shared block_list array.
+
+    Args:
+        doc: The fitz Document object.
+        page_num (int): The index of the current page being parsed.
+        block_list (list): Reference to the master list of ContentBlocks.
+        image_output_dir (str): Directory to save extracted images.
+
+    Returns:
+        int: The number of words parsed on this specific page.
+    """
     page = doc.load_page(page_num)
     body_size = get_page_body_size(page) 
     blocks = page.get_text("dict")["blocks"]
@@ -251,12 +252,18 @@ def parse_page(doc, page_num, block_list, image_output_dir):
     return word_count
 
 
-
-
-
 # =====================================================================
 def get_page_body_size(page):
-   
+    """
+    Calculates the most common font size (the mode) on a given PDF page to determine 
+    the baseline body text size.
+
+    Args:
+        page: The fitz Page object.
+
+    Returns:
+        float: The most frequent font size, or DEFAULT_FONT_SIZE if none found.
+    """
     font_counts = {}
     blocks = page.get_text("dict")["blocks"]
 
@@ -274,11 +281,17 @@ def get_page_body_size(page):
     return DEFAULT_FONT_SIZE
 
 
-
-
 # ===============================================================
 def is_block_fully_bold(block):
+    """
+    Checks if every span of text within a block has bold styling applied.
 
+    Args:
+        block (dict): The text block dictionary from PyMuPDF.
+
+    Returns:
+        bool: True if the entire block is styled bold, False otherwise.
+    """
     if block['type'] != TEXT_BLOCK_TYPE:
         return False
         
@@ -295,10 +308,20 @@ def is_block_fully_bold(block):
     return True
 
 
-
-
 # ==============================================================
 def get_urls_from_block(block_text, block_bbox, page_links):
+    """
+    Extracts URLs from a PDF text block either by overlapping annotation rectangles 
+    or by pure text regex matching.
+
+    Args:
+        block_text (str): The text content of the block.
+        block_bbox (list): The coordinates of the block's bounding box.
+        page_links (list): A list of hyperlink dicts extracted from the PDF page.
+
+    Returns:
+        list: A deduplicated list of URLs found within the block.
+    """
     found_urls = set()
 
     # The coordinates of the rectangle surrounding the text [x0, y0, x1, y1]
@@ -324,9 +347,20 @@ def get_urls_from_block(block_text, block_bbox, page_links):
     return list(found_urls)
 
 
-
 # =====================================================================
 def save_pdf_image(image_block, page_num, block_id, image_output_dir):
+    """
+    Validates, hashes, and saves a PDF image to disk, skipping small or solid-color images.
+
+    Args:
+        image_block (dict): The image data dictionary extracted via PyMuPDF.
+        page_num (int): The current page number (for logging).
+        block_id (int): The current block identifier.
+        image_output_dir (str): Directory where the image will be saved.
+
+    Returns:
+        str or None: The absolute path to the saved image, or None if skipped/failed.
+    """
     try:
         image_bytes = image_block.get("image")
 

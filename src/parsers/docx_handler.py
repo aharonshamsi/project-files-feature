@@ -22,8 +22,17 @@ HEBREW_HEADING = "כותרת"
 MINI_WORDS = 40 
 MIN_IMAGE_SIZE_BYTES = 2*1024 # Minimum image size threshold (2KB)
 # =========================================================
-def extract_document_metadata(file_object) -> Metadata:
 
+def extract_document_metadata(file_object) -> Metadata:
+    """
+    Extracts core properties (metadata) from a Word document.
+
+    Args:
+        file_object: The parsed docx Document object.
+
+    Returns:
+        Metadata: A Pydantic model containing the document's title, author, and creation date.
+    """
     properties = file_object.core_properties
 
     metadata = {
@@ -34,11 +43,19 @@ def extract_document_metadata(file_object) -> Metadata:
     return Metadata(**metadata)
 
 
-
 # =========================================================
 # data table and also count words
 def extract_table(table, count_words):
-    
+    """
+    Extracts text content from a docx table and updates the global word count.
+
+    Args:
+        table: The docx Table object.
+        count_words (int): The current accumulated word count.
+
+    Returns:
+        tuple: A dictionary containing table 'headers' and 'rows', and the updated word count.
+    """
     extracted = []
 
     for row in table.rows:
@@ -57,7 +74,15 @@ def extract_table(table, count_words):
 
 # =========================================================
 def iteration_block_items(parent):
+    """
+    Yields paragraph or table block items sequentially from the document body.
 
+    Args:
+        parent: The document or element body to iterate over.
+
+    Yields:
+        Paragraph or Table object depending on the child tag.
+    """
     for child in parent.element.body:
         if child.tag.endswith("p"):
             yield Paragraph(child, parent)
@@ -68,15 +93,35 @@ def iteration_block_items(parent):
 
 # =========================================================
 def extract_urls_from_text(text):
+    """
+    Finds and extracts HTTP/HTTPS URLs from a given text string.
+
+    Args:
+        text (str): The text to parse.
+
+    Returns:
+        list: A list of extracted URL strings.
+    """
     pattern = r'https?://[^\s)]+'
     return re.findall(pattern, text)
 
 
-
-
 #==================================================================
 def extract_docx_file_to_model(file_stream: io.BytesIO, image_output_dir: str) -> tuple[int, DocumentModel]:
-    
+    """
+    Main parser function for DOCX files. Extracts text, tables, images, and urls,
+    organizing them into a structured DocumentModel.
+
+    Args:
+        file_stream (io.BytesIO): The raw binary stream of the DOCX file.
+        image_output_dir (str): The directory path to save extracted images.
+
+    Returns:
+        tuple[int, DocumentModel]: The total word count and the structured DocumentModel.
+
+    Raises:
+        ValueError: If the document word count is below the MINI_WORDS threshold.
+    """
     count_words = 0
     block_list = [] 
     block_id_counter = 1
@@ -189,11 +234,17 @@ def extract_docx_file_to_model(file_stream: io.BytesIO, image_output_dir: str) -
         raise
 
 
-
-
 #=============================================================
 def is_real_section_break(block):
+    """
+    Determines if a given block represents a hard section break or page break.
 
+    Args:
+        block: The docx paragraph block element.
+
+    Returns:
+        bool: True if it's a section/page break, False otherwise.
+    """
     # 1. Check paragraph formatting (Instance)
     if block.paragraph_format.page_break_before:
         return True
@@ -213,9 +264,20 @@ def is_real_section_break(block):
     return False
 
 
-
 #=============================================================
 def extract_and_save_image(paragraph, block_id,  image_output_dir: str):
+    """
+    Extracts embedded images from a paragraph block, filters out solid color images,
+    and saves valid ones to the disk using a SHA256 hash filename.
+
+    Args:
+        paragraph: The docx paragraph object.
+        block_id (int): The current block identifier (for logging).
+        image_output_dir (str): Destination directory for saved images.
+
+    Returns:
+        list: A list of absolute file paths to the saved images.
+    """
     image_paths = []
 
     # Get rId of image

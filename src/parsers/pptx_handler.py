@@ -25,6 +25,15 @@ MIN_IMAGE_SIZE_BYTES = 2*1024 # Minimum image size threshold (2KB)
 
 # =========================================================
 def extract_pptx_metadata(prs) -> Metadata:
+    """
+    Extracts core properties and metadata from the PowerPoint presentation.
+
+    Args:
+        prs: The python-pptx Presentation object.
+
+    Returns:
+        Metadata: A model containing presentation title, author, and creation date.
+    """
     props = prs.core_properties
 
     metadata = {
@@ -37,16 +46,43 @@ def extract_pptx_metadata(prs) -> Metadata:
 
 # =========================================================
 def normalize_text(text):
+    """
+    Cleans up raw PowerPoint text, replacing weird control characters with newlines.
+
+    Args:
+        text (str): The raw text to format.
+
+    Returns:
+        str: The normalized, stripped string.
+    """
     text = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f]', '\n', text)
     text = re.sub(r'\n{3,}', '\n\n', text)
     return text.strip()
 
 # =========================================================
 def extract_urls(text):
+    """
+    Finds HTTP/HTTPS URLs within a block of text using regex.
+
+    Args:
+        text (str): The text block to scan.
+
+    Returns:
+        list: A list of matched URL strings.
+    """
     return re.findall(r'https?://[^\s)]+', text)
 
 # =========================================================
 def is_auto_slide_number(shape):
+    """
+    Determines if a PowerPoint shape is an auto-generated slide number placeholder.
+
+    Args:
+        shape: The shape object from a slide.
+
+    Returns:
+        bool: True if it's a slide number placeholder, False otherwise.
+    """
     if not shape.is_placeholder:
         return False
     try:
@@ -56,6 +92,15 @@ def is_auto_slide_number(shape):
 
 # =========================================================
 def get_slide_body_size(slide):
+    """
+    Calculates the most frequent font size used in the text frames of a single slide.
+
+    Args:
+        slide: A python-pptx slide object.
+
+    Returns:
+        float: The determined body font size (mode) or DEFAULT_FONT_SIZE.
+    """
     font_counts = {}
 
     for shape in slide.shapes:
@@ -71,6 +116,18 @@ def get_slide_body_size(slide):
 
 # =========================================================
 def shape_is_heading(shape, slide_height, body_font_size):
+    """
+    Determines if a given text shape acts as a heading based on placeholder type, 
+    position, word count, and text emphasis.
+
+    Args:
+        shape: The slide shape to evaluate.
+        slide_height (int): The total height of the slide.
+        body_font_size (float): The calculated baseline font size for the slide.
+
+    Returns:
+        bool: True if the shape qualifies as a heading, False otherwise.
+    """
     if not shape.has_text_frame:
         return False
 
@@ -113,9 +170,18 @@ def shape_is_heading(shape, slide_height, body_font_size):
     return False
 
 
-
 # =========================================================
 def extract_pptx_table(table, count_words):
+    """
+    Extracts text contents from a PowerPoint table and updates the word count.
+
+    Args:
+        table: The python-pptx Table object.
+        count_words (int): Current accumulated word count.
+
+    Returns:
+        tuple: A dictionary with 'headers' and 'rows', and the updated word count.
+    """
     extracted = []
 
     for row in table.rows:
@@ -140,12 +206,22 @@ def extract_pptx_table(table, count_words):
     return table_data, count_words
 
 
-
-
-
 # =========================================================
 def extract_pptx_file_to_model(file_stream: io.BytesIO, image_output_dir: str) -> tuple[int, DocumentModel]:
+    """
+    Main parser for PPTX files. Iterates through slides, shapes, and tables,
+    categorizing text and extracting images into a structured DocumentModel.
 
+    Args:
+        file_stream (io.BytesIO): Raw binary stream of the PPTX file.
+        image_output_dir (str): Directory where extracted images are saved.
+
+    Returns:
+        tuple[int, DocumentModel]: Total word count and the structured DocumentModel.
+
+    Raises:
+        ValueError: If total words are below the MINI_WORDS threshold.
+    """
     file_stream.seek(0) 
     prs = Presentation(file_stream)
 
@@ -252,11 +328,20 @@ def extract_pptx_file_to_model(file_stream: io.BytesIO, image_output_dir: str) -
         raise
 
 
-
-
-
 #===============================================================================
 def extract_and_save_pptx_images(shape, block_id, image_output_dir: str):
+    """
+    Extracts binary data from a PowerPoint picture shape, filters out solids/small 
+    images, and saves it locally using a SHA256 filename.
+
+    Args:
+        shape: The python-pptx picture shape.
+        block_id (int): The current identifier for logging purposes.
+        image_output_dir (str): Destination directory for the saved image.
+
+    Returns:
+        list: A list containing the absolute path string to the saved image (or empty if skipped).
+    """
     image_paths = []
 
     if not shape.shape_type == 13:  # 13 == MSO_SHAPE_TYPE.PICTURE

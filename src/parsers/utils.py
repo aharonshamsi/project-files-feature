@@ -10,7 +10,16 @@ MINI_FILE_DOCX_SIZE_BYTES = 1 * 1024  # MINI 10 KB
 #===============================================================================
 # CHECK SIZE OF THE FILE, MAX & MINI
 def file_size_check(file_stream: io.BytesIO):
+    """
+    Validates if the provided file stream falls within the allowed size limits.
 
+    Args:
+        file_stream (io.BytesIO): The file stream to be checked.
+
+    Raises:
+        ValueError: If the file is larger than MAX_FILE_DOCX_SIZE_BYTES or 
+                    smaller than MINI_FILE_DOCX_SIZE_BYTES.
+    """
     file_size = file_stream.getbuffer().nbytes
 
     if file_size > MAX_FILE_DOCX_SIZE_BYTES:
@@ -22,6 +31,18 @@ def file_size_check(file_stream: io.BytesIO):
 #===============================================================================
 # Check and return suffix type of the file
 def get_file_extension_type(file_path):
+    """
+    Determines the file type (pdf, docx, or pptx) based on its binary header or ZIP structure.
+
+    Args:
+        file_path (str): The path to the file.
+
+    Returns:
+        str: 'pdf', 'docx', or 'pptx' depending on the detected file format.
+
+    Raises:
+        ValueError: If the file format is unsupported or corrupted.
+    """
     with open(file_path, 'rb') as f:
         header = f.read(5)
 
@@ -54,6 +75,13 @@ def is_solid_color_image(image_bytes: bytes, tolerance: int = 5) -> bool:
     """
     Checks if an image consists of only a single solid color or is fully transparent.
     Allows a small tolerance for compression artifacts.
+
+    Args:
+        image_bytes (bytes): The raw binary data of the image.
+        tolerance (int, optional): The allowed variance across color channels. Defaults to 5.
+
+    Returns:
+        bool: True if the image is a solid color or completely transparent, False otherwise.
     """
     try:
         # 1. Wrap bytes in BytesIO
